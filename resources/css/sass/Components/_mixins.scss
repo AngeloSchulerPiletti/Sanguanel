@@ -1,0 +1,48 @@
+@import "resources/css/sass/geralImports.scss";
+
+@mixin geralHeader {
+        padding: 1.6vw 1.6vw 1.9vw 1.6vw;
+        background-color: $black;
+        color: $white;
+}
+
+
+@mixin headerArticle {
+    header {
+        @include geralHeader();
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        h1 {
+            @include Titulo2_S();
+            font-size: 3.5vw;
+            max-width: 60vw; 
+            line-height: 110%
+        }
+        h6{
+            @include Fonte3_SS();
+            font-size: 1.2vw;
+            padding-right: 2vw;
+        }
+    }
+}
+@mixin headerHome {
+    header {
+        @include geralHeader();
+        h1 {
+            @include Titulo3_SS();
+            font-size: 2vw;
+            line-height: 100%;
+
+            h1 {
+                @include Titulo1_S();
+                font-size: 5vw;
+                display: inline-block;
+            }
+        }
+    }
+}
+
+
+

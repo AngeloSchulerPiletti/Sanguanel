@@ -1,0 +1,44 @@
+//Important menu vars//
+$menuWidth: 80px;
+
+
+@mixin SVGHold {
+svg:hover path{
+    fill: $yellow;
+
+    transition: 300ms;
+    transition-property: fill;
+}
+svg path{
+    fill: $white;
+
+    transition: 600ms;
+    transition-property: fill;
+}
+}
+
+
+//Animações//
+@keyframes sideOptionsShow {
+    from{transform: translateX(-100%) translateZ(-2px); opacity: 0.8;}
+    to{transform: translateX(0%) translateZ(-2px); opacity: 1;}
+}
+@keyframes sideOptionsHide {
+    from{transform: translateX(0%) translateZ(-2px); opacity: 1;}
+    to{transform: translateX(-100%) translateZ(-2px); opacity: 0.8;}
+}
+
+@mixin animSideShow{
+    animation-name: sideOptionsShow; 
+    animation-duration: 250ms; 
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+@mixin animSideHide{
+    animation-name: sideOptionsHide; 
+    animation-duration: 250ms; 
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}

@@ -1,0 +1,73 @@
+@mixin Titulo1_S {
+    font-family: 'Merriweather', serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-display: swap;
+}
+@mixin Titulo2_S {
+    font-display: swap;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+}
+@mixin Fonte1_S {
+    font-display: swap;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+}
+@mixin Fonte2_S {
+    font-display: swap;
+    font-family: 'Merriweather', serif;
+    font-weight: 200;
+}
+
+
+
+
+@mixin Titulo1_SS {
+    font-display: swap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+@mixin Titulo2_SS {
+    font-display: swap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+@mixin Titulo3_SS {
+    font-display: swap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+@mixin Fonte1_SS {
+    font-display: swap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+@mixin Fonte1_SSI {
+    font-display: swap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+@mixin Fonte2_SS {
+    font-display: swap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+@mixin Fonte2_SSI {
+    font-display: swap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+@mixin Fonte3_SS {
+    font-display: swap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+@mixin Fonte3_SSI {
+    font-display: swap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
