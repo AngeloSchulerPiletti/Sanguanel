@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\RouteController;
+use App\Http\Controllers\PublishController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,17 @@ use App\Http\Controllers\RouteController;
 */
 
 Route::get('/', [RouteController::class, 'index']);
+
+Route::group(['prefix'=>'artigos'], function(){
+    // Route::get('/',              [PublishController::class, 'index']);
+    // Route::get('/historia',      [PublishController::class, 'historia']);
+    // Route::get('/producao',      [PublishController::class, 'producao']);
+    // Route::get('/curiosidades',  [PublishController::class, 'curiosidades']);
+    Route::get('/',             [PublishController::class, 'artigos']);
+    Route::get('/{section}',    [PublishController::class, 'artigos']);
+    Route::get('/{section}/{id}',    [PublishController::class, 'artigos']);
+});
+
 
 
 
