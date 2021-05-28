@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->timestamps();
+            $table->tinyInteger('adminLevel')->default(0); // 0 até 4 || 0 são usuários comuns || 4 são masters, podem criar admins e gerenciar seus levels;
         });
     }
 
