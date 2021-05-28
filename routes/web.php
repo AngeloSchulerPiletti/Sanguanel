@@ -19,14 +19,29 @@ use App\Http\Controllers\PublishController;
 
 Route::get('/', [RouteController::class, 'index']);
 
+
+
 Route::group(['prefix'=>'artigos'], function(){
-    // Route::get('/',              [PublishController::class, 'index']);
-    // Route::get('/historia',      [PublishController::class, 'historia']);
-    // Route::get('/producao',      [PublishController::class, 'producao']);
-    // Route::get('/curiosidades',  [PublishController::class, 'curiosidades']);
-    Route::get('/',             [PublishController::class, 'artigos']);
-    Route::get('/{section}',    [PublishController::class, 'artigos']);
-    Route::get('/{section}/{id}',    [PublishController::class, 'artigos']);
+    Route::get('/',                 [PublishController::class, 'artigos']);
+    Route::get('/{section}',        [PublishController::class, 'artigos']);
+    Route::get('/{section}/{id}',   [PublishController::class, 'artigos']);
+});
+
+Route::group(['prefix'=>'receitas'], function(){
+    Route::get('/',                  [PublishController::class, 'receitas']);
+    Route::get('/{section}',         [PublishController::class, 'receitas']);
+    Route::get('/{section}/{id}',    [PublishController::class, 'receitas']);
+});
+
+Route::group(['prefix'=>'institucional'], function(){
+    Route::get('/',                  [PublishController::class, 'institucional']);
+    Route::get('/{section}',         [PublishController::class, 'institucional']);
+    Route::get('/{section}/{id}',    [PublishController::class, 'institucional']);
+});
+
+Route::group(['prefix'=>'autor'], function(){
+    Route::get('/',                  [PublishController::class, 'autor']);
+    Route::get('/{section}',         [PublishController::class, 'autor']);
 });
 
 

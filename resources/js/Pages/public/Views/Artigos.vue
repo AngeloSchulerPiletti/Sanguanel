@@ -1,11 +1,11 @@
 <template>
-  <App>
+  <app-public>
     <Header/>
-  </App>
+  </app-public>
 </template>
 
 <script>
-import App from "@/Layouts/AppPublic";
+import AppPublic from "@/Layouts/AppPublic";
 import Header from "@/Pages/public/Components/Template/Homes/Article/Header";
 export default {
     data(){
@@ -14,7 +14,7 @@ export default {
       }
     },
     components: {
-      App,
+      AppPublic,
       Header,
       
     },

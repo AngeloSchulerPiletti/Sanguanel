@@ -1,12 +1,12 @@
 <template>
-  <App></App>
+  <app-public></app-public>
 </template>
 
 <script>
-import App from "@/Layouts/AppPublic";
+import AppPublic from "@/Layouts/AppPublic";
 export default {
   components: {
-      App,
+      AppPublic,
   }
 }
 </script>

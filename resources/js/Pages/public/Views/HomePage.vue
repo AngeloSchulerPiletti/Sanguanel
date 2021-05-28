@@ -1,5 +1,5 @@
 <template>
-    <App>
+    <app-public>
     <div id="website_home">
         <Messages :flashes="flash"/>
         <!-- <div id="messages">
@@ -46,11 +46,11 @@
 
         <section></section>
     </div>
-    </App>
+    </app-public>
 </template>
 
 <script>
-import App from "@/Layouts/AppPublic";
+import AppPublic from "@/Layouts/AppPublic";
 import Brasil from "@/Pages/public/Components/svg/home_page/Brasil";
 import Header from "@/Pages/public/Components/Template/Header";
 import Messages from "@/Pages/public/Components/Template/Messages";
@@ -112,7 +112,7 @@ export default {
     components: {
         Brasil,
         Header,
-        App,
+        AppPublic,
         Messages,
     },
     
