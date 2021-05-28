@@ -18,9 +18,12 @@ use App\Http\Controllers\RouteController;
 
 Route::get('/', [RouteController::class, 'index']);
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/home', [RouteController::class, 'home']);
-// Route::middleware(['auth:sanctum', 'verified'])->get('/home1', [RouteController::class, 'home1']);
 
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [RouteController::class, 'logged'])->name('dashboard');
+
+
+
+
+require_once __DIR__ . "/fortify.php";

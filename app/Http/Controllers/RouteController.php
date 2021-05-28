@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 class RouteController extends Controller
 {
+    /*+=================================================+
+      |                   PUBLIC                        |
+      +=================================================+*/
     public function index(){
-        return Inertia::render('Views/HomePage', [
+        return Inertia::render('public/Views/HomePage', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             // 'laravelVersion' => Application::VERSION,
@@ -19,14 +22,13 @@ class RouteController extends Controller
     }
 
 
-    public function home(){
-        dd("LOGADO");
-    }
-    public function home1(){
-        dd("NÃO LOGADO");
-    }
+    
 
+
+    /*+=================================================+
+      |                     ADMIM                       |
+      +=================================================+*/
     public function logged(){
-        return Inertia::render('Views/Auth/Dashboard');
+        return Inertia::render('adim/Views/Dashboard');
     }
 }

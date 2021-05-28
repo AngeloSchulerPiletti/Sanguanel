@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import App from "@/Layouts/App";
-import Header from "@/Pages/Components/Template/ArticlesModel/Header";
+import App from "@/Layouts/AppPublic";
+import Header from "@/Pages/public/Components/Template/ArticlesModel/Header";
 export default {
     data(){
       return{

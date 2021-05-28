@@ -8,7 +8,7 @@
 </template> 
 
 <script>
-import InitialMenu from "@/Pages/Components/Template/InitialMenu";
+import InitialMenu from "@/Pages/public/Components/Template/InitialMenu";
 
 export default {
     components: {

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import LogoBranco from '@/Pages/Components/Icons/LogoBranco'
+    import LogoBranco from '@/Pages/public/Components/Icons/LogoBranco'
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
     import JetLabel from '@/Jetstream/Label'

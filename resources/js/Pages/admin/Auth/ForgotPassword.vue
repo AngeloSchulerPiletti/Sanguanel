@@ -31,7 +31,7 @@
     import JetInput from '@/Jetstream/Input'
     import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
-import LogoBranco from '../Components/Icons/LogoBranco.vue'
+import LogoBranco from '@/Pages/public/Components/Icons/LogoBranco.vue'
 
     export default {
         components: {

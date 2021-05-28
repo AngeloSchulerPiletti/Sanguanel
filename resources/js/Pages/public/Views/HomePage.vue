@@ -50,10 +50,10 @@
 </template>
 
 <script>
-import App from "@/Layouts/App";
-import Brasil from "@/Pages/Components/svg/home_page/Brasil";
-import Header from "@/Pages/Components/Template/Header";
-import Messages from "@/Pages/Components/Template/Messages";
+import App from "@/Layouts/AppPublic";
+import Brasil from "@/Pages/public/Components/svg/home_page/Brasil";
+import Header from "@/Pages/public/Components/Template/Header";
+import Messages from "@/Pages/public/Components/Template/Messages";
 export default {
     data() {
         return {

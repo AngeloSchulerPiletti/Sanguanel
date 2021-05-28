@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import App from "@/Layouts/App";
-import Header from "@/Pages/Components/Template/Homes/Article/Header";
+import App from "@/Layouts/AppPublic";
+import Header from "@/Pages/public/Components/Template/Homes/Article/Header";
 export default {
     data(){
       return{

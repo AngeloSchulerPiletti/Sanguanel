@@ -12,6 +12,10 @@ use App\Actions\Jetstream\UpdateTeamName;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
 
+use Inertia\Inertia;
+use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 
 class JetstreamServiceProvider extends ServiceProvider
@@ -43,6 +47,49 @@ class JetstreamServiceProvider extends ServiceProvider
         Jetstream::removeTeamMembersUsing(RemoveTeamMember::class);
         Jetstream::deleteTeamsUsing(DeleteTeam::class);
         Jetstream::deleteUsersUsing(DeleteUser::class);
+
+
+
+
+
+
+        Fortify::loginView(function () {
+            return Inertia::render('admin/Auth/Login', [
+                'canResetPassword' => Route::has('password.request'),
+                'status' => session('status'),
+            ]);
+        });
+
+        Fortify::requestPasswordResetLinkView(function () {
+            return Inertia::render('admin/Auth/ForgotPassword', [
+                'status' => session('status'),
+            ]);
+        });
+
+        Fortify::resetPasswordView(function (Request $request) {
+            return Inertia::render('admin/Auth/ResetPassword', [
+                'email' => $request->input('email'),
+                'token' => $request->route('token'),
+            ]);
+        });
+
+        Fortify::registerView(function () {
+            return Inertia::render('admin/Auth/Register');
+        });
+
+        Fortify::verifyEmailView(function () {
+            return Inertia::render('admin/Auth/VerifyEmail', [
+                'status' => session('status'),
+            ]);
+        });
+
+        Fortify::twoFactorChallengeView(function () {
+            return Inertia::render('admin/Auth/TwoFactorChallenge');
+        });
+
+        Fortify::confirmPasswordView(function () {
+            return Inertia::render('admin/Auth/ConfirmPassword');
+        });
 
     }
 

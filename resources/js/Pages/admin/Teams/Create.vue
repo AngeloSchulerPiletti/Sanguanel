@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
+    import AppLayout from '@/Layouts/AppAdmin'
     import CreateTeamForm from './CreateTeamForm'
 
     export default {

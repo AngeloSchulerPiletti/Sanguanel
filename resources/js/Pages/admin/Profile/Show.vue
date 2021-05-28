@@ -39,7 +39,7 @@
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
+    import AppLayout from '@/Layouts/AppAdmin'
     import DeleteUserForm from './DeleteUserForm'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
     import LogoutOtherBrowserSessionsForm from './LogoutOtherBrowserSessionsForm'
