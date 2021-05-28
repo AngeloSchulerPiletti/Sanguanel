@@ -36,12 +36,10 @@ Route::group(['prefix'=>'receitas'], function(){
 Route::group(['prefix'=>'institucional'], function(){
     Route::get('/',                  [PublishController::class, 'institucional']);
     Route::get('/{section}',         [PublishController::class, 'institucional']);
-    Route::get('/{section}/{id}',    [PublishController::class, 'institucional']);
 });
 
 Route::group(['prefix'=>'autor'], function(){
     Route::get('/',                  [PublishController::class, 'autor']);
-    Route::get('/{section}',         [PublishController::class, 'autor']);
 });
 
 

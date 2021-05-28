@@ -1,12 +1,13 @@
 <template>
   <app-public>
-    <Header/>
+    <!-- <Header/> -->
+    <p>ARTIGOS</p>
   </app-public>
 </template>
 
 <script>
 import AppPublic from "@/Layouts/AppPublic";
-import Header from "@/Pages/public/Components/Template/Homes/Article/Header";
+import Header from "@/Pages/public/Components/Template/Header";
 export default {
     data(){
       return{

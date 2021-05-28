@@ -13,7 +13,7 @@
                 <inertia-link href="dashboard" > Conta </inertia-link>
             </li>
             <li class="user_menus">
-                <inertia-link href="login">
+                <inertia-link href="login"> 
                     Login
                     <IconLock id="login_icon"/>
                 </inertia-link>

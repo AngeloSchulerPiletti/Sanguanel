@@ -2,6 +2,7 @@
     <div id="_website_">
         <navegation />
         <section id="_website_content_">
+            <Header :header_content="header"/>
             <slot/>
         </section>
     </div>
@@ -9,13 +10,16 @@
 
 <script>
 import InitialMenu from "@/Pages/public/Components/Template/InitialMenu";
+// import {  } from "@/Pages/public/Components/T";
 
 export default {
     components: {
         navegation: InitialMenu,
     },
     props: {
+
     },
+    
 };
 </script>
 

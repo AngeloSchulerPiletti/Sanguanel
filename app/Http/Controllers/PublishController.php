@@ -15,13 +15,17 @@ class PublishController extends Controller
     {
         if ($section != null) {
             if ($id != null) {
-                echo $id.' ARTIGO SETADO!<BR>';
-            }
-            else{
-                return Inertia::render($this->url_base.'SubHomes/FromArtigos');
+                return Inertia::render($this->url_pub . 'Articles/ArticleModel', [
+                    'subject' => 'artigos',
+                    'id' => '',
+                ]);
+            } else {
+                return Inertia::render($this->url_pub . 'SubHomes/FromArtigos', [
+                    'subject' => $section,
+                ]);
             }
         } else {
-            return Inertia::render($this->url_base.'Articles');
+            return Inertia::render($this->url_pub . 'Artigos');
         }
     }
 
@@ -31,38 +35,35 @@ class PublishController extends Controller
     {
         if ($section != null) {
             if ($id != null) {
-                echo $id.' ARTIGO SETADO!<BR>';
-            }
-            else{
-                return Inertia::render($this->url_base.'SubHomes/FromReceitas');
+                return Inertia::render($this->url_pub . 'Articles/ArticleModel', [
+                    'subject' => 'receitas',
+                    'id' => '',
+                ]);
+            } else {
+                return Inertia::render($this->url_pub . 'SubHomes/FromReceitas', [
+                    'subject' => $section,
+                ]);
             }
         } else {
-            return Inertia::render($this->url_base.'Receitas');
+            return Inertia::render($this->url_pub . 'Receitas');
         }
     }
 
 
-    public function institucional($section = null, $id = null)
+    public function institucional($section = null)
     {
         if ($section != null) {
-            if ($id != null) {
-                echo $id.' ARTIGO SETADO!<BR>';
-            }
-            else{
-                return Inertia::render($this->url_base.'SubHomes/FromInstitucional');
-            }
+            return Inertia::render($this->url_pub . 'SubHomes/FromInstitucional', [
+                'subject' => $section,
+            ]);
         } else {
-            return Inertia::render($this->url_base.'Institucional');
+            return Inertia::render($this->url_pub . 'Institucional');
         }
     }
 
 
-    public function autor($section = null)
+    public function autor()
     {
-        if ($section != null) {
-            //
-        } else {
-            return Inertia::render($this->url_base.'Autor');
-        }
+        return Inertia::render($this->url_pub . 'Autor');
     }
 }

@@ -1,5 +1,7 @@
 <template>
-  <app-public></app-public>
+  <app-public>
+    <p>INSTITUCIONAL</p>
+  </app-public>
 </template>
 
 <script>

@@ -1,14 +1,15 @@
 <template>
-  <App>
-    <article>
+  <app-public>
+    <p>ARTIGOS MODELO</p>
+    <!-- <article>
       <Header :articleData="articleContent.articleData"/>
       Artigos
-    </article>
-  </App>
+    </article> -->
+  </app-public>
 </template>
 
 <script>
-import App from "@/Layouts/AppPublic";
+import AppPublic from "@/Layouts/AppPublic";
 import Header from "@/Pages/public/Components/Template/ArticlesModel/Header";
 export default {
     data(){
@@ -22,7 +23,7 @@ export default {
       }
     },
     components: {
-      App,
+      AppPublic,
       Header,
       ModeloArtigo: ArticleModel,
       
