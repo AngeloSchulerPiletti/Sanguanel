@@ -1,5 +1,5 @@
 <template>
-    <app-admin>
+    <app-admin  :isHere="'login'">
 
         <div>
             Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
@@ -32,7 +32,7 @@ import AppAdmin from "@/Layouts/AppAdmin";
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
     import JetLabel from '@/Jetstream/Label'
-    import JetValidationErrors from '@/Jetstream/ValidationErrors'
+    import JetValidationErrors from '@/Pages/admin/Components/Apendices/ValidationErrors'
 import LogoBranco from '@/Pages/public/Components/Icons/LogoBranco.vue'
 
     export default {

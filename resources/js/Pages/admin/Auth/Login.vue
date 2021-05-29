@@ -1,6 +1,6 @@
 <template>
     <app-admin :isHere="'login'">
-        <jet-validation-errors />
+        <validation-errors />
 
         <div v-if="status">
             {{ status }}
@@ -63,7 +63,7 @@ import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import ValidationErrors from "@/Pages/admin/Components/Apendices/ValidationErrors";
 import AppAdmin from "@/Layouts/AppAdmin";
 
 export default {
@@ -72,7 +72,7 @@ export default {
         JetInput,
         JetCheckbox,
         JetLabel,
-        JetValidationErrors,
+        ValidationErrors,
         AppAdmin,
     },
 

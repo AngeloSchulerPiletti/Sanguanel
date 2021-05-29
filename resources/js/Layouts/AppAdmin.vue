@@ -1,50 +1,65 @@
 <template>
     <div id="_website_">
-        <navigation :atPage="isHere"/>
+        <navigation :atPage="isHere" />
 
         <section id="_website_content_">
-            <Header/>
+            <Header />
             <slot></slot>
         </section>
     </div>
 </template>
 
 <script>
-    import Navigation from "@/Pages/admin/Components/Template/Navigation";
-    import Header from "@/Pages/admin/Components/Template/Header";
+import Navigation from "@/Pages/admin/Components/Template/Navigation";
+import Header from "@/Pages/admin/Components/Template/Header";
 
+export default {
+    components: {
+        Navigation,
+        Header,
+    },
 
-
-    export default {
-        components: {
-            Navigation,
-            Header
+    data() {
+        return {
+            showingNavigationDropdown: false,
+        };
+    },
+    methods: {
+        switchToTeam(team) {
+            this.$inertia.put(
+                route("current-team.update"),
+                {
+                    team_id: team.id,
+                },
+                {
+                    preserveState: false,
+                }
+            );
         },
 
-        data() {
-            return {
-                showingNavigationDropdown: false,
-            }
+        logout() {
+            this.$inertia.post(route("logout"));
         },
-        methods: {
-            switchToTeam(team) {
-                this.$inertia.put(route('current-team.update'), {
-                    'team_id': team.id
-                }, {
-                    preserveState: false
-                })
-            },
-
-            logout() {
-                this.$inertia.post(route('logout'));
-            },
-        },
-        props:{
-            isHere: String,
-        }
-    }
+    },
+    props: {
+        isHere: String,
+    },
+};
 </script>
 
 <style lang="scss" scoped>
+#_website_ {
+    display: flex;
+    flex-direction: column;
 
+    height: 100vh;
+
+    #_website_content_ {
+        flex-grow: 1;
+
+        background-color: $black;
+
+        color: $white;
+    }
+}
 </style>
