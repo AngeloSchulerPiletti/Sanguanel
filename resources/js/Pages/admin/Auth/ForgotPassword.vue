@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <app-admin>
 
         <div>
             Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
@@ -23,10 +23,12 @@
                 </jet-button>
             </div>
         </form>
-    </div>
+    </app-admin>
 </template>
 
 <script>
+import AppAdmin from "@/Layouts/AppAdmin";
+
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
     import JetLabel from '@/Jetstream/Label'
@@ -38,7 +40,8 @@ import LogoBranco from '@/Pages/public/Components/Icons/LogoBranco.vue'
             JetButton,
             JetInput,
             JetLabel,
-            JetValidationErrors
+            JetValidationErrors,
+            AppAdmin,
         },
 
         props: {

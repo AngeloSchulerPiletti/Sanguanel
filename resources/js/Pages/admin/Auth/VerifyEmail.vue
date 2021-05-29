@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <app-admin>
 
         <div>
             Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
@@ -18,15 +18,18 @@
                 <inertia-link :href="route('logout')" method="post" as="button">Log Out</inertia-link>
             </div>
         </form>
-    </div>
+    </app-admin>
 </template>
 
 <script>
     import JetButton from '@/Jetstream/Button'
+import AppAdmin from "@/Layouts/AppAdmin";
+
 
     export default {
         components: {
             JetButton,
+                AppAdmin,
         },
 
         props: {

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <app-admin>
 
         <div>
             This is a secure area of the application. Please confirm your password before continuing.
@@ -19,7 +19,7 @@
                 </jet-button>
             </div>
         </form>
-    </div>
+    </app-admin>
 </template>
 
 <script>
@@ -28,6 +28,8 @@
     import JetInput from '@/Jetstream/Input'
     import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
+    import AppAdmin from "@/Layouts/AppAdmin";
+
 
     export default {
         components: {
@@ -35,7 +37,8 @@
             JetButton,
             JetInput,
             JetLabel,
-            JetValidationErrors
+            JetValidationErrors,
+            AppAdmin
         },
 
         data() {

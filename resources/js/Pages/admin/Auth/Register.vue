@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <app-admin>
         <jet-validation-errors />
 
         <form @submit.prevent="submit">
@@ -45,10 +45,11 @@
                 </jet-button>
             </div>
         </form>
-    </div>
+    </app-admin>
 </template>
 
 <script>
+import AppAdmin from "@/Layouts/AppAdmin";
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
     import JetCheckbox from "@/Jetstream/Checkbox";
@@ -61,7 +62,8 @@
             JetInput,
             JetCheckbox,
             JetLabel,
-            JetValidationErrors
+            JetValidationErrors,
+            AppAdmin,
         },
 
         data() {

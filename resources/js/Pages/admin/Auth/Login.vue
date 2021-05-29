@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <app-admin>
 
         <jet-validation-errors />
 
@@ -35,7 +35,7 @@
                 </jet-button>
             </div>
         </form>
-    </div>
+    </app-admin>
 </template>
 
 <script>
@@ -44,6 +44,7 @@
     import JetCheckbox from '@/Jetstream/Checkbox'
     import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import AppAdmin from "@/Layouts/AppAdmin";
 
     export default {
         components: {
@@ -51,7 +52,8 @@
             JetInput,
             JetCheckbox,
             JetLabel,
-            JetValidationErrors
+            JetValidationErrors,
+            AppAdmin,
         },
 
         props: {

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <app-admin>
 
         <div>
             <template v-if="! recovery">
@@ -40,10 +40,11 @@
                 </jet-button>
             </div>
         </form>
-    </div>
+    </app-admin>
 </template>
 
 <script>
+import AppAdmin from "@/Layouts/AppAdmin";
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
     import JetLabel from '@/Jetstream/Label'
@@ -55,6 +56,7 @@
             JetInput,
             JetLabel,
             JetValidationErrors,
+            AppAdmin,
         },
 
         data() {

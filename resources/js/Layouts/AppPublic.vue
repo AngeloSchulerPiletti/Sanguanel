@@ -1,6 +1,6 @@
 <template>
     <div id="_website_">
-        <navegation />
+        <navigation />
         <section id="_website_content_">
             <Header :header_content="header_content"/>
             <slot></slot>
@@ -9,7 +9,7 @@
 </template> 
 
 <script>
-import InitialMenu from "@/Pages/public/Components/Template/InitialMenu";
+import Navigation from "@/Pages/public/Components/Template/Navigation";
 import Header from "@/Pages/public/Components/Template/Header";
 
 export default {
@@ -23,7 +23,7 @@ export default {
         }
     },
     components: {
-        navegation: InitialMenu,
+        Navigation,
         Header,
     },
     methods:{
@@ -43,7 +43,7 @@ export default {
 #_website_ {
     display: flex;
 
-    navegation{
+    navigation{
         flex-grow: 0;
         flex-shrink: 0;
     }

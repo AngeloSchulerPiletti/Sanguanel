@@ -1,29 +1,24 @@
 <template>
-    <div>
-        <div>
-            <nav>
-                
-            </nav>
+    <div id="_website_">
+        <navigation />
 
-            <!-- Page Heading -->
-            <header v-if="$slots.header">
-                
-            </header>
-
-            <!-- Page Content -->
-            <main>
-                <slot name="main"></slot>
-            </main>
-        </div>
+        <section id="_website_content_">
+            <Header/>
+            <slot></slot>
+        </section>
     </div>
 </template>
 
 <script>
-    import LogoPreto from "@/Pages/public/Components/Icons/LogoPreto";
+    import Navigation from "@/Pages/admin/Components/Template/Navigation";
+    import Header from "@/Pages/admin/Components/Template/Header";
+
+
 
     export default {
         components: {
-            LogoPreto,
+            Navigation,
+            Header
         },
 
         data() {
@@ -43,7 +38,7 @@
             logout() {
                 this.$inertia.post(route('logout'));
             },
-        }
+        },
     }
 </script>
 
