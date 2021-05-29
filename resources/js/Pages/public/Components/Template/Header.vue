@@ -1,5 +1,6 @@
 <template>
-    <header @click="testing">
+    <header
+    >
         <!-- Tipos de Cabeçalho para cada tipo página -->
         <h1 v-if="header.style == 'HomePages'" :class="'title_' + header.style">
             {{ header.title[0] }}<br />
@@ -52,10 +53,7 @@ export default {
         IconLock,
     },
     methods: {
-        testing: function () {
-            console.log(this.header.style);
-            console.log(this.header.title);
-        },
+        //
     },
 };
 </script>

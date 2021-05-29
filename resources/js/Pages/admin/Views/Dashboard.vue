@@ -1,15 +1,15 @@
 <template>
-    <app-layout>
-        TESTE
-    </app-layout>
+    <app-admin :isHere="'dashboard'">
+        DASHBOARD
+    </app-admin>
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppAdmin";
+import AppAdmin from "@/Layouts/AppAdmin";
 
     export default {
         components: {
-            AppLayout,
+            AppAdmin,
         },
     }
 </script>

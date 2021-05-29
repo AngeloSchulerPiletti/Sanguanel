@@ -1,5 +1,5 @@
 <template>
-    <app-admin>
+    <app-admin :isHere="'register'">
         <jet-validation-errors />
 
         <form @submit.prevent="submit">

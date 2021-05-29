@@ -15,11 +15,6 @@ import Header from "@/Pages/public/Components/Template/Header";
 export default {
     data(){
         return{
-            // header: [
-            //     "O Maior Editorial",
-            //     "Hidromeleiro",
-            //     "do Brasil",
-            // ],
         }
     },
     components: {
@@ -27,9 +22,7 @@ export default {
         Header,
     },
     methods:{
-        // headerSetContent: function(){
-        //     console.log('recebendo $emit!');
-        // },
+        //
     },
     props: {
         header_content: Object,

@@ -1,6 +1,6 @@
 <template>
     <div id="_website_">
-        <navigation />
+        <navigation :atPage="isHere"/>
 
         <section id="_website_content_">
             <Header/>
@@ -39,6 +39,9 @@
                 this.$inertia.post(route('logout'));
             },
         },
+        props:{
+            isHere: String,
+        }
     }
 </script>
 
