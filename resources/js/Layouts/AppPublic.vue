@@ -3,21 +3,37 @@
         <navegation />
         <section id="_website_content_">
             <Header :header_content="header"/>
-            <slot/>
+            <slot />
+
         </section>
     </div>
 </template> 
 
 <script>
 import InitialMenu from "@/Pages/public/Components/Template/InitialMenu";
-// import {  } from "@/Pages/public/Components/T";
+import Header from "@/Pages/public/Components/Template/Header";
 
 export default {
+    data(){
+        return{
+            // header: [
+            //     "O Maior Editorial",
+            //     "Hidromeleiro",
+            //     "do Brasil",
+            // ],
+        }
+    },
     components: {
         navegation: InitialMenu,
+        Header,
+    },
+    methods:{
+        // headerSetContent: function(){
+        //     console.log('recebendo $emit!');
+        // },
     },
     props: {
-
+        // header: Array,
     },
     
 };

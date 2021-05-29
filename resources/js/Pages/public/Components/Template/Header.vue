@@ -1,9 +1,9 @@
 <template>
     <header>
         <h1>
-            {{ header[0] }}<br />
-            <h1>{{ header[1] }}</h1>
-            {{ header[2] }}
+            <!-- {{ header_content[0] }}<br />
+            <h1>{{ header_content[1] }}</h1>
+            {{ header_content[2] }} -->
         </h1>
         <ul id="user_menus_container">
             <li class="user_menus" v-if="!$page.props.user">
@@ -29,7 +29,7 @@ export default {
         return {};
     },
     props: {
-        header: Array,
+        header_content: Array,
     },
     components: {
         IconLock,

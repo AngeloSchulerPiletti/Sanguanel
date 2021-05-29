@@ -1,6 +1,5 @@
 <template>
   <app-public>
-    <!-- <Header/> -->
     <p>ARTIGOS</p>
   </app-public>
 </template>

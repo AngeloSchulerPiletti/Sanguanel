@@ -17154,13 +17154,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Pages_public_Components_Template_InitialMenu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Pages/public/Components/Template/InitialMenu */ "./resources/js/Pages/public/Components/Template/InitialMenu.vue");
- // import {  } from "@/Pages/public/Components/T";
+/* harmony import */ var _Pages_public_Components_Template_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/public/Components/Template/Header */ "./resources/js/Pages/public/Components/Template/Header.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    navegation: _Pages_public_Components_Template_InitialMenu__WEBPACK_IMPORTED_MODULE_0__.default
+  data: function data() {
+    return {// header: [
+      //     "O Maior Editorial",
+      //     "Hidromeleiro",
+      //     "do Brasil",
+      // ],
+    };
   },
-  props: {}
+  components: {
+    navegation: _Pages_public_Components_Template_InitialMenu__WEBPACK_IMPORTED_MODULE_0__.default,
+    Header: _Pages_public_Components_Template_Header__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  methods: {// headerSetContent: function(){
+    //     console.log('recebendo $emit!');
+    // },
+  },
+  props: {// header: Array,
+  }
 });
 
 /***/ }),
@@ -18698,7 +18713,7 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   props: {
-    header: Array
+    header_content: Array
   },
   components: {
     IconLock: _Components_svg_home_page_IconLock__WEBPACK_IMPORTED_MODULE_0__.default
@@ -19037,18 +19052,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppPublic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppPublic */ "./resources/js/Layouts/AppPublic.vue");
-/* harmony import */ var _Pages_public_Components_Template_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/public/Components/Template/Header */ "./resources/js/Pages/public/Components/Template/Header.vue");
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    return {
-      header: []
-    };
+    return {};
   },
   components: {
-    AppPublic: _Layouts_AppPublic__WEBPACK_IMPORTED_MODULE_0__.default,
-    Header: _Pages_public_Components_Template_Header__WEBPACK_IMPORTED_MODULE_1__.default
+    AppPublic: _Layouts_AppPublic__WEBPACK_IMPORTED_MODULE_0__.default
   }
 });
 
@@ -19109,16 +19119,22 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  // beforeCreate(){
+  //     this.$emit("sent_to_header");
+  //     console.log("Emitido");
+  // },
   props: {
     flash: Object
   },
   methods: {
     whichState: function whichState($event) {
       this.state = $event;
+    },
+    sendEmit: function sendEmit() {
+      this.$emit("sent-to-header");
+      console.log("Emitido");
     }
   },
-  // created(){
-  // },
   components: {
     Brasil: _Pages_public_Components_svg_home_page_Brasil__WEBPACK_IMPORTED_MODULE_1__.default,
     Header: _Pages_public_Components_Template_Header__WEBPACK_IMPORTED_MODULE_2__.default,
@@ -24551,7 +24567,7 @@ var _withId = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.withScopeId)("dat
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-079a2ed4");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" {{ header_content[0] }}<br />\r\n            <h1>{{ header_content[1] }}</h1>\r\n            {{ header_content[2] }} ")], -1
 /* HOISTED */
 );
 
@@ -24585,13 +24601,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
   var _component_IconLock = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("IconLock");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.header[0]), 1
-  /* TEXT */
-  ), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.header[1]), 1
-  /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.header[2]), 1
-  /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_2, [!_ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_2, [!_ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     href: "register"
   }, {
     "default": _withId(function () {
@@ -25011,7 +25021,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_public, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Header/> "), _hoisted_1];
+      return [_hoisted_1];
     }),
     _: 1
     /* STABLE */
@@ -25034,26 +25044,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  id: "website_home"
-};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "AUTOR", -1
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "AUTOR", -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Header = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Header");
-
   var _component_app_public = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-public");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_public, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
-        header: $data.header
-      }, null, 8
-      /* PROPS */
-      , ["header"])]), _hoisted_2];
+      return [_hoisted_1];
     }),
     _: 1
     /* STABLE */
@@ -25114,8 +25115,6 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Messages = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Messages");
 
-  var _component_Header = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Header");
-
   var _component_Brasil = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Brasil");
 
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -25128,11 +25127,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
         flashes: $props.flash
       }, null, 8
       /* PROPS */
-      , ["flashes"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div id=\"messages\">\r\n            <div :id=\"key\" v-for=\"(message, key) in flash\" :key=\"key\">\r\n                {{message}}\r\n            </div>\r\n        </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
-        header: $data.header
-      }, null, 8
-      /* PROPS */
-      , ["header"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Brasil, {
+      , ["flashes"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div id=\"messages\">\r\n            <div :id=\"key\" v-for=\"(message, key) in flash\" :key=\"key\">\r\n                {{message}}\r\n            </div>\r\n        </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Brasil, {
         onStateBR: _cache[1] || (_cache[1] = function ($event) {
           return $options.whichState($event);
         })

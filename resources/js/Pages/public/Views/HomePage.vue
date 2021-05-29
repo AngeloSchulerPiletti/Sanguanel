@@ -1,51 +1,50 @@
 <template>
     <app-public>
-    <div id="website_home">
-        <Messages :flashes="flash"/>
-        <!-- <div id="messages">
+        <div id="website_home">
+            <Messages :flashes="flash" />
+            <!-- <div id="messages">
             <div :id="key" v-for="(message, key) in flash" :key="key">
                 {{message}}
             </div>
         </div> -->
-        <Header :header="header"/>
-        
-        <section id="ranking">
-            <div id="Brazil">
-                <Brasil @stateBR="whichState($event)"/>
-                <div></div>
-            </div>
 
-            <div>
-                <aside>
-                    <h4>{{state}}</h4>
-                    <hr />
-                    <p v-show="state == 'Brasil'">
-                        Passe o mouse sobre os estados para ver
-                    </p>
-                    <ul v-show="state != 'Brasil'">
-                        Hidroméis mais consumidos em
-                        {{
-                            state
-                        }}:
-                        <li
-                            v-for="(marca, index) in hidromeis[state]"
-                            :key="index"
+            <section id="ranking">
+                <div id="Brazil">
+                    <Brasil @stateBR="whichState($event)" />
+                    <div></div>
+                </div>
+
+                <div>
+                    <aside>
+                        <h4>{{ state }}</h4>
+                        <hr />
+                        <p v-show="state == 'Brasil'">
+                            Passe o mouse sobre os estados para ver
+                        </p>
+                        <ul v-show="state != 'Brasil'">
+                            Hidroméis mais consumidos em
+                            {{
+                                state
+                            }}:
+                            <li
+                                v-for="(marca, index) in hidromeis[state]"
+                                :key="index"
+                            >
+                                <h6>{{ index + 1 }}<sup>o</sup></h6>
+                                {{ marca }}
+                            </li>
+                        </ul>
+                    </aside>
+                    <form>
+                        <inertia-link id="participar" href="/participar"
+                            >Participar</inertia-link
                         >
-                            <h6>{{index + 1}}<sup>o</sup></h6>
-                            {{marca}}
-                        </li>
-                    </ul>
-                </aside>
-                <form>
-                    <inertia-link id="participar" href="/participar"
-                        >Participar</inertia-link
-                    >
-                </form>
-            </div>
-        </section>
+                    </form>
+                </div>
+            </section>
 
-        <section></section>
-    </div>
+            <section></section>
+        </div>
     </app-public>
 </template>
 
@@ -57,11 +56,7 @@ import Messages from "@/Pages/public/Components/Template/Messages";
 export default {
     data() {
         return {
-            header: [
-                "O Maior Editorial",
-                "Hidromeleiro",
-                "do Brasil",
-            ],
+            header: ["O Maior Editorial", "Hidromeleiro", "do Brasil"],
             state: "Brasil",
             hidromeis: {
                 "Rio Grande do Sul": [
@@ -98,29 +93,32 @@ export default {
             },
         };
     },
-    props:{
+    // beforeCreate(){
+    //     this.$emit("sent_to_header");
+    //     console.log("Emitido");
+    // },
+    props: {
         flash: Object,
     },
     methods: {
         whichState: function ($event) {
             this.state = $event;
         },
+        sendEmit: function () {
+            this.$emit("sent-to-header");
+            console.log("Emitido");
+        },
     },
-    // created(){
-        
-    // },
     components: {
         Brasil,
         Header,
         AppPublic,
         Messages,
     },
-    
 };
 </script>
 
 <style lang="scss" scoped>
-
 @import "resources/css/sass/Layouts/mixin.scss";
 #website_home {
     // #messages{
@@ -132,7 +130,6 @@ export default {
 
         #Brazil {
             flex-grow: 1;
-
         }
         div {
             flex-grow: 0;
@@ -202,7 +199,7 @@ export default {
                     transition-property: box-shadow, color;
                     transition-duration: 300ms;
 
-                    &:hover{
+                    &:hover {
                         box-shadow: 0 0 0 0;
                         color: $yellow;
                     }
