@@ -2,9 +2,8 @@
     <div id="_website_">
         <navegation />
         <section id="_website_content_">
-            <Header :header_content="header"/>
-            <slot />
-
+            <Header :header_content="header_content"/>
+            <slot></slot>
         </section>
     </div>
 </template> 
@@ -33,7 +32,7 @@ export default {
         // },
     },
     props: {
-        // header: Array,
+        header_content: Object,
     },
     
 };

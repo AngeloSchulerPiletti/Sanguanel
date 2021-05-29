@@ -1,5 +1,5 @@
 <template>
-  <app-public>
+  <app-public :header_content="header">
     <p>ARTIGOS</p>
   </app-public>
 </template>
@@ -10,6 +10,10 @@ import Header from "@/Pages/public/Components/Template/Header";
 export default {
     data(){
       return{
+            header: {
+                'title': ["Aqui há", "Conhecimento", "e hidromel"],
+                'style': 'HomePages',
+            },
 
       }
     },

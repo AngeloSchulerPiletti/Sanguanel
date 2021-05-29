@@ -1,5 +1,5 @@
 <template>
-    <app-public>
+    <app-public :header_content="header">
         <div id="website_home">
             <Messages :flashes="flash" />
             <!-- <div id="messages">
@@ -56,7 +56,10 @@ import Messages from "@/Pages/public/Components/Template/Messages";
 export default {
     data() {
         return {
-            header: ["O Maior Editorial", "Hidromeleiro", "do Brasil"],
+            header: {
+                'title': ["O Maior Editorial", "Hidromeleiro", "do Brasil"],
+                'style': 'HomePages',
+            },
             state: "Brasil",
             hidromeis: {
                 "Rio Grande do Sul": [

@@ -1,30 +1,23 @@
 <template>
-  <app-public>
+  <app-public :header_content="header">
     <p>ARTIGOS MODELO</p>
-    <!-- <article>
-      <Header :articleData="articleContent.articleData"/>
-      Artigos
-    </article> -->
+   
   </app-public>
 </template>
 
 <script>
 import AppPublic from "@/Layouts/AppPublic";
-import Header from "@/Pages/public/Components/Template/ArticlesModel/Header";
 export default {
     data(){
       return{
-        articleContent:{
-          articleData: [
-            "O Bom Hidromel",
-            "25/07/2021"
-          ],
-        }
+      header: {
+                'title': ["XXXXXXXXXXx"],
+                'style': 'Contents',
+            },
       }
     },
     components: {
       AppPublic,
-      Header,
       ModeloArtigo: ArticleModel,
       
     },
