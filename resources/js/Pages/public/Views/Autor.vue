@@ -12,12 +12,23 @@
                 </div>
                 <div class="bottom">
                     <div>
-                        <linkedin/>
-                        <a href="www.linkedin.com/in/angelo-schuler-piletti">LINKEDIN</a>
+                        <a
+                            class="iconlinks_container"
+                            href="www.linkedin.com/in/angelo-schuler-piletti"
+                        >
+                            <linkedin class="icon" />
+
+                            <legend>LINKEDIN</legend></a
+                        >
                     </div>
                     <div>
-                        <github/>
-                        <a href="https://github.com/AngeloSchulerPiletti">GITHUB</a>
+                        <a
+                            class="iconlinks_container"
+                            href="https://github.com/AngeloSchulerPiletti"
+                        >
+                            <github class="icon" />
+                            <legend>GITHUB</legend></a
+                        >
                     </div>
                 </div>
             </section>
@@ -70,9 +81,11 @@ export default {
 
 <style lang="scss" scoped>
 #author_container {
-  padding: 4vw;
-
     
+    section{
+        padding: 4vw;
+    }
+
     #sec_1 {
         display: flex;
         flex-direction: column;
@@ -81,38 +94,82 @@ export default {
 
         .top {
             display: flex;
+            align-items: center;
 
             #profile {
                 width: 15vw;
                 border-radius: 50%;
+
+                border: 3px solid $yellow
             }
             #bio {
-              @include Fonte2_S;
+                @include Fonte2_S;
+                margin-left: 5vw;
+                text-align: justify;
             }
         }
         .bottom {
             display: flex;
+
+            margin-top: 4vw;
+
+            .iconlinks_container {
+                display: flex;
+                align-items: flex-end;
+
+                &:first-child {
+                    margin-right: 2vw;
+                }
+
+                @include Fonte1_S;
+
+                transition-property: color;
+                transition-duration: 200ms;
+
+                &:hover{
+                    color: $yellow;
+                }
+                .icon {
+                    width: 2vw;
+                    height: 2vw;
+                    margin-right: 0.5vw;
+
+                    display: inline-block;
+                }
+            }
         }
     }
 
-    .paragraph{
-      margin: 4vw 0 0 0;
-      h4{
-        @include Titulo2_S;
-        text-transform: uppercase;
-        font-size: 2.4vw;  
-      }
-      div{
-        display: flex;
+    .paragraph {
+        margin: 4vw 0 0 0;
+        h4 {
+            @include Titulo2_S;
+            text-transform: uppercase;
+            font-size: 2.4vw;
 
-        p{
-          @include Fonte2_SS;
-          font-size: 1.4vw;
+            margin-block: 2vw;
         }
-        img{
-          width: 30vw;
+        div {
+            display: flex;
+            align-items: center;
+
+            p {
+                @include Fonte2_SS;
+                font-size: 1.4vw;
+
+                text-align: justify;
+            }
+            img {
+                width: 30vw;
+                height: fit-content;
+                margin-left: 2vw;
+            }
         }
-      }
+    }
+
+    #sec_2{
+        background-color: $black;
+        color: $white;
     }
 }
 </style>

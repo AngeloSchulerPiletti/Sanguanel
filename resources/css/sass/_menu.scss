@@ -17,6 +17,21 @@ svg path{
 }
 }
 
+@mixin SVGHold2 {
+    svg:hover path{
+        fill: $yellow;
+    
+        transition: 300ms;
+        transition-property: fill;
+    }
+    svg path{
+        fill: $black;
+    
+        transition: 600ms;
+        transition-property: fill;
+    }
+    }
+
 
 //Animações//
 @keyframes sideOptionsShow {
