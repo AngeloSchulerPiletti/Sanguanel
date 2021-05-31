@@ -1,6 +1,6 @@
 <template>
     <app-admin :isHere="'register'">
-        <jet-validation-errors />
+        <validation-errors />
 
         <form @submit.prevent="submit">
             <div>
@@ -54,7 +54,7 @@ import AppAdmin from "@/Layouts/AppAdmin";
     import JetInput from '@/Jetstream/Input'
     import JetCheckbox from "@/Jetstream/Checkbox";
     import JetLabel from '@/Jetstream/Label'
-    import JetValidationErrors from '@/Pages/admin/Components/Apendices/ValidationErrors'
+    import ValidationErrors from '@/Pages/admin/Components/Apendices/ValidationErrors'
 
     export default {
         components: {
@@ -62,7 +62,7 @@ import AppAdmin from "@/Layouts/AppAdmin";
             JetInput,
             JetCheckbox,
             JetLabel,
-            JetValidationErrors,
+            ValidationErrors,
             AppAdmin,
         },
 

@@ -86,7 +86,7 @@ class AddTeamMember implements AddsTeamMembers
             $validator->errors()->addIf(
                 $team->hasUserWithEmail($email),
                 'email',
-                __('This user already belongs to the team.')
+                __('Este usuário já pertence ao time.')
             );
         };
     }

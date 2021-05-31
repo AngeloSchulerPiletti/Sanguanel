@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "resources/css/sass/Components/mixins.scss";
+@import "resources/css/sass/public/Components/mixins.scss";
 
 header {
     display: flex;
