@@ -17,9 +17,8 @@
             </ul>
         </div>
 
-        <!-- O propósito disso é abrir uma lista com opçõe do tipo:
-        LogOut, entre outras coisas -->
-        <div class="right">
+        <!-- Drop Menu -->
+        <div v-if="$page.props.user" class="right">
             <div class="r_button">
                 <arrow
                     id="arrow_btn"
@@ -27,15 +26,14 @@
                     @click="arrowCall($event)"
                 />
             </div>
-            <div class="r_drop" data-dropstate="none">
+            <div  class="r_drop" data-dropstate="none">
                 <ul>
                     <li>
-                        <!-- <inertia-link class="drop_links" href="{{ route('logout') }}"
-                            >Sair</inertia-link
-                        > -->
-                        <!-- <form action="/logout" method="post">
-                            <button type="submit">Sair</button>
-                        </form> -->
+                        <form @submit.prevent="logout()">
+                            <dropdown-link class="drop_links" as="button">
+                                Log Out
+                            </dropdown-link>
+                        </form>
                         <hr />
                     </li>
                 </ul>
@@ -47,6 +45,7 @@
 <script>
 import LogoPreto from "@/Pages/admin/Components/Icons/LogoPreto";
 import Arrow from "@/Pages/admin/Components/Icons/Arrow";
+import DropdownLink from "@/Jetstream/DropdownLink";
 
 export default {
     data() {
@@ -61,6 +60,7 @@ export default {
     components: {
         LogoPreto,
         Arrow,
+        DropdownLink,
     },
     props: {
         atPage: String,
@@ -85,6 +85,9 @@ export default {
                     dropbox.style.display = "none";
                 }, 110);
             }
+        },
+        logout() {
+            this.$inertia.post(route('logout'));
         },
     },
     mounted() {
@@ -205,6 +208,7 @@ nav {
                     &:hover {
                         border-left: 3px solid $yellow;
                     }
+                    
                 }
                 hr {
                     border: none;
