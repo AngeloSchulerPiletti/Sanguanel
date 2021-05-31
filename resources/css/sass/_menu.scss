@@ -2,35 +2,6 @@
 $menuWidth: 80px;
 
 
-@mixin SVGHold {
-svg:hover path{
-    fill: $yellow;
-
-    transition: 300ms;
-    transition-property: fill;
-}
-svg path{
-    fill: $white;
-
-    transition: 600ms;
-    transition-property: fill;
-}
-}
-
-@mixin SVGHold2 {
-    svg:hover path{
-        fill: $yellow;
-    
-        transition: 300ms;
-        transition-property: fill;
-    }
-    svg path{
-        fill: $black;
-    
-        transition: 600ms;
-        transition-property: fill;
-    }
-    }
 
 
 //Animações//

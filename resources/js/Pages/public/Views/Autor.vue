@@ -49,7 +49,7 @@
             <section id="sec_4" v-else>
                 <h4>Quer saber mais sobre mim?</h4>
                 <h3>Considere se cadastrar no site</h3>
-                <inertia-link :href="route(login)">Vou me cadastrar</inertia-link>
+                <inertia-link :href="route('register')">Vou me cadastrar</inertia-link>
             </section>
         </section>
     </app-public>
@@ -78,8 +78,8 @@ export default {
         data: Object,
     },
     mounted() {
-        console.log("mounted");
-        console.log(this.data);
+        // console.log("mounted");
+        // console.log(this.data);
     },
 };
 </script>
@@ -130,12 +130,8 @@ export default {
                 @include Fonte1_S;
                 font-size: 1.3vw;
 
-                transition-property: color;
-                transition-duration: 200ms;
+                @include anchor($black, $yellow);
 
-                &:hover{
-                    color: $yellow;
-                }
                 .icon {
                     width: 2.1vw;
                     height: 2.1vw;
@@ -177,6 +173,33 @@ export default {
     #sec_2{
         background-color: $black;
         color: $white;
+    }
+
+    #sec_4{
+        text-align: center;
+
+        h4{
+            @include Titulo2_S;
+            text-transform: uppercase;
+            font-size: 2vw;
+        }
+        h3{
+            @include Fonte2_SS;
+            font-size: 1.5vw;
+
+            margin-bottom: 3vw;
+        }
+        a{
+            @include Fonte1_SS;
+            font-size: 1.6vw;
+            background-color: $black;
+            color: $white;
+
+            padding: 0.6vw 1vw 0.6vw 1vw;
+            border-radius: 0.3vw;
+
+            @include anchor($white, $yellow);
+        }
     }
 }
 </style>

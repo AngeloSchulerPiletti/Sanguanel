@@ -84,12 +84,8 @@ header {
                 @include Fonte2_SS;
                 font-size: 1.2vw;
 
-                transition-duration: 300ms;
-                transition-property: color;
-
-                &:hover {
-                    color: $yellow;
-                }
+                @include anchor($white, $yellow);
+                
                 #login_icon {
                     display: inline-block;
                     transform: translateY(25%);
