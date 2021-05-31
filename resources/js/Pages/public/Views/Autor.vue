@@ -39,12 +39,17 @@
                     <img v-if="data.picture1" :src="data.picture1" alt="" />
                 </div>
             </section>
-            <section id="sec_3" class="paragraph">
+            <section id="sec_3" class="paragraph" v-if="$page.props.user">
                 <h4>{{ data.title2 }}</h4>
                 <div>
                     <p>{{ data.text2 }}</p>
                     <!-- <img v-if="data.picture2" :src="data.picture2" alt="" /> -->
                 </div>
+            </section>
+            <section id="sec_4" v-else>
+                <h4>Quer saber mais sobre mim?</h4>
+                <h3>Considere se cadastrar no site</h3>
+                <inertia-link :href="route(login)">Vou me cadastrar</inertia-link>
             </section>
         </section>
     </app-public>
@@ -104,6 +109,7 @@ export default {
             }
             #bio {
                 @include Fonte2_S;
+                font-size: 1.45vw;
                 margin-left: 5vw;
                 text-align: justify;
             }
@@ -122,6 +128,7 @@ export default {
                 }
 
                 @include Fonte1_S;
+                font-size: 1.3vw;
 
                 transition-property: color;
                 transition-duration: 200ms;
@@ -130,8 +137,8 @@ export default {
                     color: $yellow;
                 }
                 .icon {
-                    width: 2vw;
-                    height: 2vw;
+                    width: 2.1vw;
+                    height: 2.1vw;
                     margin-right: 0.5vw;
 
                     display: inline-block;

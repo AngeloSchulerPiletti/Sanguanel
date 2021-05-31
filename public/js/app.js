@@ -25689,9 +25689,24 @@ var _hoisted_10 = {
   "class": "paragraph"
 };
 var _hoisted_11 = {
+  key: 0,
   id: "sec_3",
   "class": "paragraph"
 };
+var _hoisted_12 = {
+  key: 1,
+  id: "sec_4"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, "Quer saber mais sobre mim?", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, "Considere se cadastrar no site", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Vou me cadastrar");
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
@@ -25699,6 +25714,8 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   var _component_linkedin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("linkedin");
 
   var _component_github = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("github");
+
+  var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
   var _component_app_public = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-public");
 
@@ -25728,11 +25745,22 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
         alt: ""
       }, null, 8
       /* PROPS */
-      , ["src"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.data.title2), 1
+      , ["src"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), _ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.data.title2), 1
       /* TEXT */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.data.text2), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <img v-if=\"data.picture2\" :src=\"data.picture2\" alt=\"\" /> ")])])])];
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <img v-if=\"data.picture2\" :src=\"data.picture2\" alt=\"\" /> ")])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_12, [_hoisted_13, _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+        href: _ctx.route(_ctx.login)
+      }, {
+        "default": _withId(function () {
+          return [_hoisted_15];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["href"])]))])];
     }),
     _: 1
     /* STABLE */
@@ -26714,7 +26742,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-6ca34a25 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-6ca34a25 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-6ca34a25 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-6ca34a25 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#author_container section[data-v-6ca34a25] {\n  padding: 4vw;\n}\n#author_container #sec_1[data-v-6ca34a25] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 2vw;\n}\n#author_container #sec_1 .top[data-v-6ca34a25] {\n  display: flex;\n  align-items: center;\n}\n#author_container #sec_1 .top #profile[data-v-6ca34a25] {\n  width: 15vw;\n  border-radius: 50%;\n  border: 3px solid #e9dc22;\n}\n#author_container #sec_1 .top #bio[data-v-6ca34a25] {\n  font-display: swap;\n  font-family: 'Merriweather', serif;\n  font-weight: 200;\n  margin-left: 5vw;\n  text-align: justify;\n}\n#author_container #sec_1 .bottom[data-v-6ca34a25] {\n  display: flex;\n  margin-top: 4vw;\n}\n#author_container #sec_1 .bottom .iconlinks_container[data-v-6ca34a25] {\n  display: flex;\n  align-items: flex-end;\n  font-display: swap;\n  font-family: 'Merriweather', serif;\n  font-weight: 400;\n  transition-property: color;\n  transition-duration: 200ms;\n}\n#author_container #sec_1 .bottom .iconlinks_container[data-v-6ca34a25]:first-child {\n  margin-right: 2vw;\n}\n#author_container #sec_1 .bottom .iconlinks_container[data-v-6ca34a25]:hover {\n  color: #e9dc22;\n}\n#author_container #sec_1 .bottom .iconlinks_container .icon[data-v-6ca34a25] {\n  width: 2vw;\n  height: 2vw;\n  margin-right: 0.5vw;\n  display: inline-block;\n}\n#author_container .paragraph[data-v-6ca34a25] {\n  margin: 4vw 0 0 0;\n}\n#author_container .paragraph h4[data-v-6ca34a25] {\n  font-display: swap;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin-block: 2vw;\n}\n#author_container .paragraph div[data-v-6ca34a25] {\n  display: flex;\n  align-items: center;\n}\n#author_container .paragraph div p[data-v-6ca34a25] {\n  font-display: swap;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  font-size: 1.4vw;\n  text-align: justify;\n}\n#author_container .paragraph div img[data-v-6ca34a25] {\n  width: 30vw;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  margin-left: 2vw;\n}\n#author_container #sec_2[data-v-6ca34a25] {\n  background-color: #000000;\n  color: #FFFFFF;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-6ca34a25 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-6ca34a25 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-6ca34a25 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-6ca34a25 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#author_container section[data-v-6ca34a25] {\n  padding: 4vw;\n}\n#author_container #sec_1[data-v-6ca34a25] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 2vw;\n}\n#author_container #sec_1 .top[data-v-6ca34a25] {\n  display: flex;\n  align-items: center;\n}\n#author_container #sec_1 .top #profile[data-v-6ca34a25] {\n  width: 15vw;\n  border-radius: 50%;\n  border: 3px solid #e9dc22;\n}\n#author_container #sec_1 .top #bio[data-v-6ca34a25] {\n  font-display: swap;\n  font-family: 'Merriweather', serif;\n  font-weight: 200;\n  font-size: 1.45vw;\n  margin-left: 5vw;\n  text-align: justify;\n}\n#author_container #sec_1 .bottom[data-v-6ca34a25] {\n  display: flex;\n  margin-top: 4vw;\n}\n#author_container #sec_1 .bottom .iconlinks_container[data-v-6ca34a25] {\n  display: flex;\n  align-items: flex-end;\n  font-display: swap;\n  font-family: 'Merriweather', serif;\n  font-weight: 400;\n  font-size: 1.3vw;\n  transition-property: color;\n  transition-duration: 200ms;\n}\n#author_container #sec_1 .bottom .iconlinks_container[data-v-6ca34a25]:first-child {\n  margin-right: 2vw;\n}\n#author_container #sec_1 .bottom .iconlinks_container[data-v-6ca34a25]:hover {\n  color: #e9dc22;\n}\n#author_container #sec_1 .bottom .iconlinks_container .icon[data-v-6ca34a25] {\n  width: 2.1vw;\n  height: 2.1vw;\n  margin-right: 0.5vw;\n  display: inline-block;\n}\n#author_container .paragraph[data-v-6ca34a25] {\n  margin: 4vw 0 0 0;\n}\n#author_container .paragraph h4[data-v-6ca34a25] {\n  font-display: swap;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin-block: 2vw;\n}\n#author_container .paragraph div[data-v-6ca34a25] {\n  display: flex;\n  align-items: center;\n}\n#author_container .paragraph div p[data-v-6ca34a25] {\n  font-display: swap;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  font-size: 1.4vw;\n  text-align: justify;\n}\n#author_container .paragraph div img[data-v-6ca34a25] {\n  width: 30vw;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  margin-left: 2vw;\n}\n#author_container #sec_2[data-v-6ca34a25] {\n  background-color: #000000;\n  color: #FFFFFF;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
