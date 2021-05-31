@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Author;
 
 class PublishController extends Controller
 {
@@ -64,6 +65,7 @@ class PublishController extends Controller
 
     public function autor()
     {
-        return Inertia::render($this->url_pub . 'Autor');
+        $dataAuthor = Author::all();
+        return Inertia::render($this->url_pub . 'Autor', ['data' => $dataAuthor[0]]);
     }
 }

@@ -3,7 +3,10 @@
         <navigation />
         <section id="_website_content_">
             <Header :header_content="header_content"/>
-            <slot></slot>
+            <main>
+                <slot></slot>
+            </main>
+            
         </section>
     </div>
 </template> 
@@ -45,6 +48,10 @@ export default {
         flex-shrink: 1;
 
         margin-left: $menuWidth;
+
+        main{
+            border: 3px solid $white;
+        }
     }
 }
 </style>

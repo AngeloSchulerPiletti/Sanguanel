@@ -13,7 +13,6 @@
                     <Brasil @stateBR="whichState($event)" />
                     <div></div>
                 </div>
-
                 <div>
                     <aside>
                         <h4>{{ state }}</h4>
