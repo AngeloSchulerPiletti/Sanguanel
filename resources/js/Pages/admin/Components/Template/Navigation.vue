@@ -30,9 +30,9 @@
                 <ul>
                     <li>
                         <form @submit.prevent="logout()">
-                            <dropdown-link class="drop_links" as="button">
-                                Log Out
-                            </dropdown-link>
+                            <button class="drop_links" as="button" type="submit">
+                                Sair
+                            </button>
                         </form>
                         <hr />
                     </li>
@@ -87,6 +87,7 @@ export default {
             }
         },
         logout() {
+            console.log(this.$inertia);
             this.$inertia.post(route('logout'));
         },
     },
@@ -206,6 +207,11 @@ nav {
                     transition-property: border;
 
                     &:hover {
+                        border-left: 3px solid $yellow;
+                    }
+                    &:focus{
+                        outline: none;
+                        box-shadow: 0 0 0 0;
                         border-left: 3px solid $yellow;
                     }
                     

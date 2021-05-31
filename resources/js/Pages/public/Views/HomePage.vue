@@ -36,7 +36,10 @@
                         </ul>
                     </aside>
                     <form>
-                        <inertia-link id="participar" href="/participar"
+                        <inertia-link v-if="$page.props.user" id="participar" href="/participar"
+                            >Participar</inertia-link
+                        >
+                        <inertia-link v-else id="participar" :href="route('login')"
                             >Participar</inertia-link
                         >
                     </form>

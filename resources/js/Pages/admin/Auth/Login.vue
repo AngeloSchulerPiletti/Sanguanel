@@ -1,60 +1,60 @@
 <template>
     <app-admin :isHere="'login'">
-        <validation-errors />
+        <section id="login_container">
+            <validation-errors />
 
-        <div v-if="status">
-            {{ status }}
-        </div>
-
-        <form @submit.prevent="submit">
-            <div>
-                <jet-label for="email" value="Email" />
-                <jet-input
-                    id="email"
-                    type="email"
-                    v-model="form.email"
-                    required
-                    autofocus
-                />
+            <div v-if="status">
+                {{ status }}
             </div>
 
-            <div>
-                <jet-label for="password" value="Password" />
-                <jet-input
-                    id="password"
-                    type="password"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
-            </div>
-
-            <div>
-                <label>
-                    <jet-checkbox
-                        name="remember"
-                        v-model:checked="form.remember"
+            <form @submit.prevent="submit">
+                <h4>Bem-vindo!</h4>
+                <div class="input_container">
+                    <jet-label for="email" value="Email" />
+                    <jet-input
+                        id="email"
+                        type="email"
+                        v-model="form.email"
+                        required
+                        autofocus
                     />
-                    <span>Remember me</span>
-                </label>
-            </div>
+                </div>
 
-            <div>
-                <inertia-link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                >
-                    Forgot your password?
-                </inertia-link>
+                <div class="input_container">
+                    <jet-label for="password" value="Senha" />
+                    <jet-input
+                        id="password"
+                        type="password"
+                        v-model="form.password"
+                        required
+                        autocomplete="current-password"
+                    />
+                </div>
 
-                <jet-button
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Log in
-                </jet-button>
-            </div>
-        </form>
+                <div class="checkbox_container">
+                    <label>
+                        <jet-checkbox
+                            name="remember"
+                            v-model:checked="form.remember"
+                        />
+                        <span>Lembre de mim</span>
+                    </label>
+                </div>
+
+                <div class="options_container">
+                    <inertia-link
+                        v-if="canResetPassword"
+                        :href="route('password.request')"
+                    >
+                        Esqueceu a senha?
+                    </inertia-link>
+
+                    <jet-button :disabled="form.processing">
+                        Entrar
+                    </jet-button>
+                </div>
+            </form>
+        </section>
     </app-admin>
 </template>
 
@@ -106,4 +106,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import 'resources/css/sass/admin/Components/forms.scss';
+
+#login_container {
+    @include formLayout();
+}
+</style>

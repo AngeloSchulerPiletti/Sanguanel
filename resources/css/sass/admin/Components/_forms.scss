@@ -1,0 +1,128 @@
+@mixin anchorStyle {
+    a {
+        border-bottom: 1px solid transparent;
+        border-radius: 100%;
+
+        height: fit-content;
+
+        transition-duration: 100ms;
+        transition-property: border-radius;
+
+        &:hover {
+            border-bottom: 1px solid $black;
+            border-radius: 0;
+        }
+    }
+}
+
+
+@mixin formLayout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+
+    margin: auto;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+
+    width: 50vw;
+    padding: 2vw;
+    border-radius: 1vw;
+    border-top: 3px solid $yellow;
+
+    background-color: $tinyback;
+
+    @include Fonte1_SS();
+    color: $black;
+    font-size: 1.2vw;
+
+    form {
+        h4 {
+            @include Titulo2_S();
+            text-transform: uppercase;
+            font-size: 2.4vw;
+            margin: auto;
+            width: fit-content;
+
+            margin-bottom: 2.5vw;
+
+            border-bottom: 2px solid $black;
+        }
+        .input_container {
+            display: flex;
+            flex-direction: column;
+
+            margin-bottom: 1.6vw;
+
+            label {
+                margin-bottom: 0.5vw;
+            }
+            input {
+                border: 0;
+                outline: 0;
+
+                border-radius: 0.3vw;
+                font-size: 1.3vw;
+
+                &:focus {
+                    border: 0 none;
+                    outline: 0;
+                    box-shadow: 0 0 0 0;
+                }
+            }
+        }
+        .checkbox_container {
+            display: flex;
+            align-items: center;
+
+            margin-bottom: 2.4vw;
+
+            input[type="checkbox"] {
+                border: none;
+
+                &:checked {
+                    background-color: $yellow;
+                }
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 0 0;
+                }
+            }
+            span {
+                margin-left: 1vw;
+                cursor: pointer;
+            }
+            div div{
+                display: inline-block;
+                margin-left: 1vw;
+
+                @include anchorStyle();
+            }
+        }
+        .options_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 1.5vw 0 1.5vw;
+
+            @include anchorStyle();
+
+            button {
+                background-color: $black;
+                box-shadow: 1px 1px 3px $gray2;
+                border-radius: 0.2vw;
+
+                color: $white;
+                padding: 0.4vw 1vw 0.4vw 1vw;
+
+                transition-duration: 150ms;
+                transition-property: box-shadow, color;
+
+                &:hover {
+                    color: $yellow;
+                    box-shadow: 0 0 0 0;
+                }
+            }
+        }
+    }
+}

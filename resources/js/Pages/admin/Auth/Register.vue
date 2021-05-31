@@ -1,50 +1,53 @@
 <template>
     <app-admin :isHere="'register'">
+        <section id="register_container">
         <validation-errors />
 
         <form @submit.prevent="submit">
-            <div>
-                <jet-label for="name" value="Name" />
+            <h4>Bem-vindo!</h4>
+            <div class="input_container">
+                <jet-label for="name" value="Nome" />
                 <jet-input id="name" type="text" v-model="form.name" required autofocus autocomplete="name" />
             </div>
 
-            <div>
+            <div class="input_container">
                 <jet-label for="email" value="Email" />
                 <jet-input id="email" type="email" v-model="form.email" required />
             </div>
 
-            <div>
-                <jet-label for="password" value="Password" />
+            <div class="input_container">
+                <jet-label for="password" value="Senha" />
                 <jet-input id="password" type="password" v-model="form.password" required autocomplete="new-password" />
             </div>
 
-            <div>
-                <jet-label for="password_confirmation" value="Confirm Password" />
+            <div class="input_container">
+                <jet-label for="password_confirmation" value="Repita a senha" />
                 <jet-input id="password_confirmation" type="password" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>
 
-            <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
+            <div class="checkbox_container" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
                 <jet-label for="terms">
                     <div>
                         <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
 
                         <div>
-                            I agree to the <a target="_blank" :href="route('terms.show')">Terms of Service</a> and <a target="_blank" :href="route('policy.show')">Privacy Policy</a>
+                            Eu concordo com os <a target="_blank" :href="route('terms.show')">Termos de Serviço</a> e a <a target="_blank" :href="route('policy.show')">Política de Privacidade</a>
                         </div>
                     </div>
                 </jet-label>
             </div>
 
-            <div >
+            <div class="options_container" >
                 <inertia-link :href="route('login')">
-                    Already registered?
+                    Já tem conta?
                 </inertia-link>
 
                 <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                    Cadastrar
                 </jet-button>
             </div>
         </form>
+        </section>
     </app-admin>
 </template>
 
@@ -87,3 +90,12 @@ import AppAdmin from "@/Layouts/AppAdmin";
         }
     }
 </script>
+
+<style lang="scss" scoped>
+@import 'resources/css/sass/admin/Components/forms.scss';
+
+#register_container{
+    @include formLayout();
+
+}
+</style>
