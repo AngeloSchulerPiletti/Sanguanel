@@ -13,7 +13,7 @@
         </div>
         <div class="bottom">
             <form @submit.prevent="submit">
-                <input v-model="cadastro.email" type="email" name="email" />
+                <input v-model="cadastro.email" placeholder="Email" type="email" name="email" />
                 <button type="submit">Enviar</button>
             </form>
         </div>

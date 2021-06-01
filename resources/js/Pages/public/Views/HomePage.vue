@@ -1,8 +1,8 @@
 <template>
     <app-public :header_content="header">
         <div id="website_home">
-            <messages :flashes="flash" />
-
+            <messages :errors="$page.props.errors"/>
+           
 
             <ranking/>
             <newsletter/>
@@ -29,7 +29,6 @@ export default {
         };
     },
     props: {
-        flash: Object,
     },
     methods: {
         sendEmit: function () {

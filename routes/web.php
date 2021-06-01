@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -43,7 +44,7 @@ Route::group(['prefix'=>'autor'], function(){
 });
 
 
-
+Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [RouteController::class, 'logged'])->name('dashboard');

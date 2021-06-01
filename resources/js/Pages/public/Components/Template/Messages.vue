@@ -1,18 +1,16 @@
 <template>
-    <div id="messages" v-for="(message, key) in flashes" :key="key">
+    <div id="messages" v-for="(message, key) in errorsToShow" :key="key">
         <div
             :id="toClose"
             class="message"
             v-if="message != null"
-            @click="closeMessage()"
+            @click="closeMessage(key)"
         >
             <div id="aviso">
                 <h6>AVISO</h6>
                 <button id="close">X</button>
             </div>
-            <span
-                >{{ message }}</span
-            >
+            <span>{{ message }}</span>
         </div>
     </div>
 </template>
@@ -22,26 +20,36 @@ export default {
     data() {
         return {
             toClose: "no",
+            errorsToShow: {},
         };
     },
     props: {
-        flashes: Object,
+        errors: Object,
     },
     methods: {
-        closeMessage: function () {
+        closeMessage: function (key) {
             this.$data.toClose = "yes";
+            delete this.$data.errorsToShow[key];
 
-            setTimeout(function () {
-                document.getElementById("yes").style.display = "none";
-            }, 500);
+            // setTimeout(function () {
+            //     document.getElementById("yes").style.display = "none";
+                // vm.key = undefined;
+                // console.log(this.$data.errorsToShow);
+
+            // }, 500);
+
+            
         },
+    },
+    updated() {
+        this.errorsToShow = this.errors;
+        console.log(this.errors);
+        this.toClose = "no";
     },
 };
 </script>
 
 <style lang="scss" scoped>
-
-
 .message {
     position: fixed;
     display: flex;
@@ -68,7 +76,7 @@ export default {
         color: $black;
 
         margin-bottom: 0.3vw;
-        h6{
+        h6 {
             @include Titulo2_S();
             font-size: 1.2vw;
         }
@@ -76,7 +84,7 @@ export default {
             font-size: 1.2vw;
             @include Titulo1_SS();
             margin-right: 0.3vw;
-            &:focus{
+            &:focus {
                 border: none;
                 outline: none;
             }

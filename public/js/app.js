@@ -19059,19 +19059,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      toClose: "no"
+      toClose: "no",
+      errorsToShow: {}
     };
   },
   props: {
-    flashes: Object
+    errors: Object
   },
   methods: {
-    closeMessage: function closeMessage() {
+    closeMessage: function closeMessage(key) {
       this.$data.toClose = "yes";
-      setTimeout(function () {
-        document.getElementById("yes").style.display = "none";
-      }, 500);
+      delete this.$data.errorsToShow[key]; // setTimeout(function () {
+      //     document.getElementById("yes").style.display = "none";
+      // vm.key = undefined;
+      // console.log(this.$data.errorsToShow);
+      // }, 500);
     }
+  },
+  updated: function updated() {
+    this.errorsToShow = this.errors;
+    console.log(this.errors);
+    this.toClose = "no";
   }
 });
 
@@ -19412,9 +19420,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  props: {
-    flash: Object
-  },
+  props: {},
   methods: {
     sendEmit: function sendEmit() {
       this.$emit("sent-to-header");
@@ -25546,6 +25552,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.cadastro.email = $event;
     }),
+    placeholder: "Email",
     type: "email",
     name: "email"
   }, null, 512
@@ -25803,7 +25810,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.flashes, function (message, key) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.errorsToShow, function (message, key) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
       id: "messages",
       key: key
@@ -25811,14 +25818,14 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
       key: 0,
       id: $data.toClose,
       "class": "message",
-      onClick: _cache[1] || (_cache[1] = function ($event) {
-        return $options.closeMessage();
-      })
+      onClick: function onClick($event) {
+        return $options.closeMessage(key);
+      }
     }, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(message), 1
     /* TEXT */
     )], 8
     /* PROPS */
-    , ["id"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    , ["id", "onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128
   /* KEYED_FRAGMENT */
   );
@@ -26312,10 +26319,10 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   }, {
     "default": _withId(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_messages, {
-        flashes: $props.flash
+        errors: _ctx.$page.props.errors
       }, null, 8
       /* PROPS */
-      , ["flashes"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ranking), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_newsletter)])];
+      , ["errors"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ranking), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_newsletter)])];
     }),
     _: 1
     /* STABLE */
