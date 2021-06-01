@@ -22,30 +22,37 @@
             <li class="user_menus" v-if="!$page.props.user">
                 <inertia-link href="/register"> Registrar </inertia-link>
             </li>
-            <li class="user_menus" v-if="$page.props.user">
-                <inertia-link href="/dashboard"> Conta </inertia-link>
-            </li>
+            
             <li class="user_menus" v-if="!$page.props.user">
                 <inertia-link href="/login">
                     Login
                     <IconLock id="login_icon" />
                 </inertia-link>
             </li>
+            
             <li class="user_menus" v-if="$page.props.user">
-                <legend>Bem vindo, {{$page.props.user.name}}!</legend>
+                <legend>Bem vindo, {{$page.props.user.name.split(" ")[0]}}!</legend>
+            </li>
+            <li class="user_menus" id="drop_list" v-if="$page.props.user">
+                <dropmenu :links="links"/>
             </li>
         </ul>
     </header>
 </template>
 
 <script>
-import IconLock from "../../Components/svg/home_page/IconLock";
+import Dropmenu from "@/Pages/public/Components/Apendices/Dropmenu";
+import IconLock from "@/Pages/public/Components/svg/home_page/IconLock";
+
 export default {
     data() {
         return {
             header: {
                 style: this.header_content.style,
                 title: this.header_content.title,
+            },
+            links:{
+                "Conta": "/dashboard",
             },
         };
     },
@@ -54,6 +61,7 @@ export default {
     },
     components: {
         IconLock,
+        Dropmenu,
     },
     methods: {
         //
@@ -64,12 +72,13 @@ export default {
 <style lang="scss" scoped>
 @import "resources/css/sass/public/Components/mixins.scss";
 
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 
-    padding: 1.6vw 1.6vw 1vw 2.5vw;
+    padding: 1.6vw 1.6vw $bottomPad 2.5vw;
     background-color: $black;
     color: $white;
 
@@ -82,6 +91,7 @@ header {
 
         .user_menus {
             margin: 0 0.5vw 0 0.5vw;
+            
 
             a {
                 @include Fonte2_SS;
@@ -98,6 +108,10 @@ header {
                 @include Fonte2_S;
                 font-size: 1.4vw;
             }
+        }
+
+        #drop_list{
+            position: relative;
         }
     }
 }

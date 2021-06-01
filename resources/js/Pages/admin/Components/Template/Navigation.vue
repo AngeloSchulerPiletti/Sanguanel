@@ -19,33 +19,14 @@
 
         <!-- Drop Menu -->
         <div v-if="$page.props.user" class="right">
-            <div class="r_button">
-                <arrow
-                    id="arrow_btn"
-                    data-btnstate="none"
-                    @click="arrowCall($event)"
-                />
-            </div>
-            <div  class="r_drop" data-dropstate="none">
-                <ul>
-                    <li>
-                        <form @submit.prevent="logout()">
-                            <button class="drop_links" as="button" type="submit">
-                                Sair
-                            </button>
-                        </form>
-                        <hr />
-                    </li>
-                </ul>
-            </div>
-        </div>
+            <dropmenu :links="links"/>
+        </div> 
     </nav>
 </template>
 
 <script>
 import LogoPreto from "@/Pages/admin/Components/Icons/LogoPreto";
-import Arrow from "@/Pages/admin/Components/Icons/Arrow";
-import DropdownLink from "@/Jetstream/DropdownLink";
+import Dropmenu from "@/Pages/admin/Components/Apendices/Dropmenu";
 
 export default {
     data() {
@@ -55,41 +36,19 @@ export default {
                 register: "",
                 dashboard: "",
             },
+            links:{
+                // "Conta": "/dashboard",
+            },
         };
     },
     components: {
         LogoPreto,
-        Arrow,
-        DropdownLink,
+        Dropmenu,
     },
     props: {
         atPage: String,
     },
     methods: {
-        arrowCall: function (event) {
-            var btn = event.target,
-                dropbox = event.path[2].querySelector(".r_drop");
-
-            if (
-                btn.dataset.btnstate == "close" ||
-                btn.dataset.btnstate == "none"
-            ) {
-                dropbox.style.display = "block";
-                btn.dataset.btnstate = "open";
-                dropbox.dataset.dropstate = "show";
-            } else {
-                btn.dataset.btnstate = "close";
-                dropbox.dataset.dropstate = "hide";
-
-                setTimeout(function () {
-                    dropbox.style.display = "none";
-                }, 110);
-            }
-        },
-        logout() {
-            console.log(this.$inertia);
-            this.$inertia.post(route('logout'));
-        },
     },
     mounted() {
         this.li[this.atPage] = "actual";
@@ -98,7 +57,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "resources/css/sass/admin/Components/animations";
 
 @mixin menuSelection() {
     border-bottom: 3px solid $yellow;
@@ -154,88 +112,6 @@ nav {
     }
     .right {
         height: 100%;
-
-        .r_button {
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            [data-btnstate] {
-                transform: rotate(90deg);
-                width: 2vw;
-
-                transition-duration: 200ms;
-                transition-property: transform;
-
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-            // [data-btnstate="none"]{
-            //     // display: none;
-            // }
-            [data-btnstate="open"] {
-                transform: scaleY(-1) rotate(90deg);
-            }
-            [data-btnstate="close"] {
-                transform: scaleY(1) rotate(90deg);
-            }
-        }
-        [data-dropstate] {
-            position: absolute;
-            background-color: $tinyback;
-
-            border-radius: 0 0 0.7vw 0.7vw;
-            padding: 0.5vw 0 0.5vw 0;
-
-            width: 14vw;
-
-            li {
-                @include Fonte2_SS();
-                font-size: 1.4vw;
-                width: 100%;
-
-                display: flex;
-                flex-direction: column;
-
-                .drop_links {
-                    padding: 0.6vw 1.2vw 0.6vw 1.2vw;
-
-                    transition-duration: 200ms;
-                    transition-property: border;
-
-                    &:hover {
-                        border-left: 3px solid $yellow;
-                    }
-                    &:focus{
-                        outline: none;
-                        box-shadow: 0 0 0 0;
-                        border-left: 3px solid $yellow;
-                    }
-                    
-                }
-                hr {
-                    border: none;
-                    outline: none;
-
-                    height: 1px;
-                    background-color: $white;
-
-                    margin: 0.5vw 0 0.5vw 0;
-                }
-            }
-        }
-        [data-dropstate="none"] {
-            display: none;
-        }
-        [data-dropstate="show"] {
-            animation: showDropbox 100ms ease 0ms 1 normal both;
-        }
-        [data-dropstate="hide"] {
-            animation: hideDropbox 100ms ease 0ms 1 normal both;
-        }
     }
 }
 </style>

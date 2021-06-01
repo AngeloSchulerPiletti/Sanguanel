@@ -1,7 +1,6 @@
 <template>
     <svg
         version="1.1"
-        id="Capa_1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px"
@@ -23,9 +22,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+    props:{
+        color: String,
+    },
+    mounted(){
+        console.log(this.color);
+        if(this.color == '$white'){
+            var svg = document.querySelector("#arrow_btn");
+            console.log(svg);
+            svg.classList.add("white");
+        }
+    }
+
+};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.white{
+    path{
+        fill: $white;
+    }
+}
 </style>
