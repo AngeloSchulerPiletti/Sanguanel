@@ -83,10 +83,6 @@ import AppAdmin from "@/Layouts/AppAdmin";
 
         methods: {
             submit() {
-                console.log(this.form['password']);
-                console.log(this.form['password_confirmation']);
-                
-
                 this.form.post(this.route('register'), {
                     onFinish: () => this.form.reset('password', 'password_confirmation'),
                 });

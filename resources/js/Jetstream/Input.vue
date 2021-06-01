@@ -10,7 +10,6 @@
 
         methods: {
             focus() {
-                console.log(this.modelValue);
                 this.$refs.input.focus()
             }
         }

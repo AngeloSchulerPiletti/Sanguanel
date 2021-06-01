@@ -56,7 +56,6 @@ export default {
             }
         },
         logout() {
-            console.log(this.$inertia);
             this.$inertia.post(route("logout"));
         },
     },

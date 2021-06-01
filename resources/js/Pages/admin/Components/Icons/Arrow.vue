@@ -27,10 +27,8 @@ export default {
         color: String,
     },
     mounted(){
-        console.log(this.color);
         if(this.color == '$white'){
             var svg = document.querySelector("#arrow_btn");
-            console.log(svg);
             svg.classList.add("white");
         }
     }

@@ -98,10 +98,6 @@ export default {
             },
         };
     },
-    // beforeCreate(){
-    //     this.$emit("sent_to_header");
-    //     console.log("Emitido");
-    // },
     props: {
         flash: Object,
     },
@@ -111,7 +107,6 @@ export default {
         },
         sendEmit: function () {
             this.$emit("sent-to-header");
-            console.log("Emitido");
         },
     },
     components: {
