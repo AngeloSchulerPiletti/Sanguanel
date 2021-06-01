@@ -7,6 +7,7 @@
 
 <script>
 import AppPublic from "@/Layouts/AppPublic";
+
 export default {
     data(){
       return{
@@ -18,7 +19,6 @@ export default {
     },
     components: {
       AppPublic,
-      ModeloArtigo: ArticleModel,
       
     },
     props:{
@@ -28,6 +28,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

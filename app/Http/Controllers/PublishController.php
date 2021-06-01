@@ -18,7 +18,7 @@ class PublishController extends Controller
             if ($id != null) {
                 return Inertia::render($this->url_pub . 'Articles/ArticleModel', [
                     'subject' => 'artigos',
-                    'id' => '',
+                    'article_id' => '',
                 ]);
             } else {
                 return Inertia::render($this->url_pub . 'SubHomes/FromArtigos', [
@@ -38,7 +38,7 @@ class PublishController extends Controller
             if ($id != null) {
                 return Inertia::render($this->url_pub . 'Articles/ArticleModel', [
                     'subject' => 'receitas',
-                    'id' => '',
+                    'article_id' => '',
                 ]);
             } else {
                 return Inertia::render($this->url_pub . 'SubHomes/FromReceitas', [

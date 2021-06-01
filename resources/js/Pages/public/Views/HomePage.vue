@@ -2,11 +2,6 @@
     <app-public :header_content="header">
         <div id="website_home">
             <Messages :flashes="flash" />
-            <!-- <div id="messages">
-            <div :id="key" v-for="(message, key) in flash" :key="key">
-                {{message}}
-            </div>
-        </div> -->
 
             <section id="ranking">
                 <div id="Brazil">
