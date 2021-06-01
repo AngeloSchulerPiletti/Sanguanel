@@ -42,7 +42,7 @@
                     Já tem conta?
                 </inertia-link>
 
-                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button :disabled="form.processing">
                     Cadastrar
                 </jet-button>
             </div>
@@ -83,10 +83,13 @@ import AppAdmin from "@/Layouts/AppAdmin";
 
         methods: {
             submit() {
-                console.log(this.form);
+                console.log(this.form['password']);
+                console.log(this.form['password_confirmation']);
+                
+
                 this.form.post(this.route('register'), {
                     onFinish: () => this.form.reset('password', 'password_confirmation'),
-                })
+                });
             }
         }
     }

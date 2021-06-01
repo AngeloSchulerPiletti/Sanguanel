@@ -17536,7 +17536,8 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      console.log(this.form);
+      console.log(this.form['password']);
+      console.log(this.form['password_confirmation']);
       this.form.post(this.route('register'), {
         onFinish: function onFinish() {
           return _this.form.reset('password', 'password_confirmation');
@@ -21238,9 +21239,6 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
       }, 8
       /* PROPS */
       , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        "class": {
-          'opacity-25': $data.form.processing
-        },
         disabled: $data.form.processing
       }, {
         "default": _withId(function () {
@@ -21251,7 +21249,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["class", "disabled"])])], 32
+      , ["disabled"])])], 32
       /* HYDRATE_EVENTS */
       )])];
     }),
