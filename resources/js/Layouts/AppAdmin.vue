@@ -3,7 +3,7 @@
         <navigation :atPage="atPage" />
 
         <section id="_website_content_">
-            <Header :atPage="atPage" :atManager="atManager"/>
+            <Header v-if="$page.props.user" :atPage="atPage" :atManager="atManager"/>
             <slot></slot>
         </section>
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <app-admin :isHere="'register'">
+    <app-admin :atPage="'register'">
         <section id="register_container">
         <validation-errors />
 

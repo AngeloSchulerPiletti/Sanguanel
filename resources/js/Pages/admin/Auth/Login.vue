@@ -1,5 +1,5 @@
 <template>
-    <app-admin :isHere="'login'">
+    <app-admin :atPage="'login'">
         <section id="login_container">
             <validation-errors />
 
