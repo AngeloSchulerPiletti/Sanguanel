@@ -49,6 +49,8 @@ Route::group(['prefix'=>'autor'], function(){
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [RouteController::class, 'logged'])->name('dashboard');
 
 
+Route::middleware('admin')->get('/admin', [RouteController::class, 'admin'])->name('admin');
+
 
 
 require_once __DIR__ . "/fortify.php";

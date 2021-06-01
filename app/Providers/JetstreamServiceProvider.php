@@ -16,7 +16,8 @@ use Inertia\Inertia;
 use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class JetstreamServiceProvider extends ServiceProvider
 {
@@ -47,8 +48,6 @@ class JetstreamServiceProvider extends ServiceProvider
         Jetstream::removeTeamMembersUsing(RemoveTeamMember::class);
         Jetstream::deleteTeamsUsing(DeleteTeam::class);
         Jetstream::deleteUsersUsing(DeleteUser::class);
-
-
 
 
 
@@ -89,6 +88,18 @@ class JetstreamServiceProvider extends ServiceProvider
 
         Fortify::confirmPasswordView(function () {
             return Inertia::render('admin/Auth/ConfirmPassword');
+        });
+
+
+
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('email', $request->email)->first();
+    
+            if ($user &&
+                Hash::check($request->password, $user->password)) {
+                return $user;
+            }
         });
 
     }
