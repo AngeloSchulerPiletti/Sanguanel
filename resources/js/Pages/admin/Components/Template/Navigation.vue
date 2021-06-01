@@ -14,6 +14,9 @@
                 <li v-if="$page.props.user" :class="li.dashboard">
                     <inertia-link href="/dashboard">Conta</inertia-link>
                 </li>
+                <li v-if="$page.props.user && $page.props.user.adminLevel > 2" :class="li.admin">
+                    <inertia-link href="/admin">Administrador</inertia-link>
+                </li>
             </ul>
         </div>
 
@@ -35,6 +38,7 @@ export default {
                 login: "",
                 register: "",
                 dashboard: "",
+                admin: "",
             },
             links:{
                 // "Conta": "/dashboard",
@@ -58,8 +62,8 @@ export default {
 
 <style lang="scss" scoped>
 
-@mixin menuSelection() {
-    border-bottom: 3px solid $yellow;
+@mixin menuSelection($color) {
+    border-bottom: 3px solid $color;
 }
 
 nav {
@@ -95,6 +99,8 @@ nav {
 
                 height: 100%;
 
+                @include menuSelection(transparent);
+
                 &:hover {
                     background-color: $gray1;
                     color: $yellow;
@@ -106,7 +112,7 @@ nav {
             }
 
             .actual {
-                @include menuSelection();
+                @include menuSelection($yellow);
             }
         }
     }

@@ -1,10 +1,16 @@
 <template>
+<app-admin :isHere="'admin'">
   ADMIN!!
+</app-admin>
 </template>
 
 <script>
-export default {
+import AppAdmin from "@/Layouts/AppAdmin";
 
+export default {
+components:{
+    AppAdmin,
+}
 }
 </script>
 

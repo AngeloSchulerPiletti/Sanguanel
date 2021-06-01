@@ -5,11 +5,19 @@
     </div>
     <div class="r_drop" data-dropstate="none">
         <ul>
+            <li>
+                <hr/>
+            </li>
+                
             <li v-for="(link, index) in links" :key="index">
                 <inertia-link class="drop_links" :href="link">{{index}}</inertia-link>
                 <hr/>
             </li>
 
+            <li v-if="$page.props.user && $page.props.user.adminLevel > 2">
+                <inertia-link class="drop_links" href="/admin">Administrador</inertia-link>
+                <hr/>
+            </li>
             <li v-if="$page.props.user">
                 <form @submit.prevent="logout()">
                     <button class="drop_links" as="button" type="submit">
