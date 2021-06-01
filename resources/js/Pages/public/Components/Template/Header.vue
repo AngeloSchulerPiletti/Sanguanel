@@ -25,11 +25,14 @@
             <li class="user_menus" v-if="$page.props.user">
                 <inertia-link href="/dashboard"> Conta </inertia-link>
             </li>
-            <li class="user_menus">
+            <li class="user_menus" v-if="!$page.props.user">
                 <inertia-link href="/login">
                     Login
                     <IconLock id="login_icon" />
                 </inertia-link>
+            </li>
+            <li class="user_menus" v-if="$page.props.user">
+                <legend>Bem vindo, {{$page.props.user.name}}!</legend>
             </li>
         </ul>
     </header>
@@ -90,6 +93,10 @@ header {
                     display: inline-block;
                     transform: translateY(25%);
                 }
+            }
+            legend{
+                @include Fonte2_S;
+                font-size: 1.4vw;
             }
         }
     }
