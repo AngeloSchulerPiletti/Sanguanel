@@ -126,7 +126,7 @@ export default {
                 @include Fonte1_S;
                 font-size: 1.3vw;
 
-                @include anchor($black, $yellow);
+                @include anchorT($black, $yellow);
 
                 .icon {
                     width: 2.1vw;
@@ -194,7 +194,7 @@ export default {
             padding: 0.6vw 1vw 0.6vw 1vw;
             border-radius: 0.3vw;
 
-            @include anchor($white, $yellow);
+            @include anchorT($white, $yellow);
         }
     }
 }

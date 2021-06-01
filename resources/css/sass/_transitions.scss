@@ -4,7 +4,20 @@
 
 
 
-@mixin anchor($c1, $c2) {
+@mixin buttonT($c1, $c2, $c3, $c4) {
+    background-color: $c1;
+    color: $c3;
+    
+        transition-duration: 200ms;
+                transition-property: background-color, color;
+                 
+                 &:hover{
+                     background-color: $c2;
+                     color: $c4;
+                 }
+    }
+
+@mixin anchorT($c1, $c2) {
 color: $c1;
 
     transition-duration: 200ms;

@@ -97,7 +97,7 @@ header {
                 @include Fonte2_SS;
                 font-size: 1.2vw;
 
-                @include anchor($white, $yellow);
+                @include anchorT($white, $yellow);
                 
                 #login_icon {
                     display: inline-block;
