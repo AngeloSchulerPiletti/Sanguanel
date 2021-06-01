@@ -1,5 +1,5 @@
 <template>
-    <app-admin :isHere="'dashboard'">
+    <app-admin :atPage="'dashboard'">
         DASHBOARD
     </app-admin>
 </template>

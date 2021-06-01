@@ -1,9 +1,9 @@
 <template>
     <div id="_website_">
-        <navigation :atPage="isHere" />
+        <navigation :atPage="atPage" />
 
         <section id="_website_content_">
-            <Header />
+            <Header :atPage="atPage" :atManager="atManager"/>
             <slot></slot>
         </section>
     </div>
@@ -42,7 +42,8 @@ export default {
         },
     },
     props: {
-        isHere: String,
+        atPage: String,
+        atManager: String,
     },
 };
 </script>

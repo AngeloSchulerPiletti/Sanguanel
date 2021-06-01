@@ -37,7 +37,5 @@ class RouteController extends Controller
         return Inertia::render($this->url_adm.'Dashboard');
     }
 
-    public function admin(){
-      return Inertia::render($this->url_adm.'CRUD/Admin');
-  }
+    
 }

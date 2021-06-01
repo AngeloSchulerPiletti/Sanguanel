@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\PublishController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,18 @@ Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsle
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [RouteController::class, 'logged'])->name('dashboard');
 
 
-Route::middleware('admin')->get('/admin', [RouteController::class, 'admin'])->name('admin');
+Route::name('admin.')->middleware('admin')->group(function(){
+
+    Route::group(['prefix'=>'admin'], function(){
+        Route::get('/', [AdminController::class, 'admin'])->name('');
+
+        Route::get('/database',                   [AdminController::class, 'database'])->name('database');
+        Route::get('/nova-publicacao',            [AdminController::class, 'pubs'])->name('newpub');
+        Route::get('/alterar-pagina',             [AdminController::class, 'pages'])->name('updatepages');
+        Route::get('/gerenciar-administradores',  [AdminController::class, 'admusers'])->name('manage');
+    });    
+});
+
 
 
 

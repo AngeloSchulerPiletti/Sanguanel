@@ -6,16 +6,16 @@
         <div class="center">
             <ul>
                 <li v-if="!$page.props.user" :class="li.register">
-                    <inertia-link href="/register">Registrar</inertia-link>
+                    <inertia-link :href="route('register')">Registrar</inertia-link>
                 </li>
                 <li v-if="!$page.props.user" :class="li.login">
-                    <inertia-link href="/login">Entrar</inertia-link>
+                    <inertia-link :href="route('login')">Entrar</inertia-link>
                 </li>
                 <li v-if="$page.props.user" :class="li.dashboard">
-                    <inertia-link href="/dashboard">Conta</inertia-link>
+                    <inertia-link :href="route('dashboard')">Conta</inertia-link>
                 </li>
                 <li v-if="$page.props.user && $page.props.user.adminLevel > 2" :class="li.admin">
-                    <inertia-link href="/admin">Administrador</inertia-link>
+                    <inertia-link :href="route('admin.')">Administrador</inertia-link>
                 </li>
             </ul>
         </div>
@@ -61,10 +61,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-@mixin menuSelection($color) {
-    border-bottom: 3px solid $color;
-}
 
 nav {
     display: grid;
