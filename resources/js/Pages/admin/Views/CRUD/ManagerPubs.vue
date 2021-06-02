@@ -1,7 +1,10 @@
 <template>
     <app-admin :atPage="'admin'" :atManager="'pubs'">
         <section id="man_pubs">
-            <instructions :data="instructions" />
+            <instructions
+                @meDelete="setInstruction(undefined)"
+                :data="instructions"
+            />
 
             <section class="top container">
                 <h1>Criador de Publicação</h1>
@@ -187,9 +190,6 @@ export default {
                 }
                 input {
                     width: 100%;
-                }
-                select {
-                    //
                 }
                 textarea {
                     width: 100%;
