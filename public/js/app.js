@@ -17122,7 +17122,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     atPage: String,
-    atManager: String
+    atManager: String,
+    statusMessage: Object
   }
 });
 
@@ -17171,24 +17172,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       toClose: "no",
-      errorsToShow: {}
+      messagesToShow: {}
     };
   },
   props: {
-    errors: Object
+    errors: Object,
+    status: Object
   },
   methods: {
     closeMessage: function closeMessage(key) {
       this.$data.toClose = "yes";
-      delete this.$data.errorsToShow[key];
+      delete this.$data.messagesToShow[key];
     }
   },
   updated: function updated() {
-    this.errorsToShow = this.errors;
+    if (this.status && this.erros) {
+      this.messagesToShow = _objectSpread(_objectSpread({}, this.errors), this.status);
+    } else if (this.status) {
+      this.messagesToShow = this.status;
+    } else if (this.errors) {
+      this.messagesToShow = this.errors;
+    }
+
+    console.log(this.messagesToShow);
     this.toClose = "no";
   }
 });
@@ -18937,6 +18953,9 @@ __webpack_require__.r(__webpack_exports__);
     AppAdmin: _Layouts_AppAdmin__WEBPACK_IMPORTED_MODULE_0__.default,
     Instructions: _Pages_admin_Components_CRUD_Instructions__WEBPACK_IMPORTED_MODULE_1__.default,
     Info: _Pages_admin_Components_Icons_Info__WEBPACK_IMPORTED_MODULE_2__.default
+  },
+  props: {
+    status: Object
   }
 });
 
@@ -20607,10 +20626,11 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   }, null, 8
   /* PROPS */
   , ["atPage"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_messages, {
-    errors: _ctx.$page.props.errors
+    errors: _ctx.$page.props.errors,
+    status: $props.statusMessage
   }, null, 8
   /* PROPS */
-  , ["errors"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_2, [_ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Header, {
+  , ["errors", "status"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_2, [_ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Header, {
     key: 0,
     atPage: $props.atPage,
     atManager: $props.atManager
@@ -20691,7 +20711,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.errorsToShow, function (message, key) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.messagesToShow, function (message, key) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
       id: "messages",
       key: key
@@ -25071,7 +25091,8 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_admin, {
     atPage: 'admin',
-    atManager: 'pubs'
+    atManager: 'pubs',
+    statusMessage: $props.status
   }, {
     "default": _withId(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_instructions, {
@@ -25181,7 +25202,9 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     _: 1
     /* STABLE */
 
-  });
+  }, 8
+  /* PROPS */
+  , ["statusMessage"]);
 });
 
 /***/ }),

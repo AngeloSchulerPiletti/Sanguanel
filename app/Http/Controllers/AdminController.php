@@ -93,7 +93,7 @@ class AdminController extends Controller
 
         $article->save();
 
-        return Inertia::render("admin/Views/CRUD/ManagerPubs", ['success']);
+        return Inertia::render("admin/Views/CRUD/ManagerPubs", ['status' => [0 => 'Artigo criado!']]);
 
     }
     public function Ppages()

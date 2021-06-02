@@ -1,5 +1,5 @@
 <template>
-    <app-admin :atPage="'admin'" :atManager="'pubs'">
+    <app-admin :atPage="'admin'" :atManager="'pubs'" :statusMessage="status">
         <section id="man_pubs">
             <instructions
                 @meDelete="setInstruction(undefined)"
@@ -132,6 +132,9 @@ export default {
         Instructions,
         Info,
     },
+    props:{
+      status: Object,
+    }
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-    <div id="messages" v-for="(message, key) in errorsToShow" :key="key">
+    <div id="messages" v-for="(message, key) in messagesToShow" :key="key">
         <div
             :id="toClose"
             class="message"
@@ -20,20 +20,31 @@ export default {
     data() {
         return {
             toClose: "no",
-            errorsToShow: {},
+            messagesToShow: {},
         };
     },
     props: {
         errors: Object,
+        status: Object,
     },
     methods: {
         closeMessage: function (key) {
             this.$data.toClose = "yes";
-            delete this.$data.errorsToShow[key];
+            delete this.$data.messagesToShow[key];
         },
     },
     updated() {
-        this.errorsToShow = this.errors;
+        
+        if(this.status && this.erros){
+            this.messagesToShow = {...this.errors, ...this.status};
+        }
+        else if(this.status){
+            this.messagesToShow = this.status;
+        }
+        else if(this.errors){
+            this.messagesToShow = this.errors;
+        }
+        console.log(this.messagesToShow);
         this.toClose = "no";
     },
 };

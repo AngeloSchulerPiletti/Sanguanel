@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('subject', 50); // 0 até 4
             $table->tinyText('title');
             $table->longText('text');
-            $table->tinyText('path_dirPictures');
+            $table->tinyText('path_dirPictures')->default('');
 
         });
     }

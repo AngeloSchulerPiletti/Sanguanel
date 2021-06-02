@@ -1,7 +1,7 @@
 <template>
     <div id="_website_">
         <navigation :atPage="atPage" />
-        <messages :errors="$page.props.errors"/>
+        <messages :errors="$page.props.errors" :status="statusMessage"/>
 
         <section id="_website_content_">
             <Header v-if="$page.props.user" :atPage="atPage" :atManager="atManager"/>
@@ -48,6 +48,7 @@ export default {
     props: {
         atPage: String,
         atManager: String,
+        statusMessage: Object,
     },
 };
 </script>
