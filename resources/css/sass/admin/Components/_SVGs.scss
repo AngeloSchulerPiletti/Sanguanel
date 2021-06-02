@@ -1,0 +1,13 @@
+@mixin SVGHover($c1, $c2) {
+    svg{
+        path{
+            fill: $c1;
+
+            transition-property: fill;
+            transition-duration: 200ms;
+        }
+        &:hover path{
+            fill: $c2;
+        }
+    }
+}

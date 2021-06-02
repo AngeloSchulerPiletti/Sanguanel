@@ -44,7 +44,6 @@ export default {
         var actual = document.querySelector("#" + this.atManager + "_manager");
 
         if (actual != null) {
-            console.log(actual);
             actual.classList.add("actual");
         }
     },

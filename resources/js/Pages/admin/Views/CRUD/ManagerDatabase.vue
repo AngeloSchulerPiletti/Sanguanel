@@ -1,6 +1,8 @@
 <template>
 <app-admin :atPage="'admin'" :atManager="'database'">
-  Manager DB
+  <section id="man_db">
+
+    </section>
 </app-admin>
 </template>
 

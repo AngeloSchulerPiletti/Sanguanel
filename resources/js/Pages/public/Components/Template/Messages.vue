@@ -30,20 +30,10 @@ export default {
         closeMessage: function (key) {
             this.$data.toClose = "yes";
             delete this.$data.errorsToShow[key];
-
-            // setTimeout(function () {
-            //     document.getElementById("yes").style.display = "none";
-                // vm.key = undefined;
-                // console.log(this.$data.errorsToShow);
-
-            // }, 500);
-
-            
         },
     },
     updated() {
         this.errorsToShow = this.errors;
-        console.log(this.errors);
         this.toClose = "no";
     },
 };
