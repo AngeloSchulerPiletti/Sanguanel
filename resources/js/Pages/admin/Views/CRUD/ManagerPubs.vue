@@ -11,21 +11,21 @@
                 <div @click="setInstruction(0)">Ver Instruções</div>
             </section>
             <section class="bottom container">
-                <form>
+                <form @submit.prevent="submit">
                     <!-- DADOS -->
                     <div class="input_container">
                         <label for="author"
                             ><span @click="setInstruction(1)"><info /></span
                             ><span>Autor</span></label
                         >
-                        <input class="field" type="text" id="author" />
+                        <input class="field" v-model="form.author" type="text" id="author" />
                     </div>
                     <div class="input_container">
                         <label for="title"
                             ><span @click="setInstruction(2)"><info /></span
                             ><span>Título</span></label
                         >
-                        <input class="field" type="text" id="title" />
+                        <input class="field" v-model="form.title" type="text" id="title" />
                     </div>
 
                     <!-- ASSUNTO -->
@@ -34,12 +34,12 @@
                             ><span @click="setInstruction(3)"><info /></span
                             ><span>Assunto</span></label
                         >
-                        <select class="field" name="subject" id="subject">
-                            <option value="0">Artigos: História</option>
-                            <option value="1">Artigos: Produção</option>
-                            <option value="2">Artigos: Curiosidades</option>
-                            <option value="3">Receitas: Comidas</option>
-                            <option value="4">Receitas: Drinks</option>
+                        <select class="field" v-model="form.subject" name="subject" id="subject">
+                            <option value="artigos/historia">Artigos: História</option>
+                            <option value="artigos/producao">Artigos: Produção</option>
+                            <option value="artigos/curiosidades">Artigos: Curiosidades</option>
+                            <option value="receitas/comidas">Receitas: Comidas</option>
+                            <option value="receitas/drinks">Receitas: Drinks</option>
                         </select>
                     </div>
 
@@ -49,7 +49,7 @@
                             ><span @click="setInstruction(4)"><info /></span
                             ><span>Artigo</span></label
                         >
-                        <textarea class="field" id="text"></textarea>
+                        <textarea class="field" v-model="form.text" id="text"></textarea>
                     </div>
 
                     <!-- IMAGENS -->
@@ -66,13 +66,15 @@
                                 class="img_container"
                             >
                                 <label :for="'images_' + img"
-                                    ><span>Imagens</span></label
+                                    ><span>Imagens{{img}}</span></label
                                 >
                                 <input
+                                    @input="form.images[img - 1] = $event.target.files[0]"
                                     class="field"
                                     type="file"
                                     :id="'images_' + img"
                                 />
+                                <!-- <progress v-if="form.progress" :value="form.progress.percentage" max="100">{{form.progress.percentage}}%</progress> -->
                             </div>
                         </div>
                     </div>
@@ -95,11 +97,21 @@ import Info from "@/Pages/admin/Components/Icons/Info";
 export default {
     data() {
         return {
-            imgs: 2,
+            imgs: 0,
             instructions: ["pubs", undefined],
+            form:  this.$inertia.form({
+              author: null,
+              title: null,
+              subject: null,
+              text: null,
+              images: [],
+            }),
         };
     },
     methods: {
+        submit: function () {
+            this.form.post(this.route("admin.Pnewpub"));
+        },
         Imgs: function (action) {
             this.imgs;
 

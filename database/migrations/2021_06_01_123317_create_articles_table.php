@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->tinyText('author');
-            $table->tinyInteger('subject'); // 0 até 4
+            $table->string('subject', 50); // 0 até 4
             $table->tinyText('title');
             $table->longText('text');
             $table->tinyText('path_dirPictures');

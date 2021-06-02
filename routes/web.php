@@ -60,6 +60,11 @@ Route::name('admin.')->middleware('admin')->group(function(){
         Route::get('/nova-publicacao',            [AdminController::class, 'pubs'])->name('newpub');
         Route::get('/alterar-pagina',             [AdminController::class, 'pages'])->name('updatepages');
         Route::get('/gerenciar-administradores',  [AdminController::class, 'admusers'])->name('manage');
+
+        Route::post('/database',                   [AdminController::class, 'Pdatabase'])->name('Pdatabase');
+        Route::post('/nova-publicacao',            [AdminController::class, 'Ppubs'])->name('Pnewpub');
+        Route::post('/alterar-pagina',             [AdminController::class, 'Ppages'])->name('Pupdatepages');
+        Route::post('/gerenciar-administradores',  [AdminController::class, 'Padmusers'])->name('Pmanage');
     });    
 });
 

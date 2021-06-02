@@ -52,7 +52,7 @@ export default {
 
     padding: 0.6vw;
     top: 1vw;
-    left: calc($menuWidth + 1vw);
+    left: 1.5vw;
 
     border-radius: 0.4vw;
     background-image: linear-gradient(225deg, #ffd000, #fffb00, $yellow);

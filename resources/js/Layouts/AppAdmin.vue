@@ -1,6 +1,7 @@
 <template>
     <div id="_website_">
         <navigation :atPage="atPage" />
+        <messages :errors="$page.props.errors"/>
 
         <section id="_website_content_">
             <Header v-if="$page.props.user" :atPage="atPage" :atManager="atManager"/>
@@ -12,11 +13,14 @@
 <script>
 import Navigation from "@/Pages/admin/Components/Template/Navigation";
 import Header from "@/Pages/admin/Components/Template/Header";
+import Messages from "@/Layouts/Components/Messages";
+
 
 export default {
     components: {
         Navigation,
         Header,
+        Messages,
     },
 
     data() {

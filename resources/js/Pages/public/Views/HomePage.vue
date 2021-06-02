@@ -13,7 +13,7 @@
 <script>
 import AppPublic from "@/Layouts/AppPublic";
 import Header from "@/Pages/public/Components/Template/Header";
-import Messages from "@/Pages/public/Components/Template/Messages";
+import Messages from "@/Layouts/Components/Messages";
 
 import Ranking from "@/Pages/public/Components/Sections/home_page/Ranking";
 import Newsletter from "@/Pages/public/Components/Sections/home_page/Newsletter";
