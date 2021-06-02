@@ -31,9 +31,13 @@ export default {};
 <style lang="scss" scoped>
 @import "resources/css/sass/admin/Components/SVGs.scss";
 
-@include SVGHover($white, $yellow); 
+@include SVGHover($yellow, $black); 
 svg {
-    width: 1.5vw;
-    height: 1.5vw;
+    width: 1vw;
+    height: 1vw;
+
+    &:hover{
+        cursor: pointer;
+    }
 }
 </style>

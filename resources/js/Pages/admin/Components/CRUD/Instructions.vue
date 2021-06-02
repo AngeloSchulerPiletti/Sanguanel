@@ -1,22 +1,26 @@
 <template>
     <div v-if="data[1] != undefined" id="instructions">
-        <h3>{{ instructions[data[0]][data[1]][0] }}</h3>
-        <p>{{  instructions[data[0]][data[1]][1] }}</p>
+        <div>
+            <h3>{{ instructions[data[0]][data[1]][0] }}</h3>
+            <manual :wich="data[1]"/>
+        </div>
     </div>
 </template>
 
 <script>
+import Manual from "@/Pages/admin/Components/CRUD/Manual";
+
 export default {
     data() {
         return {
             instructions: {
                 pubs: [
-                    ['Instruções Gerais', ''],
-                    ['Autor',             ''],
-                    ['Título',            ''],
-                    ['Assunto',           ''],
-                    ['Artigo',            ''],
-                    ['Imagens',           ''],
+                    ["Instruções Gerais"],
+                    ["Autor"],
+                    ["Título"],
+                    ["Assunto"],
+                    ["Artigo"],
+                    ["Imagens"],
                 ],
             },
         };
@@ -24,7 +28,40 @@ export default {
     props: {
         data: Array,
     },
+    components:{
+        Manual,
+    }
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+#instructions {
+    position: fixed;
+    
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-color: #000000D0;
+
+    div{
+        width: 80%;
+        margin: auto;
+        margin-top: 10vw;
+
+        padding: 3vw;
+
+        border-radius: 2vw;
+        background-color: $white;
+
+        h3{
+            @include Titulo2_S;
+            font-size: 3vw;
+            text-transform: uppercase;
+            color: $black;
+            margin-bottom: 1.4vw; 
+        }
+    }
+}
+</style>

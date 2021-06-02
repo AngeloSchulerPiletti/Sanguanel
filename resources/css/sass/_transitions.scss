@@ -1,62 +1,53 @@
-
-
-
-
-
-
 @mixin buttonT($c1, $c2, $c3, $c4) {
     background-color: $c1;
     color: $c3;
-    
-        transition-duration: 200ms;
-                transition-property: background-color, color;
-                 
-                 &:hover{
-                     background-color: $c2;
-                     color: $c4;
-                 }
-    }
-
-@mixin anchorT($c1, $c2) {
-color: $c1;
 
     transition-duration: 200ms;
-            transition-property: color;
-             
-             &:hover{
-                 color: $c2;
-             }
+    transition-property: background-color, color;
+
+    &:hover {
+        background-color: $c2;
+        color: $c4;
+    }
 }
 
+@mixin anchorT($c1, $c2) {
+    color: $c1;
 
+    transition-duration: 200ms;
+    transition-property: color;
 
+    &:hover {
+        color: $c2;
+    }
+}
 
 @mixin SVGHold {
-    svg:hover path{
+    svg:hover path {
         fill: $yellow;
-    
+
         transition: 300ms;
         transition-property: fill;
     }
-    svg path{
+    svg path {
         fill: $white;
-    
+
         transition: 600ms;
         transition-property: fill;
     }
+}
+
+@mixin SVGHold2 {
+    svg:hover path {
+        fill: $yellow;
+
+        transition: 300ms;
+        transition-property: fill;
     }
-    
-    @mixin SVGHold2 {
-        svg:hover path{
-            fill: $yellow;
-        
-            transition: 300ms;
-            transition-property: fill;
-        }
-        svg path{
-            fill: $black;
-        
-            transition: 600ms;
-            transition-property: fill;
-        }
-        }
+    svg path {
+        fill: $black;
+
+        transition: 600ms;
+        transition-property: fill;
+    }
+}

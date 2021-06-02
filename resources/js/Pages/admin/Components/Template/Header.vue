@@ -52,7 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 header {
-    background-color: darken($white, 10%);
+    background-color: $gray3;
     color: $black;
 
     @include Fonte1_SS();
