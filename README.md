@@ -9,8 +9,8 @@
 <li>Construct the ArticleModel</li>
 <li>Style the ArticleModel.vue</li>
 <li>Style the error pages</li>
-<li></li>
-<li></li>
+<li>Create my own Analythics will be at Admin.vue</li>
+<li>...</li>
 <li>Program the Search field</li>
 <li>Turn it responsive</li>
 </ul>
