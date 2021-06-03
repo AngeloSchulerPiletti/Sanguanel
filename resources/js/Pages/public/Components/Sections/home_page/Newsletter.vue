@@ -8,7 +8,7 @@
                 acharmos interessantes! 
             </p>
             
-            <h6>Regularidade: Até 1x por semana;</h6>
+            <h6>Regularidade: Até 1x por semana</h6>
             
         </div>
         <div class="bottom">

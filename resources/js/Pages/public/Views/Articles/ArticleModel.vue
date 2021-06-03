@@ -22,9 +22,12 @@ export default {
       
     },
     props:{
-      article: Number,
+      article: Object,
       // articleJSON: Object,
-    }
+    },
+    mounted(){
+      console.log(this.article);
+    },
 };
 </script>
 

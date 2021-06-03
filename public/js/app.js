@@ -19571,8 +19571,11 @@ __webpack_require__.r(__webpack_exports__);
     AppPublic: _Layouts_AppPublic__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
-    article: Number // articleJSON: Object,
+    article: Object // articleJSON: Object,
 
+  },
+  mounted: function mounted() {
+    console.log(this.article);
   }
 });
 
@@ -26458,7 +26461,7 @@ var _hoisted_1 = {
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "top"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, "NEWSLETTER"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Ao assinar nossa newsletter gratuita você receberá informações relevantes por e-mail assim como promoções de hidromeis que acharmos interessantes! "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h6", null, "Regularidade: Até 1x por semana;")], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, "NEWSLETTER"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Ao assinar nossa newsletter gratuita você receberá informações relevantes por e-mail assim como promoções de hidromeis que acharmos interessantes! "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h6", null, "Regularidade: Até 1x por semana")], -1
 /* HOISTED */
 );
 

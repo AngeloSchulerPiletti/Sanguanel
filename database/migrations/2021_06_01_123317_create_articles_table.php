@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->tinyText('title');
             $table->longText('text');
             $table->tinyText('path_dirPictures')->default('');
+            $table->string('url');
 
         });
     }

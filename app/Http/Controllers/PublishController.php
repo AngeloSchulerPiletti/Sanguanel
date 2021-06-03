@@ -11,20 +11,45 @@ class PublishController extends Controller
 {
     protected $url_pub = 'public/Views/';
 
+    public function getPath($path, $subhome, $section)
+    {
+        if (isset($path)) {
+            $actualPath = explode('/', $path);
+            if ($actualPath[0] == $subhome && $actualPath[1] == $section) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 
     public function artigos($section = null, $id = null)
     {
         if ($section != null) {
             if ($id != null) {
-                return Inertia::render($this->url_pub . 'Articles/ArticleModel', [
-                    'subject' => 'artigos',
-                    'article_id' => '',
-                ]);
+                $articles = Article::all()->where('url', $id);
+
+
+                if ($articles->count() == 0) {
+                    abort(404);
+                } else {
+                    $articles = $articles[0];
+                }
+
+                if ($this->getPath($articles->subject, 'artigos', $section)) {
+                    return Inertia::render($this->url_pub . "Articles/ArticleModel", ['article' => $articles]);
+                } else {
+                    abort(404);
+                }
             } else {
-                return Inertia::render($this->url_pub . 'SubHomes/FromArtigos', [
-                    'subject' => $section,
-                ]);
+                if ($section == "producao" || $section == "historia" || $section == "curiosidades") {
+                    return Inertia::render($this->url_pub . 'SubHomes/FromArtigos', [
+                        'subject' => $section,
+                    ]);
+                } else {
+                    abort(404);
+                }
             }
         } else {
             return Inertia::render($this->url_pub . 'Artigos');
@@ -37,14 +62,28 @@ class PublishController extends Controller
     {
         if ($section != null) {
             if ($id != null) {
-                return Inertia::render($this->url_pub . 'Articles/ArticleModel', [
-                    'subject' => 'receitas',
-                    'article_id' => '',
-                ]);
+                $articles = Article::all()->where('url', $id);
+
+
+                if ($articles->count() == 0) {
+                    abort(404);
+                } else {
+                    $articles = $articles[0];
+                }
+
+                if ($this->getPath($articles->subject, 'receitas', $section)) {
+                    return Inertia::render($this->url_pub . "Articles/ArticleModel", ['article' => $articles]);
+                } else {
+                    abort(404);
+                }
             } else {
-                return Inertia::render($this->url_pub . 'SubHomes/FromReceitas', [
-                    'subject' => $section,
-                ]);
+                if ($section == "comidas" || $section == "drinks") {
+                    return Inertia::render($this->url_pub . 'SubHomes/FromReceitas', [
+                        'subject' => $section,
+                    ]);
+                } else {
+                    abort(404);
+                }
             }
         } else {
             return Inertia::render($this->url_pub . 'Receitas');

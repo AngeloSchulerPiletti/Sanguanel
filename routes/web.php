@@ -23,13 +23,15 @@ Route::get('/', [RouteController::class, 'index']);
 
 
 
-Route::group(['prefix'=>'artigos'], function(){
+
+
+Route::prefix('artigos')->group(function(){
     Route::get('/',                 [PublishController::class, 'artigos']);
     Route::get('/{section}',        [PublishController::class, 'artigos']);
     Route::get('/{section}/{id}',   [PublishController::class, 'artigos']);
 });
 
-Route::group(['prefix'=>'receitas'], function(){
+Route::prefix('receitas')->group(function(){
     Route::get('/',                  [PublishController::class, 'receitas']);
     Route::get('/{section}',         [PublishController::class, 'receitas']);
     Route::get('/{section}/{id}',    [PublishController::class, 'receitas']);
