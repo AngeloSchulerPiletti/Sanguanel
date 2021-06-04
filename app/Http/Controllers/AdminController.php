@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 use App\Models\Article;
+use App\Models\Author;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -44,8 +47,13 @@ class AdminController extends Controller
 
 
     public function database()
-    {
-        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase');
+    {   
+        $users = User::all();
+        $articles = Article::all();
+        $author = Author::all();
+        $data = ['users' => $users, 'articles' => $articles, 'author' => $author];
+
+        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $data]);
     }
     public function pubs()
     {

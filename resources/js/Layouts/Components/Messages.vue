@@ -33,18 +33,24 @@ export default {
             delete this.$data.messagesToShow[key];
         },
     },
-    updated() {
-        
-        if(this.status && this.erros){
-            this.messagesToShow = {...this.errors, ...this.status};
-        }
-        else if(this.status){
+    mounted(){
+        if (this.status && this.erros) {
+            this.messagesToShow = { ...this.errors, ...this.status };
+        } else if (this.status) {
             this.messagesToShow = this.status;
-        }
-        else if(this.errors){
+        } else if (this.errors) {
             this.messagesToShow = this.errors;
         }
-        console.log(this.messagesToShow);
+        this.toClose = "no";
+    },
+    updated() {
+        if (this.status && this.erros) {
+            this.messagesToShow = { ...this.errors, ...this.status };
+        } else if (this.status) {
+            this.messagesToShow = this.status;
+        } else if (this.errors) {
+            this.messagesToShow = this.errors;
+        }
         this.toClose = "no";
     },
 };
