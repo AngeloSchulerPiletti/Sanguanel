@@ -17843,7 +17843,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       instructions: {
-        pubs: [["Instruções Gerais"], ["Autor"], ["Título"], ["Assunto"], ["Artigo"], ["Imagens"]]
+        pubs: [["Instruções Gerais"], ["Autor"], ["Título"], ["Assunto"], ["Artigo"], ["Imagens"]],
+        db: [['']]
       }
     };
   },
@@ -18880,6 +18881,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppAdmin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppAdmin */ "./resources/js/Layouts/AppAdmin.vue");
 /* harmony import */ var _functions_addingmsg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions/addingmsg */ "./resources/js/Pages/admin/Views/CRUD/functions/addingmsg.js");
+/* harmony import */ var _Pages_admin_Components_CRUD_Instructions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Pages/admin/Components/CRUD/Instructions */ "./resources/js/Pages/admin/Components/CRUD/Instructions.vue");
+/* harmony import */ var _Pages_admin_Components_Icons_Info__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Pages/admin/Components/Icons/Info */ "./resources/js/Pages/admin/Components/Icons/Info.vue");
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -18890,7 +18895,8 @@ __webpack_require__.r(__webpack_exports__);
         articles: false,
         author: false
       },
-      messages: {}
+      messages: {},
+      instructions: ["db", undefined]
     };
   },
   props: {
@@ -18911,7 +18917,14 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   components: {
-    AppAdmin: _Layouts_AppAdmin__WEBPACK_IMPORTED_MODULE_0__.default
+    AppAdmin: _Layouts_AppAdmin__WEBPACK_IMPORTED_MODULE_0__.default,
+    Instructions: _Pages_admin_Components_CRUD_Instructions__WEBPACK_IMPORTED_MODULE_2__.default,
+    Info: _Pages_admin_Components_Icons_Info__WEBPACK_IMPORTED_MODULE_3__.default
+  },
+  methods: {
+    setInstruction: function setInstruction(wich) {
+      this.instructions[1] = wich;
+    }
   }
 });
 
@@ -24939,17 +24952,29 @@ var _hoisted_1 = {
   id: "man_db"
 };
 var _hoisted_2 = {
-  id: "all_tables"
+  "class": "top container"
 };
-var _hoisted_3 = {
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, "Gerenciador de Base de Dados", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
+  "class": "center container"
+};
+var _hoisted_5 = {
   "class": "table_header"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, "TESTEEEEE", -1
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", {
+  "class": "bottom container"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, "BOTTOM HERE")], -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_instructions = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("instructions");
+
   var _component_app_admin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-admin");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_admin, {
@@ -24958,12 +24983,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     message: $data.messages
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GENERATES A TABLES "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.info, function (table, index) {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_instructions, {
+        onMeDelete: _cache[1] || (_cache[1] = function ($event) {
+          return $options.setInstruction(undefined);
+        }),
+        data: $data.instructions
+      }, null, 8
+      /* PROPS */
+      , ["data"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+        onClick: _cache[2] || (_cache[2] = function ($event) {
+          return $options.setInstruction(0);
+        })
+      }, "Ver Instruções")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GENERATES A TABLES "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.info, function (table, index) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", {
           key: index,
           id: index,
-          "class": "table"
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(table[0], function (value, key) {
+          "class": "table_container"
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(table[0], function (value, key) {
           return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("th", {
             key: key
           }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(key), 1
@@ -24971,7 +25007,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           );
         }), 128
         /* KEYED_FRAGMENT */
-        ))]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(table, function (row, index) {
+        ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(table, function (row, index) {
           return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tr", {
             "class": "table_body",
             key: index
@@ -24986,12 +25022,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ))]);
         }), 128
         /* KEYED_FRAGMENT */
-        ))])], 8
+        ))])])], 8
         /* PROPS */
         , ["id"]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))]), _hoisted_4])];
+      ))]), _hoisted_6])];
     }),
     _: 1
     /* STABLE */
@@ -27999,7 +28035,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#man_db #all_tables {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  gap: 8vw;\n  overflow-x: scroll;\n  width: 80vw;\n  margin: 6vw auto 6vw auto;\n  background-color: #505051;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#man_db {\n  color: #000000;\n}\n#man_db .container {\n  width: 80vw;\n  margin: auto;\n  margin-bottom: 2vw;\n  border-radius: 0.3vw;\n}\n#man_db .top {\n  background-color: #e9dc22;\n  border-left: 20px solid #e6e6e6;\n  margin-top: 6vw;\n  padding: 1.8vw;\n}\n#man_db .top h1 {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 3vw;\n}\n#man_db .top div {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.3vw;\n  cursor: pointer;\n  color: #000000;\n  transition-duration: 200ms;\n  transition-property: color;\n}\n#man_db .top div:hover {\n  color: #FFFFFF;\n}\n#man_db .center {\n  background-color: #e6e6e6;\n  border-top: 3px solid #e9dc22;\n  padding: 2vw;\n  display: flex;\n  flex-direction: column;\n  gap: 6vw;\n}\n#man_db .center .table_container {\n  overflow-x: scroll;\n  border: 2px solid #e9dc22;\n}\n#man_db .center .table_container table {\n  color: #FFFFFF;\n}\n#man_db .center .table_container table thead {\n  background-color: #505051;\n}\n#man_db .center .table_container table thead tr th {\n  padding: 1.4vw;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.4vw;\n}\n#man_db .center .table_container table tbody {\n  background-color: #7F7F7F;\n}\n#man_db .center .table_container table tbody tr th {\n  padding: 1vw;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  font-size: 1.2vw;\n  border-bottom: 1px solid #D6D6D6;\n}\n#man_db .bottom {\n  background-color: #e6e6e6;\n  border-bottom: 3px solid #e9dc22;\n  padding: 2vw;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

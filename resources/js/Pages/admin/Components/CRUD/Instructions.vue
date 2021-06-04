@@ -22,6 +22,9 @@ export default {
                     ["Artigo"],
                     ["Imagens"],
                 ],
+                db: [
+                    [''],
+                ],
             },
         };
     },
