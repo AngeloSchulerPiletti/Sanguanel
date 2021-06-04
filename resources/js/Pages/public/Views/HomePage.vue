@@ -1,7 +1,7 @@
 <template>
     <app-public :header_content="header">
         <div id="website_home">
-            <messages :errors="$page.props.errors"/>
+            <messages :errors="$page.props.errors" :status="status"/>
            
 
             <ranking/>
@@ -29,6 +29,7 @@ export default {
         };
     },
     props: {
+        status: Object,
     },
     methods: {
         sendEmit: function () {

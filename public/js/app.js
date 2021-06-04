@@ -17561,10 +17561,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: this.$inertia.form({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
+        name: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
         terms: false
       })
     };
@@ -17573,9 +17573,9 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      this.form.post(this.route('register'), {
+      this.form.post(this.route("register"), {
         onFinish: function onFinish() {
-          return _this.form.reset('password', 'password_confirmation');
+          return _this.form.reset("password", "password_confirmation");
         }
       });
     }
@@ -19682,7 +19682,9 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  props: {},
+  props: {
+    status: Object
+  },
   methods: {
     sendEmit: function sendEmit() {
       this.$emit("sent-to-header");
@@ -21397,8 +21399,6 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_validation_errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("validation-errors");
-
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
 
   var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
@@ -21415,7 +21415,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     atPage: 'login'
   }, {
     "default": _withId(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_validation_errors), $props.status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.status), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <validation-errors /> "), $props.status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.status), 1
       /* TEXT */
       )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
         onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
@@ -21550,8 +21550,6 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_validation_errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("validation-errors");
-
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
 
   var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
@@ -21568,7 +21566,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     atPage: 'register'
   }, {
     "default": _withId(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_validation_errors), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <validation-errors /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
         onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.submit && $options.submit.apply($options, arguments);
         }, ["prevent"]))
@@ -21641,17 +21639,17 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             })
           }, null, 8
           /* PROPS */
-          , ["checked"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+          , ["checked"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("b", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
             target: "_blank",
             href: _ctx.route('terms.show')
           }, "Termos de Serviço", 8
           /* PROPS */
-          , ["href"]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+          , ["href"])]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("b", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
             target: "_blank",
             href: _ctx.route('policy.show')
           }, "Política de Privacidade", 8
           /* PROPS */
-          , ["href"])])])];
+          , ["href"])])])])];
         }),
         _: 1
         /* STABLE */
@@ -27201,10 +27199,11 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   }, {
     "default": _withId(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_messages, {
-        errors: _ctx.$page.props.errors
+        errors: _ctx.$page.props.errors,
+        status: $props.status
       }, null, 8
       /* PROPS */
-      , ["errors"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ranking), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_newsletter)])];
+      , ["errors", "status"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ranking), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_newsletter)])];
     }),
     _: 1
     /* STABLE */

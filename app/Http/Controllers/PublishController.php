@@ -34,7 +34,9 @@ class PublishController extends Controller
                 if ($articles->count() == 0) {
                     abort(404);
                 } else {
-                    $articles = $articles[0];
+                    foreach ($articles as $key => $value) {
+                        $articles = $value;
+                    }
                 }
 
                 if ($this->getPath($articles->subject, 'artigos', $section)) {
@@ -68,7 +70,9 @@ class PublishController extends Controller
                 if ($articles->count() == 0) {
                     abort(404);
                 } else {
-                    $articles = $articles[0];
+                    foreach ($articles as $key => $value) {
+                        $articles = $value;
+                    }
                 }
 
                 if ($this->getPath($articles->subject, 'receitas', $section)) {

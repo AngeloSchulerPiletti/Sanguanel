@@ -12,13 +12,13 @@ class NewsletterController extends Controller
 {
     public function store(Request $request){
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|unique:newsletters,email',
         ]);
 
         $newsletter = new Newsletter;
         $newsletter->email = $request->email;
         $newsletter->save();
 
-        return Inertia::render("public/Views/HomePage");
+        return Inertia::render("public/Views/HomePage", ['status' => [0 => 'Email cadastrado']]);
     }
 }

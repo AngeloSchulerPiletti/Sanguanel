@@ -1,7 +1,7 @@
 <template>
     <app-admin :atPage="'login'">
         <section id="login_container">
-            <validation-errors />
+            <!-- <validation-errors /> -->
 
             <div v-if="status">
                 {{ status }}
