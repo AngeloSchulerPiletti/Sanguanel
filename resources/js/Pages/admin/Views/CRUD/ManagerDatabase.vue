@@ -23,6 +23,10 @@
                     class="table_container"
                 >
                     <table @click="changeData($event, 0)">
+                        <!-- Definição das colunas -->
+                        
+
+                        <!-- Tabela em si -->
                         <thead>
                             <tr class="table_header">
                                 <th v-for="(value, key) in table[0]" :key="key">
@@ -36,17 +40,17 @@
                                 v-for="(row, index) in table"
                                 :key="index"
                             >
-                                <th v-for="(value, key) in row" :key="key">
+                                <td v-for="(value, key) in row" :key="key">
                                     {{ value }}
-                                </th>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </section>
             </section>
-            <section class="bottom container">
-                <h1>BOTTOM HERE</h1>
-            </section>
+            <!-- <section class="bottom container">
+                //
+            </section> -->
         </main>
     </app-admin>
 </template>
@@ -74,14 +78,13 @@ export default {
     props: {
         database: Object,
         status: Object,
-        
     },
     created() {
+        console.log(this.database);
         this.Refresh();
     },
     updated() {
         this.Refresh();
-        // console.log(this.$page.props.errors);
     },
     components: {
         AppAdmin,
@@ -96,7 +99,8 @@ export default {
         },
         changeData: function (event, wich) {
             if (event.path[2].tagName == "TBODY") {
-                var elements = event.path[1].querySelectorAll("th"),
+                
+                var elements = event.path[1].querySelectorAll("td"),
                     wichTable = event.path[4].id,
                     contents = ["dbchange", wichTable];
 
@@ -118,15 +122,15 @@ export default {
                     this.database.articles &&
                     this.database.author
                 ) {
-                    this.info.users = this.database.users;
+                    this.info.users =    this.database.users;
                     this.info.articles = this.database.articles;
-                    this.info.author = this.database.author;
+                    this.info.author =   this.database.author;
                 } else {
                     this.messages = addingmsg.addMsg(this.messages, [
                         "Alguns ou todos os dados não foram recebeidos!",
                     ]);
                 }
-            }else{
+            } else {
                 console.log("no db");
             }
         },
@@ -176,7 +180,6 @@ export default {
         gap: 6vw;
 
         .table_container {
-            overflow-x: auto;
             max-height: 70vh;
             overflow-y: auto;
             border: 2px solid $yellow;
@@ -190,24 +193,36 @@ export default {
                     tr {
                         th {
                             padding: 1.4vw;
-                            @include Fonte1_SS;
                             font-size: 1.4vw;
+                            @include Fonte1_SS;
                         }
                     }
                 }
                 tbody {
                     background-color: $gray1;
                     tr {
-                        th {
-                            padding: 1vw;
-                            @include Fonte2_SS;
+                        td {
+                            padding: 1.4vw;
                             font-size: 1.2vw;
+                            @include Fonte2_SS;
 
                             border-bottom: 1px solid $tinyback;
                         }
                     }
                 }
             }
+        }
+
+        #users {
+        }
+        #articles {
+            table {
+                // width: 100%;
+                // table-layout: fixed;
+
+            }
+        }
+        #author {
         }
     }
 

@@ -191,13 +191,14 @@ export default {
     created() {
         var db = this.data;
         this.table = db[1];
+        console.log(db);
 
         if (db[1] == "users") {
             this.form_users.id = db[2]
             this.form_users.name = db[3];
             this.form_users.email = db[4];
             this.form_users.team = db[6];
-            this.form_users.picture = db[11];
+            this.form_users.picture = db[7];
             this.form_users.adminLevel = db[10];
         } else if (db[1] == "articles") {
             this.form_articles.id = db[2]

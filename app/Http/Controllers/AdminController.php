@@ -16,6 +16,14 @@ class AdminController extends Controller
 {
     protected $url_adm = 'admin/';
 
+    protected function getDatabase(){
+        $users = User::all();
+        $articles = Article::all();
+        $author = Author::all();
+
+        return ['users'=>$users, 'articles'=>$articles, 'author'=>$author];
+    }
+
     public function admin()
     {
         return Inertia::render($this->url_adm . 'Views/CRUD/Admin');
@@ -24,10 +32,10 @@ class AdminController extends Controller
 
     public function stringToURL($title){
         $changes = array(
-            'Š'=>'S', 'š'=>'s', 'Ð'=>'Dj',''=>'Z', ''=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A',
-            'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I',
-            'Ï'=>'I', 'Ñ'=>'N', 'Ń'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 
-            'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss','à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 
+            'Š'=>'s', 'š'=>'s', 'Ð'=>'dj',''=>'z', ''=>'z', 'À'=>'a', 'Á'=>'a', 'Â'=>'a', 'Ã'=>'a', 'Ä'=>'a',
+            'Å'=>'a', 'Æ'=>'a', 'Ç'=>'c', 'È'=>'e', 'É'=>'e', 'Ê'=>'e', 'Ë'=>'e', 'Ì'=>'i', 'Í'=>'i', 'Î'=>'i',
+            'Ï'=>'i', 'Ñ'=>'n', 'Ń'=>'n', 'Ò'=>'o', 'Ó'=>'o', 'Ô'=>'o', 'Õ'=>'o', 'Ö'=>'o', 'Ø'=>'o', 'Ù'=>'u', 
+            'Ú'=>'u', 'Û'=>'u', 'Ü'=>'u', 'Ý'=>'y', 'Þ'=>'b', 'ß'=>'ss','à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 
             'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 
             'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ń'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 
             'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ü'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f',
@@ -48,12 +56,8 @@ class AdminController extends Controller
 
     public function database()
     {   
-        $users = User::all();
-        $articles = Article::all();
-        $author = Author::all();
-        $data = ['users' => $users, 'articles' => $articles, 'author' => $author];
-
-        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $data]);
+        $database = $this->getDatabase();
+        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database]);
     }
     public function pubs()
     {
@@ -92,13 +96,13 @@ class AdminController extends Controller
             $user->save();
         }
         else if($request->table == "articles"){
-            
+            // dd($request->path_dirPictures);
             $request->validate([
                 'author'=>'string|required',
                 'subject'=>'string|required',
                 'title'=>'required|string',
                 'text'=>'required|string',
-                'path_dirPictures'=>'string',
+                // 'path_dirPictures'=>'string|nullable',
                 'url'=>'required|string',
             ]);
 
@@ -108,7 +112,7 @@ class AdminController extends Controller
             $article->subject = $request->subject;
             $article->title = $request->title;
             $article->text = $request->text;
-            $article->path_dirPictures = $request->path_dirPictures;
+            // $article->path_dirPictures = $request->path_dirPictures;
             $article->url = $request->url;
 
             $article->save();
@@ -139,7 +143,8 @@ class AdminController extends Controller
             $author->save();
         }
 
-        return $this->database();
+        $database = $this->getDatabase();
+        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database, 'status' => [0=> 'Alteração feita com sucesso!']]);
     }
     public function Ppubs(Request $request)
     {

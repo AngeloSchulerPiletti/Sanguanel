@@ -35,9 +35,11 @@
             <li>Use "#" antes e depois de uma frase para ela ser considerada um "h1". Use "##" para h2 e assim sucessivamente até o h6;</li>
             <li>Use "*" antes e depois para <i>itálico</i>;</li>
             <li>Use "**" antes e depois para <b>bold</b>;</li>
+            <li>Use "^" antes e depois para uma frase 25% menor;</li>
+            <li>Use "^^" antes e depois para uma frase 50% menor; </li>
             <li>Use "'''" antes e depois para uma formatação bonita de quote;</li>
             <li>Use "--" antes para listar itens de uma lista;</li>
-            <li>Use "site[https://site.com.br]" para criar um link personalizado;</li>
+            <li>Use "$$site[https://site.com.br]$$" para criar um link personalizado;</li>
         </ul>
         <p>Em se tratando de novos elementos:</p>
         <ul>

@@ -17193,35 +17193,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     closeMessage: function closeMessage(key) {
       this.$data.toClose = "yes";
       delete this.$data.messagesToShow[key];
+    },
+    check: function check() {
+      var errorsLen = Object.keys(this.errors).length;
+
+      if (this.status) {
+        var statusLen = Object.keys(this.status).length;
+      } else {
+        var statusLen = 0;
+      }
+
+      if (errorsLen > 0 && statusLen > 0) {
+        this.messagesToShow = _objectSpread(_objectSpread({}, this.errors), this.status);
+      } else if (statusLen > 0) {
+        this.messagesToShow = this.status;
+      } else if (errorsLen > 0) {
+        this.messagesToShow = this.errors;
+      }
+
+      this.toClose = "no";
     }
   },
   mounted: function mounted() {
-    var statusLen = Object.keys(this.status).length,
-        errorsLen = Object.keys(this.errors).length;
-
-    if (errorsLen > 0 && statusLen > 0) {
-      this.messagesToShow = _objectSpread(_objectSpread({}, this.errors), this.status);
-    } else if (statusLen > 0) {
-      this.messagesToShow = this.status;
-    } else if (errorsLen > 0) {
-      this.messagesToShow = this.errors;
-    }
-
-    this.toClose = "no";
+    this.check();
   },
   updated: function updated() {
-    var statusLen = Object.keys(this.status).length,
-        errorsLen = Object.keys(this.errors).length;
-
-    if (errorsLen > 0 && statusLen > 0) {
-      this.messagesToShow = _objectSpread(_objectSpread({}, this.errors), this.status);
-    } else if (statusLen > 0) {
-      this.messagesToShow = this.status;
-    } else if (errorsLen > 0) {
-      this.messagesToShow = this.errors;
-    }
-
-    this.toClose = "no";
+    this.check();
   }
 });
 
@@ -17974,13 +17971,14 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var db = this.data;
     this.table = db[1];
+    console.log(db);
 
     if (db[1] == "users") {
       this.form_users.id = db[2];
       this.form_users.name = db[3];
       this.form_users.email = db[4];
       this.form_users.team = db[6];
-      this.form_users.picture = db[11];
+      this.form_users.picture = db[7];
       this.form_users.adminLevel = db[10];
     } else if (db[1] == "articles") {
       this.form_articles.id = db[2];
@@ -19040,10 +19038,11 @@ __webpack_require__.r(__webpack_exports__);
     status: Object
   },
   created: function created() {
+    console.log(this.database);
     this.Refresh();
   },
   updated: function updated() {
-    this.Refresh(); // console.log(this.$page.props.errors);
+    this.Refresh();
   },
   components: {
     AppAdmin: _Layouts_AppAdmin__WEBPACK_IMPORTED_MODULE_0__.default,
@@ -19058,7 +19057,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     changeData: function changeData(event, wich) {
       if (event.path[2].tagName == "TBODY") {
-        var elements = event.path[1].querySelectorAll("th"),
+        var elements = event.path[1].querySelectorAll("td"),
             wichTable = event.path[4].id,
             contents = ["dbchange", wichTable];
         elements.forEach(function (el) {
@@ -22497,7 +22496,7 @@ var _hoisted_12 = {
   key: 4
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<p data-v-404458fd>Preste muita atenção ao escrever o artigo. Confira se não há erros de português e se a formatação está de acordo.</p><p data-v-404458fd>Em se tratando da formatação, atente-se para as seguintes regras:</p><ul data-v-404458fd><li data-v-404458fd>Use &quot;#&quot; antes e depois de uma frase para ela ser considerada um &quot;h1&quot;. Use &quot;##&quot; para h2 e assim sucessivamente até o h6;</li><li data-v-404458fd>Use &quot;*&quot; antes e depois para <i data-v-404458fd>itálico</i>;</li><li data-v-404458fd>Use &quot;**&quot; antes e depois para <b data-v-404458fd>bold</b>;</li><li data-v-404458fd>Use &quot;&#39;&#39;&#39;&quot; antes e depois para uma formatação bonita de quote;</li><li data-v-404458fd>Use &quot;--&quot; antes para listar itens de uma lista;</li><li data-v-404458fd>Use &quot;site[https://site.com.br]&quot; para criar um link personalizado;</li></ul><p data-v-404458fd>Em se tratando de novos elementos:</p><ul data-v-404458fd><li data-v-404458fd>Use &quot;`[]`&quot; para adicionar uma propaganda;</li><li data-v-404458fd>Use &quot;`{classe}`&quot; para adicionar uma imagem (veja a info das imagens para mais infos);</li></ul>", 5);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<p data-v-404458fd>Preste muita atenção ao escrever o artigo. Confira se não há erros de português e se a formatação está de acordo.</p><p data-v-404458fd>Em se tratando da formatação, atente-se para as seguintes regras:</p><ul data-v-404458fd><li data-v-404458fd>Use &quot;#&quot; antes e depois de uma frase para ela ser considerada um &quot;h1&quot;. Use &quot;##&quot; para h2 e assim sucessivamente até o h6;</li><li data-v-404458fd>Use &quot;*&quot; antes e depois para <i data-v-404458fd>itálico</i>;</li><li data-v-404458fd>Use &quot;**&quot; antes e depois para <b data-v-404458fd>bold</b>;</li><li data-v-404458fd>Use &quot;^&quot; antes e depois para uma frase 25% menor;</li><li data-v-404458fd>Use &quot;^^&quot; antes e depois para uma frase 50% menor; </li><li data-v-404458fd>Use &quot;&#39;&#39;&#39;&quot; antes e depois para uma formatação bonita de quote;</li><li data-v-404458fd>Use &quot;--&quot; antes para listar itens de uma lista;</li><li data-v-404458fd>Use &quot;$$site[https://site.com.br]$$&quot; para criar um link personalizado;</li></ul><p data-v-404458fd>Em se tratando de novos elementos:</p><ul data-v-404458fd><li data-v-404458fd>Use &quot;`[]`&quot; para adicionar uma propaganda;</li><li data-v-404458fd>Use &quot;`{classe}`&quot; para adicionar uma imagem (veja a info das imagens para mais infos);</li></ul>", 5);
 
 var _hoisted_18 = {
   key: 5
@@ -25513,13 +25512,6 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "table_header"
 };
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", {
-  "class": "bottom container"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, "BOTTOM HERE")], -1
-/* HOISTED */
-);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_instructions = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("instructions");
 
@@ -25552,7 +25544,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: _cache[3] || (_cache[3] = function ($event) {
             return $options.changeData($event, 0);
           })
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(table[0], function (value, key) {
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Definição das colunas "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Tabela em si "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(table[0], function (value, key) {
           return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("th", {
             key: key
           }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(key), 1
@@ -25565,7 +25557,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": "table_body",
             key: index
           }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(row, function (value, key) {
-            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("th", {
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", {
               key: key
             }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value), 1
             /* TEXT */
@@ -25580,7 +25572,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["id"]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))]), _hoisted_6])];
+      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <section class=\"bottom container\">\r\n                //\r\n            </section> ")])];
     }),
     _: 1
     /* STABLE */
@@ -28636,7 +28628,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#man_db {\n  color: #000000;\n}\n#man_db .container {\n  width: 80vw;\n  margin: auto;\n  margin-bottom: 2vw;\n  border-radius: 0.3vw;\n}\n#man_db .top {\n  background-color: #e9dc22;\n  border-left: 20px solid #e6e6e6;\n  margin-top: 6vw;\n  padding: 1.8vw;\n}\n#man_db .top h1 {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 3vw;\n}\n#man_db .top div {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.3vw;\n  cursor: pointer;\n  color: #000000;\n  transition-duration: 200ms;\n  transition-property: color;\n}\n#man_db .top div:hover {\n  color: #FFFFFF;\n}\n#man_db .center {\n  background-color: #e6e6e6;\n  border-top: 3px solid #e9dc22;\n  padding: 2vw;\n  display: flex;\n  flex-direction: column;\n  gap: 6vw;\n}\n#man_db .center .table_container {\n  overflow-x: auto;\n  max-height: 70vh;\n  overflow-y: auto;\n  border: 2px solid #e9dc22;\n}\n#man_db .center .table_container table {\n  color: #FFFFFF;\n}\n#man_db .center .table_container table thead {\n  background-color: #505051;\n}\n#man_db .center .table_container table thead tr th {\n  padding: 1.4vw;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.4vw;\n}\n#man_db .center .table_container table tbody {\n  background-color: #7F7F7F;\n}\n#man_db .center .table_container table tbody tr th {\n  padding: 1vw;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  font-size: 1.2vw;\n  border-bottom: 1px solid #D6D6D6;\n}\n#man_db .bottom {\n  background-color: #e6e6e6;\n  border-bottom: 3px solid #e9dc22;\n  padding: 2vw;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#man_db {\n  color: #000000;\n}\n#man_db .container {\n  width: 80vw;\n  margin: auto;\n  margin-bottom: 2vw;\n  border-radius: 0.3vw;\n}\n#man_db .top {\n  background-color: #e9dc22;\n  border-left: 20px solid #e6e6e6;\n  margin-top: 6vw;\n  padding: 1.8vw;\n}\n#man_db .top h1 {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 3vw;\n}\n#man_db .top div {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.3vw;\n  cursor: pointer;\n  color: #000000;\n  transition-duration: 200ms;\n  transition-property: color;\n}\n#man_db .top div:hover {\n  color: #FFFFFF;\n}\n#man_db .center {\n  background-color: #e6e6e6;\n  border-top: 3px solid #e9dc22;\n  padding: 2vw;\n  display: flex;\n  flex-direction: column;\n  gap: 6vw;\n}\n#man_db .center .table_container {\n  max-height: 70vh;\n  overflow-y: auto;\n  border: 2px solid #e9dc22;\n}\n#man_db .center .table_container table {\n  color: #FFFFFF;\n}\n#man_db .center .table_container table thead {\n  background-color: #505051;\n}\n#man_db .center .table_container table thead tr th {\n  padding: 1.4vw;\n  font-size: 1.4vw;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n}\n#man_db .center .table_container table tbody {\n  background-color: #7F7F7F;\n}\n#man_db .center .table_container table tbody tr td {\n  padding: 1.4vw;\n  font-size: 1.2vw;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  border-bottom: 1px solid #D6D6D6;\n}\n#man_db .bottom {\n  background-color: #e6e6e6;\n  border-bottom: 3px solid #e9dc22;\n  padding: 2vw;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

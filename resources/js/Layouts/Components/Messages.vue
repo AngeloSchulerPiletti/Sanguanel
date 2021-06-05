@@ -32,32 +32,29 @@ export default {
             this.$data.toClose = "yes";
             delete this.$data.messagesToShow[key];
         },
+        check: function () {
+            var errorsLen = Object.keys(this.errors).length;
+            if (this.status) {
+                var statusLen = Object.keys(this.status).length;
+            } else {
+                var statusLen = 0;
+            }
+
+            if (errorsLen > 0 && statusLen > 0) {
+                this.messagesToShow = { ...this.errors, ...this.status };
+            } else if (statusLen > 0) {
+                this.messagesToShow = this.status;
+            } else if (errorsLen > 0) {
+                this.messagesToShow = this.errors;
+            }
+            this.toClose = "no";
+        },
     },
     mounted() {
-        var statusLen = Object.keys(this.status).length,
-            errorsLen = Object.keys(this.errors).length;
-
-        if (errorsLen > 0 && statusLen > 0) {
-            this.messagesToShow = { ...this.errors, ...this.status };
-        } else if (statusLen > 0) {
-            this.messagesToShow = this.status;
-        } else if (errorsLen > 0) {
-            this.messagesToShow = this.errors;
-        }
-        this.toClose = "no";
+        this.check();
     },
     updated() {
-        var statusLen = Object.keys(this.status).length,
-            errorsLen = Object.keys(this.errors).length;
-
-        if (errorsLen > 0 && statusLen > 0) {
-            this.messagesToShow = { ...this.errors, ...this.status };
-        } else if (statusLen > 0) {
-            this.messagesToShow = this.status;
-        } else if (errorsLen > 0) {
-            this.messagesToShow = this.errors;
-        }
-        this.toClose = "no";
+        this.check();
     },
 };
 </script>
