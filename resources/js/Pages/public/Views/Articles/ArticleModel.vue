@@ -1,7 +1,8 @@
 <template>
   <app-public :header_content="header">
-    <p>ARTIGOS MODELO</p>
-   
+    <article>
+      {{article_data.text}}
+    </article>
   </app-public>
 </template>
 
@@ -11,10 +12,19 @@ import AppPublic from "@/Layouts/AppPublic";
 export default {
     data(){
       return{
+      article_data:{
+        title: "",
+        author: "",
+        img_path: "",
+        text: "",
+        date: "",
+      },  
       header: {
-                'title': ["XXXXXXXXXXx"],
-                'style': 'Contents',
-            },
+                title: [""],
+                style: 'Contents',
+                author: "",
+                date: "",
+      },
       }
     },
     components: {
@@ -23,14 +33,24 @@ export default {
     },
     props:{
       article: Object,
-      // articleJSON: Object,
     },
-    mounted(){
-      // console.log(this.article);
+    created(){
+      this.header.title[0] = this.article.title;
+      this.article_data.title = this.article.title;
+      this.article_data.text = this.article.text;
+      this.header.author = this.article.author;
+
+      var Reg = /-|T/;
+      var date = this.article.updated_at.split(Reg);
+      date.pop();
+      
+      this.header.date = date;
     },
 };
 </script>
 
 <style lang="scss" scoped>
-
+article{
+  color: $black;
+}
 </style>

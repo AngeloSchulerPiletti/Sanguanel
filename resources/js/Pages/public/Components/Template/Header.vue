@@ -1,40 +1,53 @@
 <template>
-    <header
-    >
+    <header>
         <!-- Tipos de Cabeçalho para cada tipo página -->
-        <h1 v-if="header.style == 'HomePages'" :class="'title_' + header.style">
-            {{ header.title[0] }}<br />
-            <h1>{{ header.title[1] }}</h1>
-            {{ header.title[2] }}
-        </h1>
-        <h1
-            v-if="header.style == 'SubHomePages'"
-            :class="'title_' + header.style"
-        >
-            {{ header.title[0] }}<br />
-            <h1>{{ header.title[1] }}</h1>
-        </h1>
-        <h1 v-if="header.style == 'Contents'" :class="'title_' + header.style">
-            {{ header.title[0] }}
-        </h1>
+        <!-- HomePages -->
+        <div v-if="header.style == 'HomePages'" :id="header.style+'_div'">
+            <h1 :class="'title_' + header.style">
+                {{ header.title[0] }}<br />
+                <h1>{{ header.title[1] }}</h1>
+                {{ header.title[2] }}
+            </h1>
+        </div>
+        <!-- SubHomePages -->
+        <div v-if="header.style == 'SubHomePages'" :id="header.style+'_div'">
+            <h1 :class="'title_' + header.style">
+                {{ header.title[0] }}<br />
+                <h1>{{ header.title[1] }}</h1>
+            </h1>
+        </div>
+        <!-- Articles -->
+        <div v-if="header.style == 'Contents'" :id="header.style+'_div'">
+            <h1 :class="'title_' + header.style">
+                {{ header.title[0] }}
+            </h1>
+            <div>
+                <h6>Autor: {{header.author}}</h6>
+                <h6>Data: {{header.date[2]}}/{{header.date[1]}}/{{header.date[0]}}</h6>
+            </div>
+        </div>
 
+
+        <!-- Menuzinho direito -->
         <ul id="user_menus_container">
             <li class="user_menus" v-if="!$page.props.user">
                 <inertia-link href="/register"> Registrar </inertia-link>
             </li>
-            
+
             <li class="user_menus" v-if="!$page.props.user">
                 <inertia-link href="/login">
                     Login
                     <IconLock id="login_icon" />
                 </inertia-link>
             </li>
-            
+
             <li class="user_menus" v-if="$page.props.user">
-                <legend>Bem vindo, {{$page.props.user.name.split(" ")[0]}}!</legend>
+                <legend>
+                    Bem vindo, {{ $page.props.user.name.split(" ")[0] }}!
+                </legend>
             </li>
             <li class="user_menus" id="drop_list" v-if="$page.props.user">
-                <dropmenu :links="links"/>
+                <dropmenu :links="links" />
             </li>
         </ul>
     </header>
@@ -48,11 +61,13 @@ export default {
     data() {
         return {
             header: {
-                style: this.header_content.style,
-                title: this.header_content.title,
+                style: "",
+                title: "",
+                author: "",
+                date: "",
             },
-            links:{
-                "Conta": "/dashboard",
+            links: {
+                Conta: "/dashboard",
             },
         };
     },
@@ -66,12 +81,23 @@ export default {
     methods: {
         //
     },
+    created() {
+        if (this.header_content.style) {
+            if (this.header_content.style == "Contents") {
+                this.header.author = this.header_content.author;
+                this.header.date = this.header_content.date;
+            }
+
+            this.header.style = this.header_content.style;
+            this.header.title = this.header_content.title;
+        } else {
+        }
+    },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "resources/css/sass/public/Components/mixins.scss";
-
 
 header {
     display: flex;
@@ -91,26 +117,25 @@ header {
 
         .user_menus {
             margin: 0 0.5vw 0 0.5vw;
-            
 
             a {
                 @include Fonte2_SS;
                 font-size: 1.2vw;
 
                 @include anchorT($white, $yellow);
-                
+
                 #login_icon {
                     display: inline-block;
                     transform: translateY(25%);
                 }
             }
-            legend{
+            legend {
                 @include Fonte2_S;
                 font-size: 1.4vw;
             }
         }
 
-        #drop_list{
+        #drop_list {
             position: relative;
         }
     }
