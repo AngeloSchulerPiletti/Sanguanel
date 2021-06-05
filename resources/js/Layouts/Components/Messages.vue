@@ -33,22 +33,28 @@ export default {
             delete this.$data.messagesToShow[key];
         },
     },
-    mounted(){
-        if (this.status && this.erros) {
+    mounted() {
+        var statusLen = Object.keys(this.status).length,
+            errorsLen = Object.keys(this.errors).length;
+
+        if (errorsLen > 0 && statusLen > 0) {
             this.messagesToShow = { ...this.errors, ...this.status };
-        } else if (this.status) {
+        } else if (statusLen > 0) {
             this.messagesToShow = this.status;
-        } else if (this.errors) {
+        } else if (errorsLen > 0) {
             this.messagesToShow = this.errors;
         }
         this.toClose = "no";
     },
     updated() {
-        if (this.status && this.erros) {
+        var statusLen = Object.keys(this.status).length,
+            errorsLen = Object.keys(this.errors).length;
+
+        if (errorsLen > 0 && statusLen > 0) {
             this.messagesToShow = { ...this.errors, ...this.status };
-        } else if (this.status) {
+        } else if (statusLen > 0) {
             this.messagesToShow = this.status;
-        } else if (this.errors) {
+        } else if (errorsLen > 0) {
             this.messagesToShow = this.errors;
         }
         this.toClose = "no";
@@ -66,6 +72,8 @@ export default {
     width: 20vw;
     height: fit-content;
     z-index: 10000000;
+
+    cursor: pointer;
 
     padding: 0.6vw;
     top: 1vw;

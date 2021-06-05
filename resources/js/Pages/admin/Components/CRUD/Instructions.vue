@@ -1,14 +1,18 @@
 <template>
     <div v-if="data[1] != undefined" id="instructions" @click="closeMe($event)">
-        <div>
+        <div id="container">
             <h3>{{ instructions[data[0]][data[1]][0] }}</h3>
-            <manual :wich="data[1]" />
+            <manual-pubs v-if="data[0] == 'pubs'" :wich="data[1]" />
+            <manual-db   v-if="data[0] == 'db'"   :wich="data[1]"/>
+            <modifier-db v-if="data[0] == 'dbchange'" :data="DBdata" @close="closeNow()"/>
         </div>
     </div>
 </template>
 
 <script>
-import Manual from "@/Pages/admin/Components/CRUD/Manual";
+import ManualPubs from "@/Pages/admin/Components/CRUD/ManualPubs";
+import ManualDb from "@/Pages/admin/Components/CRUD/ManualDB";
+import ModifierDb from "@/Pages/admin/Components/CRUD/ModifierDB";
 
 export default {
     data() {
@@ -23,13 +27,17 @@ export default {
                     ["Imagens"],
                 ],
                 db: [
-                    [''],
+                    ["Instruções Gerais"],
+                ],
+                dbchange: [
+                    ["Alteração de Dados"],
                 ],
             },
         };
     },
     props: {
         data: Array,
+        DBdata: Array,
     },
     methods: {
         closeMe: function (event) {
@@ -37,9 +45,14 @@ export default {
                 this.$emit("meDelete");
             }
         },
+        closeNow: function(){
+            this.$emit("meDelete");
+        }
     },
     components: {
-        Manual,
+        ManualPubs,
+        ManualDb,
+        ModifierDb,
     },
 };
 </script>
@@ -55,7 +68,7 @@ export default {
 
     background-color: #000000d0;
 
-    div {
+    #container {
         width: 80%;
         margin: auto;
         margin-top: 6vw;

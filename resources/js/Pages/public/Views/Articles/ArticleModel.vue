@@ -26,7 +26,7 @@ export default {
       // articleJSON: Object,
     },
     mounted(){
-      console.log(this.article);
+      // console.log(this.article);
     },
 };
 </script>

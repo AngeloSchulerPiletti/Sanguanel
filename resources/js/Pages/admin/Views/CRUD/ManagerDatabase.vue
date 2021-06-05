@@ -1,11 +1,14 @@
 <template>
     <app-admin :atPage="'admin'" :atManager="'database'" :message="messages">
         <main id="man_db">
+            <!-- POP_UPs -->
             <instructions
                 @meDelete="setInstruction(undefined)"
                 :data="instructions"
+                :DBdata="dataChange"
             />
 
+            <!-- CABEÇALHO -->
             <section class="top container">
                 <h1>Gerenciador de Base de Dados</h1>
                 <div @click="setInstruction(0)">Ver Instruções</div>
@@ -19,7 +22,7 @@
                     :id="index"
                     class="table_container"
                 >
-                    <table>
+                    <table @click="changeData($event, 0)">
                         <thead>
                             <tr class="table_header">
                                 <th v-for="(value, key) in table[0]" :key="key">
@@ -53,6 +56,7 @@ import AppAdmin from "@/Layouts/AppAdmin";
 import addingmsg from "./functions/addingmsg";
 import Instructions from "@/Pages/admin/Components/CRUD/Instructions";
 import Info from "@/Pages/admin/Components/Icons/Info";
+import ModifierDb from "@/Pages/admin/Components/CRUD/ModifierDB";
 
 export default {
     data() {
@@ -63,39 +67,68 @@ export default {
                 author: false,
             },
             messages: {},
-            instructions: ["db", undefined],
+            instructions: [undefined, undefined],
+            dataChange: {},
         };
     },
     props: {
         database: Object,
         status: Object,
+        
     },
     created() {
-        if (this.status) {
-            this.messages = this.status;
-        }
-        if (
-            this.database.users &&
-            this.database.articles &&
-            this.database.author
-        ) {
-            this.info.users = this.database.users;
-            this.info.articles = this.database.articles;
-            this.info.author = this.database.author;
-        } else {
-            this.messages = addingmsg.addMsg(this.messages, [
-                "Alguns ou todos os dados não foram recebeidos!",
-            ]);
-        }
+        this.Refresh();
+    },
+    updated() {
+        this.Refresh();
+        // console.log(this.$page.props.errors);
     },
     components: {
         AppAdmin,
         Instructions,
         Info,
+        ModifierDb,
     },
     methods: {
         setInstruction: function (wich) {
             this.instructions[1] = wich;
+            this.instructions[0] = "db";
+        },
+        changeData: function (event, wich) {
+            if (event.path[2].tagName == "TBODY") {
+                var elements = event.path[1].querySelectorAll("th"),
+                    wichTable = event.path[4].id,
+                    contents = ["dbchange", wichTable];
+
+                elements.forEach((el) => {
+                    contents.push(el.textContent);
+                });
+                this.dataChange = contents;
+                this.instructions[1] = wich;
+                this.instructions[0] = "dbchange";
+            }
+        },
+        Refresh: function () {
+            if (this.status) {
+                this.messages = this.status;
+            }
+            if (this.database) {
+                if (
+                    this.database.users &&
+                    this.database.articles &&
+                    this.database.author
+                ) {
+                    this.info.users = this.database.users;
+                    this.info.articles = this.database.articles;
+                    this.info.author = this.database.author;
+                } else {
+                    this.messages = addingmsg.addMsg(this.messages, [
+                        "Alguns ou todos os dados não foram recebeidos!",
+                    ]);
+                }
+            }else{
+                console.log("no db");
+            }
         },
     },
 };
@@ -143,11 +176,14 @@ export default {
         gap: 6vw;
 
         .table_container {
-            overflow-x: scroll;
+            overflow-x: auto;
+            max-height: 70vh;
+            overflow-y: auto;
             border: 2px solid $yellow;
 
             table {
                 color: $white;
+
                 thead {
                     background-color: $gray2;
 

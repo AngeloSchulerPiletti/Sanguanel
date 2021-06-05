@@ -69,9 +69,77 @@ class AdminController extends Controller
     }
 
 
-    public function Pdatabase()
+    public function Pdatabase(Request $request)
     {
-        // return Inertia::render($this->url_adm.'Views/CRUD/ManagerDatabase');
+        if($request->table == "users"){
+            $request->validate([
+                'id'                =>'required|integer',
+                'name'              =>'required|string',
+                'email'             =>'required|email',
+                'current_team_id'   =>'integer',
+                'profile_photo_path'=>'string',
+                'adminLevel'        =>'between:0,4',
+            ]);
+
+            $user = User::findOrFail($request->id);
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->current_team_id = $request->team;
+            $user->profile_photo_path = $request->picture;
+            $user->adminLevel = $request->adminLevel;
+
+            $user->save();
+        }
+        else if($request->table == "articles"){
+            
+            $request->validate([
+                'author'=>'string|required',
+                'subject'=>'string|required',
+                'title'=>'required|string',
+                'text'=>'required|string',
+                'path_dirPictures'=>'string',
+                'url'=>'required|string',
+            ]);
+
+            $article = Article::findOrFail($request->id);
+            
+            $article->author = $request->author;
+            $article->subject = $request->subject;
+            $article->title = $request->title;
+            $article->text = $request->text;
+            $article->path_dirPictures = $request->path_dirPictures;
+            $article->url = $request->url;
+
+            $article->save();
+        }
+        else if($request->table == "author"){
+            $request->validate([
+                'profile'=>'required|image',
+                'bio'=>'required|string',
+                'title1'=>'required|string',
+                'text1'=>'required|string',
+                'picture1'=>'image',
+                'title2'=>'string',
+                'text2'=>'string',
+                'picture2'=>'image',
+            ]);
+
+            $author = Author::findOrFail($request->id);
+
+            $author->profile = $request->profile;
+            $author->bio = $request->bio;
+            $author->title1 = $request->title1;
+            $author->text1 = $request->text1;
+            $author->picture1 = $request->picture1;
+            $author->title2 = $request->title2;
+            $author->text2 = $request->text2;
+            $author->picture2 =$request->picture2;
+
+            $author->save();
+        }
+
+        return $this->database();
     }
     public function Ppubs(Request $request)
     {

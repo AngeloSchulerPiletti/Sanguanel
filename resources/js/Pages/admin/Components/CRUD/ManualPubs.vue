@@ -1,5 +1,5 @@
 <template>
-    <section v-if="wich == 0">
+    <section v-if="wich === 0">
         <p>Aqui você poderá inserir novos artigos no website.</p>
         <p>Os campos obrigatórios são:</p>
         <ul>
@@ -87,7 +87,7 @@ export default {
 <style lang="scss" scoped>
 section{
     height: 50vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 p,
 li {
