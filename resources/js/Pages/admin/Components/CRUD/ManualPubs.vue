@@ -27,10 +27,18 @@
             Selecione o assunto que mais se encaixa no seu artigo. Caso nenhum
             assunto para o ideal, repense seu artigo...
         </p>
+        <p>
+            Tenha atenção para o fato de que as quebras de linha são contabilizadas!
+        </p>
     </section>
     <section v-else-if="wich == 4">
         <p>Preste muita atenção ao escrever o artigo. Confira se não há erros de português e se a formatação está de acordo.</p>
-        <p>Em se tratando da formatação, atente-se para as seguintes regras:</p>
+        <p>Em se tratando da formatação BÁSICA, atente-se para as seguintes regras:</p>
+        <ul>
+            <li>Utilize "@@" no ínicio e fim de um parágrafo comum;</li>
+            <li>Utilize "@@@" no ínicio e fim de um parágrafo pequeno e com menor relevância;</li>
+        </ul>
+        <p>Em se tratando da formatação AVANÇADA, atente-se para as seguintes regras:</p>
         <ul>
             <li>Use "#" antes e depois de uma frase para ela ser considerada um "h1". Use "##" para h2 e assim sucessivamente até o h6;</li>
             <li>Use "*" antes e depois para <i>itálico</i>;</li>
@@ -38,13 +46,15 @@
             <li>Use "^" antes e depois para uma frase 25% menor;</li>
             <li>Use "^^" antes e depois para uma frase 50% menor; </li>
             <li>Use "'''" antes e depois para uma formatação bonita de quote;</li>
-            <li>Use "--" antes para listar itens de uma lista;</li>
+            <li>Use "----" antes de depois de uma lista para iniciar uma;</li>
+            <li>Use "--" antes e depois dos elementos de uma lista para listá-los;</li>
             <li>Use "$$site[https://site.com.br]$$" para criar um link personalizado;</li>
+            <li>Use "+-+" para adicionar uma linha horizontal elegante;</li>
         </ul>
         <p>Em se tratando de novos elementos:</p>
         <ul>
             <li>Use "`[]`" para adicionar uma propaganda;</li>
-            <li>Use "`{classe}`" para adicionar uma imagem (veja a info das imagens para mais infos);</li>
+            <li>Use "`{classe}{legenda}`" para adicionar uma imagem (veja a info das imagens para mais infos);</li>
         </ul>
     </section>
     <section v-else-if="wich == 5">

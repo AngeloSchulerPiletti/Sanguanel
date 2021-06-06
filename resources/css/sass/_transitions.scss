@@ -21,6 +21,20 @@
         color: $c2;
     }
 }
+@mixin anchorA($c1, $c2) {
+    color: $c1;
+    border-bottom: 1px solid $black;
+
+    transition-duration: 200ms;
+    transition-property: color, border-radius border-bottom;
+
+    &:hover {
+        color: $c2;
+        border-radius: 100%;
+        border-bottom: 0px;
+
+    }
+}
 
 @mixin SVGHold {
     svg:hover path {

@@ -19795,7 +19795,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       header: {
         title: [""],
-        style: 'Contents',
+        style: "Contents",
         author: "",
         date: ""
       }
@@ -19812,8 +19812,9 @@ __webpack_require__.r(__webpack_exports__);
     this.article_data.title = this.article.title;
     this.article_data.text = this.article.text;
     this.header.author = this.article.author;
+    var lastDate = this.article.updated_at ? this.article.updated_at : this.article.created_at;
     var Reg = /-|T/;
-    var date = this.article.updated_at.split(Reg);
+    var date = lastDate.split(Reg);
     date.pop();
     this.header.date = date;
   }
@@ -22521,22 +22522,26 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_12 = {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Tenha atenção para o fato de que as quebras de linha são contabilizadas! ", -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
   key: 4
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<p data-v-404458fd>Preste muita atenção ao escrever o artigo. Confira se não há erros de português e se a formatação está de acordo.</p><p data-v-404458fd>Em se tratando da formatação, atente-se para as seguintes regras:</p><ul data-v-404458fd><li data-v-404458fd>Use &quot;#&quot; antes e depois de uma frase para ela ser considerada um &quot;h1&quot;. Use &quot;##&quot; para h2 e assim sucessivamente até o h6;</li><li data-v-404458fd>Use &quot;*&quot; antes e depois para <i data-v-404458fd>itálico</i>;</li><li data-v-404458fd>Use &quot;**&quot; antes e depois para <b data-v-404458fd>bold</b>;</li><li data-v-404458fd>Use &quot;^&quot; antes e depois para uma frase 25% menor;</li><li data-v-404458fd>Use &quot;^^&quot; antes e depois para uma frase 50% menor; </li><li data-v-404458fd>Use &quot;&#39;&#39;&#39;&quot; antes e depois para uma formatação bonita de quote;</li><li data-v-404458fd>Use &quot;--&quot; antes para listar itens de uma lista;</li><li data-v-404458fd>Use &quot;$$site[https://site.com.br]$$&quot; para criar um link personalizado;</li></ul><p data-v-404458fd>Em se tratando de novos elementos:</p><ul data-v-404458fd><li data-v-404458fd>Use &quot;`[]`&quot; para adicionar uma propaganda;</li><li data-v-404458fd>Use &quot;`{classe}`&quot; para adicionar uma imagem (veja a info das imagens para mais infos);</li></ul>", 5);
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<p data-v-404458fd>Preste muita atenção ao escrever o artigo. Confira se não há erros de português e se a formatação está de acordo.</p><p data-v-404458fd>Em se tratando da formatação BÁSICA, atente-se para as seguintes regras:</p><ul data-v-404458fd><li data-v-404458fd>Utilize &quot;@@&quot; no ínicio e fim de um parágrafo comum;</li><li data-v-404458fd>Utilize &quot;@@@&quot; no ínicio e fim de um parágrafo pequeno e com menor relevância;</li></ul><p data-v-404458fd>Em se tratando da formatação AVANÇADA, atente-se para as seguintes regras:</p><ul data-v-404458fd><li data-v-404458fd>Use &quot;#&quot; antes e depois de uma frase para ela ser considerada um &quot;h1&quot;. Use &quot;##&quot; para h2 e assim sucessivamente até o h6;</li><li data-v-404458fd>Use &quot;*&quot; antes e depois para <i data-v-404458fd>itálico</i>;</li><li data-v-404458fd>Use &quot;**&quot; antes e depois para <b data-v-404458fd>bold</b>;</li><li data-v-404458fd>Use &quot;^&quot; antes e depois para uma frase 25% menor;</li><li data-v-404458fd>Use &quot;^^&quot; antes e depois para uma frase 50% menor; </li><li data-v-404458fd>Use &quot;&#39;&#39;&#39;&quot; antes e depois para uma formatação bonita de quote;</li><li data-v-404458fd>Use &quot;----&quot; antes de depois de uma lista para iniciar uma;</li><li data-v-404458fd>Use &quot;--&quot; antes e depois dos elementos de uma lista para listá-los;</li><li data-v-404458fd>Use &quot;$$site[https://site.com.br]$$&quot; para criar um link personalizado;</li><li data-v-404458fd>Use &quot;+-+&quot; para adicionar uma linha horizontal elegante;</li></ul><p data-v-404458fd>Em se tratando de novos elementos:</p><ul data-v-404458fd><li data-v-404458fd>Use &quot;`[]`&quot; para adicionar uma propaganda;</li><li data-v-404458fd>Use &quot;`{classe}{legenda}`&quot; para adicionar uma imagem (veja a info das imagens para mais infos);</li></ul>", 7);
 
-var _hoisted_18 = {
+var _hoisted_21 = {
   key: 5
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<p data-v-404458fd> Os formatos de imagens são: JPG, JPEG, PNG e GIF. Tamanho máximo: 800 Kb. Caso seja necessário minificar sua imagem, acesse o site <a href=\"http://tinypng.com\" target=\"_blank\" rel=\"noopener noreferrer\" data-v-404458fd>TinyPNG</a>. </p><p data-v-404458fd>As imagens devem ser adicionadas na ordem em que forem aparecer no artigo!</p><p data-v-404458fd>Algumas classes de imagens:</p><ul data-v-404458fd><li data-v-404458fd>big-left</li><li data-v-404458fd>medium-left</li><li data-v-404458fd>small-left</li></ul><ul data-v-404458fd><li data-v-404458fd>big-center</li><li data-v-404458fd>medium-center</li><li data-v-404458fd>small-center</li></ul><ul data-v-404458fd><li data-v-404458fd>big-right</li><li data-v-404458fd>medium-right</li><li data-v-404458fd>small-right</li></ul>", 6);
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<p data-v-404458fd> Os formatos de imagens são: JPG, JPEG, PNG e GIF. Tamanho máximo: 800 Kb. Caso seja necessário minificar sua imagem, acesse o site <a href=\"http://tinypng.com\" target=\"_blank\" rel=\"noopener noreferrer\" data-v-404458fd>TinyPNG</a>. </p><p data-v-404458fd>As imagens devem ser adicionadas na ordem em que forem aparecer no artigo!</p><p data-v-404458fd>Algumas classes de imagens:</p><ul data-v-404458fd><li data-v-404458fd>big-left</li><li data-v-404458fd>medium-left</li><li data-v-404458fd>small-left</li></ul><ul data-v-404458fd><li data-v-404458fd>big-center</li><li data-v-404458fd>medium-center</li><li data-v-404458fd>small-center</li></ul><ul data-v-404458fd><li data-v-404458fd>big-right</li><li data-v-404458fd>medium-right</li><li data-v-404458fd>small-right</li></ul>", 6);
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  return $props.wich === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_1, [_hoisted_2, _hoisted_3, _hoisted_4, _hoisted_5])) : $props.wich == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_6, [_hoisted_7])) : $props.wich == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_8, [_hoisted_9])) : $props.wich == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_10, [_hoisted_11])) : $props.wich == 4 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_12, [_hoisted_13])) : $props.wich == 5 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_18, [_hoisted_19])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+  return $props.wich === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_1, [_hoisted_2, _hoisted_3, _hoisted_4, _hoisted_5])) : $props.wich == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_6, [_hoisted_7])) : $props.wich == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_8, [_hoisted_9])) : $props.wich == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_10, [_hoisted_11, _hoisted_12])) : $props.wich == 4 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_13, [_hoisted_14])) : $props.wich == 5 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", _hoisted_21, [_hoisted_22])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 });
 
 /***/ }),
@@ -27673,9 +27678,11 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     header_content: $data.header
   }, {
     "default": _withId(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("article", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.article_data.text), 1
-      /* TEXT */
-      )];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("article", {
+        innerHTML: $data.article_data.text
+      }, null, 8
+      /* PROPS */
+      , ["innerHTML"])];
     }),
     _: 1
     /* STABLE */
@@ -29075,7 +29082,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-35d48307 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-35d48307 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-35d48307 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-35d48307 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\narticle[data-v-35d48307] {\n  color: #000000;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-35d48307 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-35d48307 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-35d48307 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-35d48307 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\narticle[data-v-35d48307] {\n  color: #000000;\n  padding: 2.4vw 2.4vw 2.4vw 2.4vw;\n}\narticle[data-v-35d48307] .simple_p {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.3vw;\n  text-align: justify;\n  margin: 0.3vw 0 2vw 0;\n}\narticle[data-v-35d48307] .tiny_p {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.1vw;\n  text-transform: uppercase;\n  margin: 2vw 0 2vw 0;\n}\narticle[data-v-35d48307] a {\n  color: #000000;\n  border-bottom: 1px solid #000000;\n  transition-duration: 200ms;\n  transition-property: color, border-radius border-bottom;\n}\narticle[data-v-35d48307] a:hover {\n  color: #e9dc22;\n  border-radius: 100%;\n  border-bottom: 0px;\n}\narticle[data-v-35d48307] h1 {\n  font-family: 'Merriweather', serif;\n  font-weight: 900;\n  text-transform: uppercase;\n  font-display: block;\n  font-size: 2.2vw;\n  text-transform: uppercase;\n}\narticle[data-v-35d48307] h2 {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  font-size: 1.9vw;\n  text-transform: uppercase;\n}\narticle[data-v-35d48307] h3 {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 700;\n  font-size: 1.7vw;\n  text-transform: capitalize;\n}\narticle[data-v-35d48307] h4 {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  font-size: 1.6vw;\n  text-transform: capitalize;\n}\narticle[data-v-35d48307] h5 {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 400;\n  font-size: 1.5vw;\n  text-transform: capitalize;\n}\narticle[data-v-35d48307] h6 {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.4vw;\n  text-transform: capitalize;\n}\narticle[data-v-35d48307] .elegant_hr {\n  outline: none;\n  border: none;\n  height: 1px;\n  background-color: #000000;\n  margin: 1vw auto 1vw auto;\n}\narticle[data-v-35d48307] .img_container {\n  margin: 2vw 0 2vw 0;\n}\narticle[data-v-35d48307] .img_container .img_alternative {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  text-transform: capitalize;\n  font-size: 1vw;\n  margin-top: 0.5vw;\n}\narticle[data-v-35d48307] .img_container img {\n  border: 2px solid #000000;\n}\narticle[data-v-35d48307] .img_container .medium-left {\n  width: 40vw;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29836,6 +29843,19 @@ var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bin
 
 module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/public/Views/Articles/APAGAISSO.html":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/public/Views/Articles/APAGAISSO.html ***!
+  \*****************************************************************/
+/***/ ((module) => {
+
+// Module
+var code = "@@Muitos já ouviram falar do famoso hidromel, a bebida considerada a mais antiga do mundo, sempre atrelada à realeza e luxo. Tem uma presença fortíssima na cultura de muitos povos como os vikings, gregos e celtas. Até mesmo no Brasil o hidromel tem um pedaço de sua história construída pelos jesuítas - que faziam a bebida a partir do mel das abelhas nativas do Brasil! Neste artigo, você aprenderá o que há de mais importante sobre a bebida. Desde a sua história até a maneira ideal de apreciá-la@@.\r\n+-+\r\n`{medium-left}{Rainha Elizabeth bebendo hidromel}`\r\n@@@Inclusive, a Rainha Elizabeth tem sua receita preferida! $$Veja mais sobre isso[sanguanel.com]$$.@@@\r\n\r\n##Afinal, O Que É Hidromel?##\r\n@@O hidromel é uma bebida com características únicas - caso você já tenha experimentado, saberá do que estou falando. Apesar de ser um erro querer compará-lo a bebidas como o vinho, seu processo de produção é muito semelhante. A bebida viking é um fermentado de mel, água e, no caso dos meloméis, frutas e outras especiarias. Vendo por esse modelo resumido, parece muito simples produzir um bom hidromel, mas na realidade existem diversas variáveis que um hidromeleiro experiente cuida. Dentre elas: temperatura, qualidade do mel, qualidade da água, origem das leveduras, nutrição das leveduras, processo de maturação, processo de clarificação, entre tantas outras! No Brasil, o hidromel é regulado através do * **Decreto n. 6.871, de 4 de junho de 2009** * entre **4%** e **14% de teor alcoólico**.@@\r\n\r\n@@@LEIA MAIS SOBRE A PRODUÇÃO $$AQUI[sanguanel.com]$$@@@\r\n`[]`\r\n#A História Do Hidromel\r\n@@Tão envolvente quanto à bebida, é a sua história. O hidromel tem um passado milenar, data-se que os primeiros registros do mesmo foram em aproximadamente 7.000A.C ^^(KRISTBERGSSON, Kristberg, OLIVEIRA, JORGE. Traditional foods General and Consumer Aspects, 2016)^^, na China. A receita deste primeiro registro era uma mistura de mel, arroz e uvas silvestres e é a evidência mais antiga de uma bebida alcoólica.@@\r\n\r\n###VIKINGS###\r\n@@Na famosa mitologia viking, o hidromel nasceu a partir da morte do Deus da sabedoria, *Kvasir*. Quando foi assassinado, os anões adicionaram cerveja ao seu sangue o que originou o hidromel e aquele que consumisse a bebida teria o conhecimento de Kvasir.@@\r\n\r\n####GREGOS####\r\n@@Entre os Gregos o hidromel era parte da alimentação divina dos deuses, no *Olimpo*. Era comumente consumido junto com a ambrosia, tanto é que um dos nomes para o hidromel é **ambrosia**.@@\r\n\r\n#####CELTAS#####\r\n@@Na cultura celta, o hidromel tinha caráter afrodisíaco e de fertilidade, por isso era sempre amplamente consumido. Em cerimônias religiosas e durante um ciclo lunar, dando origem ao termo “lua de mel”.@@\r\n\r\n@@Não é por acaso que uma bebida com tanta história volta a se tornar cada vez mais popular nos dias de hoje. Com o aumento da produção de mel no Brasil para aproximadamente **40.000.000Kg** de mel ao ano. Temos uma oportunidade cada vez maior de desenvolver esse mercado que hoje, nos estados unidos, tem uma participação enorme no mercado de alcoólicos.@@";
+// Exports
+module.exports = code;
 
 /***/ }),
 
@@ -57967,6 +57987,7 @@ var map = {
 	"./public/Components/svg/home_page/Brasil.vue": "./resources/js/Pages/public/Components/svg/home_page/Brasil.vue",
 	"./public/Components/svg/home_page/IconLock": "./resources/js/Pages/public/Components/svg/home_page/IconLock.vue",
 	"./public/Components/svg/home_page/IconLock.vue": "./resources/js/Pages/public/Components/svg/home_page/IconLock.vue",
+	"./public/Views/Articles/APAGAISSO.html": "./resources/js/Pages/public/Views/Articles/APAGAISSO.html",
 	"./public/Views/Articles/ArticleModel": "./resources/js/Pages/public/Views/Articles/ArticleModel.vue",
 	"./public/Views/Articles/ArticleModel.vue": "./resources/js/Pages/public/Views/Articles/ArticleModel.vue",
 	"./public/Views/Artigos": "./resources/js/Pages/public/Views/Artigos.vue",
