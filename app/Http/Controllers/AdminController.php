@@ -229,7 +229,7 @@ class AdminController extends Controller
 
         /*BASIC FORMAT */
         //Backspaces
-        preg_match_all("/\n/Us",          $article_text, $backspaces);
+        preg_match_all("/\n\n\n/Us",          $article_text, $backspaces);
         foreach ($backspaces[0] as $i => $value) {$article_text = str_replace($value, '<br/>', $article_text);}
         //Tiny Paragraph
         preg_match_all("/[@]{3}(.+)[@]{3}/Us",                               $article_text, $tiny_p);
@@ -314,13 +314,13 @@ class AdminController extends Controller
         }
 
         /*IMAGENS DO ARTIGO */
-        preg_match_all("/`{([\w-]+)}{(.*)}`/Us",                                       $article_text, $picture);
+        preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $article_text, $picture);
         if(count($picture[0]) != count($request->images)){
             return Inertia::render("admin/Views/CRUD/ManagerPubs", ['errors' => [0 => 'O número de imagens do artigo não é o mesmo número de imagens em upload.']]);
         }
         else if(count($picture[0]) > 0){
             foreach ($picture[0] as $i => $value) {
-                $article_text = str_replace($value, '<div class="img_container"><img class="' . str_replace('-', ' ', $picture[1][$i]) . '" src="'.$imagePaths[$i].'" alt="' . $picture[2][$i] . '" /><p class="img_alternative">' . $picture[2][$i] .'</p></div>', $article_text);
+                $article_text = str_replace($value, '<div class="img_container '. $picture[2][$i] .'"><img class="' . $picture[1][$i] . '" src="'.$imagePaths[$i].'" alt="' . $picture[3][$i] . '" /><p class="img_alternative">' . $picture[3][$i] .'</p></div>', $article_text);
             }
         }
 
