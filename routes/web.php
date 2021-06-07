@@ -71,12 +71,12 @@ Route::name('admin.')->middleware('admin')->group(function(){
         Route::get('/database',                   [AdminController::class, 'database'])->name('database');
         Route::get('/nova-publicacao',            [AdminController::class, 'pubs'])->name('newpub');
         Route::get('/alterar-pagina',             [AdminController::class, 'pages'])->name('updatepages');
-        Route::get('/gerenciar-administradores',  [AdminController::class, 'admusers'])->name('manage');
+        Route::get('/enviar-newsletter',          [AdminController::class, 'news'])->name('news');
 
         Route::post('/database',                   [AdminController::class, 'Pdatabase'])->name('Pdatabase');
         Route::post('/nova-publicacao',            [AdminController::class, 'Ppubs'])->name('Pnewpub');
         Route::post('/alterar-pagina',             [AdminController::class, 'Ppages'])->name('Pupdatepages');
-        Route::post('/gerenciar-administradores',  [AdminController::class, 'Padmusers'])->name('Pmanage');
+        Route::post('/enviar-newsletter',          [AdminController::class, 'Pnews'])->name('Pnews');
     });    
 });
 

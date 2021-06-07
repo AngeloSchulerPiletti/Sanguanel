@@ -43,8 +43,8 @@
             <li>Use "#" antes e depois de uma frase para ela ser considerada um "h1". Use "##" para h2 e assim sucessivamente até o h6;</li>
             <li>Use "*" antes e depois para <i>itálico</i>;</li>
             <li>Use "**" antes e depois para <b>bold</b>;</li>
-            <li>Use "^" antes e depois para uma frase 25% menor;</li>
-            <li>Use "^^" antes e depois para uma frase 50% menor; </li>
+            <li>Use "^" antes e depois para uma frase 50% menor;</li>
+            <li>Use "^^" antes e depois para uma frase 75% menor; </li>
             <li>Use "'''" antes e depois para uma formatação bonita de quote;</li>
             <li>Use "----" antes de depois de uma lista para iniciar uma;</li>
             <li>Use "--" antes e depois dos elementos de uma lista para listá-los;</li>

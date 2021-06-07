@@ -113,6 +113,8 @@ header {
     transform-style: preserve-3d;
 
     #user_menus_container {
+        flex-shrink: 0;
+
         display: flex;
         flex-direction: row;
         align-items: flex-end;

@@ -23,9 +23,10 @@
 
     #Contents_div {
         h1 {
-            @include Fonte1_SS();
+            @include Titulo1_S();
             text-transform: uppercase;
             font-size: 3.4vw;
+            line-height: 4.3vw;
         }
         div{
             display: flex;

@@ -8,6 +8,9 @@ use Inertia\Inertia;
 use App\Models\Article;
 use App\Models\Author;
 use App\Models\User;
+use App\Models\Newsletter;
+use App\Models\Team;
+
 use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isEmpty;
@@ -16,13 +19,28 @@ class AdminController extends Controller
 {
     protected $url_adm = 'admin/';
 
-    protected function getDatabase()
+    protected function getDatabase($requires)
     {
-        $users = User::all();
-        $articles = Article::all();
-        $author = Author::all();
+        $database = [
+            'users' => User::all(),
+            'articles' => Article::all(),
+            'author' => Author::all(),
+            'team' => Team::all(),
+            'newsletter' => Newsletter::all(),
+        ];
+        
+        $return = [];
 
-        return ['users' => $users, 'articles' => $articles, 'author' => $author];
+        foreach ($requires as $i => $model) {
+            foreach ($database as $db_model => $data) {
+                if($model == $db_model){
+                    $return[$model] = $data;
+                    
+                }
+            }
+        }
+
+        return [$return];
     }
 
 
@@ -66,8 +84,8 @@ class AdminController extends Controller
     }
     public function database()
     {
-        $database = $this->getDatabase();
-        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database]);
+        $database = $this->getDatabase(['users', 'articles']);
+        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0]]);
     }
     public function pubs()
     {
@@ -77,7 +95,7 @@ class AdminController extends Controller
     {
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages');
     }
-    public function admusers()
+    public function news()
     {
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerAdmins');
     }
@@ -125,41 +143,42 @@ class AdminController extends Controller
             $article->url = $request->url;
 
             $article->save();
-        } else if ($request->table == "author") {
-            $request->validate([
-                'profile' => 'required|image',
-                'bio' => 'required|string',
-                'title1' => 'required|string',
-                'text1' => 'required|string',
-                'picture1' => 'image',
-                'title2' => 'string',
-                'text2' => 'string',
-                'picture2' => 'image',
-            ]);
+        } 
+        // else if ($request->table == "author") {
+        //     $request->validate([
+        //         'profile' => 'required|image',
+        //         'bio' => 'required|string',
+        //         'title1' => 'required|string',
+        //         'text1' => 'required|string',
+        //         'picture1' => 'image',
+        //         'title2' => 'string',
+        //         'text2' => 'string',
+        //         'picture2' => 'image',
+        //     ]);
 
-            $author = Author::findOrFail($request->id);
+        //     $author = Author::findOrFail($request->id);
 
-            $author->profile = $request->profile;
-            $author->bio = $request->bio;
-            $author->title1 = $request->title1;
-            $author->text1 = $request->text1;
-            $author->picture1 = $request->picture1;
-            $author->title2 = $request->title2;
-            $author->text2 = $request->text2;
-            $author->picture2 = $request->picture2;
+        //     $author->profile = $request->profile;
+        //     $author->bio = $request->bio;
+        //     $author->title1 = $request->title1;
+        //     $author->text1 = $request->text1;
+        //     $author->picture1 = $request->picture1;
+        //     $author->title2 = $request->title2;
+        //     $author->text2 = $request->text2;
+        //     $author->picture2 = $request->picture2;
 
-            $author->save();
-        }
+        //     $author->save();
+        // }
 
-        $database = $this->getDatabase();
-        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database, 'status' => [0 => 'Alteração feita com sucesso!']]);
+        $database = $this->getDatabase(['users', 'articles']);
+        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0], 'status' => [0 => 'Alteração feita com sucesso!']]);
     }
     public function Ppubs(Request $request)
     {
 
         $request->validate([
             'author' => 'required',
-            'title'  => 'required',
+            'title'  => 'required|string|min:4|max:50',
             'subject' => 'required',
             'text'   => 'required',
             'images' => 'array',
@@ -261,11 +280,11 @@ class AdminController extends Controller
 
         /* SPANs */
         // 50%
-        preg_match_all("/[\^]{2}([^\^]+)[\^]{2}/U",                  $article_text, $small50);
-        $article_text = $this->tagHTMLconstructor($article_text, $small50[0], $small50[1], 'span', 'small50');
+        preg_match_all("/[\^]{2}([^\^]+)[\^]{2}/U",                  $article_text, $small75);
+        $article_text = $this->tagHTMLconstructor($article_text, $small75[0], $small75[1], 'span', 'small75');
         // 25%
-        preg_match_all("/[\^]([^\^]+)[\^]/U",                        $article_text, $small25);
-        $article_text = $this->tagHTMLconstructor($article_text, $small25[0], $small25[1], 'span', 'small25');
+        preg_match_all("/[\^]([^\^]+)[\^]/U",                        $article_text, $small50);
+        $article_text = $this->tagHTMLconstructor($article_text, $small50[0], $small50[1], 'span', 'small50');
 
 
         /*QUOTES */
@@ -301,7 +320,7 @@ class AdminController extends Controller
         }
         else if(count($picture[0]) > 0){
             foreach ($picture[0] as $i => $value) {
-                $article_text = str_replace($value, '<div class="img_container"><img class="' . $picture[1][$i] . '" src="'.$imagePaths[$i].'" alt="' . $picture[2][$i] . '" /><p class="img_alternative">' . $picture[2][$i] .'</p></div>', $article_text);
+                $article_text = str_replace($value, '<div class="img_container"><img class="' . str_replace('-', ' ', $picture[1][$i]) . '" src="'.$imagePaths[$i].'" alt="' . $picture[2][$i] . '" /><p class="img_alternative">' . $picture[2][$i] .'</p></div>', $article_text);
             }
         }
 
@@ -319,7 +338,7 @@ class AdminController extends Controller
     {
         // return Inertia::render($this->url_adm.'Views/CRUD/ManagerPages');
     }
-    public function Padmusers()
+    public function Pnews()
     {
         // return Inertia::render($this->url_adm.'Views/CRUD/ManagerAdmins');
     }

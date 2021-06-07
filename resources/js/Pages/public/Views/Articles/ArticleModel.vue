@@ -71,10 +71,19 @@ article {
 
       margin: 2vw 0 2vw 0;
     }
+    & /deep/ .small50{
+      font-size: 50%;
+    }
+    & /deep/ .small75{
+      font-size: 75%;
+    }
+
     & /deep/ a{
       @include anchorA($black, $yellow);
     }
 
+
+    //=========== Títulos ============//
     & /deep/ h1{
       @include Titulo1_S;
       font-size: 2.2vw;
@@ -132,35 +141,24 @@ article {
       img{
         border: 2px solid $black;
       }
-      .big-left{
+      .big{
 
       }
-      .medium-left{
+      .medium{
         width: 40vw;
       }
-      .small-left{
+      .small{
 
       }
 
 
-      .big-center{
+      .center{
 
       }
-      .medium-center{
+      .right{
 
       }
-      .small-center{
-        
-      }
-
-
-      .big-right{
-
-      }
-      .medium-right{
-
-      }
-      .small-right{
+      .left{
         
       }
     }

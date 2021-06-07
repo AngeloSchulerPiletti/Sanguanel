@@ -35,7 +35,7 @@ export default {
                     "Base de Dados":     [route("admin.database"), "database"],
                     "Criar Publicação":  [route("admin.newpub"), "pubs"],
                     "Alterar Páginas":   [route("admin.updatepages"), "pages"],
-                    "Gerenciar Admins":  [route("admin.manage"), "admins"],
+                    "Criar Newsletter":  [route("admin.news"), "news"],
                 },
             },
             publicOptions: {

@@ -1,6 +1,6 @@
 <template>
-<app-admin :atPage="'admin'" atSubpage="admins">
-  <section id="man_admins">
+<app-admin :atPage="'admin'" atSubpage="news">
+  <section id="man_news">
 
     </section>
 </app-admin>

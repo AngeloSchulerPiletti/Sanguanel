@@ -74,8 +74,6 @@ export default {
             this.wichDrop = this.type;
             this.colorArrow = "$white";
         }
-        console.log(this.wichDrop);
-        // console.log(type);
     },
     components:{
         Arrow,

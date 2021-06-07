@@ -191,7 +191,6 @@ export default {
     created() {
         var db = this.data;
         this.table = db[1];
-        console.log(db);
 
         if (db[1] == "users") {
             this.form_users.id = db[2]

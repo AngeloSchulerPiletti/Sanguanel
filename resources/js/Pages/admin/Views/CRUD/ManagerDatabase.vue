@@ -69,12 +69,10 @@ export default {
             titles:{
                 'users': 'Usuários',
                 'articles': 'Artigos',
-                'author': 'Página do Autor',
             },
             info: {
                 users: false,
                 articles: false,
-                author: false,
             },
             messages: {},
             instructions: [undefined, undefined],
@@ -87,7 +85,6 @@ export default {
         status: Object,
     },
     created() {
-        console.log(this.$data);
         this.Refresh();
     },
     updated() {
@@ -124,15 +121,11 @@ export default {
                 this.messages = this.status;
             }
             if (this.database) {
-                if (
-                    this.database.users &&
-                    this.database.articles &&
-                    this.database.author
-                ) {
+                if (this.database.users && this.database.articles) {
                     this.info.users =    this.database.users;
                     this.info.articles = this.database.articles;
-                    this.info.author =   this.database.author;
-                } else {
+                } 
+                else {
                     this.messages = addingmsg.addMsg(this.messages, [
                         "Alguns ou todos os dados não foram recebeidos!",
                     ]);

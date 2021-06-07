@@ -1,5 +1,9 @@
 <template>
-    <app-admin :atPage="'account'" atSubpage="profile"> Profile </app-admin>
+    <app-admin :atPage="'account'" atSubpage="profile">
+        <main>
+            Profile
+        </main>
+    </app-admin>
 </template>
 
 <script>
