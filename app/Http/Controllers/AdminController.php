@@ -10,7 +10,7 @@ use App\Models\Author;
 use App\Models\User;
 use App\Models\Newsletter;
 use App\Models\Team;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isEmpty;
@@ -28,14 +28,13 @@ class AdminController extends Controller
             'team' => Team::all(),
             'newsletter' => Newsletter::all(),
         ];
-        
+
         $return = [];
 
         foreach ($requires as $i => $model) {
             foreach ($database as $db_model => $data) {
-                if($model == $db_model){
+                if ($model == $db_model) {
                     $return[$model] = $data;
-                    
                 }
             }
         }
@@ -69,9 +68,10 @@ class AdminController extends Controller
         return $url;
     }
 
-    protected function tagHTMLconstructor($content, $codified_text, $text, $tag, $class = ""){
+    protected function tagHTMLconstructor($content, $codified_text, $text, $tag, $class = "")
+    {
         foreach ($codified_text as $i => $value) {
-            $content = str_replace($value, '<'.$tag.' class="'.$class.'" '.'>' . $text[$i] . '</'.$tag.'>', $content);
+            $content = str_replace($value, '<' . $tag . ' class="' . $class . '" ' . '>' . $text[$i] . '</' . $tag . '>', $content);
         }
         return $content;
     }
@@ -103,47 +103,62 @@ class AdminController extends Controller
 
     public function Pdatabase(Request $request)
     {
-        if ($request->table == "users") {
-            $request->validate([
-                'id'                => 'required|integer',
-                'name'              => 'required|string',
-                'email'             => 'required|email',
-                'current_team_id'   => 'integer',
-                'profile_photo_path' => 'string',
-                'adminLevel'        => 'between:0,4',
-            ]);
+        $request->validate([
+            'action' => 'required|string',
+        ]);
 
-            $user = User::findOrFail($request->id);
+        if ($request->action == "delete") {
+            if(Auth::user()->adminLevel < 4){
+                abort(403);
+            }else{
+                DB::table('users')->delete($request->id);
+                $status = [0 => "Remoção feita com sucesso!"];
+            }
+        } else if ($request->action == "change") {
+            if ($request->table == "users") {
+                $request->validate([
+                    'id'                => 'required|integer',
+                    'name'              => 'required|string',
+                    'email'             => 'required|email',
+                    'current_team_id'   => 'integer',
+                    'profile_photo_path' => 'string',
+                    'adminLevel'        => 'between:0,4',
+                ]);
 
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->current_team_id = $request->team;
-            $user->profile_photo_path = $request->picture;
-            $user->adminLevel = $request->adminLevel;
+                $user = User::findOrFail($request->id);
 
-            $user->save();
-        } else if ($request->table == "articles") {
-            // dd($request->path_dirPictures);
-            $request->validate([
-                'author' => 'string|required',
-                'subject' => 'string|required',
-                'title' => 'required|string',
-                'text' => 'required|string',
-                // 'path_dirPictures'=>'string|nullable',
-                'url' => 'required|string',
-            ]);
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->current_team_id = $request->team;
+                $user->profile_photo_path = $request->picture;
+                $user->adminLevel = $request->adminLevel;
 
-            $article = Article::findOrFail($request->id);
+                $user->save();
+            } else if ($request->table == "articles") {
+                // dd($request->path_dirPictures);
+                $request->validate([
+                    'author' => 'string|required',
+                    'subject' => 'string|required',
+                    'title' => 'required|string',
+                    'text' => 'required|string',
+                    // 'path_dirPictures'=>'string|nullable',
+                    'url' => 'required|string',
+                ]);
 
-            $article->author = $request->author;
-            $article->subject = $request->subject;
-            $article->title = $request->title;
-            $article->text = $request->text;
-            // $article->path_dirPictures = $request->path_dirPictures;
-            $article->url = $request->url;
+                $article = Article::findOrFail($request->id);
 
-            $article->save();
-        } 
+                $article->author = $request->author;
+                $article->subject = $request->subject;
+                $article->title = $request->title;
+                $article->text = $request->text;
+                // $article->path_dirPictures = $request->path_dirPictures;
+                $article->url = $request->url;
+
+                $article->save();
+            }
+            $status = [0 => "Alteração feita com sucesso!"];
+        }
+
         // else if ($request->table == "author") {
         //     $request->validate([
         //         'profile' => 'required|image',
@@ -171,11 +186,10 @@ class AdminController extends Controller
         // }
 
         $database = $this->getDatabase(['users', 'articles']);
-        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0], 'status' => [0 => 'Alteração feita com sucesso!']]);
+        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0], 'status' => $status]);
     }
     public function Ppubs(Request $request)
     {
-
         $request->validate([
             'author' => 'required',
             'title'  => 'required|string|min:4|max:50',
@@ -192,7 +206,7 @@ class AdminController extends Controller
         $article->subject = $request->subject;
         // $article->text = $request->text;
 
-        
+
         $imagePaths = [];
 
         //Image Tratament
@@ -230,15 +244,17 @@ class AdminController extends Controller
         /*BASIC FORMAT */
         //Backspaces
         preg_match_all("/\n\n\n/Us",          $article_text, $backspaces);
-        foreach ($backspaces[0] as $i => $value) {$article_text = str_replace($value, '<br/>', $article_text);}
+        foreach ($backspaces[0] as $i => $value) {
+            $article_text = str_replace($value, '<br/>', $article_text);
+        }
         //Tiny Paragraph
         preg_match_all("/[@]{3}(.+)[@]{3}/Us",                               $article_text, $tiny_p);
         $article_text = $this->tagHTMLconstructor($article_text, $tiny_p[0], $tiny_p[1], 'p', 'tiny_p');
         //Simple Paragraph
         preg_match_all("/[@]{2}(.+)[@]{2}/Us",                               $article_text, $simple_p);
         $article_text = $this->tagHTMLconstructor($article_text, $simple_p[0], $simple_p[1], 'p', 'simple_p');
-        
-        
+
+
 
 
         /* BOLD  */
@@ -249,7 +265,7 @@ class AdminController extends Controller
         preg_match_all("/\*([^\*].*[^\*])\*/Us",                               $article_text, $italics);
         $article_text = $this->tagHTMLconstructor($article_text, $italics[0], $italics[1], 'em');
 
-        
+
 
 
         /* TITLES */
@@ -263,7 +279,7 @@ class AdminController extends Controller
         preg_match_all("/[#]{4}([^#]+)[#]{4}/U",                       $article_text, $h4);
         $article_text = $this->tagHTMLconstructor($article_text, $h4[0], $h4[1], 'h4');
         //H3
-        preg_match_all("/[#]{3}([^#]+)[#]{3}/U",                       $article_text, $h3);        
+        preg_match_all("/[#]{3}([^#]+)[#]{3}/U",                       $article_text, $h3);
         $article_text = $this->tagHTMLconstructor($article_text, $h3[0], $h3[1], 'h3');
         //H2
         preg_match_all("/[#]{2}([^#]+)[#]{2}/U",                       $article_text, $h2);
@@ -272,10 +288,12 @@ class AdminController extends Controller
         preg_match_all("/[#]{1}([^#]+)[#]{1}/U",                       $article_text, $h1);
         $article_text = $this->tagHTMLconstructor($article_text, $h1[0], $h1[1], 'h1');
 
-        
+
         //HR
         preg_match_all("/[+][-][+]/Us",          $article_text, $hrs);
-        foreach ($hrs[0] as $i => $value) {$article_text = str_replace($value, '<hr class="elegant_hr"/>', $article_text);}
+        foreach ($hrs[0] as $i => $value) {
+            $article_text = str_replace($value, '<hr class="elegant_hr"/>', $article_text);
+        }
 
 
         /* SPANs */
@@ -291,7 +309,7 @@ class AdminController extends Controller
         preg_match_all("/[']{3}([^']+)[']{3}/U",                               $article_text, $quotes);
         $article_text = $this->tagHTMLconstructor($article_text, $quotes[0], $quotes[1], 'p', 'quotes');
 
-        
+
         /*LISTS */
         //Cria a Lista
         preg_match_all("/[-]{4}(.*)[-]{4}/Us",                                             $article_text, $list);
@@ -299,14 +317,14 @@ class AdminController extends Controller
         //Cria os elementos
         preg_match_all("/[-]{2}(.*)[-]{2}/Us",                                             $article_text, $list_el);
         $article_text = $this->tagHTMLconstructor($article_text, $list_el[0], $list_el[1], 'li');
-        
+
 
         /*LINKS */
         preg_match_all("/[$]{2}([^\[]+)[\[]([^\]]+)[\]][$]{2}/U",                   $article_text, $link);
         foreach ($link[0] as $i => $value) {
-            $article_text = str_replace($value, '<a href="'.$link[2][$i].'">' . $link[1][$i] . '</a>', $article_text);
+            $article_text = str_replace($value, '<a href="' . $link[2][$i] . '">' . $link[1][$i] . '</a>', $article_text);
         }
-        
+
         /*ADSENSE */
         preg_match_all("/`[\[][\]]`/U",                                         $article_text, $ads);
         foreach ($ads[0] as $i => $value) {
@@ -315,12 +333,11 @@ class AdminController extends Controller
 
         /*IMAGENS DO ARTIGO */
         preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $article_text, $picture);
-        if(count($picture[0]) != count($request->images)){
+        if (count($picture[0]) != count($request->images)) {
             return Inertia::render("admin/Views/CRUD/ManagerPubs", ['errors' => [0 => 'O número de imagens do artigo não é o mesmo número de imagens em upload.']]);
-        }
-        else if(count($picture[0]) > 0){
+        } else if (count($picture[0]) > 0) {
             foreach ($picture[0] as $i => $value) {
-                $article_text = str_replace($value, '<div class="img_container '. $picture[2][$i] .'"><img class="' . $picture[1][$i] . '" src="'.$imagePaths[$i].'" alt="' . $picture[3][$i] . '" /><p class="img_alternative">' . $picture[3][$i] .'</p></div>', $article_text);
+                $article_text = str_replace($value, '<div class="img_container ' . $picture[2][$i] . '"><img class="' . $picture[1][$i] . '" src="' . $imagePaths[$i] . '" alt="' . $picture[3][$i] . '" /><p class="img_alternative">' . $picture[3][$i] . '</p></div>', $article_text);
             }
         }
 

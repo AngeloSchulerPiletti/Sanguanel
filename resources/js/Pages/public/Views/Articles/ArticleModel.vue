@@ -155,7 +155,7 @@ article {
                 width: 40vw;
             }
             .small {
-                width: 30vw;
+                width: 26vw;
             }
         }
         .center {

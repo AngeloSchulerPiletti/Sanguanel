@@ -77,6 +77,8 @@ Route::name('admin.')->middleware('admin')->group(function(){
         Route::post('/nova-publicacao',            [AdminController::class, 'Ppubs'])->name('Pnewpub');
         Route::post('/alterar-pagina',             [AdminController::class, 'Ppages'])->name('Pupdatepages');
         Route::post('/enviar-newsletter',          [AdminController::class, 'Pnews'])->name('Pnews');
+
+
     });    
 });
 

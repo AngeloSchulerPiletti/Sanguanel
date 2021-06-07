@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="changes_forms">
         <!-- TABELA USUARIOS -->
         <form
             v-if="table == 'users' && $page.props.user.adminLevel > 3"
@@ -32,7 +32,15 @@
                     <option value="4">Gerente</option>
                 </select></label
             >
-            <button>Alterar</button>
+            <div id="modifier_actions">
+                <label for="del"><input type="radio" v-model="form_users.action" value="delete" name="action" id="del">Deletar</label>
+                <label for="cha"><input type="radio" v-model="form_users.action" value="change" name="action" id="cha">Alterar</label>
+            </div>
+
+            
+            <div id="modifier_confirmation">
+                <button>Enviar</button>
+            </div>
         </form>
 
         <!-- TABELA ARTIGOS -->
@@ -84,10 +92,18 @@
                     <option value="receitas/drinks">Receitas: Drinks</option>
                 </select></label
             >
-            <button>Alterar</button>
+            <div id="modifier_actions">
+                <label for="del"><input type="radio" v-model="form_articles.action" value="delete" name="action" id="del">Deletar</label>
+                <label for="cha"><input type="radio" v-model="form_articles.action" value="change" name="action" id="cha">Alterar</label>
+            </div>
+
+
+            <div id="modifier_confirmation">
+                <button>Enviar</button>
+            </div>
         </form>
 
-        <!-- TABELA AUTOR -->
+        <!-- TABELA AUTOR
         <form
             v-if="table == 'author' && $page.props.user.adminLevel > 3"
             @submit.prevent="submit(form_author)"
@@ -104,7 +120,7 @@
                     v-model="form_author.bio"
                 ></textarea>
             </label>
-            <!-- CONJ. 1 -->
+            CONJ. 1 
             <label for="title1"
                 >Título 1<input
                     type="text"
@@ -123,7 +139,7 @@
                     id="picture1"
                     @input="form_author.picture1 = $event.target.files[1]"
             /></label>
-            <!-- CONJ. 2 -->
+            CONJ. 2
             <label for="title2"
                 >Título 2<input
                     type="text"
@@ -143,12 +159,14 @@
                     @input="form_author.picture2 = $event.target.files[2]"
             /></label>
             <button>Alterar</button>
-        </form>
+        </form> -->
     </div>
 </template>
 
 <script>
+import Button from '../../../../Jetstream/Button.vue';
 export default {
+  components: { Button },
     data() {
         return {
             table: "",
@@ -160,6 +178,7 @@ export default {
                 picture: undefined,
                 adminLevel: undefined,
                 table: "users",
+                action: "",
             }),
             form_articles: this.$inertia.form({
                 id: undefined,
@@ -170,18 +189,7 @@ export default {
                 url: undefined,
                 subject: undefined,
                 table: "articles",
-            }),
-            form_author: this.$inertia.form({
-                id: undefined,
-                profile: undefined,
-                bio: undefined,
-                title1: undefined,
-                text1: undefined,
-                picture1: undefined,
-                title2: undefined,
-                text2: undefined,
-                picture2: undefined,
-                table: "author",
+                action: "",
             }),
         };
     },
@@ -231,7 +239,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
+#changes_forms {
     overflow-y: auto;
     height: 50vh;
     form {
@@ -276,7 +284,27 @@ div {
             option {
             }
         }
-        button {
+        #modifier_actions{
+            label{
+                display: flex;
+                align-items: center;
+                
+            }
+            [type="radio"]{
+                width: 1.2vw;
+                height: 1.2vw;
+                margin-right: 1vw;
+
+                &:active, &:checked{
+                    background-color: $yellow;
+                }
+            }
+        }
+        #modifier_confirmation{
+            display: flex;
+            justify-content: space-around;
+
+            button {
             @include buttonT($black, $yellow, $white, $black);
             @include Fonte1_SS;
             font-size: 1.5vw;
@@ -286,6 +314,8 @@ div {
             padding: 0.6vw 1.4vw 0.6vw 1.4vw;
             margin-bottom: 2vw;
         }
+        }
+        
     }
 }
 </style>
