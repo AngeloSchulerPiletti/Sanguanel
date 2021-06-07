@@ -1,7 +1,6 @@
 <template>
     <app-admin :atPage="'login'">
         <section id="login_container">
-            <!-- <validation-errors /> -->
 
             <div v-if="status">
                 {{ status }}
@@ -63,7 +62,6 @@ import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
-import ValidationErrors from "@/Pages/admin/Components/Apendices/ValidationErrors";
 import AppAdmin from "@/Layouts/AppAdmin";
 
 export default {
@@ -72,7 +70,6 @@ export default {
         JetInput,
         JetCheckbox,
         JetLabel,
-        ValidationErrors,
         AppAdmin,
     },
 

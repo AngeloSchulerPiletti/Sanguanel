@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\PublishController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,16 @@ Route::group(['prefix'=>'autor'], function(){
 Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [RouteController::class, 'logged'])->name('dashboard');
+Route::name('account.')->middleware('auth:sanctum', 'verified')->group(function(){
+
+    Route::group(['prefix'=>'conta'], function(){
+        Route::get('/', [AccountController::class, 'index'])->name('');
+
+        Route::get('/perfil', [AccountController::class, 'profile'])->name('profile');
+
+    });    
+});
+
 
 
 Route::name('admin.')->middleware('admin')->group(function(){

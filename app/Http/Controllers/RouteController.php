@@ -33,9 +33,9 @@ class RouteController extends Controller
     /*+=================================================+
       |                     ADMIM                       |
       +=================================================+*/
-    public function logged(){
-        return Inertia::render($this->url_adm.'Dashboard');
-    }
+    // public function logged(){
+    //     return Inertia::render($this->url_adm.'Dashboard');
+    // }
 
     
 }

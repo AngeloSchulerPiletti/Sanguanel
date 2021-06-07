@@ -1,5 +1,5 @@
 <template>
-    <app-admin :atPage="'admin'" :atManager="'database'" :message="messages">
+    <app-admin :atPage="'admin'" atSubpage="database" :message="messages">
         <main id="man_db">
             <!-- POP_UPs -->
             <instructions

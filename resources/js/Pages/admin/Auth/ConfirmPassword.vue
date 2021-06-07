@@ -5,7 +5,6 @@
             This is a secure area of the application. Please confirm your password before continuing.
         </div>
 
-        <jet-validation-errors/>
 
         <form @submit.prevent="submit">
             <div>
@@ -27,7 +26,6 @@
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
     import JetLabel from '@/Jetstream/Label'
-    import JetValidationErrors from '@/Pages/admin/Components/Apendices/ValidationErrors'
     import AppAdmin from "@/Layouts/AppAdmin";
 
 
@@ -37,7 +35,6 @@
             JetButton,
             JetInput,
             JetLabel,
-            JetValidationErrors,
             AppAdmin
         },
 

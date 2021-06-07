@@ -11,8 +11,8 @@
                 <li v-if="!$page.props.user" :class="li.login">
                     <inertia-link :href="route('login')">Entrar</inertia-link>
                 </li>
-                <li v-if="$page.props.user" :class="li.dashboard">
-                    <inertia-link :href="route('dashboard')">Conta</inertia-link>
+                <li v-if="$page.props.user" :class="li.account">
+                    <inertia-link :href="route('account.')">Conta</inertia-link>
                 </li>
                 <li v-if="$page.props.user && $page.props.user.adminLevel > 2" :class="li.admin">
                     <inertia-link :href="route('admin.')">Administrador</inertia-link>
@@ -37,7 +37,7 @@ export default {
             li: {
                 login: "",
                 register: "",
-                dashboard: "",
+                account: "",
                 admin: "",
             },
             links:{

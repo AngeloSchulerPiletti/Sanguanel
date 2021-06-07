@@ -1,15 +1,13 @@
 <template>
-    <app-admin :atPage="'dashboard'">
-        DASHBOARD
-    </app-admin>
+    <app-admin :atPage="'account'"> DASHBOARD </app-admin>
 </template>
 
 <script>
 import AppAdmin from "@/Layouts/AppAdmin";
 
-    export default {
-        components: {
-            AppAdmin,
-        },
-    }
+export default {
+    components: {
+        AppAdmin,
+    },
+};
 </script>

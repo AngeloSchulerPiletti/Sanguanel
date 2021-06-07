@@ -1,5 +1,5 @@
 <template>
-    <app-admin :atPage="'admin'" :atManager="'pubs'" :message="status">
+    <app-admin :atPage="'admin'" atSubpage="pubs" :message="status">
         <section id="man_pubs">
             <instructions
                 @meDelete="setInstruction(undefined)"

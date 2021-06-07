@@ -1,15 +1,20 @@
 <template>
-    <header v-if="atPage == 'admin' || atPage == 'dashboard'">
+    <header v-if="atPage == 'admin' || atPage == 'account'">
+
         <ul v-if="atPage == 'admin' && adm > 2">
-            <li v-for="(infos, name) in Options[adm]" :key="name" :id="infos[1] + '_manager'">
+            <li v-for="(infos, name) in adminOptions[adm]" :key="name" :id="infos[1] + '_subpage'">
                 <inertia-link :href="infos[0]" >{{
                     name
                 }}</inertia-link>
             </li>
         </ul>
 
-        <ul v-if="atPage == 'dashboard' && adm <= 2">
-            <li></li>
+        <ul v-if="atPage == 'account'">
+            <li v-for="(infos, name) in publicOptions"     :key="name" :id="infos[1] + '_subpage'">
+                <inertia-link :href="infos[0]">{{
+                    name    
+                }}</inertia-link>
+            </li>
         </ul>
     </header>
 </template>
@@ -19,29 +24,34 @@ export default {
     data() {
         return {
             adm: "",
-            Options: {
+            adminOptions: {
                 0: {},
                 1: {},
                 2: {},
-                3: {},
-                4: {
-                    "Base de Dados": [route("admin.database"), "database"],
-                    "Criar Publicação": [route("admin.newpub"), "pubs"],
-                    "Alterar Páginas": [route("admin.updatepages"), "pages"],
-                    "Gerenciar Admins": [route("admin.manage"), "admins"],
+                3: {
+                    "Criar Publicação":  [route("admin.newpub"), "pubs"],
                 },
+                4: {
+                    "Base de Dados":     [route("admin.database"), "database"],
+                    "Criar Publicação":  [route("admin.newpub"), "pubs"],
+                    "Alterar Páginas":   [route("admin.updatepages"), "pages"],
+                    "Gerenciar Admins":  [route("admin.manage"), "admins"],
+                },
+            },
+            publicOptions: {
+                "Perfil":     [route("account.profile"), "profile"],
             },
         };
     },
     props: {
         atPage: String,
-        atManager: String,
+        atSubpage: String,
     },
     created() {
         this.adm = this.$page.props.user["adminLevel"];
     },
     mounted() {
-        var actual = document.querySelector("#" + this.atManager + "_manager");
+        var actual = document.querySelector("#" + this.atSubpage + "_subpage");
 
         if (actual != null) {
             actual.classList.add("actual");

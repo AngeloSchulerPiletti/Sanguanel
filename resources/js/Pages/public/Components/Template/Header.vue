@@ -67,7 +67,7 @@ export default {
                 date: "",
             },
             links: {
-                Conta: "/dashboard",
+                Conta: "/conta",
             },
         };
     },

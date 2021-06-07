@@ -4,7 +4,7 @@
         <messages :errors="$page.props.errors" :status="message"/>
 
         <section id="_website_content_">
-            <Header v-if="$page.props.user" :atPage="atPage" :atManager="atManager"/>
+            <Header v-if="$page.props.user" :atPage="atPage" :atSubpage="atSubpage"/>
             <slot></slot>
         </section>
     </div>
@@ -47,7 +47,7 @@ export default {
     },
     props: {
         atPage: String,
-        atManager: String,
+        atSubpage: String,
         message: Object,
     },
 };

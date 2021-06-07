@@ -1,6 +1,5 @@
 <template>
     <app-admin>
-        <jet-validation-errors/>
 
         <form @submit.prevent="submit">
             <div>
@@ -33,14 +32,12 @@ import AppAdmin from "@/Layouts/AppAdmin";
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
     import JetLabel from '@/Jetstream/Label'
-    import JetValidationErrors from '@/Pages/admin/Components/Apendices/ValidationErrors'
 
     export default {
         components: {
             JetButton,
             JetInput,
             JetLabel,
-            JetValidationErrors,
             AppAdmin,
         },
 

@@ -1,7 +1,6 @@
 <template>
     <app-admin :atPage="'register'">
         <section id="register_container">
-            <!-- <validation-errors /> -->
 
             <form @submit.prevent="submit">
                 <h4>Bem-vindo!</h4>
@@ -98,7 +97,6 @@ import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
-import ValidationErrors from "@/Pages/admin/Components/Apendices/ValidationErrors";
 
 export default {
     components: {
@@ -106,7 +104,6 @@ export default {
         JetInput,
         JetCheckbox,
         JetLabel,
-        ValidationErrors,
         AppAdmin,
     },
 

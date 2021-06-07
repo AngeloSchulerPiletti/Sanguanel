@@ -1,5 +1,5 @@
 <template>
-<app-admin :atPage="'admin'" :atManager="'admins'">
+<app-admin :atPage="'admin'" atSubpage="admins">
   <section id="man_admins">
 
     </section>
