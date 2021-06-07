@@ -22,14 +22,14 @@
 
         <!-- Drop Menu -->
         <div v-if="$page.props.user" class="right">
-            <dropmenu :links="links"/>
+            <drop-menu :links="links" type="admin"/>
         </div> 
     </nav>
 </template>
 
 <script>
 import LogoPreto from "@/Pages/admin/Components/Icons/LogoPreto";
-import Dropmenu from "@/Pages/admin/Components/Apendices/Dropmenu";
+import DropMenu from "@/Layouts/Components/Templates/DropMenu";
 
 export default {
     data() {
@@ -47,7 +47,7 @@ export default {
     },
     components: {
         LogoPreto,
-        Dropmenu,
+        DropMenu,
     },
     props: {
         atPage: String,
@@ -67,8 +67,8 @@ nav {
     grid-template-columns: 1fr 4fr 1fr;
 
     width: 100%;
-
-    position: relative;
+    background-color: $white;
+    transform-style: preserve-3d;
 
     .left {
         #logo {

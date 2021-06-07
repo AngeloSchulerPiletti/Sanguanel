@@ -1,8 +1,8 @@
 @keyframes showDropbox{
-    from{opacity: 0.2; transform: translateY(-30%) translateZ(-1vw);;}
-    to{opacity: 1; transform: translateY(0) translateZ(-1vw);;}
+    from{opacity: 0.2; transform: translateY(-100%) translateZ(-1vw);}
+    to{opacity: 1; transform: translateY(0) translateZ(-1vw);}
 }
 @keyframes hideDropbox{
-    from{opacity: 1; transform: translateY(0) translateZ(-1vw);;}
-    to{opacity: 0.2; transform: translateY(-30%) translateZ(-1vw);;}
+    from{opacity: 1; transform: translateY(0) translateZ(-1vw);}
+    to{opacity: 0.2; transform: translateY(-100%) translateZ(-1vw);}
 }

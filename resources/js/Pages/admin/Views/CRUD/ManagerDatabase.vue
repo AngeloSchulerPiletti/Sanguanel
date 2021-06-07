@@ -22,6 +22,7 @@
                     :id="index"
                     class="table_container"
                 >
+                    <h2>{{titles[index]}}</h2>
                     <table @click="changeData($event, 0)">
                         <!-- Definição das colunas -->
                         
@@ -65,6 +66,11 @@ import ModifierDb from "@/Pages/admin/Components/CRUD/ModifierDB";
 export default {
     data() {
         return {
+            titles:{
+                'users': 'Usuários',
+                'articles': 'Artigos',
+                'author': 'Página do Autor',
+            },
             info: {
                 users: false,
                 articles: false,
@@ -73,6 +79,7 @@ export default {
             messages: {},
             instructions: [undefined, undefined],
             dataChange: {},
+
         };
     },
     props: {
@@ -80,7 +87,7 @@ export default {
         status: Object,
     },
     created() {
-        console.log(this.database);
+        console.log(this.$data);
         this.Refresh();
     },
     updated() {
@@ -182,10 +189,16 @@ export default {
         .table_container {
             max-height: 70vh;
             overflow-y: auto;
-            border: 2px solid $yellow;
+            
+            h2{
+                @include Titulo2_S;
+                text-transform: uppercase;
+                font-size: 2vw;
+            }
 
             table {
                 color: $white;
+                border: 2px solid $yellow;
 
                 thead {
                     background-color: $gray2;

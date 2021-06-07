@@ -3,18 +3,18 @@
     <div class="r_button">
         <arrow id="arrow_btn" :color="colorArrow" data-btnstate="none" @click="arrowCall()" />
     </div>
-    <div class="r_drop" data-dropstate="none">
+    <div id="r_drop" :class="wichDrop" data-dropstate="none">
         <ul>
             <li>
                 <hr/>
             </li>
-                
+
             <li v-for="(link, index) in links" :key="index">
                 <inertia-link class="drop_links" :href="link">{{index}}</inertia-link>
                 <hr/>
             </li>
 
-            <li v-if="$page.props.user && $page.props.user.adminLevel > 2">
+            <li v-if="$page.props.user && $page.props.user.adminLevel > 2 && wichDrop == 'public'">
                 <inertia-link class="drop_links" href="/admin">Administrador</inertia-link>
                 <hr/>
             </li>
@@ -36,16 +36,18 @@ import Arrow from "@/Pages/admin/Components/Icons/Arrow";
 export default {
     data(){
         return{
-            colorArrow: "$white",
-      }
+            colorArrow: "$black",
+            wichDrop: "admin",
+        }
     },
     props:{
         links: Object,
+        type: String,
     },
     methods: {
         arrowCall: function () {
             var btn = document.querySelector('#arrow_btn'),
-                dropbox = document.querySelector(".r_drop");
+                dropbox = document.querySelector("#r_drop");
 
             if (
                 btn.dataset.btnstate == "close" ||
@@ -60,12 +62,20 @@ export default {
 
                 setTimeout(function () {
                     dropbox.style.display = "none";
-                }, 110);
+                }, 400);
             }
         },
         logout() {
             this.$inertia.post(route("logout"));
         },
+    },
+    created(){
+        if(this.type == "public"){
+            this.wichDrop = this.type;
+            this.colorArrow = "$white";
+        }
+        console.log(this.wichDrop);
+        // console.log(type);
     },
     components:{
         Arrow,
@@ -94,9 +104,6 @@ export default {
             cursor: pointer;
         }
     }
-    // [data-btnstate="none"]{
-    //     // display: none;
-    // }
     [data-btnstate="open"] {
         transform: scaleY(-1) rotate(90deg);
     }
@@ -104,12 +111,16 @@ export default {
         transform: scaleY(1) rotate(90deg);
     }
 }
-[data-dropstate] {
-    position: absolute;
+.public{
     top: calc(100% + 1vw);
     right: -15px;
-    
     background-color: $black;
+}
+.admin{
+    background-color: $tinyback;
+}
+[data-dropstate] {
+    position: absolute;
 
     border-radius: 0 0 0.7vw 0.7vw;
     padding: 0.5vw 0 0.5vw 0;
@@ -156,9 +167,9 @@ export default {
     display: none;
 }
 [data-dropstate="show"] {
-    animation: showDropbox 100ms ease 0ms 1 normal both;
+    animation: showDropbox 150ms ease 0ms 1 normal both;
 }
 [data-dropstate="hide"] {
-    animation: hideDropbox 100ms ease 0ms 1 normal both;
+    animation: hideDropbox 400ms ease 0ms 1 normal both;
 }
 </style>

@@ -47,14 +47,14 @@
                 </legend>
             </li>
             <li class="user_menus" id="drop_list" v-if="$page.props.user">
-                <dropmenu :links="links" />
+                <drop-menu :links="links" type='public'/>
             </li>
         </ul>
     </header>
 </template>
 
 <script>
-import Dropmenu from "@/Pages/public/Components/Apendices/Dropmenu";
+import DropMenu from "@/Layouts/Components/Templates/DropMenu";
 import IconLock from "@/Pages/public/Components/svg/home_page/IconLock";
 
 export default {
@@ -76,7 +76,7 @@ export default {
     },
     components: {
         IconLock,
-        Dropmenu,
+        DropMenu,
     },
     methods: {
         //
@@ -110,6 +110,8 @@ header {
 
     @include headerStyle();
 
+    transform-style: preserve-3d;
+
     #user_menus_container {
         display: flex;
         flex-direction: row;
@@ -133,6 +135,7 @@ header {
                 @include Fonte2_S;
                 font-size: 1.4vw;
             }
+
         }
 
         #drop_list {
