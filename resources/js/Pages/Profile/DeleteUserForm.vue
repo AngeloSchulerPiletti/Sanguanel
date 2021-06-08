@@ -39,7 +39,7 @@
                     <div class="input">
                         <jet-input
                             type="password"
-                            placeholder="Password"
+                            placeholder="Senha"
                             ref="password"
                             v-model="form.password"
                             @keyup.enter="deleteUser"

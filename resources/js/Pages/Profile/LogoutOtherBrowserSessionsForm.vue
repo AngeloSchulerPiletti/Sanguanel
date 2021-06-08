@@ -95,16 +95,19 @@
 
             <!-- Log Out Other Devices Confirmation Modal -->
             <jet-dialog-modal :show="confirmingLogout" @close="closeModal">
-                <template #title> Log Out Other Browser Sessions </template>
+                <template #title> Sair de Outras Sessões </template>
 
                 <template #content>
-                    Insira sua senha para confirmar que você deseja deslogar de
+                    <p>
+                        Insira sua senha para confirmar que você deseja deslogar de
                     todas as suas outras sessões ativas.
+                    </p>
+                    
 
-                    <div>
+                    <div class="input">
                         <jet-input
                             type="password"
-                            placeholder="Password"
+                            placeholder="Senha"
                             ref="password"
                             v-model="form.password"
                             @keyup.enter="logoutOtherBrowserSessions"
@@ -115,16 +118,20 @@
                 </template>
 
                 <template #footer>
-                    <jet-secondary-button @click="closeModal">
+                    <div id="actions_container">
+                        <button class="btn2" @click="closeModal">
                         Cancelar
-                    </jet-secondary-button>
+                    </button>
 
                     <button
+                    class="btn"
                         @click="logoutOtherBrowserSessions"
                         :disabled="form.processing"
                     >
                         Sair de outras sessões
                     </button>
+                    </div>
+                    
                 </template>
             </jet-dialog-modal>
         </template>
@@ -240,7 +247,27 @@ p {
     }
 }
 
+#actions_container {
+    display: flex;
+    gap: 1vw;
+}
+.input {
+    input {
+        border-radius: 0.3vw;
+        border: 1px solid $yellow;
+        outline: none;
+        box-shadow: 0 0 0 0;
+
+        margin-top: 1vw;
+
+        font-size: 1.2vw;
+    }
+}
+
 .btn{
     @include button1();
+}
+.btn2{
+    @include button2();
 }
 </style>
