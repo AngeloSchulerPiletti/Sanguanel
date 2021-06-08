@@ -6,7 +6,7 @@
                     <update-profile-information-form :user="$page.props.user" />
                 </div>
 
-                <!-- <div v-if="$page.props.jetstream.canUpdatePassword">
+                <div v-if="$page.props.jetstream.canUpdatePassword">
                     <update-password-form />
                 </div>
 
@@ -28,7 +28,7 @@
                 >
 
                     <delete-user-form />
-                </template> -->
+                </template>
             </div>
         </div>
     </app-admin>

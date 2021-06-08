@@ -1,51 +1,68 @@
 <template>
     <jet-action-section>
-        <template #title>
-            Delete Account
-        </template>
+        <template #title> Deletar Conta </template>
 
         <template #description>
-            Permanently delete your account.
+            Deletar sua conta permanentemente. <br />Cuidado, essa ação é
+            irreversível!
         </template>
 
         <template #content>
-            <div class="max-w-xl text-sm text-gray-600">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+            <div id="introduction">
+                <p>
+                    Uma vez deletada sua conta, não há como voltar atrás. Tudo
+                    relacionado à sua conta irá desaparecer.
+                </p>
             </div>
 
-            <div class="mt-5">
-                <jet-danger-button @click="confirmUserDeletion">
-                    Delete Account
-                </jet-danger-button>
+            <div>
+                <button class="btn3" @click="confirmUserDeletion">
+                    Deletar Conta
+                </button>
             </div>
 
             <!-- Delete Account Confirmation Modal -->
-            <jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
-                <template #title>
-                    Delete Account
-                </template>
+            <jet-dialog-modal
+                :show="confirmingUserDeletion"
+                @close="closeModal"
+            >
+                <template #title> Deletar Conta </template>
 
                 <template #content>
-                    Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
+                    <p>
+                       Tem certeza que deseja continuar? Uma vez deletada sua
+                    conta, não há como voltar atrás. Tudo relacionado à sua
+                    conta irá desaparecer. 
+                    </p>
+                    
 
-                    <div class="mt-4">
-                        <jet-input type="password" class="mt-1 block w-3/4" placeholder="Password"
-                                    ref="password"
-                                    v-model="form.password"
-                                    @keyup.enter="deleteUser" />
+                    <div class="input">
+                        <jet-input
+                            type="password"
+                            placeholder="Password"
+                            ref="password"
+                            v-model="form.password"
+                            @keyup.enter="deleteUser"
+                        />
 
-                        <jet-input-error :message="form.errors.password" class="mt-2" />
+                        <jet-input-error :message="form.errors.password" />
                     </div>
                 </template>
 
                 <template #footer>
-                    <jet-secondary-button @click="closeModal">
-                        Cancel
-                    </jet-secondary-button>
+                    <div id="actions_container">
+                        <button class="btn" @click="closeModal">
+                            Cancelar
+                        </button>
 
-                    <jet-danger-button class="ml-2" @click="deleteUser" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Delete Account
-                    </jet-danger-button>
+                        <button
+                            class="btn3"
+                            @click="deleteUser"
+                            :disabled="form.processing"
+                        >
+                            Deletar Conta
+                        </button>
+                    </div>
                 </template>
             </jet-dialog-modal>
         </template>
@@ -53,54 +70,89 @@
 </template>
 
 <script>
-    import JetActionSection from '@/Jetstream/ActionSection'
-    import JetDialogModal from '@/Jetstream/DialogModal'
-    import JetDangerButton from '@/Jetstream/DangerButton'
-    import JetInput from '@/Jetstream/Input'
-    import JetInputError from '@/Jetstream/InputError'
-    import JetSecondaryButton from '@/Jetstream/SecondaryButton'
+import JetActionSection from "@/Jetstream/ActionSection";
+import JetDialogModal from "@/Jetstream/DialogModal";
+import JetDangerButton from "@/Jetstream/DangerButton";
+import JetInput from "@/Jetstream/Input";
+import JetInputError from "@/Jetstream/InputError";
+import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 
-    export default {
-        components: {
-            JetActionSection,
-            JetDangerButton,
-            JetDialogModal,
-            JetInput,
-            JetInputError,
-            JetSecondaryButton,
+export default {
+    components: {
+        JetActionSection,
+        JetDangerButton,
+        JetDialogModal,
+        JetInput,
+        JetInputError,
+        JetSecondaryButton,
+    },
+
+    data() {
+        return {
+            confirmingUserDeletion: false,
+
+            form: this.$inertia.form({
+                password: "",
+            }),
+        };
+    },
+
+    methods: {
+        confirmUserDeletion() {
+            this.confirmingUserDeletion = true;
+
+            setTimeout(() => this.$refs.password.focus(), 250);
         },
 
-        data() {
-            return {
-                confirmingUserDeletion: false,
-
-                form: this.$inertia.form({
-                    password: '',
-                })
-            }
+        deleteUser() {
+            this.form.delete(route("current-user.destroy"), {
+                preserveScroll: true,
+                onSuccess: () => this.closeModal(),
+                onError: () => this.$refs.password.focus(),
+                onFinish: () => this.form.reset(),
+            });
         },
 
-        methods: {
-            confirmUserDeletion() {
-                this.confirmingUserDeletion = true;
+        closeModal() {
+            this.confirmingUserDeletion = false;
 
-                setTimeout(() => this.$refs.password.focus(), 250)
-            },
-
-            deleteUser() {
-                this.form.delete(route('current-user.destroy'), {
-                    preserveScroll: true,
-                    onSuccess: () => this.closeModal(),
-                    onError: () => this.$refs.password.focus(),
-                    onFinish: () => this.form.reset(),
-                })
-            },
-
-            closeModal() {
-                this.confirmingUserDeletion = false
-
-                this.form.reset()
-            },
+            this.form.reset();
         },
-    }
+    },
+};
 </script>
+
+<style lang="scss" scoped>
+#introduction {
+    margin-bottom: 1.5vw;
+    padding-bottom: 1.5vw;
+    border-bottom: 2px solid $yellow;
+}
+p {
+    @include Fonte1_SS;
+    font-size: 1.2vw;
+}
+.btn {
+    @include button1();
+}
+.btn3 {
+    @include button3();
+    @include Titulo3_SS;
+}
+#actions_container {
+    display: flex;
+    gap: 1vw;
+}
+.input {
+    input {
+        border-radius: 0.3vw;
+        border: 2px solid $red;
+        outline: none;
+        box-shadow: 0 0 0 0;
+
+        margin-top: 1vw;
+
+        font-size: 1.2vw;
+    }
+}
+</style>

@@ -9,33 +9,35 @@
         </template>
 
         <template #form>
-            <div class="col-span-6 sm:col-span-4">
+            <div class="input ">
                 <jet-label for="current_password" value="Current Password" />
-                <jet-input id="current_password" type="password" class="mt-1 block w-full" v-model="form.current_password" ref="current_password" autocomplete="current-password" />
-                <jet-input-error :message="form.errors.current_password" class="mt-2" />
+                <jet-input id="current_password" type="password" class="" v-model="form.current_password" ref="current_password" autocomplete="current-password" />
+                <jet-input-error :message="form.errors.current_password" />
             </div>
 
-            <div class="col-span-6 sm:col-span-4">
+            <div class="input ">
                 <jet-label for="password" value="New Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" ref="password" autocomplete="new-password" />
-                <jet-input-error :message="form.errors.password" class="mt-2" />
+                <jet-input id="password" type="password" class="" v-model="form.password" ref="password" autocomplete="new-password" />
+                <jet-input-error :message="form.errors.password" />
             </div>
 
-            <div class="col-span-6 sm:col-span-4">
+            <div class="input ">
                 <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" autocomplete="new-password" />
-                <jet-input-error :message="form.errors.password_confirmation" class="mt-2" />
+                <jet-input id="password_confirmation" type="password" class="" v-model="form.password_confirmation" autocomplete="new-password" />
+                <jet-input-error :message="form.errors.password_confirmation" />
             </div>
         </template>
 
         <template #actions>
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
-                Saved.
+                Salvo
             </jet-action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Save
-            </jet-button>
+            <button class="btn"
+                :disabled="form.processing"
+            >
+                Salvar
+            </button>
         </template>
     </jet-form-section>
 </template>
@@ -90,3 +92,27 @@
         },
     }
 </script>
+
+<style lang="scss" scoped>
+.input{
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 1.4vw;
+    
+    label{
+        font-size: 1.25vw;
+    }
+    input{
+        border-radius: 0.3vw;
+        border: none;
+        outline: none;
+        box-shadow: 0 0 0 0;
+        font-size: 1.2vw;
+    }
+}
+.btn{
+    @include button1();
+}
+
+</style>

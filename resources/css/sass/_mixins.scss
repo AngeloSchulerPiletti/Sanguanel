@@ -4,8 +4,27 @@
 
 @mixin button1 {
     @include buttonT($black, $yellow, $white, $white);
+    @include Fonte1_SS;
+    text-transform: uppercase;
+    padding: 0.5vw 1.2vw 0.5vw 1.2vw;
+    border-radius: 0.3vw;
+    font-size: 1.3vw;
+}
+
+@mixin button2 {
+    @include buttonT($yellow, $black, $white, $white);
     @include Fonte2_SS;
     text-transform: uppercase;
     padding: 0.5vw 1.2vw 0.5vw 1.2vw;
     border-radius: 0.3vw;
+    font-size: 1.3vw;
+}
+
+@mixin button3 {
+    @include buttonT($red, $red2, $white, $white);
+    @include Titulo3_SS;
+    text-transform: uppercase;
+    padding: 0.5vw 1.2vw 0.5vw 1.2vw;
+    border-radius: 0.3vw;
+    font-size: 1.3vw;
 }

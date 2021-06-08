@@ -55,6 +55,7 @@ export default {
     display: flex;
 
     padding: 3vw;
+    gap: 3vw;
 
     .left{
         flex-shrink: 0;

@@ -45,11 +45,10 @@
                 </div>
 
                 <div id="actions_container">
-                    <button type="button" @click.prevent="selectNewPhoto">
+                    <button class="btn2" @click.prevent="selectNewPhoto">
                         Trocar de Foto
                     </button>
-                    <button
-                        type="button"
+                    <button class="btn2"
                         @click.prevent="deletePhoto"
                         v-if="user.profile_photo_path"
                     >
@@ -57,7 +56,7 @@
                     </button>
                 </div>
 
-                <jet-input-error :message="form.errors.photo" />
+                <!-- <jet-input-error :message="form.errors.photo" /> -->
             </div>
 
             <!-- Name -->
@@ -69,18 +68,21 @@
                     v-model="form.name"
                     autocomplete="name"
                 />
-                <jet-input-error :message="form.errors.name" />
+                <!-- <jet-input-error :message="form.errors.name" /> -->
             </div>
 
             <!-- Email -->
             <div class="input email">
                 <jet-label for="email" value="Email" />
                 <jet-input id="email" type="email" v-model="form.email" />
-                <jet-input-error :message="form.errors.email" />
+                <!-- <jet-input-error :message="form.errors.email" /> -->
             </div>
         </template>
 
         <template #actions>
+            <jet-action-message :on="form.recentlySuccessful" class="mr-3">
+                Salvo
+            </jet-action-message>
             <button class="btn"
                 :disabled="form.processing"
             >
@@ -200,20 +202,22 @@ export default {
         margin-top: 2.5vw;
         display: flex;
         gap: 1vw;
-        button {
-            @include button1();
-        }
     }
 }
 .input{
     display: flex;
     flex-direction: column;
     
+    label{
+        font-size: 1.25vw;
+    }
     input{
         border-radius: 0.3vw;
         border: none;
         outline: none;
         box-shadow: 0 0 0 0;
+
+        font-size: 1.2vw;
     }
 }
 .name {
@@ -224,6 +228,8 @@ export default {
 }
 .btn{
     @include button1();
-    @include Fonte1_SS;
+}
+.btn2{
+    @include button2();
 }
 </style>
