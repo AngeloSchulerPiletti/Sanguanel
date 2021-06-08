@@ -135,10 +135,5 @@ export default {
 
 #register_container {
     @include formLayout();
-
-    // a{
-    //     @include anchorT($yellow, $black);
-    // }
-    
 }
 </style>

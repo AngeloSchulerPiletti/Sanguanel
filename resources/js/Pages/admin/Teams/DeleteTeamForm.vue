@@ -75,7 +75,7 @@
 
             deleteTeam() {
                 this.form.delete(route('teams.destroy', this.team), {
-                    errorBag: 'deleteTeam'
+                    //errorBag: 'deleteTeam'
                 });
             },
         },

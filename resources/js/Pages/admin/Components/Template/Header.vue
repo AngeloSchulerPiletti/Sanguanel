@@ -39,7 +39,8 @@ export default {
                 },
             },
             publicOptions: {
-                "Perfil":     [route("account.profile"), "profile"],
+                "Perfil":                [route("account.profile"), "profile"],
+                "Configurações":         [route('account.profile.show'), "changes"]
             },
         };
     },

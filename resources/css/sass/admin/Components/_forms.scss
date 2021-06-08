@@ -36,6 +36,12 @@
     color: $black;
     font-size: 1.2vw;
 
+    #information{
+        margin-bottom: 2vw;
+        font-size: 1.1em;
+        @include Fonte2_SS;
+    }
+
     form {
         h4 {
             @include Titulo2_S();

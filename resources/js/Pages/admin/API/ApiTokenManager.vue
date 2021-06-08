@@ -45,7 +45,7 @@
         </jet-form-section>
 
         <div v-if="tokens.length > 0">
-            <jet-section-border />
+             
 
             <!-- Manage API Tokens -->
             <div class="mt-10 sm:mt-0">
@@ -176,7 +176,7 @@
     import JetInputError from '@/Jetstream/InputError'
     import JetLabel from '@/Jetstream/Label'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-    import JetSectionBorder from '@/Jetstream/SectionBorder'
+ 
 
     export default {
         components: {
@@ -192,7 +192,7 @@
             JetInputError,
             JetLabel,
             JetSecondaryButton,
-            JetSectionBorder,
+             
         },
 
         props: [

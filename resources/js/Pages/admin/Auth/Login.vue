@@ -2,10 +2,6 @@
     <app-admin :atPage="'login'">
         <section id="login_container">
 
-            <div v-if="status">
-                {{ status }}
-            </div>
-
             <form @submit.prevent="submit">
                 <h4>Bem-vindo!</h4>
                 <div class="input_container">

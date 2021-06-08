@@ -1,7 +1,12 @@
 <template>
     <app-admin :atPage="'account'" atSubpage="profile">
         <main>
-            Profile
+            <section id="basic_infos">
+                <inertia-link :href="route('account.profile.show')">Editar</inertia-link>
+            </section>
+            <section id="options">
+                <inertia-link :href="route('account.profile.show')">Trocar Senha</inertia-link>
+            </section>
         </main>
     </app-admin>
 </template>
@@ -17,7 +22,7 @@ export default {
         'user_data'
     ],
     created(){
-        console.log(this.user_data);
+        //
     },
 };
 </script>

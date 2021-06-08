@@ -1,4 +1,14 @@
 <template>
+    <!-- CABEÇALHO DA PÁGINA -->
+    <inertia-head>
+        <title>Sanguanel | {{ article_data.title }}</title>
+        <meta
+            name="description"
+            :content="description"
+        />
+    </inertia-head>
+    <!-- CABEÇALHO DA PÁGINA -->
+
     <app-public :header_content="header">
         <article v-html="article_data.text"></article>
     </app-public>
@@ -23,6 +33,7 @@ export default {
                 author: "",
                 date: "",
             },
+            description: "",
         };
     },
     components: {
@@ -46,6 +57,10 @@ export default {
         date.pop();
 
         this.header.date = date;
+
+        var regex = />[^<]+/;
+        this.description = this.article_data.text.match(regex)[0];
+        this.description = this.description.replace('>', '');
     },
 };
 </script>

@@ -64,7 +64,7 @@
         methods: {
             createTeam() {
                 this.form.post(route('teams.store'), {
-                    errorBag: 'createTeam',
+                    //errorBag: 'createTeam',
                     preserveScroll: true
                 });
             },

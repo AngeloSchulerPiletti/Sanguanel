@@ -1,62 +1,76 @@
 <template>
-    <app-admin  :atPage="'login'">
+    <app-admin :atPage="'login'">
+        <section id="forgot_container">
+            
+            <form @submit.prevent="submit">
+                <h4>Recuperação de senha</h4>
+                <div id="information">
+                    Digite seu email e enviaremos um link para você alterar sua senha.
+                </div>
+                <div class="input_container">
+                    <jet-label for="email" value="Email" />
+                    <jet-input
+                        id="email"
+                        type="email"
+                        v-model="form.email"
+                        required
+                        autofocus
+                    />
+                </div>
 
-        <div>
-            Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
-        </div>
-
-        <div v-if="status">
-            {{ status }}
-        </div>
-
-
-        <form @submit.prevent="submit">
-            <div>
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" v-model="form.email" required autofocus />
-            </div>
-
-            <div>
-                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Email Password Reset Link
-                </jet-button>
-            </div>
-        </form>
+                <div class="options_container">
+                    <jet-button
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                    >
+                        Email Password Reset Link
+                    </jet-button>
+                    <inertia-link :href="route('login')">Voltar</inertia-link>
+                </div>
+            </form>
+        </section>
     </app-admin>
 </template>
 
 <script>
 import AppAdmin from "@/Layouts/AppAdmin";
 
-    import JetButton from '@/Jetstream/Button'
-    import JetInput from '@/Jetstream/Input'
-    import JetLabel from '@/Jetstream/Label'
-import LogoBranco from '@/Pages/public/Components/Icons/LogoBranco.vue'
+import JetButton from "@/Jetstream/Button";
+import JetInput from "@/Jetstream/Input";
+import JetLabel from "@/Jetstream/Label";
 
-    export default {
-        components: {
-            JetButton,
-            JetInput,
-            JetLabel,
-            AppAdmin,
+export default {
+    components: {
+        JetButton,
+        JetInput,
+        JetLabel,
+        AppAdmin,
+    },
+
+    props: {
+        status: String,
+    },
+
+    data() {
+        return {
+            form: this.$inertia.form({
+                email: "",
+            }),
+        };
+    },
+
+    methods: {
+        submit() {
+            this.form.post(this.route("password.email"));
         },
-
-        props: {
-            status: String
-        },
-
-        data() {
-            return {
-                form: this.$inertia.form({
-                    email: ''
-                })
-            }
-        },
-
-        methods: {
-            submit() {
-                this.form.post(this.route('password.email'))
-            }
-        }
-    }
+    },
+};
 </script>
+
+<style lang="scss" scoped>
+@import "resources/css/sass/admin/Components/forms.scss";
+
+#forgot_container {
+    @include formLayout();
+}
+</style>

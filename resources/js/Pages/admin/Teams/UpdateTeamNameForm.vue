@@ -80,7 +80,7 @@
         methods: {
             updateTeamName() {
                 this.form.put(route('teams.update', this.team), {
-                    errorBag: 'updateTeamName',
+                    //errorBag: 'updateTeamName',
                     preserveScroll: true
                 });
             },

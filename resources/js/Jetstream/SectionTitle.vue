@@ -1,17 +1,28 @@
 <template>
-    <div class="md:col-span-1 flex justify-between">
-        <div class="px-4 sm:px-0">
-            <h3 class="text-lg font-medium text-gray-900">
+    <div>
+        <div>
+            <h3>
                 <slot name="title"></slot>
             </h3>
 
-            <p class="mt-1 text-sm text-gray-600">
+            <p>
                 <slot name="description"></slot>
             </p>
         </div>
 
-        <div class="px-4 sm:px-0">
+        <div>
             <slot name="aside"></slot>
         </div>
     </div>
 </template>
+
+<style lang="scss" scoped>
+h3{
+    @include Fonte1_S;
+    font-size: 2vw;
+}
+p{
+    @include Fonte2_SS;
+    font-size: 1.3vw;
+}
+</style>

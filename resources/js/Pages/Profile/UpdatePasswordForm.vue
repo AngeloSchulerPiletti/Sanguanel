@@ -71,7 +71,7 @@
         methods: {
             updatePassword() {
                 this.form.put(route('user-password.update'), {
-                    errorBag: 'updatePassword',
+                    //errorBag: 'updatePassword',
                     preserveScroll: true,
                     onSuccess: () => this.form.reset(),
                     onError: () => {

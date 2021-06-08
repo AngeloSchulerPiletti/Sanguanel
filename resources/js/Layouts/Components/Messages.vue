@@ -54,6 +54,7 @@ export default {
         this.check();
     },
     updated() {
+        console.log(this.$props.errors);
         this.check();
     },
 };

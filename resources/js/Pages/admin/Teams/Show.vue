@@ -16,7 +16,7 @@
                             :user-permissions="permissions" />
 
                 <template v-if="permissions.canDeleteTeam && ! team.personal_team">
-                    <jet-section-border />
+                     
 
                     <delete-team-form class="mt-10 sm:mt-0" :team="team" />
                 </template>
@@ -29,7 +29,7 @@
     import TeamMemberManager from './TeamMemberManager'
     import AppLayout from '@/Layouts/AppAdmin'
     import DeleteTeamForm from './DeleteTeamForm'
-    import JetSectionBorder from '@/Jetstream/SectionBorder'
+ 
     import UpdateTeamNameForm from './UpdateTeamNameForm'
 
     export default {
@@ -42,7 +42,7 @@
         components: {
             AppLayout,
             DeleteTeamForm,
-            JetSectionBorder,
+             
             TeamMemberManager,
             UpdateTeamNameForm,
         },

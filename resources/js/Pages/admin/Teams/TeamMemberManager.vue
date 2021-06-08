@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="userPermissions.canAddTeamMembers">
-            <jet-section-border />
+             
 
             <!-- Add Team Member -->
             <jet-form-section @submitted="addTeamMember">
@@ -71,7 +71,7 @@
         </div>
 
         <div v-if="team.team_invitations.length > 0 && userPermissions.canAddTeamMembers">
-            <jet-section-border />
+             
 
             <!-- Team Member Invitations -->
             <jet-action-section class="mt-10 sm:mt-0">
@@ -104,7 +104,7 @@
         </div>
 
         <div v-if="team.users.length > 0">
-            <jet-section-border />
+             
 
             <!-- Manage Team Members -->
             <jet-action-section class="mt-10 sm:mt-0">
@@ -258,7 +258,7 @@
     import JetInputError from '@/Jetstream/InputError'
     import JetLabel from '@/Jetstream/Label'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-    import JetSectionBorder from '@/Jetstream/SectionBorder'
+ 
 
     export default {
         components: {
@@ -273,7 +273,7 @@
             JetInputError,
             JetLabel,
             JetSecondaryButton,
-            JetSectionBorder,
+             
         },
 
         props: [
@@ -306,7 +306,7 @@
         methods: {
             addTeamMember() {
                 this.addTeamMemberForm.post(route('team-members.store', this.team), {
-                    errorBag: 'addTeamMember',
+                    //errorBag: 'addTeamMember',
                     preserveScroll: true,
                     onSuccess: () => this.addTeamMemberForm.reset(),
                 });
@@ -345,7 +345,7 @@
 
             removeTeamMember() {
                 this.removeTeamMemberForm.delete(route('team-members.destroy', [this.team, this.teamMemberBeingRemoved]), {
-                    errorBag: 'removeTeamMember',
+                    //errorBag: 'removeTeamMember',
                     preserveScroll: true,
                     preserveState: true,
                     onSuccess: () => (this.teamMemberBeingRemoved = null),
