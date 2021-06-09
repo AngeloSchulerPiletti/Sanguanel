@@ -55,7 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 
-@include SVGHold();
+@include SVGHold($white, $yellow);
 svg{
     width: 2.5vw;
     margin: auto;

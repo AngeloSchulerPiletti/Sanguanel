@@ -110,7 +110,12 @@ export default {
     },
     methods: {
         submit: function () {
-            this.form.post(this.route("admin.articlerequire"));
+            this.form.post(this.route("admin.articlerequire"), {
+                onFinish: () => {
+                    this.imgs = 0;
+                    this.form.images = [];
+                } 
+            });
         },
         Imgs: function (action) {
             if (action == 1) {

@@ -74,14 +74,15 @@ Route::name('admin.')->middleware('admin')->group(function(){
         Route::get('/alterar-pagina',             [AdminController::class, 'pages'])->name('updatepages');
         Route::get('/enviar-newsletter',          [AdminController::class, 'news'])->name('news');
 
+
         Route::post('/database',                   [AdminController::class, 'Pdatabase'])->name('Pdatabase');
         Route::post('/publicando',                 [AdminController::class, 'Ppubs'])->name('Pnewpub');
         Route::post('/alterar-pagina',             [AdminController::class, 'Ppages'])->name('Pupdatepages');
         Route::post('/enviar-newsletter',          [AdminController::class, 'Pnews'])->name('Pnews');
 
 
-        Route::post('/nova-publicacao',            [ArticleRequireController::class, 'require'])->name('articlerequire');
-
+        Route::post('/nova-publicacao',            [ArticleRequireController::class, 'Prequire'])->name('articlerequire');
+        Route::get('/requisicoes',                 [ArticleRequireController::class, 'require'])->name('aprove');
 
     });    
 });

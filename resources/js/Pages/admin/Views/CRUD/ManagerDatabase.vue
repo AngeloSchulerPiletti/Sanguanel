@@ -22,10 +22,9 @@
                     :id="index"
                     class="table_container"
                 >
-                    <h2 v-if="table[0]">{{titles[index]}}</h2>
+                    <h2 v-if="table[0]">{{ titles[index] }}</h2>
                     <table @click="changeData($event, 0)">
                         <!-- Definição das colunas -->
-                        
 
                         <!-- Tabela em si -->
                         <thead>
@@ -66,9 +65,9 @@ import ModifierDb from "@/Pages/admin/Components/CRUD/ModifierDB";
 export default {
     data() {
         return {
-            titles:{
-                'users': 'Usuários',
-                'articles': 'Artigos',
+            titles: {
+                users: "Usuários",
+                articles: "Artigos",
             },
             info: {
                 users: false,
@@ -77,7 +76,6 @@ export default {
             messages: {},
             instructions: [undefined, undefined],
             dataChange: {},
-
         };
     },
     props: {
@@ -102,18 +100,19 @@ export default {
             this.instructions[0] = "db";
         },
         changeData: function (event, wich) {
-            if (event.path[2].tagName == "TBODY") {
-                
-                var elements = event.path[1].querySelectorAll("td"),
-                    wichTable = event.path[4].id,
-                    contents = ["dbchange", wichTable];
+            if (this.$page.props.user.adminLevel > 3) {
+                if (event.path[2].tagName == "TBODY") {
+                    var elements = event.path[1].querySelectorAll("td"),
+                        wichTable = event.path[4].id,
+                        contents = ["dbchange", wichTable];
 
-                elements.forEach((el) => {
-                    contents.push(el.textContent);
-                });
-                this.dataChange = contents;
-                this.instructions[1] = wich;
-                this.instructions[0] = "dbchange";
+                    elements.forEach((el) => {
+                        contents.push(el.textContent);
+                    });
+                    this.dataChange = contents;
+                    this.instructions[1] = wich;
+                    this.instructions[0] = "dbchange";
+                }
             }
         },
         Refresh: function () {
@@ -122,10 +121,9 @@ export default {
             }
             if (this.database) {
                 if (this.database.users && this.database.articles) {
-                    this.info.users =    this.database.users;
+                    this.info.users = this.database.users;
                     this.info.articles = this.database.articles;
-                } 
-                else {
+                } else {
                     this.messages = addingmsg.addMsg(this.messages, [
                         "Alguns ou todos os dados não foram recebeidos!",
                     ]);
@@ -182,8 +180,8 @@ export default {
         .table_container {
             max-height: 70vh;
             overflow-y: auto;
-            
-            h2{
+
+            h2 {
                 @include Titulo2_S;
                 text-transform: uppercase;
                 font-size: 2vw;
@@ -220,7 +218,7 @@ export default {
         }
 
         // #users {
-            
+
         // }
         // #articles {
         //     table {

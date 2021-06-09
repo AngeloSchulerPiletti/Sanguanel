@@ -30,10 +30,13 @@ export default {
                 2: {},
                 3: {
                     "Criar Publicação":  [route("admin.newpub"), "pubs"],
+                    "Base de Dados":     [route("admin.database"), "database"],
+
                 },
                 4: {
                     "Base de Dados":     [route("admin.database"), "database"],
                     "Criar Publicação":  [route("admin.newpub"), "pubs"],
+                    "Requisições":       [route("admin.aprove"), "requires"],
                     "Alterar Páginas":   [route("admin.updatepages"), "pages"],
                     "Criar Newsletter":  [route("admin.news"), "news"],
                 },

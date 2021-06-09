@@ -36,32 +36,19 @@
     }
 }
 
-@mixin SVGHold {
-    svg:hover path {
-        fill: $yellow;
+@mixin SVGHold($c1, $c2) {
+    svg:hover path,  svg:hover rect, svg:hover polygon {
+        fill: $c2;
 
         transition: 300ms;
         transition-property: fill;
     }
-    svg path {
-        fill: $white;
+    svg path,  svg rect, svg polygon {
+        fill: $c1;
 
         transition: 600ms;
         transition-property: fill;
     }
 }
 
-@mixin SVGHold2 {
-    svg:hover path {
-        fill: $yellow;
 
-        transition: 300ms;
-        transition-property: fill;
-    }
-    svg path {
-        fill: $black;
-
-        transition: 600ms;
-        transition-property: fill;
-    }
-}

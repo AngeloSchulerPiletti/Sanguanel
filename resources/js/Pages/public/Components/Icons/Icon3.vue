@@ -46,5 +46,5 @@ export default {};
 
 <style lang="scss" scoped>
 
-@include SVGHold();
+@include SVGHold($white, $yellow);
 </style>

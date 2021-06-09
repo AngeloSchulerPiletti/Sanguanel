@@ -200,7 +200,7 @@ nav {
             margin-bottom: 30px;
         }
         li {
-            // @include SVGHold();
+            // @include SVGHold($white, $yellow);
             color: $white;
 
             
@@ -245,7 +245,7 @@ nav {
                 color: $white;
             }
         }
-        // @include SVGHold();
+        // @include SVGHold($white, $yellow);
     }
     
 }

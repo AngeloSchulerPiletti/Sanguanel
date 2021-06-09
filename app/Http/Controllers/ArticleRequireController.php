@@ -48,7 +48,7 @@ class ArticleRequireController extends Controller
 
 
 
-    public function require(Request $request)
+    public function Prequire(Request $request)
     {
        
         $request->validate([
@@ -228,5 +228,13 @@ class ArticleRequireController extends Controller
         $article->save();
 
         return Inertia::render("admin/Views/CRUD/ManagerPubs", ['status' => [0 => $status]]);
+    }
+
+
+
+    public function require(){
+        $requiresToAnswear = ArticleRequire::all();
+        
+        return Inertia::render("admin/Views/CRUD/Requires", ['articlesToAnswear' => $requiresToAnswear]);
     }
 }
