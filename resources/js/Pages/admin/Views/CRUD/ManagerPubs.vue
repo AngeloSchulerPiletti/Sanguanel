@@ -110,11 +110,9 @@ export default {
     },
     methods: {
         submit: function () {
-            this.form.post(this.route("admin.Pnewpub"));
+            this.form.post(this.route("admin.articlerequire"));
         },
         Imgs: function (action) {
-            this.imgs;
-
             if (action == 1) {
                 this.imgs++;
             } else if (action == 0) {

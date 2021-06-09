@@ -20,6 +20,9 @@ class AccountController extends Controller
     public function profile(Request $request){
         
         $user = Auth::user();
-        return Inertia::render($this->url_adm . 'Account/Profile', ['user_data'=>$user]);
+        preg_match('/([0-9]{4})[-]([0-9]{2})[-]([0-9]{2})/', $user->created_at, $RegisteredAt);
+        $registeredDate = "$RegisteredAt[3]". "/" ."$RegisteredAt[2]". "/" ."$RegisteredAt[1]";
+
+        return Inertia::render($this->url_adm . 'Account/Profile', ['register_date'=>$registeredDate]);
     }
 }

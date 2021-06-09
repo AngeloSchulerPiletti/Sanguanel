@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticlesTable extends Migration
+class CreateArticleRequiresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('article_requires', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->tinyText('author');
             $table->string('subject', 50); 
             $table->tinyText('title');
             $table->longText('text');
+            $table->longText('text_formatted');
             $table->tinyText('path_dirPictures')->default('');
-            $table->string('pictureNames')->default('');
+            $table->tinyText('pictureNames')->default('');
             $table->string('url');
+            $table->string('status')->default('open');
         });
     }
 
@@ -33,6 +35,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('article_requires');
     }
 }

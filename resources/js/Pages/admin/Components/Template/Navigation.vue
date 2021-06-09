@@ -12,7 +12,7 @@
                     <inertia-link :href="route('login')">Entrar</inertia-link>
                 </li>
                 <li v-if="$page.props.user" :class="li.account">
-                    <inertia-link :href="route('account.')">Conta</inertia-link>
+                    <inertia-link :href="route('account.profile')">Conta</inertia-link>
                 </li>
                 <li v-if="$page.props.user && $page.props.user.adminLevel > 2" :class="li.admin">
                     <inertia-link :href="route('admin.')">Administrador</inertia-link>

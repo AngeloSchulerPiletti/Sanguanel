@@ -1,89 +1,120 @@
 <template>
-    <app-admin>
+    <app-admin atPage="login">
+        <section id="twofactor_container">
+            <h4>Autenticação em Dois Fatores</h4>
+            <div id="introduction">
+                <template v-if="!recovery">
+                    <p>
+                        Por favor, confirme sua identidade inserindo o código
+                        provido pelo seu aplicativo de autenticação.
+                    </p>
+                </template>
 
-        <div>
-            <template v-if="! recovery">
-                Please confirm access to your account by entering the authentication code provided by your authenticator application.
-            </template>
-
-            <template v-else>
-                Please confirm access to your account by entering one of your emergency recovery codes.
-            </template>
-        </div>
-
-
-        <form @submit.prevent="submit">
-            <div v-if="! recovery">
-                <jet-label for="code" value="Code" />
-                <jet-input ref="code" id="code" type="text" inputmode="numeric" v-model="form.code" autofocus autocomplete="one-time-code" />
+                <template v-else>
+                    <p>
+                        Por favor, confirme sua identidade inserindo um dos
+                        códigos de recuperação fornecidos durante a habilitação
+                        da autenticação em dois fatores.
+                    </p>
+                </template>
             </div>
 
-            <div v-else>
-                <jet-label for="recovery_code" value="Recovery Code" />
-                <jet-input ref="recovery_code" id="recovery_code" type="text" v-model="form.recovery_code" autocomplete="one-time-code" />
-            </div>
+            <form @submit.prevent="submit">
+                <div v-if="!recovery" class="input_container">
+                    <jet-label for="code" value="Código" />
+                    <jet-input
+                        ref="code"
+                        id="code"
+                        type="text"
+                        inputmode="numeric"
+                        v-model="form.code"
+                        autofocus
+                        autocomplete="one-time-code"
+                    />
+                </div>
 
-            <div>
-                <button type="button" @click.prevent="toggleRecovery">
-                    <template v-if="! recovery">
-                        Use a recovery code
-                    </template>
+                <div class="input_container" v-else>
+                    <jet-label for="recovery_code" value="Código de Recuperação" />
+                    <jet-input
+                        ref="recovery_code"
+                        id="recovery_code"
+                        type="text"
+                        v-model="form.recovery_code"
+                        autocomplete="one-time-code"
+                    />
+                </div>
 
-                    <template v-else>
-                        Use an authentication code
-                    </template>
-                </button>
+                <div id="actions_container">
+                    <button class="btn2" type="button" @click.prevent="toggleRecovery">
+                        <template v-if="!recovery">
+                            Usar Código de Recuperação
+                        </template>
 
-                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </jet-button>
-            </div>
-        </form>
+                        <template v-else> Usar Código de Autenticação </template>
+                    </button>
+
+                    <button
+                        class="btn"
+                        :disabled="form.processing"
+                    >
+                        Entrar
+                    </button>
+                </div>
+            </form>
+        </section>
     </app-admin>
 </template>
 
 <script>
 import AppAdmin from "@/Layouts/AppAdmin";
-    import JetButton from '@/Jetstream/Button'
-    import JetInput from '@/Jetstream/Input'
-    import JetLabel from '@/Jetstream/Label'
+import JetButton from "@/Jetstream/Button";
+import JetInput from "@/Jetstream/Input";
+import JetLabel from "@/Jetstream/Label";
 
-    export default {
-        components: {
-            JetButton,
-            JetInput,
-            JetLabel,
-            AppAdmin,
+export default {
+    components: {
+        JetButton,
+        JetInput,
+        JetLabel,
+        AppAdmin,
+    },
+
+    data() {
+        return {
+            recovery: false,
+            form: this.$inertia.form({
+                code: "",
+                recovery_code: "",
+            }),
+        };
+    },
+
+    methods: {
+        toggleRecovery() {
+            this.recovery ^= true;
+
+            this.$nextTick(() => {
+                if (this.recovery) {
+                    this.$refs.recovery_code.focus();
+                    this.form.code = "";
+                } else {
+                    this.$refs.code.focus();
+                    this.form.recovery_code = "";
+                }
+            });
         },
 
-        data() {
-            return {
-                recovery: false,
-                form: this.$inertia.form({
-                    code: '',
-                    recovery_code: '',
-                })
-            }
+        submit() {
+            this.form.post(this.route("two-factor.login"));
         },
-
-        methods: {
-            toggleRecovery() {
-                this.recovery ^= true
-
-                this.$nextTick(() => {
-                    if (this.recovery) {
-                        this.$refs.recovery_code.focus()
-                        this.form.code = '';
-                    } else {
-                        this.$refs.code.focus()
-                        this.form.recovery_code = ''
-                    }
-                })
-            },
-
-            submit() {
-                this.form.post(this.route('two-factor.login'))
-            }
-        }
-    }
+    },
+};
 </script>
+
+<style lang="scss" scoped>
+@import "resources/css/sass/admin/Components/forms.scss";
+
+#twofactor_container {
+    @include formLayout();
+}
+</style>

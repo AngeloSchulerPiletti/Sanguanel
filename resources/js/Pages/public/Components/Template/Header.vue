@@ -67,7 +67,7 @@ export default {
                 date: "",
             },
             links: {
-                Conta: "/conta",
+                Conta: route('account.profile'),
             },
         };
     },

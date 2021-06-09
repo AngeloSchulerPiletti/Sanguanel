@@ -17732,9 +17732,6 @@ __webpack_require__.r(__webpack_exports__);
         this.$refs.photo.value = null;
       }
     }
-  },
-  updated: function updated() {
-    console.log(this.$page.props);
   }
 });
 
@@ -18178,8 +18175,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       recovery: false,
       form: this.$inertia.form({
-        code: '',
-        recovery_code: ''
+        code: "",
+        recovery_code: ""
       })
     };
   },
@@ -18192,16 +18189,16 @@ __webpack_require__.r(__webpack_exports__);
         if (_this.recovery) {
           _this.$refs.recovery_code.focus();
 
-          _this.form.code = '';
+          _this.form.code = "";
         } else {
           _this.$refs.code.focus();
 
-          _this.form.recovery_code = '';
+          _this.form.recovery_code = "";
         }
       });
     },
     submit: function submit() {
-      this.form.post(this.route('two-factor.login'));
+      this.form.post(this.route("two-factor.login"));
     }
   }
 });
@@ -18928,9 +18925,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppAdmin: _Layouts_AppAdmin__WEBPACK_IMPORTED_MODULE_0__.default
   },
-  props: ['user_data'],
-  created: function created() {//
-  }
+  props: ["user", "register_date"]
 });
 
 /***/ }),
@@ -19123,11 +19118,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.form.post(this.route("admin.Pnewpub"));
+      this.form.post(this.route("admin.articlerequire"));
     },
     Imgs: function Imgs(action) {
-      this.imgs;
-
       if (action == 1) {
         this.imgs++;
       } else if (action == 0) {
@@ -19470,7 +19463,7 @@ __webpack_require__.r(__webpack_exports__);
         date: ""
       },
       links: {
-        Conta: "/conta"
+        Conta: route('account.profile')
       }
     };
   },
@@ -22603,7 +22596,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   var _component_app_admin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-admin");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_admin, {
-    atPage: 'login'
+    atPage: "login"
   }, {
     "default": _withId(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
@@ -22998,10 +22991,10 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694 ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694&scoped=true":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694&scoped=true ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23012,49 +23005,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please confirm access to your account by entering the authentication code provided by your authenticator application. ");
+var _withId = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.withScopeId)("data-v-107b2694");
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please confirm access to your account by entering one of your emergency recovery codes. ");
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-107b2694");
+
+var _hoisted_1 = {
+  id: "twofactor_container"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, "Autenticação em Dois Fatores", -1
+/* HOISTED */
+);
 
 var _hoisted_3 = {
-  key: 0
+  id: "introduction"
 };
 var _hoisted_4 = {
+  key: 0
+};
+var _hoisted_5 = {
   key: 1
 };
+var _hoisted_6 = {
+  key: 0,
+  "class": "input_container"
+};
+var _hoisted_7 = {
+  key: 1,
+  "class": "input_container"
+};
+var _hoisted_8 = {
+  id: "actions_container"
+};
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Use a recovery code ");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Usar Código de Recuperação ");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Use an authentication code ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Usar Código de Autenticação ");
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log in ");
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
 
   var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
 
-  var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
-
   var _component_app_admin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-admin");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_admin, null, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [!$data.recovery ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        key: 0
-      }, [_hoisted_1], 2112
-      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-      )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        key: 1
-      }, [_hoisted_2], 2112
-      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_admin, {
+    atPage: "login"
+  }, {
+    "default": _withId(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [!$data.recovery ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", _hoisted_4, " Por favor, confirme sua identidade inserindo o código provido pelo seu aplicativo de autenticação. ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", _hoisted_5, " Por favor, confirme sua identidade inserindo um dos códigos de recuperação fornecidos durante a habilitação da autenticação em dois fatores. "))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
         onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.submit && $options.submit.apply($options, arguments);
         }, ["prevent"]))
-      }, [!$data.recovery ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      }, [!$data.recovery ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "code",
-        value: "Code"
+        value: "Código"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         ref: "code",
         id: "code",
@@ -23068,9 +23075,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         autocomplete: "one-time-code"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+      , ["modelValue"])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "recovery_code",
-        value: "Recovery Code"
+        value: "Código de Recuperação"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         ref: "recovery_code",
         id: "recovery_code",
@@ -23082,42 +23089,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         autocomplete: "one-time-code"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+      , ["modelValue"])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        "class": "btn2",
         type: "button",
         onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.toggleRecovery && $options.toggleRecovery.apply($options, arguments);
         }, ["prevent"]))
       }, [!$data.recovery ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         key: 0
-      }, [_hoisted_5], 2112
+      }, [_hoisted_9], 2112
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
       )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         key: 1
-      }, [_hoisted_6], 2112
+      }, [_hoisted_10], 2112
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        "class": {
-          'opacity-25': $data.form.processing
-        },
+      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        "class": "btn",
         disabled: $data.form.processing
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_7];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
+      }, " Entrar ", 8
       /* PROPS */
-      , ["class", "disabled"])])], 32
+      , ["disabled"])])], 32
       /* HYDRATE_EVENTS */
-      )];
+      )])];
     }),
     _: 1
     /* STABLE */
 
   });
-}
+});
 
 /***/ }),
 
@@ -24138,7 +24137,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     key: 2,
     "class": $data.li.account
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: _ctx.route('account.')
+    href: _ctx.route('account.profile')
   }, {
     "default": _withId(function () {
       return [_hoisted_5];
@@ -25224,14 +25223,58 @@ var _withId = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.withScopeId)("dat
 var _hoisted_1 = {
   id: "basic_infos"
 };
-
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Editar");
-
+var _hoisted_2 = {
+  "class": "container_left"
+};
 var _hoisted_3 = {
-  id: "options"
+  "class": "top"
+};
+var _hoisted_4 = {
+  "class": "left"
+};
+var _hoisted_5 = {
+  "class": "right"
+};
+var _hoisted_6 = {
+  "for": "name"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Trocar Senha");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Nome: ");
+
+var _hoisted_8 = {
+  "for": "email"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Email: ");
+
+var _hoisted_10 = {
+  "class": "bottom"
+};
+var _hoisted_11 = {
+  "class": "info"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Você está cadastrado desde: ");
+
+var _hoisted_13 = {
+  "class": "info"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Seu nível de Administrador é: ");
+
+var _hoisted_15 = {
+  id: "actions"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Editar");
+
+var _hoisted_17 = {
+  "class": "container_right"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, "Perfil", -1
+/* HOISTED */
+);
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
@@ -25245,29 +25288,33 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     atSubpage: "profile"
   }, {
     "default": _withId(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+        src: $props.user.profile_photo_url,
+        alt: $props.user.name
+      }, null, 8
+      /* PROPS */
+      , ["src", "alt"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.name), 1
+      /* TEXT */
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.email), 1
+      /* TEXT */
+      )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.register_date), 1
+      /* TEXT */
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.adminLevel), 1
+      /* TEXT */
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('account.profile.show')
       }, {
         "default": _withId(function () {
-          return [_hoisted_2];
+          return [_hoisted_16];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-        href: _ctx.route('account.profile.show')
-      }, {
-        "default": _withId(function () {
-          return [_hoisted_4];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["href"])])])];
+      , ["href"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "É realmente um prazer ter você em nosso site " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user.name) + "!", 1
+      /* TEXT */
+      )])])])];
     }),
     _: 1
     /* STABLE */
@@ -25338,6 +25385,9 @@ var _hoisted_4 = {
   "class": "center container"
 };
 var _hoisted_5 = {
+  key: 0
+};
+var _hoisted_6 = {
   "class": "table_header"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -25363,18 +25413,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _cache[2] || (_cache[2] = function ($event) {
           return $options.setInstruction(0);
         })
-      }, "Ver Instruções")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GENERATES A TABLES "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.info, function (table, index) {
+      }, "Ver Instruções")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" GENERATES THE TABLES "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.info, function (table, index) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("section", {
           key: index,
           id: index,
           "class": "table_container"
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.titles[index]), 1
+        }, [table[0] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("h2", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.titles[index]), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", {
+        )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", {
           onClick: _cache[3] || (_cache[3] = function ($event) {
             return $options.changeData($event, 0);
           })
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Definição das colunas "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Tabela em si "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(table[0], function (value, key) {
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Definição das colunas "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Tabela em si "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(table[0], function (value, key) {
           return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("th", {
             key: key
           }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(key), 1
@@ -28408,7 +28458,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-e2429fc6 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-e2429fc6 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-e2429fc6 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-e2429fc6 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#confirmation_container[data-v-e2429fc6] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#confirmation_container #information[data-v-e2429fc6] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#confirmation_container form h4[data-v-e2429fc6] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#confirmation_container form .input_container[data-v-e2429fc6] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#confirmation_container form .input_container label[data-v-e2429fc6] {\n  margin-bottom: 0.5vw;\n}\n#confirmation_container form .input_container input[data-v-e2429fc6] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#confirmation_container form .input_container input[data-v-e2429fc6]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#confirmation_container form .checkbox_container[data-v-e2429fc6] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#confirmation_container form .checkbox_container input[type=\"checkbox\"][data-v-e2429fc6] {\n  border: none;\n}\n#confirmation_container form .checkbox_container input[type=\"checkbox\"][data-v-e2429fc6]:checked {\n  background-color: #e9dc22;\n}\n#confirmation_container form .checkbox_container input[type=\"checkbox\"][data-v-e2429fc6]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#confirmation_container form .checkbox_container span[data-v-e2429fc6] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#confirmation_container form .checkbox_container div div[data-v-e2429fc6] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#confirmation_container form .checkbox_container div div a[data-v-e2429fc6] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#confirmation_container form .checkbox_container div div a[data-v-e2429fc6]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#confirmation_container form .options_container[data-v-e2429fc6] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#confirmation_container form .options_container a[data-v-e2429fc6] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#confirmation_container form .options_container a[data-v-e2429fc6]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#confirmation_container form .options_container button[data-v-e2429fc6] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#confirmation_container form .options_container button[data-v-e2429fc6]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-e2429fc6 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-e2429fc6 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-e2429fc6 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-e2429fc6 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#confirmation_container[data-v-e2429fc6] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#confirmation_container #information[data-v-e2429fc6] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#confirmation_container h4[data-v-e2429fc6] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#confirmation_container #introduction[data-v-e2429fc6] {\n  margin-bottom: 2vw;\n}\n#confirmation_container #introduction p[data-v-e2429fc6] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.2vw;\n}\n#confirmation_container form .input_container[data-v-e2429fc6] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#confirmation_container form .input_container label[data-v-e2429fc6] {\n  margin-bottom: 0.5vw;\n}\n#confirmation_container form .input_container input[data-v-e2429fc6] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#confirmation_container form .input_container input[data-v-e2429fc6]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#confirmation_container form .checkbox_container[data-v-e2429fc6] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#confirmation_container form .checkbox_container input[type=\"checkbox\"][data-v-e2429fc6] {\n  border: none;\n}\n#confirmation_container form .checkbox_container input[type=\"checkbox\"][data-v-e2429fc6]:checked {\n  background-color: #e9dc22;\n}\n#confirmation_container form .checkbox_container input[type=\"checkbox\"][data-v-e2429fc6]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#confirmation_container form .checkbox_container span[data-v-e2429fc6] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#confirmation_container form .checkbox_container div div[data-v-e2429fc6] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#confirmation_container form .checkbox_container div div a[data-v-e2429fc6] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#confirmation_container form .checkbox_container div div a[data-v-e2429fc6]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#confirmation_container form .options_container[data-v-e2429fc6] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#confirmation_container form .options_container a[data-v-e2429fc6] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#confirmation_container form .options_container a[data-v-e2429fc6]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#confirmation_container form .options_container button[data-v-e2429fc6] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#confirmation_container form .options_container button[data-v-e2429fc6]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n#confirmation_container .btn[data-v-e2429fc6] {\n  background-color: #000000;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#confirmation_container .btn[data-v-e2429fc6]:hover {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n}\n#confirmation_container .btn2[data-v-e2429fc6] {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#confirmation_container .btn2[data-v-e2429fc6]:hover {\n  background-color: #000000;\n  color: #FFFFFF;\n}\n#confirmation_container #actions_container[data-v-e2429fc6] {\n  margin-top: 2.5vw;\n  display: flex;\n  gap: 1vw;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28432,7 +28482,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-49df08a8 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-49df08a8 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-49df08a8 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-49df08a8 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#forgot_container[data-v-49df08a8] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#forgot_container #information[data-v-49df08a8] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#forgot_container form h4[data-v-49df08a8] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#forgot_container form .input_container[data-v-49df08a8] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#forgot_container form .input_container label[data-v-49df08a8] {\n  margin-bottom: 0.5vw;\n}\n#forgot_container form .input_container input[data-v-49df08a8] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#forgot_container form .input_container input[data-v-49df08a8]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#forgot_container form .checkbox_container[data-v-49df08a8] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#forgot_container form .checkbox_container input[type=\"checkbox\"][data-v-49df08a8] {\n  border: none;\n}\n#forgot_container form .checkbox_container input[type=\"checkbox\"][data-v-49df08a8]:checked {\n  background-color: #e9dc22;\n}\n#forgot_container form .checkbox_container input[type=\"checkbox\"][data-v-49df08a8]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#forgot_container form .checkbox_container span[data-v-49df08a8] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#forgot_container form .checkbox_container div div[data-v-49df08a8] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#forgot_container form .checkbox_container div div a[data-v-49df08a8] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#forgot_container form .checkbox_container div div a[data-v-49df08a8]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#forgot_container form .options_container[data-v-49df08a8] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#forgot_container form .options_container a[data-v-49df08a8] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#forgot_container form .options_container a[data-v-49df08a8]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#forgot_container form .options_container button[data-v-49df08a8] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#forgot_container form .options_container button[data-v-49df08a8]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-49df08a8 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-49df08a8 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-49df08a8 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-49df08a8 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#forgot_container[data-v-49df08a8] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#forgot_container #information[data-v-49df08a8] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#forgot_container h4[data-v-49df08a8] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#forgot_container #introduction[data-v-49df08a8] {\n  margin-bottom: 2vw;\n}\n#forgot_container #introduction p[data-v-49df08a8] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.2vw;\n}\n#forgot_container form .input_container[data-v-49df08a8] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#forgot_container form .input_container label[data-v-49df08a8] {\n  margin-bottom: 0.5vw;\n}\n#forgot_container form .input_container input[data-v-49df08a8] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#forgot_container form .input_container input[data-v-49df08a8]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#forgot_container form .checkbox_container[data-v-49df08a8] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#forgot_container form .checkbox_container input[type=\"checkbox\"][data-v-49df08a8] {\n  border: none;\n}\n#forgot_container form .checkbox_container input[type=\"checkbox\"][data-v-49df08a8]:checked {\n  background-color: #e9dc22;\n}\n#forgot_container form .checkbox_container input[type=\"checkbox\"][data-v-49df08a8]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#forgot_container form .checkbox_container span[data-v-49df08a8] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#forgot_container form .checkbox_container div div[data-v-49df08a8] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#forgot_container form .checkbox_container div div a[data-v-49df08a8] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#forgot_container form .checkbox_container div div a[data-v-49df08a8]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#forgot_container form .options_container[data-v-49df08a8] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#forgot_container form .options_container a[data-v-49df08a8] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#forgot_container form .options_container a[data-v-49df08a8]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#forgot_container form .options_container button[data-v-49df08a8] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#forgot_container form .options_container button[data-v-49df08a8]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n#forgot_container .btn[data-v-49df08a8] {\n  background-color: #000000;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#forgot_container .btn[data-v-49df08a8]:hover {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n}\n#forgot_container .btn2[data-v-49df08a8] {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#forgot_container .btn2[data-v-49df08a8]:hover {\n  background-color: #000000;\n  color: #FFFFFF;\n}\n#forgot_container #actions_container[data-v-49df08a8] {\n  margin-top: 2.5vw;\n  display: flex;\n  gap: 1vw;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28456,7 +28506,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-781190ea {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-781190ea {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-781190ea {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-781190ea {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#login_container[data-v-781190ea] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#login_container #information[data-v-781190ea] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#login_container form h4[data-v-781190ea] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#login_container form .input_container[data-v-781190ea] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#login_container form .input_container label[data-v-781190ea] {\n  margin-bottom: 0.5vw;\n}\n#login_container form .input_container input[data-v-781190ea] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#login_container form .input_container input[data-v-781190ea]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#login_container form .checkbox_container[data-v-781190ea] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#login_container form .checkbox_container input[type=\"checkbox\"][data-v-781190ea] {\n  border: none;\n}\n#login_container form .checkbox_container input[type=\"checkbox\"][data-v-781190ea]:checked {\n  background-color: #e9dc22;\n}\n#login_container form .checkbox_container input[type=\"checkbox\"][data-v-781190ea]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#login_container form .checkbox_container span[data-v-781190ea] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#login_container form .checkbox_container div div[data-v-781190ea] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#login_container form .checkbox_container div div a[data-v-781190ea] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#login_container form .checkbox_container div div a[data-v-781190ea]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#login_container form .options_container[data-v-781190ea] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#login_container form .options_container a[data-v-781190ea] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#login_container form .options_container a[data-v-781190ea]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#login_container form .options_container button[data-v-781190ea] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#login_container form .options_container button[data-v-781190ea]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-781190ea {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-781190ea {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-781190ea {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-781190ea {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#login_container[data-v-781190ea] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#login_container #information[data-v-781190ea] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#login_container h4[data-v-781190ea] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#login_container #introduction[data-v-781190ea] {\n  margin-bottom: 2vw;\n}\n#login_container #introduction p[data-v-781190ea] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.2vw;\n}\n#login_container form .input_container[data-v-781190ea] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#login_container form .input_container label[data-v-781190ea] {\n  margin-bottom: 0.5vw;\n}\n#login_container form .input_container input[data-v-781190ea] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#login_container form .input_container input[data-v-781190ea]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#login_container form .checkbox_container[data-v-781190ea] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#login_container form .checkbox_container input[type=\"checkbox\"][data-v-781190ea] {\n  border: none;\n}\n#login_container form .checkbox_container input[type=\"checkbox\"][data-v-781190ea]:checked {\n  background-color: #e9dc22;\n}\n#login_container form .checkbox_container input[type=\"checkbox\"][data-v-781190ea]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#login_container form .checkbox_container span[data-v-781190ea] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#login_container form .checkbox_container div div[data-v-781190ea] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#login_container form .checkbox_container div div a[data-v-781190ea] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#login_container form .checkbox_container div div a[data-v-781190ea]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#login_container form .options_container[data-v-781190ea] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#login_container form .options_container a[data-v-781190ea] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#login_container form .options_container a[data-v-781190ea]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#login_container form .options_container button[data-v-781190ea] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#login_container form .options_container button[data-v-781190ea]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n#login_container .btn[data-v-781190ea] {\n  background-color: #000000;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#login_container .btn[data-v-781190ea]:hover {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n}\n#login_container .btn2[data-v-781190ea] {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#login_container .btn2[data-v-781190ea]:hover {\n  background-color: #000000;\n  color: #FFFFFF;\n}\n#login_container #actions_container[data-v-781190ea] {\n  margin-top: 2.5vw;\n  display: flex;\n  gap: 1vw;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28480,7 +28530,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-7c39b171 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-7c39b171 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-7c39b171 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-7c39b171 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#register_container[data-v-7c39b171] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#register_container #information[data-v-7c39b171] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#register_container form h4[data-v-7c39b171] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#register_container form .input_container[data-v-7c39b171] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#register_container form .input_container label[data-v-7c39b171] {\n  margin-bottom: 0.5vw;\n}\n#register_container form .input_container input[data-v-7c39b171] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#register_container form .input_container input[data-v-7c39b171]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#register_container form .checkbox_container[data-v-7c39b171] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#register_container form .checkbox_container input[type=\"checkbox\"][data-v-7c39b171] {\n  border: none;\n}\n#register_container form .checkbox_container input[type=\"checkbox\"][data-v-7c39b171]:checked {\n  background-color: #e9dc22;\n}\n#register_container form .checkbox_container input[type=\"checkbox\"][data-v-7c39b171]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#register_container form .checkbox_container span[data-v-7c39b171] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#register_container form .checkbox_container div div[data-v-7c39b171] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#register_container form .checkbox_container div div a[data-v-7c39b171] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#register_container form .checkbox_container div div a[data-v-7c39b171]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#register_container form .options_container[data-v-7c39b171] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#register_container form .options_container a[data-v-7c39b171] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#register_container form .options_container a[data-v-7c39b171]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#register_container form .options_container button[data-v-7c39b171] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#register_container form .options_container button[data-v-7c39b171]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-7c39b171 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-7c39b171 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-7c39b171 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-7c39b171 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#register_container[data-v-7c39b171] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#register_container #information[data-v-7c39b171] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#register_container h4[data-v-7c39b171] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#register_container #introduction[data-v-7c39b171] {\n  margin-bottom: 2vw;\n}\n#register_container #introduction p[data-v-7c39b171] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.2vw;\n}\n#register_container form .input_container[data-v-7c39b171] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#register_container form .input_container label[data-v-7c39b171] {\n  margin-bottom: 0.5vw;\n}\n#register_container form .input_container input[data-v-7c39b171] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#register_container form .input_container input[data-v-7c39b171]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#register_container form .checkbox_container[data-v-7c39b171] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#register_container form .checkbox_container input[type=\"checkbox\"][data-v-7c39b171] {\n  border: none;\n}\n#register_container form .checkbox_container input[type=\"checkbox\"][data-v-7c39b171]:checked {\n  background-color: #e9dc22;\n}\n#register_container form .checkbox_container input[type=\"checkbox\"][data-v-7c39b171]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#register_container form .checkbox_container span[data-v-7c39b171] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#register_container form .checkbox_container div div[data-v-7c39b171] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#register_container form .checkbox_container div div a[data-v-7c39b171] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#register_container form .checkbox_container div div a[data-v-7c39b171]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#register_container form .options_container[data-v-7c39b171] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#register_container form .options_container a[data-v-7c39b171] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#register_container form .options_container a[data-v-7c39b171]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#register_container form .options_container button[data-v-7c39b171] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#register_container form .options_container button[data-v-7c39b171]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n#register_container .btn[data-v-7c39b171] {\n  background-color: #000000;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#register_container .btn[data-v-7c39b171]:hover {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n}\n#register_container .btn2[data-v-7c39b171] {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#register_container .btn2[data-v-7c39b171]:hover {\n  background-color: #000000;\n  color: #FFFFFF;\n}\n#register_container #actions_container[data-v-7c39b171] {\n  margin-top: 2.5vw;\n  display: flex;\n  gap: 1vw;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28504,7 +28554,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-6fc562ac {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-6fc562ac {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-6fc562ac {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-6fc562ac {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#resetpassword_container[data-v-6fc562ac] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#resetpassword_container #information[data-v-6fc562ac] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#resetpassword_container form h4[data-v-6fc562ac] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#resetpassword_container form .input_container[data-v-6fc562ac] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#resetpassword_container form .input_container label[data-v-6fc562ac] {\n  margin-bottom: 0.5vw;\n}\n#resetpassword_container form .input_container input[data-v-6fc562ac] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#resetpassword_container form .input_container input[data-v-6fc562ac]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#resetpassword_container form .checkbox_container[data-v-6fc562ac] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#resetpassword_container form .checkbox_container input[type=\"checkbox\"][data-v-6fc562ac] {\n  border: none;\n}\n#resetpassword_container form .checkbox_container input[type=\"checkbox\"][data-v-6fc562ac]:checked {\n  background-color: #e9dc22;\n}\n#resetpassword_container form .checkbox_container input[type=\"checkbox\"][data-v-6fc562ac]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#resetpassword_container form .checkbox_container span[data-v-6fc562ac] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#resetpassword_container form .checkbox_container div div[data-v-6fc562ac] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#resetpassword_container form .checkbox_container div div a[data-v-6fc562ac] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#resetpassword_container form .checkbox_container div div a[data-v-6fc562ac]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#resetpassword_container form .options_container[data-v-6fc562ac] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#resetpassword_container form .options_container a[data-v-6fc562ac] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#resetpassword_container form .options_container a[data-v-6fc562ac]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#resetpassword_container form .options_container button[data-v-6fc562ac] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#resetpassword_container form .options_container button[data-v-6fc562ac]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-6fc562ac {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-6fc562ac {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-6fc562ac {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-6fc562ac {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#resetpassword_container[data-v-6fc562ac] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#resetpassword_container #information[data-v-6fc562ac] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#resetpassword_container h4[data-v-6fc562ac] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#resetpassword_container #introduction[data-v-6fc562ac] {\n  margin-bottom: 2vw;\n}\n#resetpassword_container #introduction p[data-v-6fc562ac] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.2vw;\n}\n#resetpassword_container form .input_container[data-v-6fc562ac] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#resetpassword_container form .input_container label[data-v-6fc562ac] {\n  margin-bottom: 0.5vw;\n}\n#resetpassword_container form .input_container input[data-v-6fc562ac] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#resetpassword_container form .input_container input[data-v-6fc562ac]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#resetpassword_container form .checkbox_container[data-v-6fc562ac] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#resetpassword_container form .checkbox_container input[type=\"checkbox\"][data-v-6fc562ac] {\n  border: none;\n}\n#resetpassword_container form .checkbox_container input[type=\"checkbox\"][data-v-6fc562ac]:checked {\n  background-color: #e9dc22;\n}\n#resetpassword_container form .checkbox_container input[type=\"checkbox\"][data-v-6fc562ac]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#resetpassword_container form .checkbox_container span[data-v-6fc562ac] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#resetpassword_container form .checkbox_container div div[data-v-6fc562ac] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#resetpassword_container form .checkbox_container div div a[data-v-6fc562ac] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#resetpassword_container form .checkbox_container div div a[data-v-6fc562ac]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#resetpassword_container form .options_container[data-v-6fc562ac] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#resetpassword_container form .options_container a[data-v-6fc562ac] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#resetpassword_container form .options_container a[data-v-6fc562ac]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#resetpassword_container form .options_container button[data-v-6fc562ac] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#resetpassword_container form .options_container button[data-v-6fc562ac]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n#resetpassword_container .btn[data-v-6fc562ac] {\n  background-color: #000000;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#resetpassword_container .btn[data-v-6fc562ac]:hover {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n}\n#resetpassword_container .btn2[data-v-6fc562ac] {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#resetpassword_container .btn2[data-v-6fc562ac]:hover {\n  background-color: #000000;\n  color: #FFFFFF;\n}\n#resetpassword_container #actions_container[data-v-6fc562ac] {\n  margin-top: 2.5vw;\n  display: flex;\n  gap: 1vw;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-107b2694 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-107b2694 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-107b2694 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-107b2694 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#twofactor_container[data-v-107b2694] {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto auto auto;\n  margin: auto;\n  margin-top: 5vw;\n  margin-bottom: 5vw;\n  width: 50vw;\n  padding: 2vw;\n  border-radius: 1vw;\n  border-top: 3px solid #e9dc22;\n  background-color: #D6D6D6;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.2vw;\n}\n#twofactor_container #information[data-v-107b2694] {\n  margin-bottom: 2vw;\n  font-size: 1.1em;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n#twofactor_container h4[data-v-107b2694] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 2.4vw;\n  margin: auto;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-bottom: 2.5vw;\n  border-bottom: 2px solid #000000;\n}\n#twofactor_container #introduction[data-v-107b2694] {\n  margin-bottom: 2vw;\n}\n#twofactor_container #introduction p[data-v-107b2694] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.2vw;\n}\n#twofactor_container form .input_container[data-v-107b2694] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.6vw;\n}\n#twofactor_container form .input_container label[data-v-107b2694] {\n  margin-bottom: 0.5vw;\n}\n#twofactor_container form .input_container input[data-v-107b2694] {\n  border: 0;\n  outline: 0;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#twofactor_container form .input_container input[data-v-107b2694]:focus {\n  border: 0 none;\n  outline: 0;\n  box-shadow: 0 0 0 0;\n}\n#twofactor_container form .checkbox_container[data-v-107b2694] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 2.4vw;\n}\n#twofactor_container form .checkbox_container input[type=\"checkbox\"][data-v-107b2694] {\n  border: none;\n}\n#twofactor_container form .checkbox_container input[type=\"checkbox\"][data-v-107b2694]:checked {\n  background-color: #e9dc22;\n}\n#twofactor_container form .checkbox_container input[type=\"checkbox\"][data-v-107b2694]:focus {\n  outline: none;\n  box-shadow: 0 0 0 0;\n}\n#twofactor_container form .checkbox_container span[data-v-107b2694] {\n  margin-left: 1vw;\n  cursor: pointer;\n}\n#twofactor_container form .checkbox_container div div[data-v-107b2694] {\n  display: inline-block;\n  margin-left: 1vw;\n}\n#twofactor_container form .checkbox_container div div a[data-v-107b2694] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#twofactor_container form .checkbox_container div div a[data-v-107b2694]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#twofactor_container form .options_container[data-v-107b2694] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-end;\n  padding: 0 1.5vw 0 1.5vw;\n}\n#twofactor_container form .options_container a[data-v-107b2694] {\n  border-bottom: 1px solid transparent;\n  border-radius: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  transition-duration: 100ms;\n  transition-property: border-radius;\n}\n#twofactor_container form .options_container a[data-v-107b2694]:hover {\n  border-bottom: 1px solid #000000;\n  border-radius: 0;\n}\n#twofactor_container form .options_container button[data-v-107b2694] {\n  background-color: #000000;\n  box-shadow: 1px 1px 3px #505051;\n  border-radius: 0.2vw;\n  color: #FFFFFF;\n  padding: 0.4vw 1vw 0.4vw 1vw;\n  transition-duration: 150ms;\n  transition-property: box-shadow, color;\n}\n#twofactor_container form .options_container button[data-v-107b2694]:hover {\n  color: #e9dc22;\n  box-shadow: 0 0 0 0;\n}\n#twofactor_container .btn[data-v-107b2694] {\n  background-color: #000000;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#twofactor_container .btn[data-v-107b2694]:hover {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n}\n#twofactor_container .btn2[data-v-107b2694] {\n  background-color: #e9dc22;\n  color: #FFFFFF;\n  transition-duration: 200ms;\n  transition-property: background-color, color;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  text-transform: uppercase;\n  padding: 0.5vw 1.2vw 0.5vw 1.2vw;\n  border-radius: 0.3vw;\n  font-size: 1.3vw;\n}\n#twofactor_container .btn2[data-v-107b2694]:hover {\n  background-color: #000000;\n  color: #FFFFFF;\n}\n#twofactor_container #actions_container[data-v-107b2694] {\n  margin-top: 2.5vw;\n  display: flex;\n  gap: 1vw;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28697,6 +28771,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-52881439 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-52881439 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-52881439 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-52881439 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\nnav[data-v-52881439] {\n  display: grid;\n  grid-template-columns: 1fr 4fr 1fr;\n  width: 100%;\n  background-color: #FFFFFF;\n  transform-style: preserve-3d;\n}\nnav .left #logo[data-v-52881439] {\n  margin: 1vw 2.5vw 1vw 2.5vw;\n  width: 4vw;\n}\nnav .center[data-v-52881439] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.2vw;\n  text-transform: uppercase;\n  height: 100%;\n}\nnav .center ul[data-v-52881439] {\n  display: flex;\n  justify-content: center;\n  height: 100%;\n}\nnav .center ul li[data-v-52881439] {\n  display: flex;\n  align-items: flex-end;\n  height: 100%;\n  border-bottom: 3px solid transparent;\n}\nnav .center ul li[data-v-52881439]:hover {\n  background-color: #7F7F7F;\n  color: #e9dc22;\n}\nnav .center ul li a[data-v-52881439] {\n  padding: 1.5vw 2.5vw 1.5vw 2.5vw;\n}\nnav .center ul .actual[data-v-52881439] {\n  border-bottom: 3px solid #e9dc22;\n}\nnav .right[data-v-52881439] {\n  height: 100%;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "/* Color Theme Swatches in Hex */\n@-webkit-keyframes sideOptionsShow-b95721e6 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@keyframes sideOptionsShow-b95721e6 {\nfrom {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\nto {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\n}\n@-webkit-keyframes sideOptionsHide-b95721e6 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n@keyframes sideOptionsHide-b95721e6 {\nfrom {\n    transform: translateX(0%) translateZ(-2px);\n    opacity: 1;\n}\nto {\n    transform: translateX(-100%) translateZ(-2px);\n    opacity: 0.8;\n}\n}\n#basic_infos[data-v-b95721e6] {\n  display: flex;\n  padding: 5vw;\n  gap: 3vw;\n}\n#basic_infos .container_left[data-v-b95721e6] {\n  width: 50vw;\n}\n#basic_infos .container_left .top[data-v-b95721e6] {\n  background-color: #D6D6D6;\n  border-radius: 0.8vw 0.8vw 0 0;\n  padding: 3.5vw 3.5vw 2vw 3.5vw;\n  display: flex;\n  gap: 3vw;\n}\n#basic_infos .container_left .top .left img[data-v-b95721e6] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 100%;\n  border: 1px solid #000000;\n  width: 14vw;\n  height: 14vw;\n}\n#basic_infos .container_left .top .right[data-v-b95721e6] {\n  display: flex;\n  flex-direction: column;\n  padding-top: 1vw;\n  gap: 1vw;\n}\n#basic_infos .container_left .top .right label[data-v-b95721e6] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.5vw;\n  color: #000000;\n}\n#basic_infos .container_left .top .right label span[data-v-b95721e6] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  font-size: 1.7vw;\n}\n#basic_infos .container_left .bottom[data-v-b95721e6] {\n  padding: 2vw 3.5vw 3.5vw 3.5vw;\n  background-color: #FFFFFF;\n  border-radius: 0 0 0.8vw 0.8vw;\n}\n#basic_infos .container_left .bottom .info[data-v-b95721e6] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  color: #000000;\n  font-size: 1.6vw;\n}\n#basic_infos .container_left .bottom .info span[data-v-b95721e6] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  font-size: 1.8vw;\n}\n#basic_infos .container_left .bottom #actions[data-v-b95721e6] {\n  margin: 1.4vw 0 0 0;\n  position: relative;\n}\n#basic_infos .container_left .bottom #actions a[data-v-b95721e6] {\n  color: #000000;\n  border-bottom: 1px solid #000000;\n  transition-duration: 200ms;\n  transition-property: color, border-radius border-bottom;\n  position: absolute;\n  right: 0;\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n  font-size: 1.1vw;\n}\n#basic_infos .container_left .bottom #actions a[data-v-b95721e6]:hover {\n  color: #e9dc22;\n  border-radius: 100%;\n  border-bottom: 0px;\n}\n#basic_infos .container_right[data-v-b95721e6] {\n  color: #FFFFFF;\n}\n#basic_infos .container_right h3[data-v-b95721e6] {\n  font-display: block;\n  font-family: 'Merriweather', serif;\n  font-weight: 700;\n  font-size: 3vw;\n  margin-bottom: 0.5vw;\n}\n#basic_infos .container_right p[data-v-b95721e6] {\n  font-display: block;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 400;\n  font-size: 1.3vw;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -51955,12 +52053,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _TwoFactorChallenge_vue_vue_type_template_id_107b2694__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TwoFactorChallenge.vue?vue&type=template&id=107b2694 */ "./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694");
+/* harmony import */ var _TwoFactorChallenge_vue_vue_type_template_id_107b2694_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TwoFactorChallenge.vue?vue&type=template&id=107b2694&scoped=true */ "./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694&scoped=true");
 /* harmony import */ var _TwoFactorChallenge_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TwoFactorChallenge.vue?vue&type=script&lang=js */ "./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=script&lang=js");
+/* harmony import */ var _TwoFactorChallenge_vue_vue_type_style_index_0_id_107b2694_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true */ "./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true");
 
 
 
-_TwoFactorChallenge_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _TwoFactorChallenge_vue_vue_type_template_id_107b2694__WEBPACK_IMPORTED_MODULE_0__.render
+
+;
+_TwoFactorChallenge_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _TwoFactorChallenge_vue_vue_type_template_id_107b2694_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_TwoFactorChallenge_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__scopeId = "data-v-107b2694"
 /* hot reload */
 if (false) {}
 
@@ -52431,9 +52533,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Profile_vue_vue_type_template_id_b95721e6_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Profile.vue?vue&type=template&id=b95721e6&scoped=true */ "./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=template&id=b95721e6&scoped=true");
 /* harmony import */ var _Profile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Profile.vue?vue&type=script&lang=js */ "./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=script&lang=js");
+/* harmony import */ var _Profile_vue_vue_type_style_index_0_id_b95721e6_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true */ "./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true");
 
 
 
+
+;
 _Profile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _Profile_vue_vue_type_template_id_b95721e6_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
 _Profile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__scopeId = "data-v-b95721e6"
 /* hot reload */
@@ -55260,18 +55365,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694 ***!
-  \********************************************************************************************/
+/***/ "./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694&scoped=true":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694&scoped=true ***!
+  \********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TwoFactorChallenge_vue_vue_type_template_id_107b2694__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TwoFactorChallenge_vue_vue_type_template_id_107b2694_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TwoFactorChallenge_vue_vue_type_template_id_107b2694__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TwoFactorChallenge.vue?vue&type=template&id=107b2694 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TwoFactorChallenge_vue_vue_type_template_id_107b2694_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TwoFactorChallenge.vue?vue&type=template&id=107b2694&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=template&id=107b2694&scoped=true");
 
 
 /***/ }),
@@ -56415,6 +56520,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true ***!
+  \***********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TwoFactorChallenge_vue_vue_type_style_index_0_id_107b2694_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-style-loader/index.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TwoFactorChallenge_vue_vue_type_style_index_0_id_107b2694_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TwoFactorChallenge_vue_vue_type_style_index_0_id_107b2694_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TwoFactorChallenge_vue_vue_type_style_index_0_id_107b2694_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TwoFactorChallenge_vue_vue_type_style_index_0_id_107b2694_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/admin/Components/CRUD/Instructions.vue?vue&type=style&index=0&id=fc7d5434&lang=scss&scoped=true":
 /*!****************************************************************************************************************************!*\
   !*** ./resources/js/Pages/admin/Components/CRUD/Instructions.vue?vue&type=style&index=0&id=fc7d5434&lang=scss&scoped=true ***!
@@ -56546,6 +56668,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Navigation_vue_vue_type_style_index_0_id_52881439_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Navigation_vue_vue_type_style_index_0_id_52881439_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
 /* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Navigation_vue_vue_type_style_index_0_id_52881439_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Navigation_vue_vue_type_style_index_0_id_52881439_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true ***!
+  \*********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Profile_vue_vue_type_style_index_0_id_b95721e6_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-style-loader/index.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!../../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Profile_vue_vue_type_style_index_0_id_b95721e6_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Profile_vue_vue_type_style_index_0_id_b95721e6_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Profile_vue_vue_type_style_index_0_id_b95721e6_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_use_3_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Profile_vue_vue_type_style_index_0_id_b95721e6_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 
 
@@ -57256,6 +57395,27 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Auth/TwoFactorChallenge.vue?vue&type=style&index=0&id=107b2694&lang=scss&scoped=true");
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.id, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(/*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
+var update = add("db788688", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Components/CRUD/Instructions.vue?vue&type=style&index=0&id=fc7d5434&lang=scss&scoped=true":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Components/CRUD/Instructions.vue?vue&type=style&index=0&id=fc7d5434&lang=scss&scoped=true ***!
@@ -57419,6 +57579,27 @@ if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(/*! !../../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
 var update = add("35d5a2ec", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!../../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12.use[3]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/admin/Views/Account/Profile.vue?vue&type=style&index=0&id=b95721e6&lang=scss&scoped=true");
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.id, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(/*! !../../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
+var update = add("1ac6a270", content, false, {});
 // Hot Module Replacement
 if(false) {}
 

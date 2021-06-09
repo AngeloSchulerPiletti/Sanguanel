@@ -1,5 +1,5 @@
 <template>
-    <app-admin :atPage="'login'">
+    <app-admin atPage="login">
         <section id="login_container">
 
             <form @submit.prevent="submit">

@@ -172,9 +172,7 @@ export default {
             }
         },
     },
-    updated(){
-        console.log(this.$page.props);
-    }
+    
 };
 </script>
 
@@ -193,10 +191,6 @@ export default {
     }
     span {
         display: block;
-    }
-    .new {
-        // width: 10vw;
-        // height: 10vw;
     }
     #actions_container {
         margin-top: 2.5vw;

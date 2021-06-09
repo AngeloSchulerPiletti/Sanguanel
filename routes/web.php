@@ -8,6 +8,7 @@ use App\Http\Controllers\RouteController;
 use App\Http\Controllers\PublishController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ArticleRequireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,9 +75,12 @@ Route::name('admin.')->middleware('admin')->group(function(){
         Route::get('/enviar-newsletter',          [AdminController::class, 'news'])->name('news');
 
         Route::post('/database',                   [AdminController::class, 'Pdatabase'])->name('Pdatabase');
-        Route::post('/nova-publicacao',            [AdminController::class, 'Ppubs'])->name('Pnewpub');
+        Route::post('/publicando',                 [AdminController::class, 'Ppubs'])->name('Pnewpub');
         Route::post('/alterar-pagina',             [AdminController::class, 'Ppages'])->name('Pupdatepages');
         Route::post('/enviar-newsletter',          [AdminController::class, 'Pnews'])->name('Pnews');
+
+
+        Route::post('/nova-publicacao',            [ArticleRequireController::class, 'require'])->name('articlerequire');
 
 
     });    

@@ -15,7 +15,6 @@
     }
 }
 
-
 @mixin formLayout {
     display: grid;
     grid-template-columns: 1fr;
@@ -36,24 +35,30 @@
     color: $black;
     font-size: 1.2vw;
 
-    #information{
+    #information {
         margin-bottom: 2vw;
         font-size: 1.1em;
         @include Fonte2_SS;
     }
+    h4 {
+        @include Titulo2_S();
+        text-transform: uppercase;
+        font-size: 2.4vw;
+        margin: auto;
+        width: fit-content;
 
-    form {
-        h4 {
-            @include Titulo2_S();
-            text-transform: uppercase;
-            font-size: 2.4vw;
-            margin: auto;
-            width: fit-content;
+        margin-bottom: 2.5vw;
 
-            margin-bottom: 2.5vw;
-
-            border-bottom: 2px solid $black;
+        border-bottom: 2px solid $black;
+    }
+    #introduction{
+        margin-bottom: 2vw;
+        p{
+            @include Fonte1_SS;
+            font-size: 1.2vw;
         }
+    }
+    form {
         .input_container {
             display: flex;
             flex-direction: column;
@@ -98,7 +103,7 @@
                 margin-left: 1vw;
                 cursor: pointer;
             }
-            div div{
+            div div {
                 display: inline-block;
                 margin-left: 1vw;
 
@@ -130,5 +135,16 @@
                 }
             }
         }
+    }
+    .btn{
+        @include button1();
+    }
+    .btn2{
+        @include button2();
+    }
+    #actions_container {
+        margin-top: 2.5vw;
+        display: flex;
+        gap: 1vw;
     }
 }

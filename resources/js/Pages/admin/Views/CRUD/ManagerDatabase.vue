@@ -14,7 +14,7 @@
                 <div @click="setInstruction(0)">Ver Instruções</div>
             </section>
 
-            <!-- GENERATES A TABLES -->
+            <!-- GENERATES THE TABLES -->
             <section class="center container">
                 <section
                     v-for="(table, index) in info"
@@ -22,7 +22,7 @@
                     :id="index"
                     class="table_container"
                 >
-                    <h2>{{titles[index]}}</h2>
+                    <h2 v-if="table[0]">{{titles[index]}}</h2>
                     <table @click="changeData($event, 0)">
                         <!-- Definição das colunas -->
                         
