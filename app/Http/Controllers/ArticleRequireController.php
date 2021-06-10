@@ -53,10 +53,11 @@ class ArticleRequireController extends Controller
     {
 
         $request->validate([
-            'author' => 'required',
+            'author' => 'required|string',
             'title'  => 'required|string|min:4|max:50',
-            'subject' => 'required',
-            'text'   => 'required',
+            'subject' => 'required|string',
+            'description' => 'required|string|min:20|max:400',
+            'text'   => 'required|string',
             'images' => 'array',
             'images.*' => 'image',
         ]);
@@ -73,6 +74,7 @@ class ArticleRequireController extends Controller
         $article->author = $request->author;
         $article->title = $request->title;
         $article->subject = $request->subject;
+        $article->description = $request->description;
 
         $imagePaths = [];
 
@@ -218,8 +220,14 @@ class ArticleRequireController extends Controller
             }
         }
 
-
         $article->text = $article_text;
+
+
+
+        //Keywords
+        $article->keywords = $request->keywords;
+
+
 
         //URL Creation
         $url = $this->stringToURL($request->title);
@@ -286,8 +294,10 @@ class ArticleRequireController extends Controller
             
             $newArt->author = $aprovedArt->author;
             $newArt->subject = $aprovedArt->subject;
+            $newArt->description = $aprovedArt->description;
             $newArt->title = $aprovedArt->title;
             $newArt->text = $aprovedArt->text;
+            $newArt->keywords = $aprovedArt->keywords;
             $newArt->path_dirPictures = $aprovedArt->path_dirPictures;
             $newArt->pictureNames = $aprovedArt->pictureNames;
             $newArt->url = $aprovedArt->url;

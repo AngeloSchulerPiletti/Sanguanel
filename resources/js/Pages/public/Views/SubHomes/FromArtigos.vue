@@ -2,12 +2,12 @@
     <app-public :header_content="header">
         <main id="fromarticles_container">
             <section id="description">
-                <p>{{}}</p>
+                <p>{{database[0].description}}</p>
             </section>
             <section id="articles_list">
                 <h4>Todos os artigos sobre {{page_subject}} do hidromel</h4>
                 <div>
-                    <articles-lister/>
+                    <articles-lister :articles_list="articles_list"/>
                 </div>
             </section>
         </main>

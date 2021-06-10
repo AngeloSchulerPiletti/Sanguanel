@@ -18,8 +18,10 @@ class CreateArticlesTable extends Migration
             $table->timestamps();
             $table->tinyText('author');
             $table->string('subject', 50); 
+            $table->mediumText('description');
             $table->tinyText('title');
             $table->longText('text');
+            $table->string('keywords')->default('');
             $table->tinyText('path_dirPictures')->default('');
             $table->string('pictureNames')->default('');
             $table->string('url');

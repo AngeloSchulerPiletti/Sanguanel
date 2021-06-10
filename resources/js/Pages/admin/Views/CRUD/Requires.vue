@@ -92,10 +92,12 @@ export default {
         destroy: function(id){
             var article_id = id;
             this.$inertia.post(this.route('admin.destroyRequire'), {'id': article_id});
+            this.text = "";
         },
         aprove: function(id){
             var article_id = id;
             this.$inertia.post(this.route('admin.aproveRequire'), {'id': article_id});
+            this.text = "";
         }
     },
     created() {
@@ -103,7 +105,6 @@ export default {
     },
     updated() {
         this.Refresh();
-        this.text = "";
     },
     components: {
         AppAdmin,

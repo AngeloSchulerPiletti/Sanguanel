@@ -115,6 +115,7 @@ export default {
     }
     #aside_container {
         opacity: 0;
+        z-index: -1;
         flex-grow: 0;
         height: 100%;
         width: 25vw;

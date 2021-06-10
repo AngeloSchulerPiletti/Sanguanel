@@ -154,13 +154,11 @@ class AdminController extends Controller
 
                 $user->save();
             } else if ($request->table == "articles") {
-                // dd($request->path_dirPictures);
                 $request->validate([
                     'author' => 'string|required',
                     'subject' => 'string|required',
                     'title' => 'required|string',
                     'text' => 'required|string',
-                    // 'path_dirPictures'=>'string|nullable',
                     'url' => 'required|string',
                 ]);
 
@@ -168,8 +166,10 @@ class AdminController extends Controller
 
                 $article->author = $request->author;
                 $article->subject = $request->subject;
+                $article->description = $request->description;
                 $article->title = $request->title;
                 $article->text = $request->text;
+                $article->keywords = $request->keywords;
                 // $article->path_dirPictures = $request->path_dirPictures;
                 $article->url = $request->url;
 
@@ -209,166 +209,7 @@ class AdminController extends Controller
     }
     public function Ppubs(Request $request)
     {
-        // // $request->validate([
-        // //     'author' => 'required',
-        // //     'title'  => 'required|string|min:4|max:50',
-        // //     'subject' => 'required',
-        // //     'text'   => 'required',
-        // //     'images' => 'array',
-        // //     'images.*' => 'image',
-        // // ]);
-
-        // $article = new Article;
-
-        // $article->author = $request->author;
-        // $article->title = $request->title;
-        // $article->subject = $request->subject;
-        // // $article->text = $request->text;
-
-
-        // $imagePaths = [];
-
-        // //Image Tratament
-        // if ($request->hasFile('images.*')) {
-        //     $requestImages = $request->images;
-        //     $imagesNames = [];
-
-        //     foreach ($requestImages as $key => $img) {
-        //         $ext = $img->extension();
-
-        //         $imageName = $img->getClientOriginalName() . strtotime('now') . "." . $ext;
-
-        //         $has = 0;
-        //         foreach ($imagesNames as $key => $name) {
-        //             if ($imageName == $name) {
-        //                 $has++;
-        //             }
-        //         }
-        //         if ($has > 0) {
-        //             $imageName = $has . $imageName;
-        //         }
-        //         $imagesNames[] = $imageName;
-        //     }
-        //     for ($i = 0; $i < count($requestImages); $i++) {
-        //         $imagePaths[] = '/images/app/' . $request->subject . "/" . $imagesNames[$i];
-        //         $requestImages[$i]->move(public_path('images/app/' . $request->subject), $imagesNames[$i]);
-        //     }
-        //     $article->path_dirPictures = 'images/app/' . $request->subject;
-        // }
-
-
-        // //Text Tratament
-        // $article_text = $request->text;
-
-        // /*BASIC FORMAT */
-        // //Backspaces
-        // preg_match_all("/\n\n\n/Us",          $article_text, $backspaces);
-        // foreach ($backspaces[0] as $i => $value) {
-        //     $article_text = str_replace($value, '<br/>', $article_text);
-        // }
-        // //Tiny Paragraph
-        // preg_match_all("/[@]{3}(.+)[@]{3}/Us",                               $article_text, $tiny_p);
-        // $article_text = $this->tagHTMLconstructor($article_text, $tiny_p[0], $tiny_p[1], 'p', 'tiny_p');
-        // //Simple Paragraph
-        // preg_match_all("/[@]{2}(.+)[@]{2}/Us",                               $article_text, $simple_p);
-        // $article_text = $this->tagHTMLconstructor($article_text, $simple_p[0], $simple_p[1], 'p', 'simple_p');
-
-
-
-
-        // /* BOLD  */
-        // preg_match_all("/[\*]{2}([^\*].*[^\*])[\*]{2}/Us",          $article_text, $bolds);
-        // $article_text = $this->tagHTMLconstructor($article_text, $bolds[0], $bolds[1], 'strong');
-
-        // /* ITALIC */
-        // preg_match_all("/\*([^\*].*[^\*])\*/Us",                               $article_text, $italics);
-        // $article_text = $this->tagHTMLconstructor($article_text, $italics[0], $italics[1], 'em');
-
-
-
-
-        // /* TITLES */
-        // //H6
-        // preg_match_all("/[#]{6}([^#]+)[#]{6}/U",                       $article_text, $h6);
-        // $article_text = $this->tagHTMLconstructor($article_text, $h6[0], $h6[1], 'h6');
-        // //H5
-        // preg_match_all("/[#]{5}([^#]+)[#]{5}/U",                       $article_text, $h5);
-        // $article_text = $this->tagHTMLconstructor($article_text, $h5[0], $h5[1], 'h5');
-        // //H4
-        // preg_match_all("/[#]{4}([^#]+)[#]{4}/U",                       $article_text, $h4);
-        // $article_text = $this->tagHTMLconstructor($article_text, $h4[0], $h4[1], 'h4');
-        // //H3
-        // preg_match_all("/[#]{3}([^#]+)[#]{3}/U",                       $article_text, $h3);
-        // $article_text = $this->tagHTMLconstructor($article_text, $h3[0], $h3[1], 'h3');
-        // //H2
-        // preg_match_all("/[#]{2}([^#]+)[#]{2}/U",                       $article_text, $h2);
-        // $article_text = $this->tagHTMLconstructor($article_text, $h2[0], $h2[1], 'h2');
-        // //H1
-        // preg_match_all("/[#]{1}([^#]+)[#]{1}/U",                       $article_text, $h1);
-        // $article_text = $this->tagHTMLconstructor($article_text, $h1[0], $h1[1], 'h1');
-
-
-        // //HR
-        // preg_match_all("/[+][-][+]/Us",          $article_text, $hrs);
-        // foreach ($hrs[0] as $i => $value) {
-        //     $article_text = str_replace($value, '<hr class="elegant_hr"/>', $article_text);
-        // }
-
-
-        // /* SPANs */
-        // // 50%
-        // preg_match_all("/[\^]{2}([^\^]+)[\^]{2}/U",                  $article_text, $small75);
-        // $article_text = $this->tagHTMLconstructor($article_text, $small75[0], $small75[1], 'span', 'small75');
-        // // 25%
-        // preg_match_all("/[\^]([^\^]+)[\^]/U",                        $article_text, $small50);
-        // $article_text = $this->tagHTMLconstructor($article_text, $small50[0], $small50[1], 'span', 'small50');
-
-
-        // /*QUOTES */
-        // preg_match_all("/[']{3}([^']+)[']{3}/U",                               $article_text, $quotes);
-        // $article_text = $this->tagHTMLconstructor($article_text, $quotes[0], $quotes[1], 'p', 'quotes');
-
-
-        // /*LISTS */
-        // //Cria a Lista
-        // preg_match_all("/[-]{4}(.*)[-]{4}/Us",                                             $article_text, $list);
-        // $article_text = $this->tagHTMLconstructor($article_text, $list[0], $list[1], 'ul');
-        // //Cria os elementos
-        // preg_match_all("/[-]{2}(.*)[-]{2}/Us",                                             $article_text, $list_el);
-        // $article_text = $this->tagHTMLconstructor($article_text, $list_el[0], $list_el[1], 'li');
-
-
-        // /*LINKS */
-        // preg_match_all("/[$]{2}([^\[]+)[\[]([^\]]+)[\]][$]{2}/U",                   $article_text, $link);
-        // foreach ($link[0] as $i => $value) {
-        //     $article_text = str_replace($value, '<a href="' . $link[2][$i] . '">' . $link[1][$i] . '</a>', $article_text);
-        // }
-
-        // /*ADSENSE */
-        // preg_match_all("/`[\[][\]]`/U",                                         $article_text, $ads);
-        // foreach ($ads[0] as $i => $value) {
-        //     $article_text = str_replace($value, '', $article_text);
-        // }
-
-        // /*IMAGENS DO ARTIGO */
-        // preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $article_text, $picture);
-        // if (count($picture[0]) != count($request->images)) {
-        //     return Inertia::render("admin/Views/CRUD/ManagerPubs", ['errors' => [0 => 'O número de imagens do artigo não é o mesmo número de imagens em upload.']]);
-        // } else if (count($picture[0]) > 0) {
-        //     foreach ($picture[0] as $i => $value) {
-        //         $article_text = str_replace($value, '<div class="img_container ' . $picture[2][$i] . '"><img class="' . $picture[1][$i] . '" src="' . $imagePaths[$i] . '" alt="' . $picture[3][$i] . '" /><p class="img_alternative">' . $picture[3][$i] . '</p></div>', $article_text);
-        //     }
-        // }
-
-
-        // $article->text = $article_text;
-
-        // //URL Creation
-        // $article->url = $this->stringToURL($request->title);
-
-        // $article->save();
-
-        // return Inertia::render("admin/Views/CRUD/ManagerPubs", ['status' => [0 => 'Artigo criado!']]);
+        //
     }
     public function Ppages()
     {

@@ -4,8 +4,11 @@
         <title>Sanguanel | {{ article_data.title }}</title>
         <meta
             name="description"
-            :content="description"
+            :content="article_data.description"
         />
+        <meta
+            name="keywords"
+            :content="article_data.keywords"/>
     </inertia-head>
     <!-- CABEÇALHO DA PÁGINA -->
 
@@ -26,6 +29,8 @@ export default {
                 img_path: "",
                 text: "",
                 date: "",
+                description: "",
+                keywords: "",
             },
             header: {
                 title: [""],
@@ -47,6 +52,9 @@ export default {
         this.article_data.title = this.article.title;
         this.article_data.text = this.article.text;
         this.header.author = this.article.author;
+        this.article_data.description = this.article.description;
+        this.article_data.keywords = this.article.keywords;
+
 
         let lastDate = this.article.updated_at
             ? this.article.updated_at

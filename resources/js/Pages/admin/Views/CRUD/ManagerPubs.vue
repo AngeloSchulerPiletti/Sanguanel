@@ -43,6 +43,15 @@
                         </select>
                     </div>
 
+                    <!-- DESCRIÇÃO  -->
+                    <div class="input_container">
+                        <label for="description"
+                            ><span @click="setInstruction(6)"><info /></span
+                            ><span>Descrição</span></label
+                        >
+                        <textarea class="field" v-model="form.description" id="description"></textarea>
+                    </div>
+
                     <!-- TEXTO -->
                     <div class="input_container">
                         <label for="text"
@@ -50,6 +59,14 @@
                             ><span>Artigo</span></label
                         >
                         <textarea class="field" v-model="form.text" id="text"></textarea>
+                    </div>
+
+                    <div class="input_container">
+                        <label for="keywords"
+                            ><span @click="setInstruction(7)"><info /></span
+                            ><span>Palavras-Chave</span></label
+                        >
+                        <input class="field" v-model="form.keywords" type="text" id="keywords" />
                     </div>
 
                     <!-- IMAGENS -->
@@ -96,13 +113,15 @@ import Info from "@/Pages/admin/Components/Icons/Info";
 export default {
     data() {
         return {
-            imgs: 0,
+            imgs: 1,
             instructions: ["pubs", undefined],
             form:  this.$inertia.form({
               author: this.$page.props.user.name,
               title: null,
               subject: null,
+              description: null,
               text: null,
+              keywords: null,
               images: [],
             }),
         };
@@ -110,11 +129,15 @@ export default {
     methods: {
         submit: function () {
             this.form.post(this.route("admin.createRequire"), {
+                onProgress: () => {
+                    
+                },
                 onFinish: () => {
-                    this.imgs = 0;
-                    this.form.images = [];
+                    // this.form.images = [];
+                    // this.imgs = 0;
                 } 
             });
+            
         },
         Imgs: function (action) {
             if (action == 1) {
@@ -208,10 +231,15 @@ export default {
                 input {
                     width: 100%;
                 }
-                textarea {
-                    width: 100%;
-                    height: 70vh;
+                textarea{
                     resize: none;
+                    width: 100%;
+                }
+                #text {
+                    height: 70vh;
+                }
+                #description{
+                    height: 15vh;
                 }
 
                 #imgs_actions {

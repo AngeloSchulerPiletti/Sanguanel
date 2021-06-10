@@ -25,6 +25,8 @@ export default {
                     ["Assunto"],
                     ["Artigo"],
                     ["Imagens"],
+                    ["Descrição"],
+                    ["Palavras-Chaves"],
                 ],
                 db: [
                     ["Instruções Gerais"],

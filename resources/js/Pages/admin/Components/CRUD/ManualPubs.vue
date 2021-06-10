@@ -86,6 +86,17 @@
             <li>small-right</li>
         </ul>
     </section>
+    <section v-else-if="wich == 6">
+        <p>Crie uma pequena descrição sobre seu artigo para melhorar o SEO e auxiliar o entendimento do leitor.</p> 
+        <p>Essa descrição não irá aparecer no artigo e o campo é obrigatório.</p>
+    </section>
+    <section v-else-if="wich == 7">
+        <p>Adicione palavras chaves ao texto seguindo as seguintes regras para ganhar mais vizualizações e melhor rankeamento.</p> 
+        <ul>
+            <li>Separe as palavras por vígula;</li>
+            <li>Não use espaço ao redor da vírgula, isto é:<br/>Errado: |vulcão, hidromel forte, jacaranda , história|<br/>Certo: |vulcão,hidromel forte,história|</li>
+        </ul>
+    </section>
 </template>
 
 <script>
