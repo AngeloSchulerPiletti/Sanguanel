@@ -74,7 +74,6 @@
                                     type="file"
                                     :id="'images_' + img"
                                 />
-                                <!-- <progress v-if="form.progress" :value="form.progress.percentage" max="100">{{form.progress.percentage}}%</progress> -->
                             </div>
                         </div>
                     </div>
@@ -100,7 +99,7 @@ export default {
             imgs: 0,
             instructions: ["pubs", undefined],
             form:  this.$inertia.form({
-              author: null,
+              author: this.$page.props.user.name,
               title: null,
               subject: null,
               text: null,
@@ -110,7 +109,7 @@ export default {
     },
     methods: {
         submit: function () {
-            this.form.post(this.route("admin.articlerequire"), {
+            this.form.post(this.route("admin.createRequire"), {
                 onFinish: () => {
                     this.imgs = 0;
                     this.form.images = [];

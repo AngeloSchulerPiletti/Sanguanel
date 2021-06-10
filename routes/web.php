@@ -81,8 +81,10 @@ Route::name('admin.')->middleware('admin')->group(function(){
         Route::post('/enviar-newsletter',          [AdminController::class, 'Pnews'])->name('Pnews');
 
 
-        Route::post('/nova-publicacao',            [ArticleRequireController::class, 'Prequire'])->name('articlerequire');
-        Route::get('/requisicoes',                 [ArticleRequireController::class, 'require'])->name('aprove');
+        Route::get('/requisicoes',                 [ArticleRequireController::class, 'require'])->name('requireView');
+        Route::post('/nova-publicacao',            [ArticleRequireController::class, 'createRequire'])->name('createRequire');
+        Route::post('/deletar-requisicao',         [ArticleRequireController::class, 'destroyRequire'])->name('destroyRequire');
+        Route::post('/aprovar-requisicao',         [ArticleRequireController::class, 'aproveRequire'])->name('aproveRequire');
 
     });    
 });

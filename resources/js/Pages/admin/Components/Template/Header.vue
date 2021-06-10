@@ -36,7 +36,7 @@ export default {
                 4: {
                     "Base de Dados":     [route("admin.database"), "database"],
                     "Criar Publicação":  [route("admin.newpub"), "pubs"],
-                    "Requisições":       [route("admin.aprove"), "requires"],
+                    "Requisições":       [route("admin.requireView"), "requires"],
                     "Alterar Páginas":   [route("admin.updatepages"), "pages"],
                     "Criar Newsletter":  [route("admin.news"), "news"],
                 },

@@ -28,13 +28,13 @@
                             </div>
 
                             <div class="actions_card">
-                                <aprove class="icons" />
+                                <aprove class="icons" @click="aprove(require.id)"/>
                                 <edit class="icons" />
                                 <see
                                     class="icons"
                                     @click="seeArticle(require.text)"
                                 />
-                                <remove class="icons" />
+                                <remove class="icons" @click="destroy(require.id)" />
                             </div>
                         </div>
                     </li>
@@ -68,7 +68,10 @@ export default {
             text: "",
         };
     },
-    props: ["articlesToAnswear"],
+    props: {
+        articlesToAnswear: Object,
+        status: Object,
+    },
     methods: {
         Refresh: function () {
             if (this.articlesToAnswear) {
@@ -83,12 +86,21 @@ export default {
                 scrollSmooth.scrollHere(article.scrollHeight);
             }, 400);
         },
+        destroy: function(id){
+            var article_id = id;
+            this.$inertia.post(this.route('admin.destroyRequire'), {'id': article_id});
+        },
+        aprove: function(id){
+            var article_id = id;
+            this.$inertia.post(this.route('admin.aproveRequire'), {'id': article_id});
+        }
     },
     created() {
         this.Refresh();
     },
     updated() {
         this.Refresh();
+        this.text = "";
     },
     components: {
         AppAdmin,

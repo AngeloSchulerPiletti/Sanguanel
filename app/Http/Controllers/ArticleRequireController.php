@@ -8,8 +8,9 @@ use App\Models\Article;
 
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
-
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Redirect;
 
 class ArticleRequireController extends Controller
 {
@@ -48,9 +49,9 @@ class ArticleRequireController extends Controller
 
 
 
-    public function Prequire(Request $request)
+    public function createRequire(Request $request)
     {
-       
+
         $request->validate([
             'author' => 'required',
             'title'  => 'required|string|min:4|max:50',
@@ -63,8 +64,7 @@ class ArticleRequireController extends Controller
         if (Auth::user()->adminLevel > 3) {
             $article = new Article;
             $status = "Artigo Criado!";
-        }
-        else{
+        } else {
             $article = new ArticleRequire;
             $status = "Artigo criado, mas aguarda aprovação de um administrador!";
             $article->text_formatted = $request->text;
@@ -101,14 +101,13 @@ class ArticleRequireController extends Controller
                 $imagePaths[] = '/images/app/' . $request->subject . "/" . $imagesNames[$i];
                 $requestImages[$i]->move(public_path('images/app/' . $request->subject), $imagesNames[$i]);
             }
-            
+
             $article->path_dirPictures = 'images/app/' . $request->subject;
             $imagesNamesString = "";
-            for ($i=0; $i < count($imagesNames); $i++) {
-                if($i == 0){
+            for ($i = 0; $i < count($imagesNames); $i++) {
+                if ($i == 0) {
                     $imagesNamesString = $imagesNames[$i];
-                } 
-                else{
+                } else {
                     $imagesNamesString .= "!!" . $imagesNames[$i];
                 }
             }
@@ -224,7 +223,7 @@ class ArticleRequireController extends Controller
 
         //URL Creation
         $article->url = $this->stringToURL($request->title);
-        
+
         $article->save();
 
         return Inertia::render("admin/Views/CRUD/ManagerPubs", ['status' => [0 => $status]]);
@@ -232,9 +231,72 @@ class ArticleRequireController extends Controller
 
 
 
-    public function require(){
+    public function require(Request $request)
+    {
+        $requestParameters = $request->request->all();
+        if (isset($requestParameters["status"])) {
+            $status = $requestParameters["status"];
+        } else {
+            $status = false;
+        }
         $requiresToAnswear = ArticleRequire::all();
+        return Inertia::render("admin/Views/CRUD/Requires", ['articlesToAnswear' => $requiresToAnswear, 'status' => $status]);
+    }
+
+
+    public function destroyRequire(Request $request, $require_status = "")
+    {
+        if (Auth::user()->adminLevel < 4) {
+            abort(403);
+        } else if($require_status == "aproved"){
+            DB::table("article_requires")->delete($request->id);
+            return;
+        } 
+        else {
+            $row = DB::table("article_requires")->where('id', $request->id)->get();
+            $row = $row[0];
+            if ($row->pictureNames != "") {
+
+                $arrayPicNames = explode("!!", $row->pictureNames);
+                for ($i = 0; $i < count($arrayPicNames); $i++) {
+                    if (\File::exists(public_path($row->path_dirPictures . "/" . $arrayPicNames[$i]))) {
+                        \File::delete(public_path($row->path_dirPictures . "/" . $arrayPicNames[$i]));
+                    }
+                }
+            }
+            DB::table("article_requires")->delete($request->id);
+            $status = [0 => "Remoção feita com sucesso!"];
+        }
         
-        return Inertia::render("admin/Views/CRUD/Requires", ['articlesToAnswear' => $requiresToAnswear]);
+        return Redirect::route('admin.requireView', ['status' => $status]);
+    }
+
+
+    public function aproveRequire(Request $request)
+    {
+        if (Auth::user()->adminLevel < 4) {
+            abort(403);
+        } else {
+            $newArt = new Article;
+
+            $aprovedArt = DB::table("article_requires")->where('id', $request->id)->get();
+            $aprovedArt = $aprovedArt[0];
+            
+            $newArt->author = $aprovedArt->author;
+            $newArt->subject = $aprovedArt->subject;
+            $newArt->title = $aprovedArt->title;
+            $newArt->text = $aprovedArt->text;
+            $newArt->path_dirPictures = $aprovedArt->path_dirPictures;
+            $newArt->pictureNames = $aprovedArt->pictureNames;
+            $newArt->url = $aprovedArt->url;
+
+            $newArt->save();
+
+            $this->destroyRequire($request, 'aproved');
+            
+            $status = [0 => "Aprovação feita com sucesso!"];
+        }
+
+        return Redirect::route('admin.requireView', ['status' => $status]);
     }
 }
