@@ -4,13 +4,16 @@
             <Brasil @stateBR="whichState($event)" />
             <div></div>
         </div>
-        <div>
+        <div id="aside_container" data-state="none">
             <aside>
-                <h4>{{ state }}</h4>
-                <hr />
-                <p v-show="state == 'Brasil'">
-                    Passe o mouse sobre os estados para ver
-                </p>
+                <div>
+                    <h4>{{ state }}</h4>
+                    <hr />
+                    <p v-show="state == 'Brasil'">
+                        Passe o mouse sobre os estados para ver
+                    </p>
+                </div>
+
                 <ul v-show="state != 'Brasil'">
                     Hidroméis mais consumidos em
                     {{
@@ -22,17 +25,19 @@
                     </li>
                 </ul>
             </aside>
-            <form>
+
+            <div id="link" >
                 <inertia-link
-                    v-if="$page.props.user"
-                    id="participar"
-                    href="/participar"
-                    >Participar</inertia-link
-                >
-                <inertia-link v-else id="participar" :href="route('login')"
-                    >Participar</inertia-link
-                >
-            </form>
+                v-if="$page.props.user"
+                id="participar"
+                href="/participar"
+                >Participar</inertia-link
+            >
+            <inertia-link v-else id="participar" :href="route('login')"
+                >Participar</inertia-link
+            >
+            </div>
+            
         </div>
     </section>
 </template>
@@ -87,12 +92,15 @@ export default {
     components: {
         Brasil,
     },
+    mounted(){
+        var aside_container = document.querySelector('#aside_container');
+        aside_container.dataset.state = "showing";
+    },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "resources/css/sass/Layouts/mixin.scss";
-
 
 #ranking {
     display: flex;
@@ -100,7 +108,13 @@ export default {
     #Brazil {
         flex-grow: 1;
     }
-    div {
+
+    
+    [data-state="showing"]{
+        animation: opacitySimple 500ms ease 600ms 1 normal both;
+    }
+    #aside_container {
+        opacity: 0;
         flex-grow: 0;
         height: 100%;
         width: 25vw;
@@ -110,16 +124,20 @@ export default {
             margin-top: 2.8vw;
             padding: 15px;
 
-            background-color: $gray1;
+            background-color: $tinyback;
             border-radius: 8px;
             @include shadow();
             h4 {
-                @include Titulo3_SS();
+                @include Titulo2_S();
+                text-transform: uppercase;
                 font-size: 2.2vw;
                 color: $black;
             }
             hr {
-                background-color: $white;
+                background-color: $black;
+                outline: none;
+                border: none;
+                height: 1px;
                 width: 100%;
                 margin-top: 14px;
                 margin-bottom: 12px;
@@ -127,9 +145,9 @@ export default {
 
             ul,
             p {
-                @include Fonte2_SS();
+                @include Fonte1_SS();
                 font-size: 1.4vw;
-                color: $white;
+                color: $black;
 
                 li:first-of-type {
                     margin-top: 1.2vw;
@@ -137,6 +155,8 @@ export default {
                 li {
                     @include Fonte1_S();
                     font-size: 1.5vw;
+                    text-transform: uppercase;
+
 
                     h6 {
                         @include Titulo2_S();
@@ -145,13 +165,13 @@ export default {
                         margin-right: 4px;
 
                         sup {
-                            font-size: 1.5vw;
+                            font-size: 1vw;
                         }
                     }
                 }
             }
         }
-        form {
+        #link {
             margin-top: 30px;
 
             #participar {
