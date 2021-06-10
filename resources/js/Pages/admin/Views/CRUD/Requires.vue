@@ -29,7 +29,7 @@
 
                             <div class="actions_card">
                                 <aprove class="icons" @click="aprove(require.id)"/>
-                                <edit class="icons" />
+                                <!-- <edit class="icons" /> -->
                                 <see
                                     class="icons"
                                     @click="seeArticle(require.text)"

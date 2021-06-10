@@ -222,7 +222,9 @@ class ArticleRequireController extends Controller
         $article->text = $article_text;
 
         //URL Creation
-        $article->url = $this->stringToURL($request->title);
+        $url = $this->stringToURL($request->title);
+        $URLexists = DB::table('articles')->where('url', $url)->get();
+        $article->url = isset($URLexists[0]) ? $url.'-'.strtotime('now') : $url;
 
         $article->save();
 

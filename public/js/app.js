@@ -26287,8 +26287,6 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
   var _component_aprove = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("aprove");
 
-  var _component_edit = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("edit");
-
   var _component_see = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("see");
 
   var _component_remove = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("remove");
@@ -26321,9 +26319,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
           }
         }, null, 8
         /* PROPS */
-        , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_edit, {
-          "class": "icons"
-        }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_see, {
+        , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <edit class=\"icons\" /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_see, {
           "class": "icons",
           onClick: function onClick($event) {
             return $options.seeArticle(require.text);
