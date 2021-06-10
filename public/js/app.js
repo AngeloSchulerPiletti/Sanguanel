@@ -19256,6 +19256,10 @@ __webpack_require__.r(__webpack_exports__);
       if (this.articlesToAnswear) {
         this.requires_list = this.articlesToAnswear;
       }
+
+      if (this.status) {
+        this.messages = this.status;
+      }
     },
     seeArticle: function seeArticle(text) {
       this.text = text;

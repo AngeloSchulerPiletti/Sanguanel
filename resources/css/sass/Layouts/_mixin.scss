@@ -8,65 +8,65 @@
         color: $black;
         padding: 2.4vw 2.4vw 2.4vw 2.4vw;
     
-        &::v-deep {
-            .simple_p {
+        & {
+            :deep(.simple_p) {
                 @include Fonte1_SS;
                 font-size: 1.3vw;
                 text-align: justify;
     
                 margin: 0.3vw 0 2vw 0;
             }
-            .tiny_p {
+            :deep(.tiny_p) {
                 @include Fonte1_SS;
                 font-size: 1.1vw;
                 text-transform: uppercase;
     
                 margin: 2vw 0 2vw 0;
             }
-            .small50 {
+            :deep(.small50) {
                 font-size: 50%;
             }
-            .small75 {
+            :deep(.small75) {
                 font-size: 75%;
             }
     
-            a {
+            :deep(a) {
                 @include anchorA($black, $yellow);
             }
     
             //=========== Títulos ============//
-            h1 {
+            :deep(h1) {
                 @include Titulo1_S;
                 font-size: 2.2vw;
                 text-transform: uppercase;
             }
-            h2 {
+            :deep(h2) {
                 @include Titulo2_S;
                 font-size: 1.9vw;
                 text-transform: uppercase;
             }
-            h3 {
+            :deep(h3) {
                 @include Titulo2_S;
                 font-size: 1.7vw;
                 text-transform: uppercase;
             }
-            h4 {
+            :deep(h4) {
                 @include Titulo2_S;
                 font-size: 1.7vw;
                 text-transform: capitalize;
             }
-            h5 {
+            :deep(h5) {
                 @include Fonte1_S;
                 font-size: 1.7vw;
                 text-transform: capitalize;
             }
-            h6 {
+            :deep(h6) {
                 @include Fonte2_S;
                 font-size: 1.5vw;
                 text-transform: capitalize;
             }
     
-            .elegant_hr {
+            :deep(.elegant_hr) {
                 outline: none;
                 border: none;
                 height: 1px;
@@ -74,7 +74,7 @@
                 margin: 1vw auto 1vw auto;
             }
     
-            ul {
+            :deep(ul) {
                 @include Fonte2_SS;
                 font-size: 1.3vw;
                 margin: 0.3vw 0 2vw 0;
@@ -87,7 +87,7 @@
                 }
             }
     
-            .img_container {
+            :deep(.img_container) {
                 width: fit-content;
     
                 .img_alternative {
@@ -111,13 +111,13 @@
                     width: 26vw;
                 }
             }
-            .center {
+            :deep(.center) {
                 margin: 2vw auto 2vw auto;
             }
-            .right {
+            :deep(.right) {
                 margin: 2vw 0 2vw auto;
             }
-            .left {
+            :deep(.left) {
                 margin: 2vw auto 2vw 0;
             }
         }

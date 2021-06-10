@@ -77,6 +77,9 @@ export default {
             if (this.articlesToAnswear) {
                 this.requires_list = this.articlesToAnswear;
             }
+            if (this.status) {
+                this.messages = this.status;
+            }
         },
         seeArticle: function (text) {
             this.text = text;
