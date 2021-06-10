@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Author;
 use App\Models\Article;
+use App\Models\SubhomesContent;
 
 class PublishController extends Controller
 {
@@ -27,9 +28,8 @@ class PublishController extends Controller
     public function artigos($section = null, $id = null)
     {
         if ($section != null) {
-            if ($id != null) {
+            if ($id != null) {//RETORNA ARTIGO
                 $articles = Article::all()->where('url', $id);
-
 
                 if ($articles->count() == 0) {
                     abort(404);
@@ -44,16 +44,21 @@ class PublishController extends Controller
                 } else {
                     abort(404);
                 }
-            } else {
+            } else {//RETORNA SUBHOME
                 if ($section == "producao" || $section == "historia" || $section == "curiosidades") {
+                    $page = SubhomesContent::all()->where('subject', $section);
+                    $articles_list = Article::all()->where('subject', 'artigos/'.$section);
+
                     return Inertia::render($this->url_pub . 'SubHomes/FromArtigos', [
                         'subject' => $section,
+                        'database' => $page,
+                        'articles_list' => $articles_list,
                     ]);
                 } else {
                     abort(404);
                 }
             }
-        } else {
+        } else {//RETORNA HOME
             return Inertia::render($this->url_pub . 'Artigos');
         }
     }
