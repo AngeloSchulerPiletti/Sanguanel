@@ -1,4 +1,8 @@
 <template>
+    <inertia-head>
+        <title>Perfil | Sanguanel</title>
+    </inertia-head>
+
     <app-admin :atPage="'account'" atSubpage="profile">
         <main>
             <section id="basic_infos">

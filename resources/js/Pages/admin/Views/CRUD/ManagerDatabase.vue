@@ -1,4 +1,8 @@
 <template>
+    <inertia-head>
+        <title>Base de Dados | Administrador</title>
+    </inertia-head>
+    
     <app-admin :atPage="'admin'" atSubpage="database" :message="messages">
         <main id="man_db">
             <!-- POP_UPs -->

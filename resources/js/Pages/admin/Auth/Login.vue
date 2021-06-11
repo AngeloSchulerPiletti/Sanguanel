@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Login | Sanguanel</title>
+        <meta name="description" content="Página de login do ediotrial">
+    </inertia-head>
+
     <app-admin atPage="login">
         <section id="login_container">
 

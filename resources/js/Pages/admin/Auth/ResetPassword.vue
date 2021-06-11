@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Recuperação de Senha | Sanguanel</title>
+        <meta name="description" content="Recuperação de senha">
+    </inertia-head>
+
     <app-admin>
         <section id="resetpassword_container">
         <form @submit.prevent="submit">

@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Confirmação de Senha | Sanguanel</title>
+        <meta name="description" content="Confirmação de senha">
+    </inertia-head>
+
     <app-admin>
         <section id="confirmation_container">
             <form @submit.prevent="submit">

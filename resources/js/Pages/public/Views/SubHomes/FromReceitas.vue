@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Receitas | {{name}}</title>
+        <!-- <meta name="description" :content="database.description"> -->
+    </inertia-head>
+
 <app-public :header_content="header">
   <p>FROM RECEITAS</p>
 </app-public>
@@ -18,7 +23,8 @@ export default {
         acceptSubjects: {
             'comidas':     ['Comidas',     ['Hidromel e', 'Muita Comida']],
             'drinks':      ['Drinks',      ['Hidromel nos teus', 'Drinks']],
-        }
+        },
+        name: "",
     }
   },
   components:{
@@ -31,6 +37,7 @@ export default {
         var assunto = this.subject,
             content = this.acceptSubjects;
 
+        this.name = content[assunto][0]
         this.header.title = content[assunto][1];   
     }
 }

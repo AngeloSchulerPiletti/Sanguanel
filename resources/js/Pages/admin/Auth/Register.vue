@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Cadastro | Sanguanel</title>
+        <meta name="description" content="Cadastre-se para ter maior liberdade no portal.">
+    </inertia-head>
+
     <app-admin :atPage="'register'">
         <section id="register_container">
 

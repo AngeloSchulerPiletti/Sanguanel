@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Institucional | {{name}}</title>
+        <!-- <meta name="description" :content="database.description"> -->
+    </inertia-head>
+
 <app-public :header_content="header">
   <p>FROM INSTITUCIONAL</p>
 </app-public>
@@ -18,7 +23,8 @@ export default {
         acceptSubjects: {
             'exposicao':   ['Exposição',                 ['Uma pequena', 'Declaração']],
             'politica':    ['Política de Privacidade',   ['Somos Cristalinos como um ', 'Bom Hidromel']],
-        }
+        },
+        name: "",
     }
   },
   components:{
@@ -32,6 +38,7 @@ export default {
             content = this.acceptSubjects;
 
         this.header.title = content[assunto][1];   
+        this.name = content[assunto][0];
     }
 }
 </script>

@@ -1,4 +1,8 @@
 <template>
+    <inertia-head>
+        <title>Alterar Páginas | Administrador</title>
+    </inertia-head>
+
 <app-admin :atPage="'admin'" atSubpage="pages">
   <section id="man_pages">
 

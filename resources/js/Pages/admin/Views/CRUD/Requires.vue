@@ -1,4 +1,8 @@
 <template>
+    <inertia-head>
+        <title>Requisições | Administrador</title>
+    </inertia-head>
+
     <app-admin atPage="admin" atSubpage="requires" :message="messages">
         <section id="requires_list">
             <div class="top">

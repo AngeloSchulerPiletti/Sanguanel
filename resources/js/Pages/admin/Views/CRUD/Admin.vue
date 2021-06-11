@@ -1,4 +1,8 @@
 <template>
+    <inertia-head>
+        <title>Administrador | Sanguanel</title>
+    </inertia-head>
+
     <app-admin :atPage="'admin'">
       <section id="privileges_container" v-if="$page.props.user.adminLevel >= 3">
         <div class="top">

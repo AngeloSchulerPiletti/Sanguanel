@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Verificação de Email | Sanguanel</title>
+        <meta name="description" content="Verificação de email.">
+    </inertia-head>
+
     <app-admin>
 
         <div>

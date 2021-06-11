@@ -1,4 +1,8 @@
 <template>
+    <inertia-head>
+        <title>Publicação | Administrador</title>
+    </inertia-head>
+
     <app-admin :atPage="'admin'" atSubpage="pubs" :message="status">
         <section id="man_pubs">
             <instructions

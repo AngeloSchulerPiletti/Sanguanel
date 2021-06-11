@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Autenticação | Sanguanel</title>
+        <meta name="description" content="Autenticação em dois fatores.">
+    </inertia-head>
+
     <app-admin atPage="login">
         <section id="twofactor_container">
             <h4>Autenticação em Dois Fatores</h4>

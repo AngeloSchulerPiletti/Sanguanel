@@ -94,7 +94,7 @@ export default {
             .card_title {
                 @include Titulo2_S;
                 text-transform: uppercase;
-                font-size: 3vw;
+                font-size: 2.5vw;
             }
             hr {
                 outline: none;
@@ -105,8 +105,10 @@ export default {
                 width: 30%;
             }
             .card_paragraph {
+                margin-top: 1vw;
+
                 @include Fonte1_SS;
-                font-size: 1.45vw;
+                font-size: 1.3vw;
                 text-align: justify;
                 height: 7vw;
 

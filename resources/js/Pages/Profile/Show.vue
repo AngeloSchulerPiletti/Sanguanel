@@ -1,4 +1,8 @@
 <template>
+    <inertia-head>
+        <title>Configurações | Sanguanel</title>
+    </inertia-head>
+
     <app-admin atPage="account" atSubpage="changes">
         <div>
             <div>

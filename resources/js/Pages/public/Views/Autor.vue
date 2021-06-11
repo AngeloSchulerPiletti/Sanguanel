@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Sanguanel | Autor</title>
+        <meta name="description" :content="data.bio">
+    </inertia-head>
+
     <app-public :header_content="header">
         <section id="author_container">
             <section id="sec_1">

@@ -1,4 +1,9 @@
 <template>
+    <inertia-head>
+        <title>Esqueceu a Senha | Sanguanel</title>
+        <meta name="description" content="Esqueceu da senha">
+    </inertia-head>
+
     <app-admin :atPage="'login'">
         <section id="forgot_container">
             
