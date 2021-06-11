@@ -35,10 +35,29 @@
 
 <script>
 export default {
-
+	mounted(){
+		if(this.color){
+			if (this.color == "white") {
+				var edits = document.querySelectorAll('.edit');
+				edits.forEach(el => {
+					el.classList.add('white');
+				});
+				
+			}
+		}
+	},
+	props:{
+		color: String,
+	}
 }
 </script>
 
 <style lang="scss" scoped>
-@include SVGHold($black, $yellow);
+svg{
+	@include SVGSemiHold($black, $yellow);
+}
+.white{
+	@include SVGSemiHold($white, $yellow);
+}
+
 </style>

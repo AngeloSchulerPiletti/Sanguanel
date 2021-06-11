@@ -50,6 +50,20 @@
         transition-property: fill;
     }
 }
+@mixin SVGSemiHold($c1, $c2) {
+    &:hover path,  &:hover rect, &:hover polygon {
+        fill: $c2;
+
+        transition: 300ms;
+        transition-property: fill;
+    }
+    path,  rect, polygon {
+        fill: $c1;
+
+        transition: 600ms;
+        transition-property: fill;
+    }
+}
 
 
 @keyframes opacitySimple{

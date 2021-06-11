@@ -65,10 +65,6 @@ export default {
         date.pop();
 
         this.header.date = date;
-
-        // var regex = />[^<]+/;
-        // this.description = this.article_data.text.match(regex)[0];
-        // this.description = this.description.replace('>', '');
     },
 };
 </script>

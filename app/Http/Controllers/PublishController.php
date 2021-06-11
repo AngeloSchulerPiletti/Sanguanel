@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Author;
 use App\Models\Article;
 use App\Models\SubhomesContent;
+use App\Models\InstitucionalPage;
 
 class PublishController extends Controller
 {
@@ -28,25 +29,21 @@ class PublishController extends Controller
     public function artigos($section = null, $id = null)
     {
         if ($section != null) {
-            if ($id != null) {//RETORNA ARTIGO
-                $articles = Article::all()->where('url', $id);
-                if ($articles->count() == 0) {
+            if ($id != null) { //RETORNA ARTIGO
+                $article = Article::where('url', $id)->first();
+                if (!$article) {
                     abort(404);
-                } else {
-                    foreach ($articles as $key => $value) {
-                        $articles = $value;
-                    }
                 }
 
-                if ($this->getPath($articles->subject, 'artigos', $section)) {
-                    return Inertia::render($this->url_pub . "Articles/ArticleModel", ['article' => $articles]);
+                if ($this->getPath($article->subject, 'artigos', $section)) {
+                    return Inertia::render($this->url_pub . "Articles/ArticleModel", ['article' => $article]);
                 } else {
                     abort(404);
                 }
-            } else {//RETORNA SUBHOME
+            } else { //RETORNA SUBHOME
                 if ($section == "producao" || $section == "historia" || $section == "curiosidades") {
                     $page = SubhomesContent::all()->where('subject', $section);
-                    $articles_list = Article::all()->where('subject', 'artigos/'.$section);
+                    $articles_list = Article::all()->where('subject', 'artigos/' . $section);
 
                     return Inertia::render($this->url_pub . 'SubHomes/FromArtigos', [
                         'subject' => $section,
@@ -57,7 +54,7 @@ class PublishController extends Controller
                     abort(404);
                 }
             }
-        } else {//RETORNA HOME
+        } else { //RETORNA HOME
             return Inertia::render($this->url_pub . 'Artigos');
         }
     }
@@ -67,25 +64,21 @@ class PublishController extends Controller
     public function receitas($section = null, $id = null)
     {
         if ($section != null) {
-            if ($id != null) {//RETORNA RECEITA
-                $articles = Article::all()->where('url', $id);
-                if ($articles->count() == 0) {
+            if ($id != null) { //RETORNA RECEITA
+                $article = Article::where('url', $id)->first();
+                if (!$article) {
                     abort(404);
-                } else {
-                    foreach ($articles as $key => $value) {
-                        $articles = $value;
-                    }
                 }
 
-                if ($this->getPath($articles->subject, 'receitas', $section)) {
-                    return Inertia::render($this->url_pub . "Articles/ArticleModel", ['article' => $articles]);
+                if ($this->getPath($article->subject, 'receitas', $section)) {
+                    return Inertia::render($this->url_pub . "Articles/ArticleModel", ['article' => $article]);
                 } else {
                     abort(404);
                 }
-            } else {//RETORNA SUBHOME
+            } else { //RETORNA SUBHOME
                 if ($section == "comidas" || $section == "drinks") {
                     $page = SubhomesContent::all()->where('subject', $section);
-                    $articles_list = Article::all()->where('subject', 'receitas/'.$section);
+                    $articles_list = Article::all()->where('subject', 'receitas/' . $section);
 
                     return Inertia::render($this->url_pub . 'SubHomes/FromReceitas', [
                         'subject' => $section,
@@ -96,7 +89,7 @@ class PublishController extends Controller
                     abort(404);
                 }
             }
-        } else {//RETORNA HOME
+        } else { //RETORNA HOME
             return Inertia::render($this->url_pub . 'Receitas');
         }
     }
@@ -105,9 +98,19 @@ class PublishController extends Controller
     public function institucional($section = null)
     {
         if ($section != null) {
-            return Inertia::render($this->url_pub . 'SubHomes/FromInstitucional', [
-                'subject' => $section,
-            ]);
+            $pages = InstitucionalPage::where('subject', 'institucional/'.$section)->first();
+            if (!$pages) {
+                abort(404);
+            }
+
+            if ($this->getPath($pages->subject, 'institucional', $section)) {
+                return Inertia::render($this->url_pub . 'SubHomes/FromInstitucional', [
+                    'article' => $pages,
+                    'subject' => $section,
+                ]);
+            } else {
+                abort(404);
+            }
         } else {
             return Inertia::render($this->url_pub . 'Institucional');
         }

@@ -28,8 +28,6 @@ export default {
         color: String,
     },
     mounted(){
-    
-   
         if(this.color == '$white'){
             var svgs = document.querySelectorAll(".buttontocolor");
             svgs.forEach(el => {

@@ -7,8 +7,10 @@ use Inertia\Inertia;
 
 use App\Models\Article;
 use App\Models\Author;
+use App\Models\InstitucionalPage;
 use App\Models\User;
 use App\Models\Newsletter;
+use App\Models\SubhomesContent;
 use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,12 +25,20 @@ class AdminController extends Controller
     protected function getDatabase($requires)
     {
         $database = [
+            //Data
             'users' => User::all(),
             'articles' => Article::all(),
-            'author' => Author::all(),
             'team' => Team::all(),
-            'newsletter' => Newsletter::all(),
-        ];
+            'newsletter' => Newsletter::all(), 
+
+            //Pages
+            'author'            => Author::all(),
+            'institucional'     => InstitucionalPage::all(),
+            'subhomes'          => SubhomesContent::all(),
+            //'articleshome'      => '', //Inalterável, por enquanto
+            //'recipeshome'       => '', //Inalterável, por enquanto
+            //'institucionalhome' => '', //Inalterável, por enquanto
+        ]; 
 
         $return = [];
 
@@ -45,37 +55,8 @@ class AdminController extends Controller
 
 
 
-    // public function stringToURL($title)
-    // {
-    //     $changes = array(
-    //         'Š' => 's', 'š' => 's', 'Ð' => 'dj', '' => 'z', '' => 'z', 'À' => 'a', 'Á' => 'a', 'Â' => 'a', 'Ã' => 'a', 'Ä' => 'a',
-    //         'Å' => 'a', 'Æ' => 'a', 'Ç' => 'c', 'È' => 'e', 'É' => 'e', 'Ê' => 'e', 'Ë' => 'e', 'Ì' => 'i', 'Í' => 'i', 'Î' => 'i',
-    //         'Ï' => 'i', 'Ñ' => 'n', 'Ń' => 'n', 'Ò' => 'o', 'Ó' => 'o', 'Ô' => 'o', 'Õ' => 'o', 'Ö' => 'o', 'Ø' => 'o', 'Ù' => 'u',
-    //         'Ú' => 'u', 'Û' => 'u', 'Ü' => 'u', 'Ý' => 'y', 'Þ' => 'b', 'ß' => 'ss', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a',
-    //         'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ç' => 'c', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i',
-    //         'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n', 'ń' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o',
-    //         'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ü' => 'u', 'ý' => 'y', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y', 'ƒ' => 'f',
-    //         'ă' => 'a', 'î' => 'i', 'â' => 'a', 'ș' => 's', 'ț' => 't', 'Ă' => 'A', 'Î' => 'I', 'Â' => 'A', 'Ș' => 'S', 'Ț' => 'T',
-    //         //Another Chars
-    //         ' ' => '-', '!' => '', '?' => '', '+' => '', '/' => '-', '"' => '', "'" => '', '*' => '', '&' => '', '@' => '', '#' => '',
-    //         '(' => '', ')' => '', '¨' => '', ',' => '', '.' => '', '§' => '', '%' => '', '<' => '', '>' => '', '\\' => '', '|' => '',
-    //         //Uppercase to Lowercase
-    //         'A' => 'a', 'B' => 'b', 'C' => 'c', 'D' => 'd', 'E' => 'e', 'F' => 'f', 'G' => 'g', 'H' => 'h', 'I' => 'i',
-    //         'J' => 'j', 'K' => 'k', 'L' => 'l', 'M' => 'm', 'N' => 'n', 'O' => 'o', 'P' => 'p', 'Q' => 'q', 'R' => 'r',
-    //         'S' => 's', 'T' => 't', 'U' => 'u', 'V' => 'v', 'W' => 'w', 'X' => 'x', 'Y' => 'y', 'Z' => 'z',
-    //     );
 
-    //     $url = strtr($title, $changes);
-    //     return $url;
-    // }
 
-    // protected function tagHTMLconstructor($content, $codified_text, $text, $tag, $class = "")
-    // {
-    //     foreach ($codified_text as $i => $value) {
-    //         $content = str_replace($value, '<' . $tag . ' class="' . $class . '" ' . '>' . $text[$i] . '</' . $tag . '>', $content);
-    //     }
-    //     return $content;
-    // }
 
 
 
@@ -94,7 +75,8 @@ class AdminController extends Controller
     }
     public function pages()
     {
-        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages');
+        $pages = $this->getDatabase(['institucional', 'author', 'subhomes']);
+        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages', ['pages' => $pages[0]]);
     }
     public function news()
     {
