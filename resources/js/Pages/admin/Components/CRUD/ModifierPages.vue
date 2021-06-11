@@ -1,16 +1,272 @@
 <template>
-  
+    <section id="changes_form">
+        <!-- para INSTITUCIONAL -->
+        <form
+            v-if="wich == 'institucional'"
+            @submit.prevent="submit('institucional')"
+        ></form>
+
+        <!-- para SUBHOMEs -->
+        <form
+            v-else-if="wich == 'subhomes'"
+            @submit.prevent="submit('subhomes')"
+            
+        >
+            <!-- DESCRIÇÃO -->
+            <div class="input_container">
+                <label for="description">Descrição</label
+                ><textarea
+                    id="description"
+                    class="field"
+                    v-model="forms.subhomes.description"
+                ></textarea>
+            </div>
+            <!-- SUBJECT -->
+            <div class="input_container">
+                <label for="subject">SubHome</label>
+                <select
+                    class="field"
+                    v-model="forms.subhomes.subject"
+                    name="subject"
+                    id="subject"
+                    @change="onlySubhomes"
+                >
+                    <option value="historia">Artigos: História</option>
+                    <option value="producao">Artigos: Produção</option>
+                    <option value="curiosidades">Artigos: Curiosidades</option>
+                    <option value="comidas">Receitas: Comidas</option>
+                    <option value="drinks">Receitas: Drinks</option>
+                </select>
+            </div>
+
+            <div id="actions">
+                <button>Enviar</button>
+            </div>
+        </form>
+
+        <!-- para AUTHOR  -->
+        <form v-else-if="wich == 'author'" @submit.prevent="submit('author')">
+            <!-- PROFILE -->
+            <div class="input_container">
+                <label for="profile">Foto de Perfil</label>
+                <input
+                    @input="forms.author.profile = $event.target.files[0]"
+                    class="field"
+                    type="file"
+                    id="profile"
+                />
+            </div>
+            <div class="input_container">
+                <label for="bio">Bio</label
+                ><textarea
+                    id="bio"
+                    class="field"
+                    v-model="forms.author.bio"
+                ></textarea>
+            </div>
+
+            <!-- SEÇÃO 1 -->
+            <div class="input_container">
+                <label for="title1">Título 1</label
+                ><input
+                    type="text"
+                    class="field"
+                    id="title1"
+                    v-model="forms.author.title1"
+                />
+            </div>
+            <div class="input_container">
+                <label for="text1">Texto 1</label
+                ><textarea
+                    id="text1"
+                    class="field"
+                    v-model="forms.author.text1"
+                ></textarea>
+            </div>
+            <div class="input_container">
+                <label for="picture_1">Foto 1</label>
+                <input
+                    @input="forms.author.picture1 = $event.target.files[0]"
+                    class="field"
+                    type="file"
+                    id="picture_1"
+                />
+            </div>
+
+            <!-- SEÇÃO 2 -->
+            <div class="input_container">
+                <label for="title2">Título 2</label
+                ><input
+                    class="field"
+                    type="text"
+                    id="title2"
+                    v-model="forms.author.title2"
+                />
+            </div>
+            <div class="input_container">
+                <label for="text2">Texto 2</label
+                ><textarea
+                    id="text2"
+                    class="field"
+                    v-model="forms.author.text2"
+                ></textarea>
+            </div>
+            <div class="input_container">
+                <label for="picture_2">Foto 2</label>
+                <input
+                    @input="forms.author.picture2 = $event.target.files[0]"
+                    class="field"
+                    type="file"
+                    id="picture_2"
+                />
+            </div>
+
+            <div id="actions">
+                <button>Enviar</button>
+            </div>
+        </form>
+    </section>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            forms: {
+                institucional: this.$inertia.form({
+                    table: "institucional",
+                    id: null,
+                    subject: null,
+                    description: null,
+                    text: null,
+                    url: null,
+                }),
+                subhomes: this.$inertia.form({
+                    table: "subhomes",
+                    id: null,
+                    description: null,
+                    subject: null,
+                }),
+                author: this.$inertia.form({
+                    table: "author",
+                    id: null,
+                    bio: null,
+                    picture1: null,
+                    picture2: null,
+                    profile: null,
+                    text1: null,
+                    text2: null,
+                    title1: null,
+                    title2: null,
+                }),
+            },
+        };
+    },
+    methods: {
+        logIt: function (event) {
+            console.log(event.target.files);
+        },
+        onlySubhomes: function(){
+            var actualSubhome = this.forms.subhomes.subject;
+            this.data.forEach(el => {
+                if(el.subject == actualSubhome){
+                    this.forms.subhomes.description = el.description;
+                    this.forms.subhomes.id = el.id;
+                }
+            });
+        },
+        submit: function (form) {
+            this.forms[form].post(this.route("admin.Ppages"), {
+                onFinish: () => this.$emit("close"),
+            });
+        },
+    },
+    created() {
+        var db = this.data;
+        if (this.wich == "author") {
+            this.forms.author.id = db[0].id;
+            // this.forms.author.profile = db[0].profile;
+            this.forms.author.bio = db[0].bio;
+            this.forms.author.title1 = db[0].title1;
+            this.forms.author.text1 = db[0].text1;
+            // this.forms.author.picture1 = db[0].picture1;
+            this.forms.author.title2 = db[0].title2;
+            this.forms.author.text2 = db[0].text2;
+            // this.forms.author.picture2 = db[0].picture2;
+        }
+        else if (this.wich == "subhomes") {
+            this.forms.subhomes.id = db[0].id;
+            this.forms.subhomes.description = db[0].description;
+            this.forms.subhomes.subject = db[0].subject;
+        }
+    },
     props: {
         data: Array,
+        wich: String,
     },
-
-}
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+#changes_form {
+    overflow-y: auto;
+    height: 55vh;
+    margin-bottom: 1vw;
 
+    form {
+        color: $black;
+
+        .input_container {
+            margin-bottom: 4vw;
+
+            label {
+                display: flex;
+                align-items: center;
+
+                @include Fonte2_SS;
+                font-size: 1.4vw;
+
+                span {
+                    margin-right: 0.6vw;
+                }
+            }
+
+            .field {
+                border-radius: 0.2vw;
+
+                @include Fonte2_SS;
+                font-size: 1.3vw;
+
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 0 0;
+                    border: 2px solid $yellow;
+                }
+            }
+            input {
+                width: 100%;
+            }
+            textarea {
+                resize: none;
+                width: 100%;
+                height: 20vh;
+            }
+        }
+        #actions {
+            display: flex;
+            justify-content: space-between;
+
+            width: 100%;
+
+            button {
+                @include buttonT($black, $yellow, $white, $white);
+                @include Fonte1_SS;
+                font-size: 1.8vw;
+
+                padding: 0.2vw 1vw 0.2vw 1vw;
+                border-radius: 0.25vw;
+            }
+        }
+    }
+}
 </style>

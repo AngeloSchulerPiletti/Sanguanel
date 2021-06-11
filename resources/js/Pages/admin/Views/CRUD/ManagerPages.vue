@@ -49,7 +49,6 @@ export default {
             // this.instructions[0] = "pageschange";
         },
         changePopUp: function (page, content) {
-            console.log(page, content);
             if (this.$page.props.user.adminLevel > 3) {
                 this.instructions[1] = page;
                 this.instructions[0] = "pageschange";

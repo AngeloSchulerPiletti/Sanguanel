@@ -17,7 +17,7 @@ class CreateSubhomesContentsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->longText('description');
-            $table->string('subject');
+            $table->string('subject'); // historia | curiosidades | producao | comidas | drinks 
         });
     }
 

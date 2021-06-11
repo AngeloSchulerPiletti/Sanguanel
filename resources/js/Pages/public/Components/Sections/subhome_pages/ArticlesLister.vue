@@ -48,8 +48,7 @@ export default {
         setList(wich){
             this.list_selector = wich;
             this.listingArticles();
-            window.scrollTo(0, 0)
-            console.log(this.list_selector);
+            window.scrollTo(0, 0);
         },
         listingArticles: function () {
             var keys = Object.keys(this.articles_list),

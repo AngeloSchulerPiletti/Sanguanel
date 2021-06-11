@@ -175,17 +175,7 @@ export default {
             this.form_articles.path_dirPictures = db[11];
             this.form_articles.url = db[13];
         }
-        // else if (db[1] == "author") {
-        //     this.form_author.id = db[2]
-        //     this.form_author.profile = db[5];
-        //     this.form_author.bio = db[6];
-        //     this.form_author.title1 = db[7];
-        //     this.form_author.text1 = db[8];
-        //     this.form_author.picture1 = db[9];
-        //     this.form_author.title2 = db[10];
-        //     this.form_author.text2 = db[11];
-        //     this.form_author.picture2 = db[12];
-        // }
+        
     },
     methods: {
         submit(form) {

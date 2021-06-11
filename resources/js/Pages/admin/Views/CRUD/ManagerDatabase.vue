@@ -113,7 +113,6 @@ export default {
                     elements.forEach((el) => {
                         contents.push(el.textContent);
                     });
-                    console.log(contents);
                     this.DBdata = contents;
                     this.instructions[1] = wich;
                     this.instructions[0] = "dbchange";

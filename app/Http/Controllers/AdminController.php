@@ -29,7 +29,7 @@ class AdminController extends Controller
             'users' => User::all(),
             'articles' => Article::all(),
             'team' => Team::all(),
-            'newsletter' => Newsletter::all(), 
+            'newsletter' => Newsletter::all(),
 
             //Pages
             'author'            => Author::all(),
@@ -38,7 +38,7 @@ class AdminController extends Controller
             //'articleshome'      => '', //Inalterável, por enquanto
             //'recipeshome'       => '', //Inalterável, por enquanto
             //'institucionalhome' => '', //Inalterável, por enquanto
-        ]; 
+        ];
 
         $return = [];
 
@@ -98,23 +98,22 @@ class AdminController extends Controller
                 $row = $row[0];
                 if ($request->table == "articles") {
                     if ($row->pictureNames != "") {
-                        
+
                         $arrayPicNames = explode("!!", $row->pictureNames);
                         for ($i = 0; $i < count($arrayPicNames); $i++) {
-                            if (\File::exists(public_path($row->path_dirPictures. "/" . $arrayPicNames[$i]))) {
-                                \File::delete(public_path($row->path_dirPictures. "/" . $arrayPicNames[$i]));
+                            if (\File::exists(public_path($row->path_dirPictures . "/" . $arrayPicNames[$i]))) {
+                                \File::delete(public_path($row->path_dirPictures . "/" . $arrayPicNames[$i]));
                             }
                         }
                     }
                 } else if ($request->table == "users") {
-                    if (\File::exists(public_path("storage/". $row->profile_photo_path))) {
-                        \File::delete(public_path("storage/". $row->profile_photo_path));
+                    if (\File::exists(public_path("storage/" . $row->profile_photo_path))) {
+                        \File::delete(public_path("storage/" . $row->profile_photo_path));
                     }
                 }
                 DB::table($request->table)->delete($request->id);
                 $status = [0 => "Remoção feita com sucesso!"];
             }
-            
         } else if ($request->action == "change") {
             if ($request->table == "users") {
                 $request->validate([
@@ -142,7 +141,7 @@ class AdminController extends Controller
                     'description' => 'required|string|max:230|min:20',
                     'title' => 'required|string',
                     'text' => 'required|string',
-                    'keywords'=> 'required|string',
+                    'keywords' => 'required|string',
                     'url' => 'required|string',
                 ]);
 
@@ -195,8 +194,28 @@ class AdminController extends Controller
     {
         //
     }
-    public function Ppages()
+    public function Ppages(Request $request)
     {
+        if(Auth::user()->adminLevel<4){
+            abort(403);
+        }
+        if ($request->table == "author") {
+            $request->validate([
+                "id" => 'required|integer',
+                "bio" => 'required|string|min:20|max:300',
+                "picture1" => 'image|nullable',
+                "picture2" => 'image|nullable',
+                "profile" => 'required|image',
+                "text1" => 'required|string|min:50|max:600',
+                "text2" => 'string|min:50|max:600|nullable',
+                "title1" => 'required|string|min:4|max:30',
+                "title2" => 'string|min:4|max:30|nullable',
+            ]);
+        }else{
+            abort(403);
+        }
+        
+        dd($request->request);
         // return Inertia::render($this->url_adm.'Views/CRUD/ManagerPages');
     }
     public function Pnews()

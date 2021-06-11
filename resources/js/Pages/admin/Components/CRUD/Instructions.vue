@@ -5,7 +5,7 @@
             <manual-pubs    v-if="data[0] == 'pubs'"        :wich="data[1]" />
             <manual-db      v-if="data[0] == 'db'"          :wich="data[1]"/>
             <modifier-db    v-if="data[0] == 'dbchange'"    :data="DBdata" @close="closeNow()"/>
-            <modifier-pages v-if="data[0] == 'pageschange'" :data="DBdata" :wich="data[1]" />
+            <modifier-pages v-if="data[0] == 'pageschange'" :data="DBdata" @close="closeNow()" :wich="data[1]" />
         </div>
     </div>
 </template>
@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         closeMe: function (event) {
-            if (event.path.length <= 9) {
+            if (event.target.id == 'instructions') {
                 this.$emit("meDelete");
             }
         },

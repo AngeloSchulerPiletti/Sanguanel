@@ -34,11 +34,9 @@ export default {
         Messages,
     },
     mounted(){
-        console.log(this.$page.props);
                 this.Refresh;
     },
     updated(){
-        console.log(this.$page.props);
                 this.Refresh;
 
     },
