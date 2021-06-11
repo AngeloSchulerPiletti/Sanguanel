@@ -1,14 +1,20 @@
 <template>
-<inertia-head>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@200;400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=block">
-
-</inertia-head>
+    <inertia-head>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@200;400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=block"
+        />
+    </inertia-head>
     <div id="_website_">
         <navigation :atPage="atPage" />
-        <messages :errors="$page.props.errors" :status="message"/>
+        <messages :errors="$page.props.errors" :status="message" />
 
         <section id="_website_content_">
-            <Header v-if="$page.props.user" :atPage="atPage" :atSubpage="atSubpage"/>
+            <Header
+                v-if="$page.props.user"
+                :atPage="atPage"
+                :atSubpage="atSubpage"
+            />
             <slot></slot>
         </section>
     </div>
@@ -18,7 +24,6 @@
 import Navigation from "@/Pages/admin/Components/Template/Navigation";
 import Header from "@/Pages/admin/Components/Template/Header";
 import Messages from "@/Layouts/Components/Messages";
-
 
 export default {
     components: {

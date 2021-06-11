@@ -9,7 +9,7 @@
             <instructions
                 @meDelete="setInstruction(undefined)"
                 :data="instructions"
-                :DBdata="dataChange"
+                :DBdata="DBdata"
             />
 
             <!-- CABEÇALHO -->
@@ -79,7 +79,7 @@ export default {
             },
             messages: {},
             instructions: [undefined, undefined],
-            dataChange: {},
+            DBdata: {},
         };
     },
     props: {
@@ -114,7 +114,7 @@ export default {
                         contents.push(el.textContent);
                     });
                     console.log(contents);
-                    this.dataChange = contents;
+                    this.DBdata = contents;
                     this.instructions[1] = wich;
                     this.instructions[0] = "dbchange";
                 }

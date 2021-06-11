@@ -4,8 +4,8 @@
             <h3>{{ card.title }}</h3>
         </div>
         <div class="actions">
-            <edit class="icons edit" color="white"/>
-            <see class="icons see" color="white"/>
+            <edit class="icons edit" color="white" @click="emitAction()"/>
+            <inertia-link :href="card.route"><see class="icons see" color="white"/></inertia-link>
         </div>
     </div>
 </template>
@@ -19,11 +19,12 @@ export default {
         return {
             card: {
                 title: "",
+                route: "",
             },
             possiblesTitles: {
-                institucional: "Seções Institucionais",
-                author: "Página do Autor",
-                subhomes: "Seções dos Artigos e Receitas",
+                institucional: ["Seções Institucionais", "/institucional"],
+                author: ["Página do Autor", "/autor"],
+                subhomes: ["Seções dos Artigos e Receitas", "/artigos"],
             },
         };
     },
@@ -34,8 +35,12 @@ export default {
         this.Refresh();
     },
     methods: {
+        emitAction: function(){
+            this.$emit('callChanges');
+        },
         Refresh: function () {
-            this.card.title = this.possiblesTitles[this.page];
+            this.card.title = this.possiblesTitles[this.page][0];
+            this.card.route = this.possiblesTitles[this.page][1];
         },
     },
     props: ["page"],

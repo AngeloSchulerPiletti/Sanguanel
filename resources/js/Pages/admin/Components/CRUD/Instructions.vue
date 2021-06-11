@@ -2,9 +2,10 @@
     <div v-if="data[1] != undefined" id="instructions" @click="closeMe($event)">
         <div id="container">
             <h3>{{ instructions[data[0]][data[1]][0] }}</h3>
-            <manual-pubs v-if="data[0] == 'pubs'" :wich="data[1]" />
-            <manual-db   v-if="data[0] == 'db'"   :wich="data[1]"/>
-            <modifier-db v-if="data[0] == 'dbchange'" :data="DBdata" @close="closeNow()"/>
+            <manual-pubs    v-if="data[0] == 'pubs'"        :wich="data[1]" />
+            <manual-db      v-if="data[0] == 'db'"          :wich="data[1]"/>
+            <modifier-db    v-if="data[0] == 'dbchange'"    :data="DBdata" @close="closeNow()"/>
+            <modifier-pages v-if="data[0] == 'pageschange'" :data="DBdata" :wich="data[1]" />
         </div>
     </div>
 </template>
@@ -13,6 +14,7 @@
 import ManualPubs from "@/Pages/admin/Components/CRUD/ManualPubs";
 import ManualDb from "@/Pages/admin/Components/CRUD/ManualDB";
 import ModifierDb from "@/Pages/admin/Components/CRUD/ModifierDB";
+import ModifierPages from '@/Pages/admin/Components/CRUD/ModifierPages';
 
 export default {
     data() {
@@ -34,6 +36,11 @@ export default {
                 dbchange: [
                     ["Alteração de Dados"],
                 ],
+                pageschange: {
+                    institucional: ["Institucional"],
+                    author: ["Página do Autor"],
+                    subhomes: ["Artigos e Receitas"],
+                }
             },
         };
     },
@@ -55,6 +62,7 @@ export default {
         ManualPubs,
         ManualDb,
         ModifierDb,
+        ModifierPages,
     },
 };
 </script>

@@ -4,14 +4,24 @@
     </inertia-head>
 
     <app-admin :atPage="'admin'" atSubpage="pages">
+        <!-- POP_UPs -->
+        <instructions
+            @meDelete="setInstruction(undefined)"
+            :data="instructions"
+            :DBdata="DBdata"
+        />
+
         <main id="man_pages">
             <section id="intro_sec">
                 <h3>Alteração de Páginas do Website</h3>
                 <p>Função destinada apenas para altos Administradores.</p>
             </section>
             <section id="cards_sec">
-                <div v-for="(model, page) in pages" :key="page">
-                    <change-card :page="page"></change-card>
+                <div v-for="(content, page) in pages" :key="page">
+                    <change-card
+                        :page="page"
+                        @callChanges="changePopUp(page, content)"
+                    ></change-card>
                 </div>
             </section>
         </main>
@@ -21,45 +31,68 @@
 <script>
 import AppAdmin from "@/Layouts/AppAdmin";
 import ChangeCard from "@/Pages/admin/Components/CRUD/ChangeCard";
+import Instructions from "@/Pages/admin/Components/CRUD/Instructions";
 
 export default {
-    created(){
+    data() {
+        return {
+            instructions: [undefined, undefined],
+            DBdata: {},
+        };
+    },
+    created() {
         //
     },
-    props:{
+    methods: {
+        setInstruction: function (wich) {
+            this.instructions[1] = wich;
+            // this.instructions[0] = "pageschange";
+        },
+        changePopUp: function (page, content) {
+            console.log(page, content);
+            if (this.$page.props.user.adminLevel > 3) {
+                this.instructions[1] = page;
+                this.instructions[0] = "pageschange";
+                this.DBdata = content;
+            }
+        },
+        
+    },
+    props: {
         pages: Array,
     },
     components: {
         AppAdmin,
         ChangeCard,
+        Instructions,
     },
 };
 </script>
 
 <style lang="scss" scoped>
-#man_pages{
+#man_pages {
     display: flex;
     flex-direction: column;
     gap: 10vw;
     margin-bottom: 10vw;
 
-    #intro_sec{
+    #intro_sec {
         margin-top: 6vw;
         text-align: center;
 
-        h3{
+        h3 {
             @include Titulo2_S;
             font-size: 3.5vw;
         }
-        p{
+        p {
             @include Fonte1_SS;
             font-size: 1.3vw;
         }
     }
-    #cards_sec{
+    #cards_sec {
         display: flex;
         flex-direction: column;
         gap: 5vw;
     }
 }
-</style> 
+</style>
