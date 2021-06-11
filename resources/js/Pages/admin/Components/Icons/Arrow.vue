@@ -1,5 +1,6 @@
 <template>
     <svg
+        class="buttontocolor"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -27,9 +28,13 @@ export default {
         color: String,
     },
     mounted(){
+    
+   
         if(this.color == '$white'){
-            var svg = document.querySelector("#arrow_btn");
-            svg.classList.add("white");
+            var svgs = document.querySelectorAll(".buttontocolor");
+            svgs.forEach(el => {
+                el.classList.add("white");
+            });
         }
     }
 
