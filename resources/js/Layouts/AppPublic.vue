@@ -1,56 +1,78 @@
 <template>
     <div id="_website_">
         <navigation />
+        <messages :errors="$page.props.errors" :status="message"/>
+
+
         <section id="_website_content_">
-            <Header :header_content="header_content"/>
+            <Header :header_content="header_content" />
             <main>
                 <slot></slot>
             </main>
-            
         </section>
     </div>
-</template> 
+</template>
 
 <script>
 import Navigation from "@/Pages/public/Components/Template/Navigation";
 import Header from "@/Pages/public/Components/Template/Header";
+import Messages from "@/Layouts/Components/Messages";
+
 
 export default {
-    data(){
-        return{
-        }
+    data() {
+        return {
+            message: {},
+        };
     },
     components: {
         Navigation,
         Header,
+        Messages,
     },
-    methods:{
-        //
+    mounted(){
+        console.log(this.$page.props);
+                this.Refresh;
+    },
+    updated(){
+        console.log(this.$page.props);
+                this.Refresh;
+
+    },
+    methods: {
+        Refresh: function () {
+            if (this.$page.props.errors) {
+                this.message = this.$page.props.errors;
+            }
+        },
     },
     props: {
         header_content: Object,
     },
-    
 };
 </script>
 
 <style lang="scss" scoped>
-
 #_website_ {
     display: flex;
 
-    navigation{
+    navigation {
         flex-grow: 0;
         flex-shrink: 0;
     }
     #_website_content_ {
+
         flex-grow: 1;
         flex-shrink: 1;
 
         margin-left: $menuWidth;
 
-        main{
+        transform-style: preserve-3d;
+
+        main {
             border: 3px solid $white;
+            z-index: 1;
+            transform: translateZ(-10vw);
         }
     }
 }

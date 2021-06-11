@@ -26,18 +26,17 @@
                 </ul>
             </aside>
 
-            <div id="link" >
+            <div id="link">
                 <inertia-link
-                v-if="$page.props.user"
-                id="participar"
-                href="/participar"
-                >Participar</inertia-link
-            >
-            <inertia-link v-else id="participar" :href="route('login')"
-                >Participar</inertia-link
-            >
+                    v-if="$page.props.user"
+                    id="participar"
+                    href="/participar"
+                    >Participar</inertia-link
+                >
+                <inertia-link v-else id="participar" :href="route('login')"
+                    >Participar</inertia-link
+                >
             </div>
-            
         </div>
     </section>
 </template>
@@ -92,8 +91,8 @@ export default {
     components: {
         Brasil,
     },
-    mounted(){
-        var aside_container = document.querySelector('#aside_container');
+    mounted() {
+        var aside_container = document.querySelector("#aside_container");
         aside_container.dataset.state = "showing";
     },
 };
@@ -109,13 +108,11 @@ export default {
         flex-grow: 1;
     }
 
-    
-    [data-state="showing"]{
+    [data-state="showing"] {
         animation: opacitySimple 500ms ease 600ms 1 normal both;
     }
     #aside_container {
         opacity: 0;
-        z-index: -1;
         flex-grow: 0;
         height: 100%;
         width: 25vw;
@@ -157,7 +154,6 @@ export default {
                     @include Fonte1_S();
                     font-size: 1.5vw;
                     text-transform: uppercase;
-
 
                     h6 {
                         @include Titulo2_S();
