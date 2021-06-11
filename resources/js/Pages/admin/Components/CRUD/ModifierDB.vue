@@ -54,6 +54,12 @@
                     id="author"
                     v-model="form_articles.author"
             /></label>
+            <label for="description"
+                >Descrição<textarea
+                    id="description"
+                    v-model="form_articles.description"
+                ></textarea>
+            </label>
             <label for="title"
                 >Título<input
                     type="text"
@@ -77,6 +83,12 @@
                     type="text"
                     id="url"
                     v-model="form_articles.url"
+            /></label>
+            <label for="keywords"
+                >Palavras_Chave<input
+                    type="text"
+                    id="keywords"
+                    v-model="form_articles.keywords"
             /></label>
             <label for="subject"
                 >Assunto do artigo<select
@@ -103,63 +115,6 @@
             </div>
         </form>
 
-        <!-- TABELA AUTOR
-        <form
-            v-if="table == 'author' && $page.props.user.adminLevel > 3"
-            @submit.prevent="submit(form_author)"
-        >
-            <label for="profile"
-                >Foto de Perfil<input
-                    type="file"
-                    id="profile"
-                    @input="form_author.profile = $event.target.files[0]"
-            /></label>
-            <label for="bio"
-                >Biografia<textarea
-                    id="bio"
-                    v-model="form_author.bio"
-                ></textarea>
-            </label>
-            CONJ. 1 
-            <label for="title1"
-                >Título 1<input
-                    type="text"
-                    id="title1"
-                    v-model="form_author.title1"
-            /></label>
-            <label for="text1"
-                >Texto 1<textarea
-                    id="tex1"
-                    v-model="form_author.text1"
-                ></textarea>
-            </label>
-            <label for="picture1"
-                >Foto 1<input
-                    type="file"
-                    id="picture1"
-                    @input="form_author.picture1 = $event.target.files[1]"
-            /></label>
-            CONJ. 2
-            <label for="title2"
-                >Título 2<input
-                    type="text"
-                    id="title2"
-                    v-model="form_author.title2"
-            /></label>
-            <label for="text2"
-                >Texto 2<textarea
-                    id="text2"
-                    v-model="form_author.tex2"
-                ></textarea>
-            </label>
-            <label for="picture2"
-                >Foto 2<input
-                    type="file"
-                    id="picture2"
-                    @input="form_author.picture2 = $event.target.files[2]"
-            /></label>
-            <button>Alterar</button>
-        </form> -->
     </div>
 </template>
 
@@ -183,8 +138,10 @@ export default {
             form_articles: this.$inertia.form({
                 id: undefined,
                 author: undefined,
+                description: undefined,
                 title: undefined,
                 text: undefined,
+                keywords: undefined,
                 path_dirPictures: undefined,
                 url: undefined,
                 subject: undefined,
@@ -210,22 +167,25 @@ export default {
         } else if (db[1] == "articles") {
             this.form_articles.id = db[2]
             this.form_articles.author = db[5];
-            this.form_articles.title = db[7];
-            this.form_articles.text = db[8];
-            this.form_articles.path_dirPictures = db[9];
-            this.form_articles.url = db[10];
             this.form_articles.subject = db[6];
-        } else if (db[1] == "author") {
-            this.form_author.id = db[2]
-            this.form_author.profile = db[5];
-            this.form_author.bio = db[6];
-            this.form_author.title1 = db[7];
-            this.form_author.text1 = db[8];
-            this.form_author.picture1 = db[9];
-            this.form_author.title2 = db[10];
-            this.form_author.text2 = db[11];
-            this.form_author.picture2 = db[12];
+            this.form_articles.description = db[7];
+            this.form_articles.title = db[8];
+            this.form_articles.text = db[9];
+            this.form_articles.keywords = db[10]
+            this.form_articles.path_dirPictures = db[11];
+            this.form_articles.url = db[13];
         }
+        // else if (db[1] == "author") {
+        //     this.form_author.id = db[2]
+        //     this.form_author.profile = db[5];
+        //     this.form_author.bio = db[6];
+        //     this.form_author.title1 = db[7];
+        //     this.form_author.text1 = db[8];
+        //     this.form_author.picture1 = db[9];
+        //     this.form_author.title2 = db[10];
+        //     this.form_author.text2 = db[11];
+        //     this.form_author.picture2 = db[12];
+        // }
     },
     methods: {
         submit(form) {
@@ -269,8 +229,13 @@ export default {
         }
         textarea {
             resize: none;
-            height: 50vh;
             overflow-y: auto;
+        }
+        #text{
+            height: 50vh;
+        }
+        #description{
+            height: 20vh;
         }
         input {
         }

@@ -157,8 +157,10 @@ class AdminController extends Controller
                 $request->validate([
                     'author' => 'string|required',
                     'subject' => 'string|required',
+                    'description' => 'required|string|max:230|min:20',
                     'title' => 'required|string',
                     'text' => 'required|string',
+                    'keywords'=> 'required|string',
                     'url' => 'required|string',
                 ]);
 
