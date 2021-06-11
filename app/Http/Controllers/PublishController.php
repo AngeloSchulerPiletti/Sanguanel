@@ -30,7 +30,6 @@ class PublishController extends Controller
         if ($section != null) {
             if ($id != null) {//RETORNA ARTIGO
                 $articles = Article::all()->where('url', $id);
-
                 if ($articles->count() == 0) {
                     abort(404);
                 } else {
@@ -68,10 +67,8 @@ class PublishController extends Controller
     public function receitas($section = null, $id = null)
     {
         if ($section != null) {
-            if ($id != null) {
+            if ($id != null) {//RETORNA RECEITA
                 $articles = Article::all()->where('url', $id);
-
-
                 if ($articles->count() == 0) {
                     abort(404);
                 } else {
@@ -85,16 +82,21 @@ class PublishController extends Controller
                 } else {
                     abort(404);
                 }
-            } else {
+            } else {//RETORNA SUBHOME
                 if ($section == "comidas" || $section == "drinks") {
+                    $page = SubhomesContent::all()->where('subject', $section);
+                    $articles_list = Article::all()->where('subject', 'receitas/'.$section);
+
                     return Inertia::render($this->url_pub . 'SubHomes/FromReceitas', [
                         'subject' => $section,
+                        'database' => $page,
+                        'articles_list' => $articles_list,
                     ]);
                 } else {
                     abort(404);
                 }
             }
-        } else {
+        } else {//RETORNA HOME
             return Inertia::render($this->url_pub . 'Receitas');
         }
     }

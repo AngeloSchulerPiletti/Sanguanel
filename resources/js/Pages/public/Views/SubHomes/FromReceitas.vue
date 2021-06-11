@@ -1,48 +1,104 @@
 <template>
     <inertia-head>
-        <title>Receitas | {{name}}</title>
-        <!-- <meta name="description" :content="database.description"> -->
+        <title>Receitas | {{ name }}</title>
+        <meta name="description" :content="database.description" />
     </inertia-head>
 
-<app-public :header_content="header">
-  <p>FROM RECEITAS</p>
-</app-public>
-  
+    <app-public :header_content="header">
+        <main id="fromrecipes_container">
+            <section id="description">
+                <p>
+                    {{ database.description }}Mussum Ipsum, cacilds vidis litro
+                    abertis. Interagi no mé, cursus quis, vehicula ac nisi.
+                    Cevadis im ampola pa arma uma pindureta. Per aumento de
+                    cachacis, eu reclamis. Leite de capivaris, leite de mula
+                    manquis sem cabeça.
+                </p>
+            </section>
+            <section id="articles_list">
+                <h4>Todos os artigos sobre {{ page_subject }} do hidromel</h4>
+                <div class="container">
+                    <articles-lister :articles_list="articles_list" />
+                </div>
+            </section>
+        </main>
+    </app-public>
 </template>
 
 <script>
 import AppPublic from "@/Layouts/AppPublic";
+import ArticlesLister from "@/Pages/public/Components/Sections/subhome_pages/ArticlesLister.vue";
 
 export default {
-  data(){
-    return{
-       header: {
-            'title': "",
-            'style': 'SubHomePages',
-        },
-        acceptSubjects: {
-            'comidas':     ['Comidas',     ['Hidromel e', 'Muita Comida']],
-            'drinks':      ['Drinks',      ['Hidromel nos teus', 'Drinks']],
-        },
-        name: "",
-    }
-  },
-  components:{
-    AppPublic
-  },
- props:{
-        subject: String,
+    data() {
+        return {
+            header: {
+                title: "",
+                style: "SubHomePages",
+            },
+            acceptSubjects: {
+                comidas: ["CookBook", ["Hidromel e", "Muita Comida"]],
+                drinks: ["CookBook", ["Hidromel nos teus", "Drinks"]],
+            },
+            page_subject: "",
+            name: "",
+        };
     },
-     created(){
+    components: {
+        AppPublic,
+        ArticlesLister,
+    },
+    props: {
+        subject: String,
+        database: Object,
+        articles_list: Object,
+    },
+    created() {
         var assunto = this.subject,
             content = this.acceptSubjects;
 
-        this.name = content[assunto][0]
-        this.header.title = content[assunto][1];   
-    }
-}
+        this.name = content[assunto][0];
+        this.page_subject = this.name;
+        this.header.title = content[assunto][1];
+    },
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+#fromrecipes_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10vw;
 
+    background-color: $black;
+    color: $white;
+
+    min-height: 100vh;
+
+    #description {
+        border-left: 3px solid $yellow;
+        width: 40%;
+        margin-left: 10vw;
+        padding: 4vw 0vw 1.8vw 1.8vw;
+
+        @include Fonte2_S;
+        font-size: 1.2vw;
+        text-align: justify;
+    }
+    #articles_list {
+        display: flex;
+        flex-direction: column;
+        gap: 3vw;
+
+        h4 {
+            @include Titulo2_S;
+            font-size: 2vw;
+            margin-left: 4vw;
+        }
+        .container {
+            width: 70%;
+            margin: auto;
+        }
+    }
+}
 </style>
