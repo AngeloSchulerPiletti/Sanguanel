@@ -219,6 +219,17 @@ class AdminController extends Controller
             $autor->save();
 
         } else if ($request->table == "subhomes") {
+            $request->validate([
+                'subject' => 'required|string',
+                'description' => 'required|string|min:50',
+            ]);
+            
+            $subhome = new SubhomesContent();
+            $subhome->subject     = $request->subject;
+            $subhome->description = $request->description;
+
+            $subhome->save();
+
         } else if ($request->table == "institucional") {
         } else {
             abort(403);
@@ -227,7 +238,7 @@ class AdminController extends Controller
         $status = [0 => "Alteração feita com sucesso!"];
         $pages = $this->getDatabase(['institucional', 'author', 'subhomes']);
 
-        return Inertia::render($this->url_adm.'Views/CRUD/ManagerPages', ['page' => $pages[0], 'status' => $status]);
+        return Inertia::render($this->url_adm.'Views/CRUD/ManagerPages', ['pages' => $pages[0], 'status' => $status]);
     }
     public function Pnews()
     {
