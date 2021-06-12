@@ -22,11 +22,11 @@ class CreateAuthorsTable extends Migration
 
             $table->string('title1', 50);
             $table->longText('text1');
-            $table->tinyText('picture1');
+            $table->tinyText('picture1')->default("");
 
-            $table->string('title2', 50);
-            $table->longText('text2');
-            $table->tinyText('picture2');
+            $table->string('title2', 50)->default("");
+            $table->longText('text2')->default("");
+            $table->tinyText('picture2')->default("");
         });
     }
 

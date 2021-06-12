@@ -119,7 +119,7 @@ class PublishController extends Controller
 
     public function autor()
     {
-        $dataAuthor = Author::all();
-        return Inertia::render($this->url_pub . 'Autor', ['data' => $dataAuthor[0]]);
+        $dataAuthor = Author::all()->last();
+        return Inertia::render($this->url_pub . 'Autor', ['data' => $dataAuthor]);
     }
 }

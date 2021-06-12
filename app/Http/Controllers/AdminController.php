@@ -53,6 +53,17 @@ class AdminController extends Controller
         return [$return];
     }
 
+    protected function saveImg($req, $requestFile, $path)
+    {
+        $file = $req->$requestFile;
+        $ext = $file->extension();
+
+        $imgName = $requestFile . "." . $ext;
+        $file->move(public_path($path), $imgName);
+
+        return $path . $imgName;
+    }
+
 
 
 
@@ -117,12 +128,12 @@ class AdminController extends Controller
         } else if ($request->action == "change") {
             if ($request->table == "users") {
                 $request->validate([
-                    'id'                => 'required|integer',
-                    'name'              => 'required|string',
-                    'email'             => 'required|email',
-                    'current_team_id'   => 'integer',
+                    'id'                 => 'required|integer',
+                    'name'               => 'required|string',
+                    'email'              => 'required|email',
+                    'current_team_id'    => 'integer',
                     'profile_photo_path' => 'string',
-                    'adminLevel'        => 'between:0,4',
+                    'adminLevel'         => 'between:0,4',
                 ]);
 
                 $user = User::findOrFail($request->id);
@@ -160,63 +171,63 @@ class AdminController extends Controller
             }
             $status = [0 => "Alteração feita com sucesso!"];
         }
-
-        // else if ($request->table == "author") {
-        //     $request->validate([
-        //         'profile' => 'required|image',
-        //         'bio' => 'required|string',
-        //         'title1' => 'required|string',
-        //         'text1' => 'required|string',
-        //         'picture1' => 'image',
-        //         'title2' => 'string',
-        //         'text2' => 'string',
-        //         'picture2' => 'image',
-        //     ]);
-
-        //     $author = Author::findOrFail($request->id);
-
-        //     $author->profile = $request->profile;
-        //     $author->bio = $request->bio;
-        //     $author->title1 = $request->title1;
-        //     $author->text1 = $request->text1;
-        //     $author->picture1 = $request->picture1;
-        //     $author->title2 = $request->title2;
-        //     $author->text2 = $request->text2;
-        //     $author->picture2 = $request->picture2;
-
-        //     $author->save();
-        // }
+    
 
         $database = $this->getDatabase(['users', 'articles']);
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0], 'status' => $status]);
     }
+
+
     public function Ppubs(Request $request)
     {
         //
     }
     public function Ppages(Request $request)
     {
-        if(Auth::user()->adminLevel<4){
+        if (Auth::user()->adminLevel < 4) {
             abort(403);
         }
         if ($request->table == "author") {
             $request->validate([
                 "id" => 'required|integer',
-                "bio" => 'required|string|min:20|max:300',
+                "bio" => 'required|string|min:20|max:400',
                 "picture1" => 'image|nullable',
                 "picture2" => 'image|nullable',
                 "profile" => 'required|image',
-                "text1" => 'required|string|min:50|max:600',
-                "text2" => 'string|min:50|max:600|nullable',
+                "text1" => 'required|string|min:50|max:900',
+                "text2" => 'string|min:50|max:900|nullable',
                 "title1" => 'required|string|min:4|max:30',
                 "title2" => 'string|min:4|max:30|nullable',
             ]);
-        }else{
+
+            //Image Tratament
+            $profile = $request->hasFile('profile')   ? $this->saveImg($request, 'profile',  '/images/autor/') : "";
+            $picture1 = $request->hasFile('picture1') ? $this->saveImg($request, 'picture1', '/images/autor/') : "";
+            $picture2 = $request->hasFile('picture2') ? $this->saveImg($request, 'picture2', '/images/autor/') : "";
+
+            //Passing All Data;
+            $autor = new Author();
+            $autor->bio      = $request->bio;
+            $autor->picture1 = $picture1;
+            $autor->picture2 = $picture2;
+            $autor->profile  = $profile;
+            $autor->text1    = $request->text1;
+            $autor->text2    = $request->text2;
+            $autor->title1   = $request->title1;
+            $autor->title2   = $request->title2;
+
+            $autor->save();
+
+        } else if ($request->table == "subhomes") {
+        } else if ($request->table == "institucional") {
+        } else {
             abort(403);
         }
         
-        dd($request->request);
-        // return Inertia::render($this->url_adm.'Views/CRUD/ManagerPages');
+        $status = [0 => "Alteração feita com sucesso!"];
+        $pages = $this->getDatabase(['institucional', 'author', 'subhomes']);
+
+        return Inertia::render($this->url_adm.'Views/CRUD/ManagerPages', ['page' => $pages[0], 'status' => $status]);
     }
     public function Pnews()
     {

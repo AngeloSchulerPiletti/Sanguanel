@@ -14,5 +14,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@include SVGHold($yellow, $black);
+@include SVGHold($black, $yellow);
 </style>

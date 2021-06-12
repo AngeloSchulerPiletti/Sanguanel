@@ -51,7 +51,6 @@ class ArticleRequireController extends Controller
 
     public function createRequire(Request $request)
     {
-
         $request->validate([
             'author' => 'required|string',
             'title'  => 'required|string|min:4|max:50',

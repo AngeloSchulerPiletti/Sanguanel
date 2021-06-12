@@ -74,6 +74,9 @@ export default {
             },
         };
     },
+    created(){
+        //
+    },
     components: {
         AppPublic,
         Github,
@@ -87,6 +90,7 @@ export default {
 
 <style lang="scss" scoped>
 #author_container {
+    padding-bottom: 10vw;
     
     section{
         padding: 4vw;
@@ -103,7 +107,9 @@ export default {
             align-items: center;
 
             #profile {
+                object-fit: cover;
                 width: 15vw;
+                height: 15vw;
                 border-radius: 50%;
 
                 border: 3px solid $yellow
