@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+
 use App\Models\Author;
 use App\Models\Article;
 use App\Models\SubhomesContent;
 use App\Models\InstitucionalPage;
+use App\Models\Homepage;
 
 class PublishController extends Controller
 {
@@ -55,7 +57,8 @@ class PublishController extends Controller
                 }
             }
         } else { //RETORNA HOME
-            return Inertia::render($this->url_pub . 'Artigos');
+            $database = Homepage::all()->where('subject', 'artigos')->last();
+            return Inertia::render($this->url_pub . 'Artigos', ['data' => $database]);
         }
     }
 
@@ -90,7 +93,8 @@ class PublishController extends Controller
                 }
             }
         } else { //RETORNA HOME
-            return Inertia::render($this->url_pub . 'Receitas');
+            $database = Homepage::all()->where('subject', 'receitas')->last();
+            return Inertia::render($this->url_pub . 'Receitas', ['database' => $database]);
         }
     }
 
@@ -112,7 +116,8 @@ class PublishController extends Controller
                 abort(404);
             }
         } else {
-            return Inertia::render($this->url_pub . 'Institucional');
+            $database = Homepage::all()->where('subject', 'institucional')->last();
+            return Inertia::render($this->url_pub . 'Institucional', ['database' => $database]);
         }
     }
 

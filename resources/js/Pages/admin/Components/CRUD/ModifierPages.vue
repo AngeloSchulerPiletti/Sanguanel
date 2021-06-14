@@ -192,6 +192,78 @@
                 <button>Enviar</button>
             </div>
         </form>
+
+        <!-- para HOMES  -->
+        <form v-else-if="wich == 'homes'" @submit.prevent="submit('homes')">
+            <!-- PÁGINA  -->
+            <div class="input_container">
+                <label for="subject">Página</label>
+                <select
+                    class="field"
+                    v-model="forms.homes.subject"
+                    name="subject"
+                    id="subject"
+                    @change="onlyHomes"
+                >
+                    <option value="artigos">Artigos</option>
+                    <option value="receitas">Receitas</option>
+                    <option value="institucional">Institucional</option>
+
+                </select>
+            </div>
+
+            <!-- DESCRIÇÃO -->
+            <div class="input_container">
+                <label for="description">Descrição</label
+                ><textarea
+                    id="description"
+                    class="field"
+                    v-model="forms.homes.description"
+                ></textarea>
+            </div>
+
+            <!-- TEXTO -->
+            <div class="input_container">
+                <label for="text"
+                    ><span @click="emitInstructions(4)"><info /></span
+                    ><span>Conteúdo</span></label
+                >
+                <textarea
+                    class="field"
+                    v-model="forms.homes.text"
+                    id="text"
+                ></textarea>
+            </div>
+
+            <!-- IMAGENS -->
+            <div class="input_container">
+                <div id="imgs_actions">
+                    <span @click="emitInstructions(5)"><info /></span>
+                    <div @click="Imgs(1)">ADD IMG</div>
+                    <div @click="Imgs(0)">REM IMG</div>
+                </div>
+                <div id="imgs_container">
+                    <div v-for="img in imgs" :key="img" class="img_container">
+                        <label :for="'images_' + img"
+                            ><span>Imagens{{ img }}</span></label
+                        >
+                        <input
+                            @input="
+                                forms.homes.images[img - 1] =
+                                    $event.target.files[0]
+                            "
+                            class="field"
+                            type="file"
+                            :id="'images_' + img"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div id="actions">
+                <button>Enviar</button>
+            </div>
+        </form>
     </section>
 </template>
 
@@ -229,6 +301,14 @@ export default {
                     title1: null,
                     title2: null,
                 }),
+                homes: this.$inertia.form({
+                    table: "homes",
+                    id: null,
+                    subject: null,
+                    description: null,
+                    text: null,
+                    images: [],
+                }),
             },
         };
     },
@@ -251,6 +331,16 @@ export default {
                 if (el.subject == actual) {
                     this.forms.institucional.text = el.text;
                     this.forms.institucional.id = el.id;
+                }
+            });
+        },
+        onlyHomes: function () {
+            var actual = this.forms.homes.subject;
+            this.data.forEach((el) => {
+                if (el.subject == actual) {
+                    this.forms.homes.text = el.text;
+                    this.forms.homes.description = el.description;
+                    this.forms.homes.id = el.id;
                 }
             });
         },
@@ -294,6 +384,11 @@ export default {
             this.forms.institucional.subject = db[0].subject;
             this.forms.institucional.text = db[0].text;
             this.forms.institucional.description = db[0].description;
+        } else if (this.wich == "homes") {
+            // this.forms.homes.id = db[0].id;
+            // this.forms.homes.subject = db[0].subject;
+            // this.forms.homes.text = db[0].text;
+            // this.forms.homes.description = db[0].description;
         }
     },
     props: {

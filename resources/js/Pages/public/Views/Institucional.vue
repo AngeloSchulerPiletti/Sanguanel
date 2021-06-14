@@ -1,7 +1,17 @@
 <template>
-  <app-public :header_content="header">
-    <p>INSTITUCIONAL</p>
-  </app-public>
+  <!-- CABEÇALHO DA PÁGINA -->
+    <inertia-head>
+        <title>Sanguanel | Institucional</title>
+        <meta
+            name="description"
+            :content="database.description"
+        />
+    </inertia-head>
+    <!-- CABEÇALHO DA PÁGINA -->
+
+    <app-public :header_content="header">
+        <article v-html="database.text"></article>
+    </app-public>
 </template>
 
 <script>
@@ -22,6 +32,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "resources/css/sass/Layouts/mixin";
 
+article {
+    @include ArticleStyle();
+}
 </style>

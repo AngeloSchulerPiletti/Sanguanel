@@ -50,6 +50,7 @@ export default {
                     institucional: ["Institucional"],
                     author: ["Página do Autor"],
                     subhomes: ["Artigos e Receitas"],
+                    homes: ["Homes: Artigos, Receitas e Institucional"],
                 },
             },
             usefulData: [],

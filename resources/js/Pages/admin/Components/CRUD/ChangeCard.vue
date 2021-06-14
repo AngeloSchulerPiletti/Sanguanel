@@ -24,7 +24,8 @@ export default {
             possiblesTitles: {
                 institucional: ["Seções Institucionais", "/institucional"],
                 author: ["Página do Autor", "/autor"],
-                subhomes: ["Seções dos Artigos e Receitas", "/artigos"],
+                subhomes: ["Seções dos Artigos e Receitas", "/artigos/historia"],
+                homes: ["Homes do site", "/artigos"],
             },
         };
     },

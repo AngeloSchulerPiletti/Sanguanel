@@ -12,6 +12,7 @@ use App\Models\InstitucionalPage;
 use App\Models\User;
 use App\Models\Newsletter;
 use App\Models\SubhomesContent;
+use App\Models\Homepage;
 use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,6 +37,7 @@ class AdminController extends Controller
             'author'            => Author::all(),
             'institucional'     => InstitucionalPage::all(),
             'subhomes'          => SubhomesContent::all(),
+            'homes'             => Homepage::all(),
             //'articleshome'      => '', //Inalterável, por enquanto
             //'recipeshome'       => '', //Inalterável, por enquanto
             //'institucionalhome' => '', //Inalterável, por enquanto
@@ -72,6 +74,11 @@ class AdminController extends Controller
 
 
 
+
+
+    /*+--------------------------------------+
+      |                 GET                 |
+      +--------------------------------------+*/
     public function admin()
     {
         return Inertia::render($this->url_adm . 'Views/CRUD/Admin');
@@ -87,7 +94,7 @@ class AdminController extends Controller
     }
     public function pages()
     {
-        $pages = $this->getDatabase(['institucional', 'author', 'subhomes']);
+        $pages = $this->getDatabase(['institucional', 'author', 'subhomes', 'homes',]);
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages', ['pages' => $pages[0]]);
     }
     public function news()
@@ -96,6 +103,20 @@ class AdminController extends Controller
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+    /*+--------------------------------------+
+      |                 POST                 |
+      +--------------------------------------+*/
     public function Pdatabase(Request $request)
     {
         $request->validate([
@@ -288,12 +309,71 @@ class AdminController extends Controller
             
             $institucional->save();
 
-        } else {
+        } else if ($request->table == "homes") {
+            $request->validate([
+                'subject' => 'required|string',
+                'description' => 'required|string|min:50',
+                'text'   => 'required|string',
+                'images' => 'array',
+                'images.*' => 'image',
+            ]);
+
+            $home = new Homepage;
+
+            //Image Tratament
+            if ($request->hasFile('images.*')) {
+                $requestImages = $request->images;
+                $imagesNames = [];
+
+                foreach ($requestImages as $key => $img) {
+                    $ext = $img->extension();
+
+                    $imageName = $img->getClientOriginalName() . strtotime('now') . "." . $ext;
+
+                    $has = 0;
+                    foreach ($imagesNames as $key => $name) {
+                        if ($imageName == $name) {
+                            $has++;
+                        }
+                    }
+                    if ($has > 0) {
+                        $imageName = $has . $imageName;
+                    }
+                    $imagesNames[] = $imageName;
+                }
+                for ($i = 0; $i < count($requestImages); $i++) {
+                    $imagePaths[] = '/images/' . $request->subject . "/" . $imagesNames[$i];
+                    $requestImages[$i]->move(public_path('images/' . $request->subject), $imagesNames[$i]);
+                }
+
+                $home->path_dirPictures = 'images/' . $request->subject;
+                $imagesNamesString = "";
+                for ($i = 0; $i < count($imagesNames); $i++) {
+                    if ($i == 0) {
+                        $imagesNamesString = $imagesNames[$i];
+                    } else {
+                        $imagesNamesString .= "!!" . $imagesNames[$i];
+                    }
+                }
+                $home->pictureNames = $imagesNamesString;
+            }
+            
+            $home->subject = $request->subject;
+            $home->description = $request->description;
+            $home->text_formatted = $request->text;
+
+            $formatter = new ArticleRequireController;
+            $home->text =  $formatter->ArticleRegEx($request->text);
+            
+            $home->save();
+
+        } 
+        else {
             abort(403);
         }
 
         $status = [0 => "Alteração feita com sucesso!"];
-        $pages = $this->getDatabase(['institucional', 'author', 'subhomes']);
+        $pages = $this->getDatabase(['institucional', 'author', 'subhomes', 'homes',]);
 
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages', ['pages' => $pages[0], 'status' => $status]);
     }
