@@ -72,24 +72,17 @@ export default {
             this.usefulData[0] = wich;
         },
         doublePop(wich) {
-            console.log("doublePop");
             this.usefulData = wich;
         },
     },
     created() {
-        console.log('created');
         if (this.data) {
             this.usefulData = this.data;
         }
     },
     updated(){
-        console.log('updated');
-        console.log("a: "+this.usefulData);       
-        console.log("b: "+this.data);
-
         if (this.usefulData[0] == this.data[0]) {
             this.usefulData = this.data;
-            console.log('equal');
         }
     },
     components: {

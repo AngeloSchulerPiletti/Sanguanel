@@ -5,6 +5,16 @@
             v-if="wich == 'institucional'"
             @submit.prevent="submit('institucional')"
         >
+            <!-- DESCRIÇÃO -->
+            <div class="input_container">
+                <label for="description">Descrição</label
+                ><textarea
+                    id="description"
+                    class="field"
+                    v-model="forms.institucional.description"
+                ></textarea>
+            </div>
+
             <!-- TEXTO -->
             <div class="input_container">
                 <label for="text"
@@ -16,6 +26,21 @@
                     v-model="forms.institucional.text"
                     id="text"
                 ></textarea>
+            </div>
+
+            <!-- PÁGINA  -->
+            <div class="input_container">
+                <label for="subject">Página</label>
+                <select
+                    class="field"
+                    v-model="forms.institucional.subject"
+                    name="subject"
+                    id="subject"
+                    @change="onlyInstitucional"
+                >
+                    <option value="exposicao">Exposição</option>
+                    <option value="politica">Política</option>
+                </select>
             </div>
 
             <!-- IMAGENS -->
@@ -32,7 +57,8 @@
                         >
                         <input
                             @input="
-                                forms.institucional.images[img - 1] = $event.target.files[0]
+                                forms.institucional.images[img - 1] =
+                                    $event.target.files[0]
                             "
                             class="field"
                             type="file"
@@ -40,6 +66,10 @@
                         />
                     </div>
                 </div>
+            </div>
+
+            <div id="actions">
+                <button>Enviar</button>
             </div>
         </form>
 
@@ -57,6 +87,7 @@
                     v-model="forms.subhomes.description"
                 ></textarea>
             </div>
+
             <!-- SUBJECT -->
             <div class="input_container">
                 <label for="subject">SubHome</label>
@@ -170,12 +201,15 @@ import Info from "@/Pages/admin/Components/Icons/Info";
 export default {
     data() {
         return {
+            imgs: 0,
             forms: {
                 institucional: this.$inertia.form({
                     table: "institucional",
                     id: null,
+                    subject: null,
+                    description: null,
                     text: null,
-                    images:[],
+                    images: [],
                 }),
                 subhomes: this.$inertia.form({
                     table: "subhomes",
@@ -203,25 +237,44 @@ export default {
             console.log(event.target.files);
         },
         onlySubhomes: function () {
-            var actualSubhome = this.forms.subhomes.subject;
+            var actual = this.forms.subhomes.subject;
             this.data.forEach((el) => {
-                if (el.subject == actualSubhome) {
+                if (el.subject == actual) {
                     this.forms.subhomes.description = el.description;
                     this.forms.subhomes.id = el.id;
                 }
             });
+        },
+        onlyInstitucional: function () {
+            var actual = this.forms.institucional.subject;
+            this.data.forEach((el) => {
+                if (el.subject == actual) {
+                    this.forms.institucional.text = el.text;
+                    this.forms.institucional.id = el.id;
+                }
+            });
+        },
+        Imgs: function (action) {
+            if (action == 1) {
+                this.imgs++;
+            } else if (action == 0) {
+                if (this.imgs > 0) {
+                    this.imgs--;
+                }
+            }
         },
         submit: function (form) {
             this.forms[form].post(this.route("admin.Ppages"), {
                 onFinish: () => this.$emit("close"),
             });
         },
-        emitInstructions: function(wich){
-            this.$emit('instructions', ['pubs', wich]);
+        emitInstructions: function (wich) {
+            this.$emit("instructions", ["pubs", wich]);
         },
     },
     created() {
         var db = this.data;
+        console.log(db[0]);
         if (this.wich == "author") {
             this.forms.author.id = db[0].id;
             // this.forms.author.profile = db[0].profile;
@@ -236,13 +289,18 @@ export default {
             this.forms.subhomes.id = db[0].id;
             this.forms.subhomes.description = db[0].description;
             this.forms.subhomes.subject = db[0].subject;
+        } else if (this.wich == "institucional") {
+            this.forms.institucional.id = db[0].id;
+            this.forms.institucional.subject = db[0].subject;
+            this.forms.institucional.text = db[0].text;
+            this.forms.institucional.description = db[0].description;
         }
     },
     props: {
         data: Array,
         wich: String,
     },
-    components:{
+    components: {
         Info,
     },
 };
@@ -292,7 +350,35 @@ export default {
                 width: 100%;
                 height: 20vh;
             }
+            #imgs_actions {
+                display: flex;
+                align-items: center;
+
+                span {
+                    margin-right: 1.5vw;
+                }
+                div {
+                    margin-right: 1vw;
+                    @include buttonT($yellow, $black, $white, $white);
+
+                    @include Fonte1_SS;
+                    font-size: 1.4vw;
+
+                    padding: 0.2vw 1vw 0.2vw 1vw;
+                    border-radius: 0.25vw;
+                    cursor: pointer;
+                }
+            }
+            #imgs_container {
+                margin-top: 2vw;
+
+                .img_container {
+                    margin-bottom: 2vw;
+                    width: fit-content;
+                }
+            }
         }
+
         #actions {
             display: flex;
             justify-content: space-between;

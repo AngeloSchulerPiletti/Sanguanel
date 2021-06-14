@@ -46,6 +46,102 @@ class ArticleRequireController extends Controller
         return $url;
     }
 
+    public function ArticleRegEx($text){
+
+        /*BASIC FORMAT */
+        //Backspaces
+        preg_match_all("/\n\n/Us",          $text, $backspaces);
+        foreach ($backspaces[0] as $i => $value) {
+            $text = str_replace($value, '<br/>', $text);
+        }
+        //Tiny Paragraph
+        preg_match_all("/[@]{3}(.+)[@]{3}/Us",                               $text, $tiny_p);
+        $text = $this->tagHTMLconstructor($text, $tiny_p[0], $tiny_p[1], 'p', 'tiny_p');
+        //Simple Paragraph
+        preg_match_all("/[@]{2}(.+)[@]{2}/Us",                               $text, $simple_p);
+        $text = $this->tagHTMLconstructor($text, $simple_p[0], $simple_p[1], 'p', 'simple_p');
+
+
+
+
+        /* BOLD  */
+        preg_match_all("/[\*]{2}([^\*].*[^\*])[\*]{2}/Us",          $text, $bolds);
+        $text = $this->tagHTMLconstructor($text, $bolds[0], $bolds[1], 'strong');
+
+        /* ITALIC */
+        preg_match_all("/\*([^\*].*[^\*])\*/Us",                               $text, $italics);
+        $text = $this->tagHTMLconstructor($text, $italics[0], $italics[1], 'em');
+
+
+
+
+        /* TITLES */
+        //H6
+        preg_match_all("/[#]{6}([^#]+)[#]{6}/U",                       $text, $h6);
+        $text = $this->tagHTMLconstructor($text, $h6[0], $h6[1], 'h6');
+        //H5
+        preg_match_all("/[#]{5}([^#]+)[#]{5}/U",                       $text, $h5);
+        $text = $this->tagHTMLconstructor($text, $h5[0], $h5[1], 'h5');
+        //H4
+        preg_match_all("/[#]{4}([^#]+)[#]{4}/U",                       $text, $h4);
+        $text = $this->tagHTMLconstructor($text, $h4[0], $h4[1], 'h4');
+        //H3
+        preg_match_all("/[#]{3}([^#]+)[#]{3}/U",                       $text, $h3);
+        $text = $this->tagHTMLconstructor($text, $h3[0], $h3[1], 'h3');
+        //H2
+        preg_match_all("/[#]{2}([^#]+)[#]{2}/U",                       $text, $h2);
+        $text = $this->tagHTMLconstructor($text, $h2[0], $h2[1], 'h2');
+        //H1
+        preg_match_all("/[#]{1}([^#]+)[#]{1}/U",                       $text, $h1);
+        $text = $this->tagHTMLconstructor($text, $h1[0], $h1[1], 'h1');
+
+
+        //HR
+        preg_match_all("/[+][-][+]/Us",          $text, $hrs);
+        foreach ($hrs[0] as $i => $value) {
+            $text = str_replace($value, '<hr class="elegant_hr"/>', $text);
+        }
+
+
+        /* SPANs */
+        // 50%
+        preg_match_all("/[\^]{2}([^\^]+)[\^]{2}/U",                  $text, $small75);
+        $text = $this->tagHTMLconstructor($text, $small75[0], $small75[1], 'span', 'small75');
+        // 25%
+        preg_match_all("/[\^]([^\^]+)[\^]/U",                        $text, $small50);
+        $text = $this->tagHTMLconstructor($text, $small50[0], $small50[1], 'span', 'small50');
+
+
+        /*QUOTES */
+        preg_match_all("/[']{3}([^']+)[']{3}/U",                               $text, $quotes);
+        $text = $this->tagHTMLconstructor($text, $quotes[0], $quotes[1], 'p', 'quotes');
+
+
+        /*LISTS */
+        //Cria a Lista
+        preg_match_all("/[-]{4}(.*)[-]{4}/Us",                                             $text, $list);
+        $text = $this->tagHTMLconstructor($text, $list[0], $list[1], 'ul');
+        //Cria os elementos
+        preg_match_all("/[-]{2}(.*)[-]{2}/Us",                                             $text, $list_el);
+        $text = $this->tagHTMLconstructor($text, $list_el[0], $list_el[1], 'li');
+
+
+        /*LINKS */
+        preg_match_all("/[$]{2}([^\[]+)[\[]([^\]]+)[\]][$]{2}/U",                   $text, $link);
+        foreach ($link[0] as $i => $value) {
+            $text = str_replace($value, '<a href="' . $link[2][$i] . '">' . $link[1][$i] . '</a>', $text);
+        }
+
+        /*ADSENSE */
+        preg_match_all("/`[\[][\]]`/U",                                         $text, $ads);
+        foreach ($ads[0] as $i => $value) {
+            $text = str_replace($value, '', $text);
+        }
+
+        return $text;
+    }
+
+
 
 
 
@@ -116,116 +212,23 @@ class ArticleRequireController extends Controller
         }
 
 
-        //Text Tratament
-        $article_text = $request->text;
+        //Uses function to format
+        $article->text = $this->ArticleRegEx($article->text);
 
-        /*BASIC FORMAT */
-        //Backspaces
-        preg_match_all("/\n\n/Us",          $article_text, $backspaces);
-        foreach ($backspaces[0] as $i => $value) {
-            $article_text = str_replace($value, '<br/>', $article_text);
-        }
-        //Tiny Paragraph
-        preg_match_all("/[@]{3}(.+)[@]{3}/Us",                               $article_text, $tiny_p);
-        $article_text = $this->tagHTMLconstructor($article_text, $tiny_p[0], $tiny_p[1], 'p', 'tiny_p');
-        //Simple Paragraph
-        preg_match_all("/[@]{2}(.+)[@]{2}/Us",                               $article_text, $simple_p);
-        $article_text = $this->tagHTMLconstructor($article_text, $simple_p[0], $simple_p[1], 'p', 'simple_p');
-
-
-
-
-        /* BOLD  */
-        preg_match_all("/[\*]{2}([^\*].*[^\*])[\*]{2}/Us",          $article_text, $bolds);
-        $article_text = $this->tagHTMLconstructor($article_text, $bolds[0], $bolds[1], 'strong');
-
-        /* ITALIC */
-        preg_match_all("/\*([^\*].*[^\*])\*/Us",                               $article_text, $italics);
-        $article_text = $this->tagHTMLconstructor($article_text, $italics[0], $italics[1], 'em');
-
-
-
-
-        /* TITLES */
-        //H6
-        preg_match_all("/[#]{6}([^#]+)[#]{6}/U",                       $article_text, $h6);
-        $article_text = $this->tagHTMLconstructor($article_text, $h6[0], $h6[1], 'h6');
-        //H5
-        preg_match_all("/[#]{5}([^#]+)[#]{5}/U",                       $article_text, $h5);
-        $article_text = $this->tagHTMLconstructor($article_text, $h5[0], $h5[1], 'h5');
-        //H4
-        preg_match_all("/[#]{4}([^#]+)[#]{4}/U",                       $article_text, $h4);
-        $article_text = $this->tagHTMLconstructor($article_text, $h4[0], $h4[1], 'h4');
-        //H3
-        preg_match_all("/[#]{3}([^#]+)[#]{3}/U",                       $article_text, $h3);
-        $article_text = $this->tagHTMLconstructor($article_text, $h3[0], $h3[1], 'h3');
-        //H2
-        preg_match_all("/[#]{2}([^#]+)[#]{2}/U",                       $article_text, $h2);
-        $article_text = $this->tagHTMLconstructor($article_text, $h2[0], $h2[1], 'h2');
-        //H1
-        preg_match_all("/[#]{1}([^#]+)[#]{1}/U",                       $article_text, $h1);
-        $article_text = $this->tagHTMLconstructor($article_text, $h1[0], $h1[1], 'h1');
-
-
-        //HR
-        preg_match_all("/[+][-][+]/Us",          $article_text, $hrs);
-        foreach ($hrs[0] as $i => $value) {
-            $article_text = str_replace($value, '<hr class="elegant_hr"/>', $article_text);
-        }
-
-
-        /* SPANs */
-        // 50%
-        preg_match_all("/[\^]{2}([^\^]+)[\^]{2}/U",                  $article_text, $small75);
-        $article_text = $this->tagHTMLconstructor($article_text, $small75[0], $small75[1], 'span', 'small75');
-        // 25%
-        preg_match_all("/[\^]([^\^]+)[\^]/U",                        $article_text, $small50);
-        $article_text = $this->tagHTMLconstructor($article_text, $small50[0], $small50[1], 'span', 'small50');
-
-
-        /*QUOTES */
-        preg_match_all("/[']{3}([^']+)[']{3}/U",                               $article_text, $quotes);
-        $article_text = $this->tagHTMLconstructor($article_text, $quotes[0], $quotes[1], 'p', 'quotes');
-
-
-        /*LISTS */
-        //Cria a Lista
-        preg_match_all("/[-]{4}(.*)[-]{4}/Us",                                             $article_text, $list);
-        $article_text = $this->tagHTMLconstructor($article_text, $list[0], $list[1], 'ul');
-        //Cria os elementos
-        preg_match_all("/[-]{2}(.*)[-]{2}/Us",                                             $article_text, $list_el);
-        $article_text = $this->tagHTMLconstructor($article_text, $list_el[0], $list_el[1], 'li');
-
-
-        /*LINKS */
-        preg_match_all("/[$]{2}([^\[]+)[\[]([^\]]+)[\]][$]{2}/U",                   $article_text, $link);
-        foreach ($link[0] as $i => $value) {
-            $article_text = str_replace($value, '<a href="' . $link[2][$i] . '">' . $link[1][$i] . '</a>', $article_text);
-        }
-
-        /*ADSENSE */
-        preg_match_all("/`[\[][\]]`/U",                                         $article_text, $ads);
-        foreach ($ads[0] as $i => $value) {
-            $article_text = str_replace($value, '', $article_text);
-        }
 
         /*IMAGENS DO ARTIGO */
-        preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $article_text, $picture);
+        preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $article->text, $picture);
         if (count($picture[0]) != count($request->images)) {
             return Inertia::render("admin/Views/CRUD/ManagerPubs", ['errors' => [0 => 'O número de imagens do artigo não é o mesmo número de imagens em upload.']]);
         } else if (count($picture[0]) > 0) {
             foreach ($picture[0] as $i => $value) {
-                $article_text = str_replace($value, '<div class="img_container ' . $picture[2][$i] . '"><img class="' . $picture[1][$i] . '" src="' . $imagePaths[$i] . '" alt="' . $picture[3][$i] . '" /><p class="img_alternative">' . $picture[3][$i] . '</p></div>', $article_text);
+                $article->text = str_replace($value, '<div class="img_container ' . $picture[2][$i] . '"><img class="' . $picture[1][$i] . '" src="' . $imagePaths[$i] . '" alt="' . $picture[3][$i] . '" /><p class="img_alternative">' . $picture[3][$i] . '</p></div>', $article->text);
             }
         }
-
-        $article->text = $article_text;
-
 
 
         //Keywords
         $article->keywords = $request->keywords;
-
 
 
         //URL Creation

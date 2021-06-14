@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Controllers\ArticleRequireController;
 
 use App\Models\Article;
 use App\Models\Author;
@@ -171,7 +172,7 @@ class AdminController extends Controller
             }
             $status = [0 => "Alteração feita com sucesso!"];
         }
-    
+
 
         $database = $this->getDatabase(['users', 'articles']);
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0], 'status' => $status]);
@@ -217,28 +218,84 @@ class AdminController extends Controller
             $autor->title2   = $request->title2;
 
             $autor->save();
-
         } else if ($request->table == "subhomes") {
             $request->validate([
                 'subject' => 'required|string',
                 'description' => 'required|string|min:50',
             ]);
-            
+
             $subhome = new SubhomesContent();
             $subhome->subject     = $request->subject;
             $subhome->description = $request->description;
 
             $subhome->save();
-
         } else if ($request->table == "institucional") {
+            $request->validate([
+                'subject' => 'required|string',
+                'description' => 'required|string|min:50',
+                'text'   => 'required|string',
+                'images' => 'array',
+                'images.*' => 'image',
+            ]);
+
+            $institucional = new InstitucionalPage;
+
+            //Image Tratament
+            if ($request->hasFile('images.*')) {
+                $requestImages = $request->images;
+                $imagesNames = [];
+
+                foreach ($requestImages as $key => $img) {
+                    $ext = $img->extension();
+
+                    $imageName = $img->getClientOriginalName() . strtotime('now') . "." . $ext;
+
+                    $has = 0;
+                    foreach ($imagesNames as $key => $name) {
+                        if ($imageName == $name) {
+                            $has++;
+                        }
+                    }
+                    if ($has > 0) {
+                        $imageName = $has . $imageName;
+                    }
+                    $imagesNames[] = $imageName;
+                }
+                for ($i = 0; $i < count($requestImages); $i++) {
+                    $imagePaths[] = '/images/institucional/' . $request->subject . "/" . $imagesNames[$i];
+                    $requestImages[$i]->move(public_path('images/institucional/' . $request->subject), $imagesNames[$i]);
+                }
+
+                $institucional->path_dirPictures = 'images/institucional/' . $request->subject;
+                $imagesNamesString = "";
+                for ($i = 0; $i < count($imagesNames); $i++) {
+                    if ($i == 0) {
+                        $imagesNamesString = $imagesNames[$i];
+                    } else {
+                        $imagesNamesString .= "!!" . $imagesNames[$i];
+                    }
+                }
+                $institucional->pictureNames = $imagesNamesString;
+            }
+            
+            $institucional->subject = $request->subject;
+            $institucional->description = $request->description;
+            $institucional->text_formatted = $request->text;
+
+            $formatter = new ArticleRequireController;
+            $institucional->text =  $formatter->ArticleRegEx($request->text);
+            $institucional->url = 'institucional/' . $request->subject;
+            
+            $institucional->save();
+
         } else {
             abort(403);
         }
-        
+
         $status = [0 => "Alteração feita com sucesso!"];
         $pages = $this->getDatabase(['institucional', 'author', 'subhomes']);
 
-        return Inertia::render($this->url_adm.'Views/CRUD/ManagerPages', ['pages' => $pages[0], 'status' => $status]);
+        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages', ['pages' => $pages[0], 'status' => $status]);
     }
     public function Pnews()
     {
