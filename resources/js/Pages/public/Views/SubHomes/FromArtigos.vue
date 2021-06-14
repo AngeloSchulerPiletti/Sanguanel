@@ -8,11 +8,7 @@
         <main id="fromarticles_container">
             <section id="description">
                 <p>
-                    {{ database.description }}Mussum Ipsum, cacilds vidis litro
-                    abertis. Interagi no mé, cursus quis, vehicula ac nisi.
-                    Cevadis im ampola pa arma uma pindureta. Per aumento de
-                    cachacis, eu reclamis. Leite de capivaris, leite de mula
-                    manquis sem cabeça.
+                    {{ database.description }}
                 </p>
             </section>
             <section id="articles_list">
@@ -55,6 +51,7 @@ export default {
         ArticlesLister,
     },
     created() {
+        console.log(this.database);
         var assunto = this.subject,
             content = this.acceptSubjects;
 
@@ -85,6 +82,8 @@ export default {
         @include Fonte2_S;
         font-size: 1.2vw;
         text-align: justify;
+
+        word-break: break-all;
     }
     #articles_list{
         display: flex;

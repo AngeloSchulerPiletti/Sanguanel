@@ -7,7 +7,6 @@
         <main id="man_db">
             <!-- POP_UPs -->
             <instructions
-                @meDelete="setInstruction(undefined)"
                 :data="instructions"
                 :DBdata="DBdata"
             />

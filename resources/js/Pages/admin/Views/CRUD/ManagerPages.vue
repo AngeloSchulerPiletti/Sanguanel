@@ -6,7 +6,7 @@
     <app-admin :atPage="'admin'" atSubpage="pages">
         <!-- POP_UPs -->
         <instructions
-            @meDelete="setInstruction(undefined)"
+            @closeMe="setInstruction"
             :data="instructions"
             :DBdata="DBdata"
         />
@@ -45,11 +45,12 @@ export default {
     },
     methods: {
         setInstruction: function (wich) {
-            this.instructions[1] = wich;
-            // this.instructions[0] = "pageschange";
+            console.log(wich);
+            this.instructions = wich;
         },
         changePopUp: function (page, content) {
             if (this.$page.props.user.adminLevel > 3) {
+                console.log('turning into '+page);
                 this.instructions[1] = page;
                 this.instructions[0] = "pageschange";
                 this.DBdata = content;

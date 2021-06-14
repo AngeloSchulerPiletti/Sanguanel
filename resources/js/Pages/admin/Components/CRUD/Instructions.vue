@@ -1,11 +1,25 @@
 <template>
-    <div v-if="data[1] != undefined" id="instructions" @click="closeMe($event)">
+    <div
+        v-if="usefulData[1] != undefined"
+        id="instructions"
+        @click="closeMe($event, usefulData[0])"
+    >
         <div id="container">
-            <h3>{{ instructions[data[0]][data[1]][0] }}</h3>
-            <manual-pubs    v-if="data[0] == 'pubs'"        :wich="data[1]" />
-            <manual-db      v-if="data[0] == 'db'"          :wich="data[1]"/>
-            <modifier-db    v-if="data[0] == 'dbchange'"    :data="DBdata" @close="closeNow()"/>
-            <modifier-pages v-if="data[0] == 'pageschange'" :data="DBdata" @close="closeNow()" :wich="data[1]" />
+            <h3>{{ instructions[usefulData[0]][usefulData[1]][0] }}</h3>
+            <manual-pubs v-if="usefulData[0] == 'pubs'" :wich="usefulData[1]" />
+            <manual-db v-if="usefulData[0] == 'db'" :wich="usefulData[1]" />
+            <modifier-db
+                v-if="usefulData[0] == 'dbchange'"
+                :data="DBdata"
+                @close="closeNow()"
+            />
+            <modifier-pages
+                v-if="usefulData[0] == 'pageschange'"
+                :data="DBdata"
+                @close="closeNow()"
+                :wich="usefulData[1]"
+                @instructions="doublePop"
+            />
         </div>
     </div>
 </template>
@@ -14,7 +28,7 @@
 import ManualPubs from "@/Pages/admin/Components/CRUD/ManualPubs";
 import ManualDb from "@/Pages/admin/Components/CRUD/ManualDB";
 import ModifierDb from "@/Pages/admin/Components/CRUD/ModifierDB";
-import ModifierPages from '@/Pages/admin/Components/CRUD/ModifierPages';
+import ModifierPages from "@/Pages/admin/Components/CRUD/ModifierPages";
 
 export default {
     data() {
@@ -30,18 +44,15 @@ export default {
                     ["Descrição"],
                     ["Palavras-Chaves"],
                 ],
-                db: [
-                    ["Instruções Gerais"],
-                ],
-                dbchange: [
-                    ["Alteração de Dados"],
-                ],
+                db: [["Instruções Gerais"]],
+                dbchange: [["Alteração de Dados"]],
                 pageschange: {
                     institucional: ["Institucional"],
                     author: ["Página do Autor"],
                     subhomes: ["Artigos e Receitas"],
-                }
+                },
             },
+            usefulData: [],
         };
     },
     props: {
@@ -49,13 +60,36 @@ export default {
         DBdata: Array,
     },
     methods: {
-        closeMe: function (event) {
-            if (event.target.id == 'instructions') {
-                this.$emit("meDelete");
+        closeMe: function (event, wich = null) {
+            if (event.target.id == "instructions") {
+                this.usefulData[1] = undefined;
+                this.usefulData[0] = wich;
+                this.$emit('closeMe', [wich, undefined]);
             }
         },
-        closeNow: function(){
-            this.$emit("meDelete");
+        closeNow: function (wich = null) {
+            this.usefulData[1] = undefined;
+            this.usefulData[0] = wich;
+        },
+        doublePop(wich) {
+            console.log("doublePop");
+            this.usefulData = wich;
+        },
+    },
+    created() {
+        console.log('created');
+        if (this.data) {
+            this.usefulData = this.data;
+        }
+    },
+    updated(){
+        console.log('updated');
+        console.log("a: "+this.usefulData);       
+        console.log("b: "+this.data);
+
+        if (this.usefulData[0] == this.data[0]) {
+            this.usefulData = this.data;
+            console.log('equal');
         }
     },
     components: {

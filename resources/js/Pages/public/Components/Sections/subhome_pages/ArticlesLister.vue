@@ -55,6 +55,7 @@ export default {
                 perpage = this.articles_perpage,
                 page = this.list_selector;
             
+            keys.reverse();
             this.totalArticles = keys.length;
             this.articlesShowing = [];
             for (

@@ -42,7 +42,7 @@ class PublishController extends Controller
                 }
             } else { //RETORNA SUBHOME
                 if ($section == "producao" || $section == "historia" || $section == "curiosidades") {
-                    $page = SubhomesContent::all()->where('subject', $section);
+                    $page = SubhomesContent::all()->where('subject', $section)->last();
                     $articles_list = Article::all()->where('subject', 'artigos/' . $section);
 
                     return Inertia::render($this->url_pub . 'SubHomes/FromArtigos', [

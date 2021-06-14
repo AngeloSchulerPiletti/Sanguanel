@@ -4,13 +4,49 @@
         <form
             v-if="wich == 'institucional'"
             @submit.prevent="submit('institucional')"
-        ></form>
+        >
+            <!-- TEXTO -->
+            <div class="input_container">
+                <label for="text"
+                    ><span @click="emitInstructions(4)"><info /></span
+                    ><span>Artigo</span></label
+                >
+                <textarea
+                    class="field"
+                    v-model="forms.institucional.text"
+                    id="text"
+                ></textarea>
+            </div>
+
+            <!-- IMAGENS -->
+            <div class="input_container">
+                <div id="imgs_actions">
+                    <span @click="emitInstructions(5)"><info /></span>
+                    <div @click="Imgs(1)">ADD IMG</div>
+                    <div @click="Imgs(0)">REM IMG</div>
+                </div>
+                <div id="imgs_container">
+                    <div v-for="img in imgs" :key="img" class="img_container">
+                        <label :for="'images_' + img"
+                            ><span>Imagens{{ img }}</span></label
+                        >
+                        <input
+                            @input="
+                                forms.institucional.images[img - 1] = $event.target.files[0]
+                            "
+                            class="field"
+                            type="file"
+                            :id="'images_' + img"
+                        />
+                    </div>
+                </div>
+            </div>
+        </form>
 
         <!-- para SUBHOMEs -->
         <form
             v-else-if="wich == 'subhomes'"
             @submit.prevent="submit('subhomes')"
-            
         >
             <!-- DESCRIÇÃO -->
             <div class="input_container">
@@ -129,6 +165,8 @@
 </template>
 
 <script>
+import Info from "@/Pages/admin/Components/Icons/Info";
+
 export default {
     data() {
         return {
@@ -136,10 +174,8 @@ export default {
                 institucional: this.$inertia.form({
                     table: "institucional",
                     id: null,
-                    subject: null,
-                    description: null,
                     text: null,
-                    url: null,
+                    images:[],
                 }),
                 subhomes: this.$inertia.form({
                     table: "subhomes",
@@ -166,10 +202,10 @@ export default {
         logIt: function (event) {
             console.log(event.target.files);
         },
-        onlySubhomes: function(){
+        onlySubhomes: function () {
             var actualSubhome = this.forms.subhomes.subject;
-            this.data.forEach(el => {
-                if(el.subject == actualSubhome){
+            this.data.forEach((el) => {
+                if (el.subject == actualSubhome) {
                     this.forms.subhomes.description = el.description;
                     this.forms.subhomes.id = el.id;
                 }
@@ -179,6 +215,9 @@ export default {
             this.forms[form].post(this.route("admin.Ppages"), {
                 onFinish: () => this.$emit("close"),
             });
+        },
+        emitInstructions: function(wich){
+            this.$emit('instructions', ['pubs', wich]);
         },
     },
     created() {
@@ -193,8 +232,7 @@ export default {
             this.forms.author.title2 = db[0].title2;
             this.forms.author.text2 = db[0].text2;
             // this.forms.author.picture2 = db[0].picture2;
-        }
-        else if (this.wich == "subhomes") {
+        } else if (this.wich == "subhomes") {
             this.forms.subhomes.id = db[0].id;
             this.forms.subhomes.description = db[0].description;
             this.forms.subhomes.subject = db[0].subject;
@@ -203,6 +241,9 @@ export default {
     props: {
         data: Array,
         wich: String,
+    },
+    components:{
+        Info,
     },
 };
 </script>

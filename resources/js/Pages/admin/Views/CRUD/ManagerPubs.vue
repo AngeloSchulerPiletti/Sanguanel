@@ -6,7 +6,6 @@
     <app-admin :atPage="'admin'" atSubpage="pubs" :message="status">
         <section id="man_pubs">
             <instructions
-                @meDelete="setInstruction(undefined)"
                 :data="instructions"
             />
 

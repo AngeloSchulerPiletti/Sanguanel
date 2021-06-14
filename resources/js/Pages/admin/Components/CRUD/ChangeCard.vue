@@ -4,7 +4,7 @@
             <h3>{{ card.title }}</h3>
         </div>
         <div class="actions">
-            <edit class="icons edit" color="white" @click="emitAction()"/>
+            <edit class="icons edit" color="white" @click="emitAction"/>
             <inertia-link :href="card.route"><see class="icons see" color="white"/></inertia-link>
         </div>
     </div>
