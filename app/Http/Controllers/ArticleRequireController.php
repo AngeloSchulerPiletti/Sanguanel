@@ -159,10 +159,10 @@ class ArticleRequireController extends Controller
 
         if (Auth::user()->adminLevel > 3) {
             $article = new Article;
-            $status = "Artigo Criado!";
+            $status = [0 => "Artigo Criado!"];
         } else {
             $article = new ArticleRequire;
-            $status = "Artigo criado, mas aguarda aprovação de um administrador!";
+            $status = [0 => "Artigo criado, mas aguarda aprovação de um administrador!"];
             $article->text_formatted = $request->text;
         }
 
@@ -239,21 +239,27 @@ class ArticleRequireController extends Controller
 
         $article->save();
 
-        return Inertia::render("admin/Views/CRUD/ManagerPubs", ['status' => [0 => $status]]);
+        // return Inertia::render("admin/Views/CRUD/ManagerPubs", ['status' => [0 => $status]]);
+        return redirect(route('admin.newpub'))->with('status', $status);
     }
 
 
 
     public function require(Request $request)
     {
-        $requestParameters = $request->request->all();
-        if (isset($requestParameters["status"])) {
-            $status = $requestParameters["status"];
-        } else {
-            $status = false;
-        }
         $requiresToAnswear = ArticleRequire::all();
-        return Inertia::render("admin/Views/CRUD/Requires", ['articlesToAnswear' => $requiresToAnswear, 'status' => $status]);
+        $props = null !== $request->session()->get('status') ? ['articlesToAnswear' => $requiresToAnswear, 'status' => $request->session()->get('status')] : ['articlesToAnswear' => $requiresToAnswear];
+        
+        return Inertia::render('admin/Views/CRUD/Requires', $props);
+
+        // $requestParameters = $request->request->all();
+        // if (isset($requestParameters["status"])) {
+        //     $status = $requestParameters["status"];
+        // } else {
+        //     $status = false;
+        // }
+       
+        // return Inertia::render("admin/Views/CRUD/Requires", ['articlesToAnswear' => $requiresToAnswear, 'status' => $status]);
     }
 
 
@@ -281,7 +287,7 @@ class ArticleRequireController extends Controller
             $status = [0 => "Remoção feita com sucesso!"];
         }
         
-        return Redirect::route('admin.requireView', ['status' => $status]);
+        return redirect(route('admin.requireView'))->with('status', $status);
     }
 
 
@@ -312,6 +318,7 @@ class ArticleRequireController extends Controller
             $status = [0 => "Aprovação feita com sucesso!"];
         }
 
-        return Redirect::route('admin.requireView', ['status' => $status]);
+        // return Redirect::route('admin.requireView', ['status' => $status]);
+        return redirect(route('admin.requireView'))->with('status', $status);
     }
 }

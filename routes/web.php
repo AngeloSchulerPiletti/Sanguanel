@@ -25,7 +25,7 @@ use App\Http\Controllers\ResearchesController;
 |
 */
 
-Route::get('/', [RouteController::class, 'index']);
+Route::get('/', [RouteController::class, 'index'])->name('home');
 
 
 
