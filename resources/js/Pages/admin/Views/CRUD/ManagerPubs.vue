@@ -132,15 +132,11 @@ export default {
     methods: {
         submit: function () {
             this.form.post(this.route("admin.createRequire"), {
-                onProgress: () => {
-                    
-                },
                 onFinish: () => {
                     // this.form.images = [];
                     // this.imgs = 0;
                 } 
             });
-            
         },
         Imgs: function (action) {
             if (action == 1) {

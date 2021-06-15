@@ -22,7 +22,7 @@ class ArticleRequireController extends Controller
         return $content;
     }
 
-    protected function stringToURL($title)
+    public function stringToURL($title)
     {
         $changes = array(
             'Š' => 's', 'š' => 's', 'Ð' => 'dj', '' => 'z', '' => 'z', 'À' => 'a', 'Á' => 'a', 'Â' => 'a', 'Ã' => 'a', 'Ä' => 'a',
@@ -178,6 +178,7 @@ class ArticleRequireController extends Controller
             $requestImages = $request->images;
             $imagesNames = [];
 
+           
             foreach ($requestImages as $key => $img) {
                 $ext = $img->extension();
 
@@ -212,12 +213,12 @@ class ArticleRequireController extends Controller
         }
 
 
-        //Uses function to format
+        // Uses function to format
         $article->text = $this->ArticleRegEx($article->text);
-
+        
 
         /*IMAGENS DO ARTIGO */
-        preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $article->text, $picture);
+        preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $request->text, $picture);
         if (count($picture[0]) != count($request->images)) {
             return Inertia::render("admin/Views/CRUD/ManagerPubs", ['errors' => [0 => 'O número de imagens do artigo não é o mesmo número de imagens em upload.']]);
         } else if (count($picture[0]) > 0) {

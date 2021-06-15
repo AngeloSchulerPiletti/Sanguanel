@@ -29,12 +29,16 @@ export default {
                 title: ["O Maior Editorial", "Hidromeleiro", "do Brasil"],
                 style: "HomePages",
             },
+            // messages: {},
         };
     },
     methods: {
         sendEmit: function () {
             this.$emit("sent-to-header");
         },
+    },
+    created(){
+        //
     },
     components: {
         Ranking,

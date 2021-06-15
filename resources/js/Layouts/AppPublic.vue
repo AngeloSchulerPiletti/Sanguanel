@@ -1,11 +1,13 @@
 <template>
-<inertia-head>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@200;400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=wrap">
-</inertia-head>
+    <inertia-head>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@200;400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=wrap"
+        />
+    </inertia-head>
     <div id="_website_">
         <navigation />
-        <messages :errors="$page.props.errors" :status="message"/>
-
+        <messages :errors="$page.props.errors" :status="$page.props.status" />
 
         <section id="_website_content_">
             <Header :header_content="header_content" />
@@ -21,11 +23,9 @@ import Navigation from "@/Pages/public/Components/Template/Navigation";
 import Header from "@/Pages/public/Components/Template/Header";
 import Messages from "@/Layouts/Components/Messages";
 
-
 export default {
     data() {
         return {
-            message: {},
         };
     },
     components: {
@@ -33,19 +33,12 @@ export default {
         Header,
         Messages,
     },
-    mounted(){
-                this.Refresh;
+    created() {
     },
-    updated(){
-                this.Refresh;
-
+    updated() {
     },
     methods: {
-        Refresh: function () {
-            if (this.$page.props.errors) {
-                this.message = this.$page.props.errors;
-            }
-        },
+        
     },
     props: {
         header_content: Object,
@@ -62,7 +55,6 @@ export default {
         flex-shrink: 0;
     }
     #_website_content_ {
-
         flex-grow: 1;
         flex-shrink: 1;
 
