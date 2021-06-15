@@ -87,14 +87,14 @@ class AdminController extends Controller
     public function database(Request $request)
     {
         $database = $this->getDatabase(['users', 'articles']);
-        $props = null !== $request->session()->get('status') ? ['database' => $database[0], 'status' => $request->session()->get('status')] : ['database' => $database[0]];
+        $props = null !== $request->session()->get('status') ? ['database' => $database[0], 'status' => [0 => $request->session()->get('status')]] : ['database' => $database[0]];
         
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', $props);
         // return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0]]);
     }
     public function pubs(Request $request)
     {
-        $props = null !== $request->session()->get('status') ? ['status' => $request->session()->get('status')] : [];
+        $props = null !== $request->session()->get('status') ? ['status' => [0 => $request->session()->get('status')]] : [];
 
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPubs', $props);
         // return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPubs');
@@ -102,7 +102,7 @@ class AdminController extends Controller
     public function pages(Request $request)
     {
         $pages = $this->getDatabase(['institucional', 'author', 'subhomes', 'homes',]);
-        $props = null !== $request->session()->get('status') ? ['pages' => $pages[0], 'status' => $request->session()->get('status')] : ['pages' => $pages[0]];
+        $props = null !== $request->session()->get('status') ? ['pages' => $pages[0], 'status' => [0 => $request->session()->get('status')]] : ['pages' => $pages[0]];
 
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages', $props);
         // return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages', ['pages' => $pages[0]]);

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ResearchesController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         return Inertia::render('public/Views/onlyUsers/Researches');
     }
     public function store(Request $request){
@@ -50,6 +50,9 @@ class ResearchesController extends Controller
         
         $answear->save();
 
-        return Inertia::render('public/Views/HomePage', ['status' => [0 => 'Pesquisa respondida! Obrigado']]);
+        $status = [0 => 'Pesquisa respondida! Obrigado'];
+
+        return redirect(route('home'))->with('status', $status);
+        // return Inertia::render('public/Views/HomePage', ['status' => [0 => 'Pesquisa respondida! Obrigado']]);
     }   
 }
