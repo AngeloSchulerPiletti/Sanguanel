@@ -17,6 +17,7 @@ use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\File;
+use Illuminate\Support\Facades\Redirect;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -83,10 +84,14 @@ class AdminController extends Controller
     {
         return Inertia::render($this->url_adm . 'Views/CRUD/Admin');
     }
-    public function database()
+    public function database(Request $request)
     {
+        
         $database = $this->getDatabase(['users', 'articles']);
-        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0]]);
+        $props = null !== $request->session()->get('status') ? ['database' => $database[0], 'status' => $request->session()->get('status')] : ['database' => $database[0]];
+        
+        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', $props);
+        // return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0]]);
     }
     public function pubs()
     {
@@ -195,8 +200,9 @@ class AdminController extends Controller
         }
 
 
-        $database = $this->getDatabase(['users', 'articles']);
-        return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0], 'status' => $status]);
+        return redirect(route('admin.database'))->with('status', $status);
+        // $database = $this->getDatabase(['users', 'articles']);
+        // return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0], 'status' => $status]);
     }
 
 
@@ -298,7 +304,7 @@ class AdminController extends Controller
                 }
                 $institucional->pictureNames = $imagesNamesString;
             }
-            
+
             $institucional->subject = $request->subject;
             $institucional->description = $request->description;
             $institucional->text_formatted = $request->text;
@@ -306,9 +312,8 @@ class AdminController extends Controller
             $formatter = new ArticleRequireController;
             $institucional->text =  $formatter->ArticleRegEx($request->text);
             $institucional->url = 'institucional/' . $request->subject;
-            
-            $institucional->save();
 
+            $institucional->save();
         } else if ($request->table == "homes") {
             $request->validate([
                 'subject' => 'required|string',
@@ -357,18 +362,16 @@ class AdminController extends Controller
                 }
                 $home->pictureNames = $imagesNamesString;
             }
-            
+
             $home->subject = $request->subject;
             $home->description = $request->description;
             $home->text_formatted = $request->text;
 
             $formatter = new ArticleRequireController;
             $home->text =  $formatter->ArticleRegEx($request->text);
-            
-            $home->save();
 
-        } 
-        else {
+            $home->save();
+        } else {
             abort(403);
         }
 
