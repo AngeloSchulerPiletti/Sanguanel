@@ -1,4 +1,5 @@
 <template>
+    <!-- CABEÇALHO -->
     <inertia-head>
         <title>Início | Sanguanel</title>
         <meta
@@ -6,6 +7,8 @@
             content="Sanguanel, o maior editorial brasileiro sobre hidromel. Desde a história do hidromel até receitas de drinks. Crie sua conta, leia gratuitamente, discuta no fórum e escreva!"
         />
     </inertia-head>
+    <!-- CABEÇALHO -->
+
 
     <app-public :header_content="header">
         <div id="website_home">

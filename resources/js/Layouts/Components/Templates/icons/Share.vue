@@ -1,5 +1,6 @@
 <template>
     <svg
+        :class="state"
         fill="#000000"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -16,7 +17,7 @@ export default {
 
     },
     updated(){
-        console.log(this.state);
+        
     },
     props:{
         state: String,
@@ -26,5 +27,24 @@ export default {
 
 <style lang="scss" scoped>
 @include SVGHold($white, $yellow);
+
+@keyframes show {
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+@keyframes hide {
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(-360deg);}
+}
+
+.none{
+
+}
+.hide{
+    animation: hide 500ms ease-in-out 0ms 1 normal both;
+}
+.show{
+    animation: show 300ms ease-in-out 0ms 1 normal both;
+}
 
 </style>

@@ -26,9 +26,9 @@
             </li>
         </ul>
         
-        <form>
-            <button type="submit" @mouseover="searchShow()" ><IconSearch class="menu_icon"/></button>
-            <input id="search_field" data-side="none" type="text" placeholder="Busque aqui"/>
+        <form @submit.prevent>
+            <inertia-link id="search_link" :href="route('search.show', {'keywords': field})" @mouseover="searchShow()" ><IconSearch class="menu_icon"/></inertia-link>
+            <input id="search_field" data-side="none" type="text" placeholder="Busque aqui" v-model="field" autocomplete="off"/>
         </form>
     </nav>
 </template>
@@ -44,6 +44,7 @@ import IconSearch from "../Icons/IconSearch";
 export default {
     data() {
         return {
+            field: "",
             colorIcon: "#FFFFFF",
             page_hover: "",
             paths:{
@@ -214,8 +215,8 @@ nav {
         margin-bottom: 16px;
     }
     form {
-        button{
-            margin-bottom: 10px;
+        #search_link{
+            // margin-bottom: 20px;
             &:hover{
             outline: none;
             }

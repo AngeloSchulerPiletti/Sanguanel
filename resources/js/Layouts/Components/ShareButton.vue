@@ -3,12 +3,22 @@
       <div id="share" class="share_icon" @click="btn">
           <share :state="button.state"/>
       </div>
+      <div id="links">
+        <link-icon class="icon"/>
+        <whatsapp class="icon"/>
+        <linkedin class="icon"/>
+        <facebook class="icon"/>
+      </div>
       
   </div>
 </template>
 
 <script>
-import Share from './Templates/icons/Share.vue'
+import Share    from '@/Layouts/Components/Templates/icons/Share.vue'
+import Whatsapp from '@/Layouts/Components/Templates/icons/Whatsapp.vue';
+import Linkedin from '@/Layouts/Components/Templates/icons/Linkedin.vue';
+import Facebook from '@/Layouts/Components/Templates/icons/Facebook.vue';
+import LinkIcon from './Templates/icons/LinkIcon.vue';
 
 export default {
   data(){
@@ -28,6 +38,10 @@ export default {
   },
   components:{
     Share,
+    Whatsapp,
+    Linkedin,
+    Facebook,
+    LinkIcon,
   }
 }
 </script>
@@ -49,6 +63,10 @@ export default {
     height: 5vw;
     width: 5vw;
     cursor: pointer;
+  }
+  .icon{
+    width: 4vw;
+    height: 4vw;
   }
 }
 </style>

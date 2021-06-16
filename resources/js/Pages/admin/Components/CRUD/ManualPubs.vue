@@ -96,6 +96,7 @@
             <li>Separe as palavras por vígula;</li>
             <li>Não use espaço ao redor da vírgula, isto é:<br/>Errado: |vulcão, hidromel forte, jacaranda , história|<br/>Certo: |vulcão,hidromel forte,história|</li>
         </ul>
+        <p>Dica importante: Utilize o máximo de palavras possível. Elas são utilizadas na hora em que um usuário realiza uma pesquisa no site!</p>
     </section>
 </template>
 

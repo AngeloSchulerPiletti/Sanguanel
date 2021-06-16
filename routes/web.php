@@ -13,6 +13,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ArticleRequireController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ResearchesController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,9 @@ Route::name('researches.')->middleware('auth:sanctum')->group(function () {
     Route::post('/participar',                [ResearchesController::class, 'store'])->name('send');
 });
 
+
+
+Route::get('/pesquisar/{keywords}',             [SearchController::class, 'index'])->name('search.show');
 
 
 

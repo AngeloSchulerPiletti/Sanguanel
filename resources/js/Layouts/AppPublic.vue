@@ -9,7 +9,7 @@
     <div id="_website_">
         <navigation />
         <messages :errors="$page.props.errors" :status="$page.props.status" />
-        <share-button v-if="$page.url != '/'"/>
+        <!-- <share-button v-if="$page.url != '/'"/> -->
 
         <section id="_website_content_">
             <Header :header_content="header_content" />
@@ -25,7 +25,7 @@
 import Navigation from "@/Pages/public/Components/Template/Navigation";
 import Header from "@/Pages/public/Components/Template/Header";
 import Messages from "@/Layouts/Components/Messages";
-import ShareButton from '@/Layouts/Components/ShareButton.vue';
+// import ShareButton from '@/Layouts/Components/ShareButton.vue';
 
 export default {
     data() {
@@ -36,7 +36,7 @@ export default {
         Navigation,
         Header,
         Messages,
-        ShareButton,
+        // ShareButton,
     },
     created() {
     },
