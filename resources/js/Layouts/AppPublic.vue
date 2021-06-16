@@ -5,15 +5,18 @@
             href="https://fonts.googleapis.com/css2?family=Merriweather:wght@200;400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=wrap"
         />
     </inertia-head>
+
     <div id="_website_">
         <navigation />
         <messages :errors="$page.props.errors" :status="$page.props.status" />
+        <share-button v-if="$page.url != '/'"/>
 
         <section id="_website_content_">
             <Header :header_content="header_content" />
             <main>
                 <slot></slot>
             </main>
+            
         </section>
     </div>
 </template>
@@ -22,6 +25,7 @@
 import Navigation from "@/Pages/public/Components/Template/Navigation";
 import Header from "@/Pages/public/Components/Template/Header";
 import Messages from "@/Layouts/Components/Messages";
+import ShareButton from '@/Layouts/Components/ShareButton.vue';
 
 export default {
     data() {
@@ -32,6 +36,7 @@ export default {
         Navigation,
         Header,
         Messages,
+        ShareButton,
     },
     created() {
     },
