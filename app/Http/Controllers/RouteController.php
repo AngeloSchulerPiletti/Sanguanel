@@ -20,7 +20,7 @@ class RouteController extends Controller
   public function index(Request $request)
   {
     // return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', $props);
-    $status = null !== $request->session()->get('status') ? [0 => $request->session()->get('status')] : null;
+    $status = null !== $request->session()->get('status') ? $request->session()->get('status') : null;
 
     return Inertia::render($this->url_pub . 'HomePage', [
       'canLogin' => Route::has('login'),

@@ -19,7 +19,7 @@ class NewsletterController extends Controller
         $newsletter->email = $request->email;
         $newsletter->save();
 
-        $status = "Email cadastrado";
+        $status = [0 => "Email cadastrado"];
 
         return redirect(route('home'))->with('status', $status);
         // return Inertia::render("public/Views/HomePage", ['status' => [0 => 'Email cadastrado']]);

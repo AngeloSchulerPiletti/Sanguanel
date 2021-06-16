@@ -69,7 +69,7 @@ Route::name('account.')->middleware('auth:sanctum', 'verified')->group(function 
 
 
 
-Route::name('admin.')->middleware('admin')->group(function () {
+Route::name('admin.')->middleware('admin', 'ua.restriction')->group(function () {
 
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/', [AdminController::class, 'admin'])->name('');
