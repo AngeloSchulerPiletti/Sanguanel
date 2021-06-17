@@ -50,7 +50,7 @@
                 </legend>
             </li>
             <li class="user_menus" id="drop_list" v-if="$page.props.user">
-                <drop-menu :links="links" type="public" />
+                <drop-menu :links="links" type="public"/>
             </li>
         </ul>
     </header>
@@ -82,7 +82,9 @@ export default {
         DropMenu,
     },
     methods: {
-        //
+        // close(){
+        //     this.$refs.dropmenu.arrowCall();
+        // },
     },
     created() {
         if (this.header_content.style) {

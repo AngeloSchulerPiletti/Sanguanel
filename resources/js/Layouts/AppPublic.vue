@@ -17,7 +17,7 @@
         <!-- <share-button v-if="$page.url != '/'"/> -->
 
         <section id="_website_content_">
-            <Header :header_content="header_content" />
+            <Header :header_content="header_content"/>
             <main>
                 <slot></slot>
             </main>
@@ -43,7 +43,9 @@ export default {
         Messages,
         // ShareButton,
     },
-    created() {},
+    mounted() {
+        
+    },
     updated() {},
     methods: {
         toBlockChange(arg) {
@@ -52,6 +54,7 @@ export default {
         closeMenus() {
             this.$refs.navigation.menuCall();
             this.$refs.navigation.searchHide();
+
         },
     },
     props: {

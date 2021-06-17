@@ -123,7 +123,7 @@ export default {
         return {
             clicked: false,
             menuMobile: false,
-            field: " ",
+            field: "Busca",
             colorIcon: "#FFFFFF",
             page_hover: "",
             paths: {
