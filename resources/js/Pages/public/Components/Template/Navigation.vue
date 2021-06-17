@@ -318,17 +318,17 @@ nav {
 
         #menu_container {
             #Logo {
-                width: 40px;
-                margin-top: 10px;
-                margin-bottom: 15px;
+                width: 48px;
+                margin-top: 12px;
+                margin-bottom: 16px;
             }
             hr {
                 margin-bottom: 20px;
             }
         }
         .menu_icon {
-            width: 28px;
-            margin-bottom: 12px;
+            width: 35px;
+            margin-bottom: 14px;
         }
         form {
             margin-bottom: 10px;
@@ -362,16 +362,16 @@ nav {
         }
     }
     [data-list="artigos"] {
-        top: 85px;
+        top: 94px;
     }
     [data-list="receitas"] {
-        top: 125px;
+        top: 140px;
     }
     [data-list="institucional"] {
-        top: 165px;
+        top: 190px;
     }
     [data-list="autor"] {
-        top: 200px;
+        top: 210px;
     }
 }
 </style>
