@@ -148,4 +148,84 @@ export default {
         }
     }
 }
+
+
+
+
+
+
+
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    #basic_infos {
+    display: flex;
+    padding: 5vw;
+    gap: 3vw;
+
+    .container_left {
+        flex-shrink: 0;
+        width: 55vw;
+
+        .top {
+            padding: 3.5vw 3.5vw 3.5vw 3.5vw;
+            gap: 3vw;
+
+            .left {
+                img {
+                    width: 18vw;
+                    height: 18vw;
+                }
+            }
+            .right {
+                padding-top: 1vw;
+                gap: 2vw;
+
+                label {
+                    font-size: 1.7vw;
+
+                    span {
+                        display: block;
+                        font-size: 2vw;
+                    }
+                }
+            }
+        }
+        .bottom {
+            padding: 3.5vw 3.5vw 3.5vw 3.5vw;
+
+            .info {
+                font-size: 1.8vw;
+
+                span {
+                    font-size: 2vw;
+                }
+            }
+            #actions {
+                margin: 1.4vw 0 3vw 0;
+
+                a {
+                    font-size: 2vw;
+                }
+            }
+        }
+        
+    }
+    .container_right {
+        h3{
+            font-size: 4vw;
+            margin-bottom: 0.8vw;
+        }
+        p{
+            font-size: 1.8vw;
+        }
+    }
+}
+}
+
 </style>
