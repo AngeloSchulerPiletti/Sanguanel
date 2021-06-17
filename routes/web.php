@@ -32,26 +32,25 @@ Route::get('/', [RouteController::class, 'index'])->name('home');
 
 
 
-Route::prefix('artigos')->group(function () {
+Route::name('artigos.')->prefix('artigos')->group(function () {
     Route::get('/',                 [PublishController::class, 'artigos']);
     Route::get('/{section}',        [PublishController::class, 'artigos']);
     Route::get('/{section}/{id}',   [PublishController::class, 'artigos']);
 });
 
-Route::prefix('receitas')->group(function () {
+Route::name('receitas.')->prefix('receitas')->group(function () {
     Route::get('/',                  [PublishController::class, 'receitas']);
     Route::get('/{section}',         [PublishController::class, 'receitas']);
     Route::get('/{section}/{id}',    [PublishController::class, 'receitas']);
 });
 
-Route::group(['prefix' => 'institucional'], function () {
+Route::name('institucional.')->prefix('institucional')->group(function () {
     Route::get('/',                  [PublishController::class, 'institucional']);
     Route::get('/{section}',         [PublishController::class, 'institucional']);
 });
 
-Route::group(['prefix' => 'autor'], function () {
-    Route::get('/',                  [PublishController::class, 'autor']);
-});
+Route::get('/autor',                  [PublishController::class, 'autor'])->name('autor');
+
 
 
 Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter');

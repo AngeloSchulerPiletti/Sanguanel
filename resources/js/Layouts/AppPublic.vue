@@ -7,8 +7,8 @@
     </inertia-head>
 
     <div id="_website_">
-        <div id="blocker" :class="toBlock"></div>
-        <navigation id="navigation_menu" @toBlock="toBlockChange"/>
+        <div id="blocker" v-if="toBlock == 'yes'" @click="$refs.navigation.menuCall()"></div>
+        <navigation id="navigation_menu" @toBlock="toBlockChange" ref="navigation"/>
         <messages :errors="$page.props.errors" :status="$page.props.status" />
         <!-- <share-button v-if="$page.url != '/'"/> -->
 
@@ -44,7 +44,7 @@ export default {
     methods: {
         toBlockChange(arg){
             this.toBlock = arg;
-        }
+        },
     },
     props: {
         header_content: Object,
@@ -96,10 +96,6 @@ export default {
 @media(max-width: 700px){
     #_website_ {
         #blocker{
-            &.no{
-                display: none;
-            }
-            &.yes{
                 background-color: $black;
                 opacity: 0.6;
                 z-index: 1000;
@@ -111,7 +107,6 @@ export default {
                 bottom: 0;
                 top: 0;
                 
-            }
         }
         #_website_content_ {
             margin-left: 0;

@@ -7,22 +7,34 @@
         "
     >
         <ul id="menu_container">
-            <inertia-link :href="urlSelector()"
+            <inertia-link href="/"
                 ><Logo id="Logo"
             /></inertia-link>
             <hr />
 
-            <li v-for="(pages, page, i) in paths['/']" :key="i">
+            <li v-for="(Obj, pageCode, i) in paths" :key="i">
+                <!-- DESKTOP -->
                 <inertia-link
-                    v-if="i > 0"
-                    :href="urlSelector(i + 1)"
-                    @mouseover="showPageList(page, i)"
+                    v-if="i >= 0 && !menuMobile"
+                    :href="Object.values(Obj)[0]"
+                    @mouseover="showSubPageList(pageCode)"
                 >
-                    <Icon1 class="menu_icon" v-if="i == 1" />
-                    <Icon2 class="menu_icon" v-if="i == 2" />
-                    <Icon3 class="menu_icon" v-if="i == 3" />
-                    <Icon4 class="menu_icon" v-if="i == 4" />
+                    <Icon1 class="menu_icon" v-if="i == 0" />
+                    <Icon2 class="menu_icon" v-if="i == 1" />
+                    <Icon3 class="menu_icon" v-if="i == 2" />
+                    <Icon4 class="menu_icon" v-if="i == 3" />
                 </inertia-link>
+
+                <!-- MOBILE -->
+                <div
+                    v-else-if="i >= 0 && menuMobile"
+                    @click="showSubPageList(pageCode)"
+                >
+                    <Icon1 class="menu_icon" v-if="i == 0" />
+                    <Icon2 class="menu_icon" v-if="i == 1" />
+                    <Icon3 class="menu_icon" v-if="i == 2" />
+                    <Icon4 class="menu_icon" v-if="i == 3" />
+                </div>
             </li>
         </ul>
 
@@ -34,17 +46,15 @@
         >
             <li
                 class="sub_pages"
-                v-for="(sub, index) in paths['/'][page_hover]"
+                v-for="(route, sub, index) in paths[page_hover]"
                 :key="index"
             >
                 <hr v-show="index > 0" />
 
                 <inertia-link
-                    :href="
-                        urlSelector(keyPos(paths['/'], page_hover), index + 1)
-                    "
+                    :href="route"
                 >
-                    <p>{{ paths["/"][page_hover][index] }}</p>
+                    <span>{{ Object.keys(paths[page_hover])[index] }}</span>
                 </inertia-link>
             </li>
         </ul>
@@ -90,31 +100,52 @@ import Arrow from "../../../admin/Components/Icons/Arrow.vue";
 export default {
     data() {
         return {
+            menuMobile: false,
             field: "",
             colorIcon: "#FFFFFF",
             page_hover: "",
             paths: {
-                "/": {
-                    inicio: [],
-                    artigos: ["historia", "producao", "curiosidades"],
-                    receitas: ["comidas", "drinks"],
-                    institucional: ["exposicao", "politica"],
-                    autor: [],
+                artigos: {
+                    Início: route("artigos.", { section: "", id: "" }),
+                    História: route("artigos.", {
+                        section: "historia",
+                        id: "",
+                    }),
+                    Produção: route("artigos.", {
+                        section: "producao",
+                        id: "",
+                    }),
+                    Curiosidades: route("artigos.", {
+                        section: "curiosidades",
+                        id: "",
+                    }),
                 },
+                receitas: {
+                    Início: route("receitas.", { section: "", id: "" }),
+                    Comida: route("receitas.", { section: "comidas", id: "" }),
+                    Drinks: route("receitas.", { section: "drinks", id: "" }),
+                },
+                institucional: {
+                    Início: route("institucional.", { section: ""}),
+                    Exposição: route("institucional.", {
+                        section: "exposição",
+                    }),
+                    Política: route("institucional.", {
+                        section: "politica",
+                    }),
+                },
+                autor: { Autor: route("autor") },
             },
         };
     },
-    components: {
-        Logo: LogoBranco,
-        Icon1,
-        Icon2,
-        Icon3,
-        Icon4,
-        IconSearch,
-        Arrow,
+    created() {
+        var screen = window.innerWidth;
+        if (screen <= 700) {
+            this.menuMobile = true;
+        }
     },
     methods: {
-         menuCall: function () {
+        menuCall: function () {
             var btn = document.querySelector("#pull_btn"),
                 menu = document.querySelector("nav");
 
@@ -122,60 +153,21 @@ export default {
                 btn.dataset.btnstate == "close" ||
                 btn.dataset.btnstate == "none"
             ) {
-                this.$emit('toBlock', 'yes');
+                this.$emit("toBlock", "yes");
                 btn.dataset.btnstate = "open";
                 menu.dataset.state = "show";
             } else {
-                this.$emit('toBlock', 'no');
+                this.$emit("toBlock", "no");
                 btn.dataset.btnstate = "close";
                 menu.dataset.state = "hide";
             }
         },
-        urlSelector: function (page = null, subpage = null) {
-            //page e subpage são numeros
-            const vm = this;
-            const dir = vm.paths["/"];
-            var linksURL = [];
-            var links = [];
-            var view = "";
-            page--;
-            subpage--;
-
-            for (var key in dir) {
-                view = "/" + key + "/";
-                linksURL.push(view);
-                links.push(key);
-            }
-
-            if (page >= 0 && subpage >= 0) {
-                var subdir = dir[links[page]];
-                return linksURL[page] + subdir[subpage];
-            } else if (page >= 0 && subpage < 0) {
-                return linksURL[page];
-            } else {
-                return "/";
-            }
-        },
-        keyPos: function (obj, keyP) {
-            var position = 1;
-            for (var key in obj) {
-                if (obj[key] == obj[keyP]) {
-                    return position;
-                }
-                position++;
-            }
-        },
-
-        showPageList: function (x, i) {
-            var noSubpages = { 0: "inicio", 4: "autor" };
-            if (noSubpages[i] == x) {
-                this.page_hover = "";
-            } else {
-                this.page_hover = x;
-                var el = document.getElementById("sub_dirs");
-                el.style.display = "block";
-                el.dataset.side = "show";
-            }
+        showSubPageList: function (x) {
+            console.log(x);
+            this.page_hover = x;
+            var el = document.getElementById("sub_dirs");
+            el.style.display = "block";
+            el.dataset.side = "show";
         },
         hidePageList: function () {
             var el = document.getElementById("sub_dirs");
@@ -201,6 +193,15 @@ export default {
                 }, 300);
             }
         },
+    },
+    components: {
+        Logo: LogoBranco,
+        Icon1,
+        Icon2,
+        Icon3,
+        Icon4,
+        IconSearch,
+        Arrow,
     },
 };
 </script>
@@ -290,25 +291,37 @@ nav {
 #sub_dirs {
     position: fixed;
 
-    // top: 100px;
     left: $menuWidth;
     transform: translate(-100%, 0);
 
     width: 140px;
-    background-color: $gray1;
-    padding: 15px 0 15px 0;
+    background-color: $black;
+
+    border-top: 1px solid $white;
+    border-bottom: 1px solid $white;
 
     li {
         @include Fonte1_SS();
         text-transform: capitalize;
         color: $white;
+        border-left: 2px solid transparent;
+        transition-duration: 200ms;
+        transition-property: border-left;
+
+        &:hover {
+            border-left: 5px solid $yellow;
+        }
 
         hr {
-            margin: 8px 0 8px 0;
+            background-color: $white;
+            border: none;
+            outline: 0;
+            height: 1px;
         }
-        p {
-            font-size: 15px;
-            margin: 0 12px 0 12px;
+        span {
+            display: block;
+            font-size: 16px;
+            padding: 8px 12px 8px 12px;
         }
     }
 }
@@ -380,17 +393,12 @@ nav {
 
     #sub_dirs {
         left: $menuWidth2;
-
         width: 115px;
-        padding: 10px 0 10px 0;
 
         li {
-            hr {
-                margin: 6px 0 6px 0;
-            }
-            p {
-                font-size: 14px;
-                margin: 0 8px 0 8px;
+            span {
+                font-size: 15px;
+                padding: 8px 12px 8px 12px;
             }
         }
     }
@@ -404,20 +412,20 @@ nav {
         top: 190px;
     }
     [data-list="autor"] {
-        top: 210px;
+        top: 240px;
     }
 }
 
 @media (max-width: 700px) {
     nav {
-        &[data-state]{
+        &[data-state] {
             transition-property: transform;
             transition-duration: 200ms;
         }
-        &[data-state="hide"]{
+        &[data-state="hide"] {
             transform: translateX(-100%);
         }
-        &[data-state="show"]{
+        &[data-state="show"] {
             transform: translateX(0);
         }
         width: $menuWidth2;
@@ -456,11 +464,12 @@ nav {
             background-color: $black;
             padding: 1vw 0.5vw 1vw 0.5vw;
             border-radius: 0 1vw 1vw 0;
+            border-left: 2px solid $white;
 
             position: absolute;
             top: 60%;
             right: 0px;
-            transform: translateX(99.5%);
+            transform: translateX(100%);
 
             #pull_nav_btn {
                 width: 5.5vw;
@@ -482,35 +491,6 @@ nav {
                 }
             }
         }
-    }
-
-    #sub_dirs {
-        left: $menuWidth2;
-
-        width: 115px;
-        padding: 10px 0 10px 0;
-
-        li {
-            hr {
-                margin: 6px 0 6px 0;
-            }
-            p {
-                font-size: 14px;
-                margin: 0 8px 0 8px;
-            }
-        }
-    }
-    [data-list="artigos"] {
-        top: 94px;
-    }
-    [data-list="receitas"] {
-        top: 140px;
-    }
-    [data-list="institucional"] {
-        top: 190px;
-    }
-    [data-list="autor"] {
-        top: 210px;
     }
 }
 </style>
