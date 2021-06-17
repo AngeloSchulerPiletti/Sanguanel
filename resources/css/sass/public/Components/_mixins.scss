@@ -1,13 +1,5 @@
 @import "resources/css/sass/geralImports.scss";
 
-@mixin bigTitleConf {
-    @include Titulo1_S();
-    font-size: 5vw;
-    display: inline-block;
-    line-height: 125%;
-    margin-right: 0.8vw;
-}
-
 @mixin headerStyle {
     #HomePages_div,
     #SubHomePages_div {
@@ -16,7 +8,11 @@
             font-size: 2vw;
 
             h1 {
-                @include bigTitleConf();
+                @include Titulo1_S();
+                font-size: 5vw;
+                display: inline-block;
+                line-height: 125%;
+                margin-right: 0.8vw;
             }
         }
     }
@@ -28,12 +24,48 @@
             font-size: 3.4vw;
             line-height: 4.3vw;
         }
-        div{
+        div {
             display: flex;
             gap: 2vw;
-            h6{
+            h6 {
                 @include Fonte2_SS;
                 font-size: 1vw;
+                color: $gray3;
+            }
+        }
+    }
+}
+
+@mixin headerStyle2 {
+    #HomePages_div,
+    #SubHomePages_div {
+        h1 {
+            @include Titulo3_SS();
+            font-size: 2vw;
+
+            h1 {
+                @include Titulo1_S();
+                font-size: 5.5vw;
+                display: inline-block;
+                line-height: 125%;
+                margin-right: 0.8vw;
+            }
+        }
+    }
+
+    #Contents_div {
+        h1 {
+            @include Titulo1_S();
+            text-transform: uppercase;
+            font-size: 5vw;
+            line-height: 8vw;
+        }
+        div {
+            display: flex;
+            gap: 3vw;
+            h6 {
+                @include Fonte2_SS;
+                font-size: 1.6vw;
                 color: $gray3;
             }
         }

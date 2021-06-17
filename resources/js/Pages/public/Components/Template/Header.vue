@@ -123,7 +123,7 @@ header {
         align-items: flex-end;
 
         .user_menus {
-            margin: 0 0.5vw 0 0.5vw;
+            margin: 0 0.5vw 1vw 0.5vw;
 
             a {
                 @include Fonte2_SS;
@@ -158,7 +158,7 @@ header {
     header {
         padding: 1.6vw 1.6vw 1vw 2.5vw;
 
-        @include headerStyle();
+        @include headerStyle2();
 
         #user_menus_container {
             .user_menus {

@@ -220,19 +220,6 @@ export default {
                 }
             }
         }
-
-        // #users {
-
-        // }
-        // #articles {
-        //     table {
-        //         // width: 100%;
-        //         // table-layout: fixed;
-
-        //     }
-        // }
-        // #author {
-        // }
     }
 
     .bottom {

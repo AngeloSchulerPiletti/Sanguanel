@@ -16,7 +16,7 @@ class CreateHomepagesTable extends Migration
         Schema::create('homepages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('subject');
+            $table->string('subject'); // institucional | artigos | receitas
             $table->tinyText('description')->default('');
             $table->longText('text');
             $table->longText('text_formatted');

@@ -33,7 +33,7 @@ export default {
       Header,
       
     },
-    props:[ 'database']
+    props:{database: Object},
 };
 </script>
 

@@ -16,7 +16,7 @@ class CreateInstitucionalPagesTable extends Migration
         Schema::create('institucional_pages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('subject');
+            $table->string('subject'); // institucional/exposicao | institucional/politica
             $table->tinyText('description');
             $table->longText('text_formatted');
             $table->longText('text');

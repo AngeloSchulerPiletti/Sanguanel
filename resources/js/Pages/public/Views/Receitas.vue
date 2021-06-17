@@ -26,6 +26,9 @@ export default {
             },
     }
   },
+  props:{
+      database: Object,
+  },
   components: {
       AppPublic,
   }

@@ -58,7 +58,7 @@ class PublishController extends Controller
             }
         } else { //RETORNA HOME
             $database = Homepage::all()->where('subject', 'artigos')->last();
-            return Inertia::render($this->url_pub . 'Artigos', ['data' => $database]);
+            return Inertia::render($this->url_pub . 'Artigos', ['database' => $database]);
         }
     }
 

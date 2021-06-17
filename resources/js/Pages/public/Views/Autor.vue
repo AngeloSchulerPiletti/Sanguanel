@@ -19,7 +19,7 @@
                     <div>
                         <a
                             class="iconlinks_container"
-                            href="www.linkedin.com/in/angelo-schuler-piletti"
+                            href="https://linkedin.com/in/angelo-schuler-piletti"
                         >
                             <linkedin class="icon" />
 
