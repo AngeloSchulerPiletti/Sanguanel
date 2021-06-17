@@ -1,5 +1,6 @@
 <template>
     <nav
+        data-state="none"
         @mouseleave="
             hidePageList();
             searchHide();
@@ -64,6 +65,16 @@
                 autocomplete="off"
             />
         </form>
+        <div id="nav_btn_container">
+            <div id="pull_nav_btn">
+                <arrow
+                    id="pull_btn"
+                    color="$white"
+                    data-btnstate="none"
+                    @click="menuCall()"
+                />
+            </div>
+        </div>
     </nav>
 </template>
 
@@ -74,6 +85,7 @@ import Icon2 from "../Icons/Icon2";
 import Icon3 from "../Icons/Icon3";
 import Icon4 from "../Icons/Icon4";
 import IconSearch from "../Icons/IconSearch";
+import Arrow from "../../../admin/Components/Icons/Arrow.vue";
 
 export default {
     data() {
@@ -92,7 +104,6 @@ export default {
             },
         };
     },
-    props: {},
     components: {
         Logo: LogoBranco,
         Icon1,
@@ -100,8 +111,26 @@ export default {
         Icon3,
         Icon4,
         IconSearch,
+        Arrow,
     },
     methods: {
+         menuCall: function () {
+            var btn = document.querySelector("#pull_btn"),
+                menu = document.querySelector("nav");
+
+            if (
+                btn.dataset.btnstate == "close" ||
+                btn.dataset.btnstate == "none"
+            ) {
+                this.$emit('toBlock', 'yes');
+                btn.dataset.btnstate = "open";
+                menu.dataset.state = "show";
+            } else {
+                this.$emit('toBlock', 'no');
+                btn.dataset.btnstate = "close";
+                menu.dataset.state = "hide";
+            }
+        },
         urlSelector: function (page = null, subpage = null) {
             //page e subpage são numeros
             const vm = this;
@@ -252,6 +281,10 @@ nav {
             }
         }
     }
+
+    #nav_btn_container {
+        display: none;
+    }
 }
 
 #sub_dirs {
@@ -341,6 +374,112 @@ nav {
                 background-color: $white;
                 color: $black;
                 border: 1px solid $gray2;
+            }
+        }
+    }
+
+    #sub_dirs {
+        left: $menuWidth2;
+
+        width: 115px;
+        padding: 10px 0 10px 0;
+
+        li {
+            hr {
+                margin: 6px 0 6px 0;
+            }
+            p {
+                font-size: 14px;
+                margin: 0 8px 0 8px;
+            }
+        }
+    }
+    [data-list="artigos"] {
+        top: 94px;
+    }
+    [data-list="receitas"] {
+        top: 140px;
+    }
+    [data-list="institucional"] {
+        top: 190px;
+    }
+    [data-list="autor"] {
+        top: 210px;
+    }
+}
+
+@media (max-width: 700px) {
+    nav {
+        &[data-state]{
+            transition-property: transform;
+            transition-duration: 200ms;
+        }
+        &[data-state="hide"]{
+            transform: translateX(-100%);
+        }
+        &[data-state="show"]{
+            transform: translateX(0);
+        }
+        width: $menuWidth2;
+        transform: translateX(-100%);
+
+        #menu_container {
+            #Logo {
+                width: 48px;
+                margin-top: 12px;
+                margin-bottom: 16px;
+            }
+            hr {
+                margin-bottom: 20px;
+            }
+        }
+        .menu_icon {
+            width: 35px;
+            margin-bottom: 14px;
+        }
+        form {
+            margin-bottom: 10px;
+
+            #search_field {
+                left: $menuWidth2;
+                width: 350px;
+                height: 40px;
+
+                background-color: $white;
+                color: $black;
+                border: 1px solid $gray2;
+            }
+        }
+        #nav_btn_container {
+            display: block;
+
+            background-color: $black;
+            padding: 1vw 0.5vw 1vw 0.5vw;
+            border-radius: 0 1vw 1vw 0;
+
+            position: absolute;
+            top: 60%;
+            right: 0px;
+            transform: translateX(99.5%);
+
+            #pull_nav_btn {
+                width: 5.5vw;
+                height: 5.5vw;
+
+                [data-btnstate] {
+                    transition-duration: 200ms;
+                    transition-property: transform;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                [data-btnstate="open"] {
+                    transform: scaleX(-1);
+                }
+                [data-btnstate="close"] {
+                    transform: scaleX(1);
+                }
             }
         }
     }

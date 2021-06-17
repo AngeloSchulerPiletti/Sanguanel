@@ -7,7 +7,8 @@
     </inertia-head>
 
     <div id="_website_">
-        <navigation id="navigation_menu" />
+        <div id="blocker" :class="toBlock"></div>
+        <navigation id="navigation_menu" @toBlock="toBlockChange"/>
         <messages :errors="$page.props.errors" :status="$page.props.status" />
         <!-- <share-button v-if="$page.url != '/'"/> -->
 
@@ -28,7 +29,9 @@ import Messages from "@/Layouts/Components/Messages";
 
 export default {
     data() {
-        return {};
+        return {
+            toBlock: "no",
+        };
     },
     components: {
         Navigation,
@@ -38,9 +41,14 @@ export default {
     },
     created() {},
     updated() {},
-    methods: {},
+    methods: {
+        toBlockChange(arg){
+            this.toBlock = arg;
+        }
+    },
     props: {
         header_content: Object,
+        
     },
 };
 </script>
@@ -49,6 +57,9 @@ export default {
 #_website_ {
     display: flex;
 
+    #blocker{
+        display: none;
+    }
     #navigation_menu {
         flex-grow: 0;
         flex-shrink: 0;
@@ -79,6 +90,31 @@ export default {
     #_website_ {
         #_website_content_ {
             margin-left: $menuWidth2;
+        }
+    }
+}
+@media(max-width: 700px){
+    #_website_ {
+        #blocker{
+            &.no{
+                display: none;
+            }
+            &.yes{
+                background-color: $black;
+                opacity: 0.6;
+                z-index: 1000;
+
+                display: block;
+                position: fixed;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                top: 0;
+                
+            }
+        }
+        #_website_content_ {
+            margin-left: 0;
         }
     }
 }
