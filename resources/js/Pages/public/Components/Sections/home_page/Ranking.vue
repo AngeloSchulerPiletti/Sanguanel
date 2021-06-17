@@ -2,7 +2,6 @@
     <section id="ranking">
         <div id="Brazil">
             <Brasil @stateBR="whichState($event)" />
-            <div></div>
         </div>
         <div id="aside_container" data-state="none">
             <aside>
@@ -19,9 +18,12 @@
                     {{
                         state
                     }}:
-                    <li v-for="(marca, index) in hidromeis[state]" :key="index">
+                    <!-- <li v-for="(marca, index) in hidromeis[state]" :key="index">
                         <h6>{{ index + 1 }}<sup>o</sup></h6>
                         {{ marca }}
+                    </li> -->
+                    <li>
+                        <h6>Dados insuficientes...</h6>
                     </li>
                 </ul>
             </aside>
@@ -103,9 +105,11 @@ export default {
 
 #ranking {
     display: flex;
+    justify-content: space-between;
 
     #Brazil {
         flex-grow: 1;
+        max-height: 90vh;
     }
 
     [data-state="showing"] {
@@ -116,7 +120,7 @@ export default {
         flex-grow: 0;
         height: 100%;
         width: 25vw;
-        margin-right: 2vw;
+        margin-right: 5vw;
 
         aside {
             margin-top: 2.8vw;
@@ -188,6 +192,67 @@ export default {
                 &:hover {
                     box-shadow: 0 0 0 0;
                     color: $yellow;
+                }
+            }
+        }
+    }
+}
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    #ranking {
+        #Brazil {
+            max-height: none;
+        }
+        #aside_container {
+            width: 28vw;
+            margin-right: 4vw;
+
+            aside {
+                margin-top: 4vw;
+                padding: 13px;
+                h4 {
+                    font-size: 2.8vw;
+                }
+                hr {
+                    margin-top: 4px;
+                    margin-bottom: 10px;
+                }
+
+                ul,
+                p {
+                    font-size: 1.6vw;
+
+                    li:first-of-type {
+                        margin-top: 1.2vw;
+                    }
+                    li {
+                        font-size: 1.5vw;
+
+                        h6 {
+                            font-size: 2.2vw;
+                            margin-right: 4px;
+
+                            sup {
+                                font-size: 1vw;
+                            }
+                        }
+                    }
+                }
+            }
+            #link {
+                margin-top: 10px;
+
+                #participar {
+                    font-size: 1.8vw;
+
+                    padding: 7px;
+                    border-radius: 4px;
                 }
             }
         }

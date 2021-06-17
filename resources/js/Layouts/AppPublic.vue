@@ -7,7 +7,7 @@
     </inertia-head>
 
     <div id="_website_">
-        <navigation />
+        <navigation id="navigation_menu" />
         <messages :errors="$page.props.errors" :status="$page.props.status" />
         <!-- <share-button v-if="$page.url != '/'"/> -->
 
@@ -16,7 +16,6 @@
             <main>
                 <slot></slot>
             </main>
-            
         </section>
     </div>
 </template>
@@ -29,8 +28,7 @@ import Messages from "@/Layouts/Components/Messages";
 
 export default {
     data() {
-        return {
-        };
+        return {};
     },
     components: {
         Navigation,
@@ -38,13 +36,9 @@ export default {
         Messages,
         // ShareButton,
     },
-    created() {
-    },
-    updated() {
-    },
-    methods: {
-        
-    },
+    created() {},
+    updated() {},
+    methods: {},
     props: {
         header_content: Object,
     },
@@ -55,7 +49,7 @@ export default {
 #_website_ {
     display: flex;
 
-    navigation {
+    #navigation_menu {
         flex-grow: 0;
         flex-shrink: 0;
     }
@@ -71,6 +65,20 @@ export default {
             border: 3px solid $white;
             z-index: 1;
             transform: translateZ(-10vw);
+        }
+    }
+}
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    #_website_ {
+        #_website_content_ {
+            margin-left: $menuWidth2;
         }
     }
 }

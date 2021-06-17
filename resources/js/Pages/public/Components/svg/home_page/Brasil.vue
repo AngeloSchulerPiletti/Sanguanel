@@ -7,7 +7,6 @@
         x="0"
         y="0"
         viewBox="0 0 220000 194010"
-        xml:space="preserve"
         style=""
     >
         <g style="fill: none; stroke: #000000">
@@ -425,7 +424,8 @@ export default {
 <style lang="scss" scoped>
 
 svg {
-    height: 90vh;
+    height: 100%;
+
     #southAmerica{
         fill: $gray2;
     }
@@ -439,6 +439,20 @@ svg {
             transition-property: fill;
             transition-duration: 100ms;
         }
+    }
+}
+
+
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    svg{
+        height: auto;
     }
 }
 </style>

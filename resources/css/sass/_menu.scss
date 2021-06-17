@@ -1,29 +1,43 @@
 //Important menu vars//
 $menuWidth: 80px;
+$menuWidth2: 50px;
 
 $bottomPad: 1vw;
 
 
+
 //Animações//
 @keyframes sideOptionsShow {
-    from{transform: translateX(-100%) translateZ(-2px); opacity: 0.8;}
-    to{transform: translateX(0%) translateZ(-2px); opacity: 1;}
+    from {
+        transform: translateX(-100%) translateZ(-2px);
+        opacity: 0.8;
+    }
+    to {
+        transform: translateX(0%) translateZ(-2px);
+        opacity: 1;
+    }
 }
 @keyframes sideOptionsHide {
-    from{transform: translateX(0%) translateZ(-2px); opacity: 1;}
-    to{transform: translateX(-100%) translateZ(-2px); opacity: 0.8;}
+    from {
+        transform: translateX(0%) translateZ(-2px);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%) translateZ(-2px);
+        opacity: 0.8;
+    }
 }
 
-@mixin animSideShow{
-    animation-name: sideOptionsShow; 
-    animation-duration: 250ms; 
+@mixin animSideShow {
+    animation-name: sideOptionsShow;
+    animation-duration: 250ms;
     animation-timing-function: ease-out;
     animation-iteration-count: 1;
     animation-fill-mode: both;
 }
-@mixin animSideHide{
-    animation-name: sideOptionsHide; 
-    animation-duration: 250ms; 
+@mixin animSideHide {
+    animation-name: sideOptionsHide;
+    animation-duration: 250ms;
     animation-timing-function: ease-out;
     animation-iteration-count: 1;
     animation-fill-mode: both;

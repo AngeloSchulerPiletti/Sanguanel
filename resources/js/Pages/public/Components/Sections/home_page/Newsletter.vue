@@ -42,16 +42,23 @@ export default {
     },
     mounted() {
         var element = document.querySelector("#newsletter"),
-            screenWidth = window.innerHeight,
+            screenHeight = window.innerHeight,
             documentHeight = document.body.clientHeight;
-        window.addEventListener("scroll", function () {
-            if (
-                window.scrollY + 2 * (screenWidth / 3) >= element.offsetTop ||
-                window.scrollY + screenWidth + 50 == documentHeight
-            ) {
-                element.dataset.state = "showing";
-            }
-        });
+        
+        if (element.offsetTop+100 > screenHeight) {
+            window.addEventListener("scroll", function () {
+                if (
+                    window.scrollY + 2 * (screenHeight / 3) >=
+                        element.offsetTop ||
+                    window.scrollY + screenHeight + 50 == documentHeight
+                ) {
+                    element.dataset.state = "showing";
+                }
+            });
+        }
+        else{
+            element.dataset.state = "showing";
+        }
     },
 };
 </script>
@@ -118,6 +125,58 @@ export default {
                 margin-left: 2.4vw;
 
                 @include buttonT($yellow, $white, $black, $black);
+            }
+        }
+    }
+}
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    #newsletter {
+        padding: 3vw 0 3vw 0;
+        flex-grow: 1;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .top {
+            h3 {
+                font-size: 4vw;
+            }
+            p {
+                font-size: 1.8vw;
+                width: 55vw;
+            }
+            h6 {
+                font-size: 1.4vw;
+                margin-top: 1.4vw;
+                color: $yellow;
+            }
+        }
+        .bottom {
+            margin-top: 3vw;
+
+            form {
+                [type="email"] {
+                    border-radius: 0.4vw;
+                    font-size: 1.6vw;
+
+                    width: 40vw;
+                    border: none;
+                    padding: 0.5vw 1.5vw 0.5vw 1.5vw;
+                }
+                [type="submit"] {
+                    font-size: 2vw;
+
+                    padding: 0.6vw 1.5vw 0.6vw 1.5vw;
+                    border-radius: 0.4vw;
+                }
             }
         }
     }

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Proibido</title>
 </head>
 <body>
-    403
+    Você não pode acessar essa página. Error 403
 </body>
 </html>
