@@ -7,8 +7,12 @@
     </inertia-head>
 
     <div id="_website_">
-        <div id="blocker" v-if="toBlock == 'yes'" @click="$refs.navigation.menuCall()"></div>
-        <navigation id="navigation_menu" @toBlock="toBlockChange" ref="navigation"/>
+        <div id="blocker" v-if="toBlock == 'yes'" @click="closeMenus"></div>
+        <navigation
+            id="navigation_menu"
+            @toBlock="toBlockChange"
+            ref="navigation"
+        />
         <messages :errors="$page.props.errors" :status="$page.props.status" />
         <!-- <share-button v-if="$page.url != '/'"/> -->
 
@@ -42,13 +46,16 @@ export default {
     created() {},
     updated() {},
     methods: {
-        toBlockChange(arg){
+        toBlockChange(arg) {
             this.toBlock = arg;
+        },
+        closeMenus() {
+            this.$refs.navigation.menuCall();
+            this.$refs.navigation.searchHide();
         },
     },
     props: {
         header_content: Object,
-        
     },
 };
 </script>
@@ -57,7 +64,7 @@ export default {
 #_website_ {
     display: flex;
 
-    #blocker{
+    #blocker {
         display: none;
     }
     #navigation_menu {
@@ -93,20 +100,19 @@ export default {
         }
     }
 }
-@media(max-width: 700px){
+@media (max-width: 700px) {
     #_website_ {
-        #blocker{
-                background-color: $black;
-                opacity: 0.6;
-                z-index: 1000;
+        #blocker {
+            background-color: $black;
+            opacity: 0.6;
+            z-index: 1000;
 
-                display: block;
-                position: fixed;
-                right: 0;
-                left: 0;
-                bottom: 0;
-                top: 0;
-                
+            display: block;
+            position: fixed;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            top: 0;
         }
         #_website_content_ {
             margin-left: 0;

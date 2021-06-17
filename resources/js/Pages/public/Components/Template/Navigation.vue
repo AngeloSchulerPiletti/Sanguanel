@@ -60,12 +60,30 @@
         </ul>
 
         <form @submit.prevent>
+            <!-- DESKTOP -->
             <inertia-link
+                v-if="!menuMobile"
                 id="search_link"
                 :href="route('search.show', { keywords: field })"
                 @mouseover="searchShow()"
                 ><IconSearch class="menu_icon"
             /></inertia-link>
+            <!-- MOBILE -->
+            <div
+                v-else-if="!clicked"
+                @click="searchShow()"
+                id="search_link"
+                :href="route('search.show', { keywords: field })"
+                ><IconSearch class="menu_icon"
+            /></div>
+            <inertia-link
+                v-else-if="clicked"
+                id="search_link"
+                :href="route('search.show', { keywords: field })"
+                @click="searchShow()"
+                ><IconSearch class="menu_icon"
+            /></inertia-link>
+
             <input
                 id="search_field"
                 data-side="none"
@@ -75,6 +93,9 @@
                 autocomplete="off"
             />
         </form>
+
+
+        <!-- BOTÃO DO MENU -->
         <div id="nav_btn_container">
             <div id="pull_nav_btn">
                 <arrow
@@ -100,8 +121,9 @@ import Arrow from "../../../admin/Components/Icons/Arrow.vue";
 export default {
     data() {
         return {
+            clicked: false,
             menuMobile: false,
-            field: "",
+            field: " ",
             colorIcon: "#FFFFFF",
             page_hover: "",
             paths: {
@@ -180,11 +202,13 @@ export default {
         },
 
         searchShow: function () {
+            this.clicked = true;
             var el = document.getElementById("search_field");
             el.dataset.side = "show";
             el.style.display = "block";
         },
         searchHide: function () {
+            this.clicked = false;
             var el = document.getElementById("search_field");
             if (el.dataset.side != "none") {
                 el.dataset.side = "hide";
@@ -265,10 +289,12 @@ nav {
             bottom: 15px;
 
             @include Fonte3_SS();
+            font-size: 1.5vw;
 
             background-color: $black;
             color: $white;
-            border: none;
+            border: 1px solid $white;
+            border-left: 5px solid $yellow;
             border-radius: 0 6px 6px 0;
             outline: none;
 
@@ -383,10 +409,7 @@ nav {
                 left: $menuWidth2;
                 width: 350px;
                 height: 40px;
-
-                background-color: $white;
-                color: $black;
-                border: 1px solid $gray2;
+                font-size: 1.8vw;
             }
         }
     }
@@ -449,13 +472,12 @@ nav {
             margin-bottom: 10px;
 
             #search_field {
-                left: $menuWidth2;
-                width: 350px;
-                height: 40px;
+                height: 60px;
+                font-size: 2vw;
 
-                background-color: $white;
-                color: $black;
-                border: 1px solid $gray2;
+                // background-color: $white;
+                // color: $black;
+                // border: 1px solid $gray2;
             }
         }
         #nav_btn_container {
