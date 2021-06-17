@@ -2,29 +2,33 @@
     border-bottom: 3px solid $color;
 }
 
-@mixin button1 {
-    @include buttonT($black, $yellow, $white, $white);
-    @include Fonte1_SS;
+@mixin buttonLayout {
     text-transform: uppercase;
     padding: 0.5vw 1.2vw 0.5vw 1.2vw;
     border-radius: 0.3vw;
     font-size: 1.3vw;
+
+    @media (max-width: 1100px) {
+        padding: 0.5vw 1.5vw 0.5vw 1.5vw;
+        border-radius: 0.5vw;
+        font-size: 1.8vw;
+    }
+}
+
+@mixin button1 {
+    @include buttonT($black, $yellow, $white, $white);
+    @include Fonte1_SS;
+    @include buttonLayout();
 }
 
 @mixin button2 {
     @include buttonT($yellow, $black, $white, $white);
     @include Fonte2_SS;
-    text-transform: uppercase;
-    padding: 0.5vw 1.2vw 0.5vw 1.2vw;
-    border-radius: 0.3vw;
-    font-size: 1.3vw;
+    @include buttonLayout();
 }
 
 @mixin button3 {
     @include buttonT($red, $red2, $white, $white);
     @include Titulo3_SS;
-    text-transform: uppercase;
-    padding: 0.5vw 1.2vw 0.5vw 1.2vw;
-    border-radius: 0.3vw;
-    font-size: 1.3vw;
+    @include buttonLayout();
 }

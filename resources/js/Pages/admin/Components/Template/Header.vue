@@ -67,6 +67,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'resources/css/sass/admin/Components/navlinks';
+
 header {
     background-color: $gray3;
     color: $black;
@@ -77,34 +79,7 @@ header {
 
     height: 6vw;
 
-    ul {
-        display: flex;
-        justify-content: center;
-
-        height: 100%;
-
-        li {
-            display: flex;
-            align-items: flex-end;
-
-            height: 100%;
-
-            @include menuSelection(transparent);
-
-            &:hover {
-                background-color: $gray1;
-                color: $yellow;
-            }
-
-            a {
-                padding: 1.5vw 2.5vw 1.5vw 2.5vw;
-            }
-        }
-
-        .actual {
-            @include menuSelection($yellow);
-        }
-    }
+    @include links();
 }
 
 /*+-----------------------------------------------------+
@@ -115,7 +90,7 @@ header {
 }
 @media (max-width: 1100px) {
     header {
-        font-size: 1.6vw;
+        font-size: 1.8vw;
         height: 8vw;
     }
 }

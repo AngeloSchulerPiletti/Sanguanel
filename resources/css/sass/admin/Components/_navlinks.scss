@@ -1,0 +1,30 @@
+@mixin links {
+    ul {
+        display: flex;
+        justify-content: center;
+
+        height: 100%;
+
+        li {
+            display: flex;
+            align-items: flex-end;
+
+            height: 100%;
+
+            @include menuSelection(transparent);
+
+            &:hover {
+                background-color: $gray1;
+                color: $yellow;
+            }
+
+            a {
+                padding: 1.5vw 2.5vw 1.5vw 2.5vw;
+            }
+        }
+
+        .actual {
+            @include menuSelection($yellow);
+        }
+    }
+}

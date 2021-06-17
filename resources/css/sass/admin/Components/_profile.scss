@@ -9,16 +9,6 @@
         @include button3();
     }
 
-    #introduction {
-        margin-bottom: 1.5vw;
-        padding-bottom: 1.5vw;
-        border-bottom: 2px solid $yellow;
-    }
-    p {
-        @include Fonte1_SS;
-        font-size: 1.2vw;
-    }
-
     .sequential_input{
         display: flex;
         flex-direction: column;
@@ -94,6 +84,8 @@
     #introduction {
         padding-bottom: 1.5vw;
         margin-bottom: 1.5vw;
+        border-bottom: 2px solid $yellow;
+
 
         h3 {
             @include Fonte1_S;
@@ -105,6 +97,7 @@
     p {
         @include Fonte1_SS;
         font-size: 1.2vw;
+        text-align: justify;
     }
     #code_container {
         #qrCode {
@@ -148,6 +141,172 @@
         }
         span {
             display: block;
+        }
+    }
+}
+
+
+
+
+
+
+@mixin profileShowStyle2 {
+    .sequential_input{
+        gap: 1.6vw;
+        margin: 2.5vw 0 2.5vw 0;
+    }
+    .input {
+        input {
+            border-radius: 0.6vw;
+
+            font-size: 1.6vw;
+            padding:  0.5vw 1.5vw 0.5vw 1.5vw;
+        }
+        label {
+            font-size: 1.5vw;
+        }
+    }
+
+    #sessions_list {
+        margin: 2vw 0 2vw 0;
+
+        gap: 1.8vw;
+
+        .session_container {
+            gap: 1.5vw;
+
+            .device_icon {
+                svg {
+                    width: 5.5vw;
+                    height: 5.5vw;
+                }
+            }
+            .infos1 {
+                font-size: 1.5vw;
+            }
+            .infos2 {
+                font-size: 1.35vw;
+            }
+        }
+    }
+
+    .introduction {
+        padding-bottom: 1.5vw;
+        margin-bottom: 1.5vw;
+        border-bottom: 2px solid $yellow;
+
+        h3 {
+            @include Fonte1_S;
+            font-size: 2vw;
+            margin-bottom: 1.55vw;
+        }
+    }
+    p {
+        font-size: 1.6vw;
+        text-align: justify;
+    }
+    #code_container {
+        #qrCode {
+            &:deep(svg) {
+                height: 15vw;
+                margin: 2.5vw 0 2.5vw 0;
+
+                & path {
+                    fill: $black;
+                }
+            }
+        }
+        #codes {
+            margin: 2vw 0 1vw 0;
+            padding: 1.5vw;
+            border-radius: 0.8vw;
+            background-color: $white;
+
+            @include Fonte1_SS;
+            font-size: 1.4vw;
+        }
+    }
+
+    .actions_container {
+        display: flex;
+        gap: 1vw;
+    }
+
+    .photo {
+        margin-bottom: 2vw;
+
+        .pic {
+            width: 14vw;
+            height: 14vw;
+            border-radius: 100%;
+            border: 2px solid $black;
+            margin-bottom: 2.5vw;
+        }
+        img {
+            object-fit: cover;
+        }
+        span {
+            display: block;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@mixin profileConfig {
+    .formsection_container {
+        display: flex;
+    
+        padding: 3vw;
+        gap: 3vw;
+    
+        .left {
+            flex-shrink: 0;
+            width: 40%;
+        }
+        .right {
+            flex-grow: 1;
+            border-radius: 0.5vw;
+            padding: 2vw;
+            background-color: $tinyback;
+    
+            color: $black;
+        }
+    }
+    
+    /*+-----------------------------------------------------+
+      |                RESPONSIVIDADE                       |
+      +-----------------------------------------------------+*/
+    @media (max-width: 1300px) {
+        //
+    }
+    @media (max-width: 1100px) {
+        .formsection_container {
+            gap: 5vw;
+    
+            .right {
+                padding: 3vw;
+            }
         }
     }
 }

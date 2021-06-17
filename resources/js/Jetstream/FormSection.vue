@@ -20,7 +20,7 @@
                 >
                     <div>
                         <!-- Formulário vai aqui -->
-                        <slot name="form"></slot> 
+                        <slot name="form"></slot>
                     </div>
                 </div>
 
@@ -51,23 +51,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.formsection_container{
-    display: flex;
-
-    padding: 3vw;
-    gap: 3vw;
-
-    .left{
-        flex-shrink: 0;
-        width: 40%;
-    }
-    .right{
-        flex-grow: 1;
-        border-radius: 0.5vw;
-        padding: 2vw;
-        background-color: $tinyback;
-
-        color: $black;
-    }
-}
+@import 'resources/css/sass/admin/Components/profile';
+@include profileConfig();
 </style>

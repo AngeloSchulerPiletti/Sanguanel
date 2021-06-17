@@ -8,7 +8,7 @@
 
         <template #content>
             <div
-                id="introduction"
+                class="introduction"
                 :class="'enabled_' + (qrCode ? 'true' : 'false')"
             >
                 <h3 v-if="twoFactorEnabled">
@@ -182,4 +182,15 @@ export default {
 @import "resources/css/sass/admin/Components/profile";
 
 @include profileShowStyle;
+
+
+ /*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                                  |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+@include profileShowStyle2;
+}
 </style>

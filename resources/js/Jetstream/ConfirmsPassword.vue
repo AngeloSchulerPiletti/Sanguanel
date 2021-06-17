@@ -10,9 +10,10 @@
             </template>
 
             <template #content>
-                <p>{{ content }}</p>
+                
 
                 <div class="input">
+                    <label>{{ content }}</label>
                     <jet-input
                         type="password"
                         placeholder="Senha"
@@ -21,7 +22,7 @@
                         @keyup.enter="confirmPassword"
                     />
 
-                    <jet-input-error :message="form.error" />
+                    <!-- <jet-input-error :message="form.error" /> -->
                 </div>
             </template>
 
@@ -125,30 +126,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-p {
-    @include Fonte1_SS;
-    font-size: 1.2vw;
-}
-.btn {
-    @include button1();
-}
-.btn2 {
-    @include button2();
-}
-.actions_container {
-    display: flex;
-    gap: 1vw;
-}
-.input {
-    input {
-        border-radius: 0.3vw;
-        border: 1px solid $yellow;
-        outline: none;
-        box-shadow: 0 0 0 0;
+// p {
+//     @include Fonte1_SS;
+//     font-size: 1.2vw;
+// }
+// .btn {
+//     @include button1();
+// }
+// .btn2 {
+//     @include button2();
+// }
+// .actions_container {
+//     display: flex;
+//     gap: 1vw;
+// }
+// .input {
+//     input {
+//         border-radius: 0.3vw;
+//         border: 1px solid $yellow;
+//         outline: none;
+//         box-shadow: 0 0 0 0;
 
-        margin-top: 1vw;
+//         margin-top: 1vw;
 
-        font-size: 1.2vw;
-    }
+//         font-size: 1.2vw;
+//     }
+// }
+@import "resources/css/sass/admin/Components/profile";
+
+@include profileShowStyle;
+
+
+ /*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                                  |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+@include profileShowStyle2;
 }
 </style>

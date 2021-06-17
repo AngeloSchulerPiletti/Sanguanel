@@ -69,6 +69,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'resources/css/sass/admin/Components/navlinks';
+
 nav {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
@@ -90,34 +92,7 @@ nav {
 
         height: 100%;
 
-        ul {
-            display: flex;
-            justify-content: center;
-
-            height: 100%;
-
-            li {
-                display: flex;
-                align-items: flex-end;
-
-                height: 100%;
-
-                @include menuSelection(transparent);
-
-                &:hover {
-                    background-color: $gray1;
-                    color: $yellow;
-                }
-
-                a {
-                    padding: 1.5vw 2.5vw 1.5vw 2.5vw;
-                }
-            }
-
-            .actual {
-                @include menuSelection($yellow);
-            }
-        }
+        @include links();
     }
     .right {
         height: 100%;
@@ -145,12 +120,6 @@ nav {
         }
         .center {
             font-size: 1.8vw;
-
-            ul {
-                li {
-                    align-items: flex-end;
-                }
-            }
         }
         // .right {
         //     height: 100%;

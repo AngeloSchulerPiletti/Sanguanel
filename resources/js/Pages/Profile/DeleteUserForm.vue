@@ -8,7 +8,7 @@
         </template>
 
         <template #content>
-            <div id="introduction">
+            <div class="introduction">
                 <p>
                     Uma vez deletada sua conta, não há como voltar atrás. Tudo
                     relacionado à sua conta irá desaparecer.
@@ -125,4 +125,14 @@ export default {
 @import "resources/css/sass/admin/Components/profile";
 
 @include profileShowStyle;
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    @include profileShowStyle2;
+}
 </style>

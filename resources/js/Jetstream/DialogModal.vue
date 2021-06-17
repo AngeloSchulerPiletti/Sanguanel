@@ -74,4 +74,8 @@ export default {
         background-color: $tinyback;
     }
 }
+
+
+
+
 </style>

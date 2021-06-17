@@ -1,9 +1,9 @@
 <template>
     <jet-form-section @submitted="updatePassword">
-        <template #title> Update Password </template>
+        <template #title> Alterar Senha </template>
 
         <template #description>
-            Ensure your account is using a long, random password to stay secure.
+            Garanta que sua conta tenha uma senha longa e com diversos caracteres para mantê-la segura.
         </template>
 
         <template #form>
@@ -116,4 +116,15 @@ export default {
 @import "resources/css/sass/admin/Components/profile";
 
 @include profileShowStyle;
+
+
+ /*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                                  |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+@include profileShowStyle2;
+}
 </style>
