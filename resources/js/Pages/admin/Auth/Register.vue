@@ -68,7 +68,7 @@
                                 v-model:checked="form.terms"
                             />
 
-                            <div>
+                            <span>
                                 Eu concordo com os
                                 <b><a target="_blank" :href="route('terms.show')"
                                     >Termos de Serviço</a
@@ -77,7 +77,7 @@
                                 <b><a target="_blank" :href="route('policy.show')"
                                     >Política de Privacidade</a
                                 ></b>
-                            </div>
+                            </span>
                         </div>
                     </jet-label>
                 </div>

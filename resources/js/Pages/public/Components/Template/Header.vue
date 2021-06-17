@@ -2,7 +2,7 @@
     <header>
         <!-- Tipos de Cabeçalho para cada tipo página -->
         <!-- HomePages -->
-        <div v-if="header.style == 'HomePages'" :id="header.style+'_div'">
+        <div v-if="header.style == 'HomePages'" :id="header.style + '_div'">
             <h1 :class="'title_' + header.style">
                 {{ header.title[0] }}<br />
                 <h1>{{ header.title[1] }}</h1>
@@ -10,23 +10,26 @@
             </h1>
         </div>
         <!-- SubHomePages -->
-        <div v-if="header.style == 'SubHomePages'" :id="header.style+'_div'">
+        <div v-if="header.style == 'SubHomePages'" :id="header.style + '_div'">
             <h1 :class="'title_' + header.style">
                 {{ header.title[0] }}<br />
                 <h1>{{ header.title[1] }}</h1>
             </h1>
         </div>
         <!-- Articles -->
-        <div v-if="header.style == 'Contents'" :id="header.style+'_div'">
+        <div v-if="header.style == 'Contents'" :id="header.style + '_div'">
             <h1 :class="'title_' + header.style">
                 {{ header.title[0] }}
             </h1>
             <div>
-                <h6>Autor: {{header.author}}</h6>
-                <h6>Data: {{header.date[2]}}/{{header.date[1]}}/{{header.date[0]}}</h6>
+                <h6>Autor: {{ header.author }}</h6>
+                <h6>
+                    Data: {{ header.date[2] }}/{{ header.date[1] }}/{{
+                        header.date[0]
+                    }}
+                </h6>
             </div>
         </div>
-
 
         <!-- Menuzinho direito -->
         <ul id="user_menus_container">
@@ -47,7 +50,7 @@
                 </legend>
             </li>
             <li class="user_menus" id="drop_list" v-if="$page.props.user">
-                <drop-menu :links="links" type='public'/>
+                <drop-menu :links="links" type="public" />
             </li>
         </ul>
     </header>
@@ -67,7 +70,7 @@ export default {
                 date: "",
             },
             links: {
-                Conta: route('account.profile'),
+                Conta: route("account.profile"),
             },
         };
     },
@@ -104,7 +107,7 @@ header {
     justify-content: space-between;
     align-items: flex-end;
 
-    padding: 1.6vw 1.6vw $bottomPad 2.5vw;
+    padding: 1.6vw 1.6vw 1vw 2.5vw;
     background-color: $black;
     color: $white;
 
@@ -137,11 +140,36 @@ header {
                 @include Fonte2_S;
                 font-size: 1.4vw;
             }
-
         }
 
         #drop_list {
             position: relative;
+        }
+    }
+}
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    header {
+        padding: 1.6vw 1.6vw 1vw 2.5vw;
+
+        @include headerStyle();
+
+        #user_menus_container {
+            .user_menus {
+
+                a {
+                    font-size: 1.8vw;
+                }
+                legend {
+                    font-size: 1.8vw;
+                }
+            }
         }
     }
 }

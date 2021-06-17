@@ -1,22 +1,37 @@
 <template>
     <!-- Drop Menu -->
     <div class="r_button">
-        <arrow id="arrow_btn" :color="colorArrow" data-btnstate="none" @click="arrowCall()" />
+        <arrow
+            id="arrow_btn"
+            :color="colorArrow"
+            data-btnstate="none"
+            @click="arrowCall()"
+        />
     </div>
     <div id="r_drop" :class="wichDrop" data-dropstate="none">
         <ul>
             <li>
-                <hr/>
+                <hr />
             </li>
 
             <li v-for="(link, index) in links" :key="index">
-                <inertia-link class="drop_links" :href="link">{{index}}</inertia-link>
-                <hr/>
+                <inertia-link class="drop_links" :href="link">{{
+                    index
+                }}</inertia-link>
+                <hr />
             </li>
 
-            <li v-if="$page.props.user && $page.props.user.adminLevel > 2 && wichDrop == 'public'">
-                <inertia-link class="drop_links" href="/admin">Administrador</inertia-link>
-                <hr/>
+            <li
+                v-if="
+                    $page.props.user &&
+                    $page.props.user.adminLevel > 2 &&
+                    wichDrop == 'public'
+                "
+            >
+                <inertia-link class="drop_links" href="/admin"
+                    >Administrador</inertia-link
+                >
+                <hr />
             </li>
             <li v-if="$page.props.user">
                 <form @submit.prevent="logout()">
@@ -34,19 +49,19 @@
 import Arrow from "@/Pages/admin/Components/Icons/Arrow";
 
 export default {
-    data(){
-        return{
+    data() {
+        return {
             colorArrow: "$black",
             wichDrop: "admin",
-        }
+        };
     },
-    props:{
+    props: {
         links: Object,
         type: String,
     },
     methods: {
         arrowCall: function () {
-            var btn = document.querySelector('#arrow_btn'),
+            var btn = document.querySelector("#arrow_btn"),
                 dropbox = document.querySelector("#r_drop");
 
             if (
@@ -69,15 +84,15 @@ export default {
             this.$inertia.post(route("logout"));
         },
     },
-    created(){
-        if(this.type == "public"){
+    created() {
+        if (this.type == "public") {
             this.wichDrop = this.type;
             this.colorArrow = "$white";
         }
     },
-    components:{
+    components: {
         Arrow,
-    }
+    },
 };
 </script>
 
@@ -109,12 +124,12 @@ export default {
         transform: scaleY(1) rotate(90deg);
     }
 }
-.public{
+.public {
     top: calc(100% + 1vw);
     right: -15px;
     background-color: $black;
 }
-.admin{
+.admin {
     background-color: $tinyback;
 }
 [data-dropstate] {
@@ -126,7 +141,6 @@ export default {
     width: 14vw;
 
     li {
-        
         font-size: 1.4vw;
         width: 100%;
 
@@ -135,7 +149,7 @@ export default {
 
         .drop_links {
             padding: 0.6vw 1.2vw 0.6vw 1.2vw;
-            
+
             @include Fonte2_SS();
 
             transition-duration: 200ms;
@@ -169,5 +183,31 @@ export default {
 }
 [data-dropstate="hide"] {
     animation: hideDropbox 400ms ease 0ms 1 normal both;
+}
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    .r_button {
+        [data-btnstate] {
+            width: 3vw;
+        }
+    }
+    [data-dropstate] {
+        position: absolute;
+
+        border-radius: 0 0 0.7vw 0.7vw;
+        padding: 0.5vw 0 0.5vw 0;
+
+        width: 14vw;
+
+        li {
+            font-size: 1.8vw;
+        }
+    }
 }
 </style>

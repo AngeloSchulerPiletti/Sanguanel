@@ -6,24 +6,33 @@
         <div class="center">
             <ul>
                 <li v-if="!$page.props.user" :class="li.register">
-                    <inertia-link :href="route('register')">Registrar</inertia-link>
+                    <inertia-link :href="route('register')"
+                        >Registrar</inertia-link
+                    >
                 </li>
                 <li v-if="!$page.props.user" :class="li.login">
                     <inertia-link :href="route('login')">Entrar</inertia-link>
                 </li>
                 <li v-if="$page.props.user" :class="li.account">
-                    <inertia-link :href="route('account.profile')">Conta</inertia-link>
+                    <inertia-link :href="route('account.profile')"
+                        >Conta</inertia-link
+                    >
                 </li>
-                <li v-if="$page.props.user && $page.props.user.adminLevel > 2" :class="li.admin">
-                    <inertia-link :href="route('admin.')">Administrador</inertia-link>
+                <li
+                    v-if="$page.props.user && $page.props.user.adminLevel > 2"
+                    :class="li.admin"
+                >
+                    <inertia-link :href="route('admin.')"
+                        >Administrador</inertia-link
+                    >
                 </li>
             </ul>
         </div>
 
         <!-- Drop Menu -->
         <div v-if="$page.props.user" class="right">
-            <drop-menu :links="links" type="admin"/>
-        </div> 
+            <drop-menu :links="links" type="admin" />
+        </div>
     </nav>
 </template>
 
@@ -40,7 +49,7 @@ export default {
                 account: "",
                 admin: "",
             },
-            links:{
+            links: {
                 // "Conta": "/dashboard",
             },
         };
@@ -52,8 +61,7 @@ export default {
     props: {
         atPage: String,
     },
-    methods: {
-    },
+    methods: {},
     mounted() {
         this.li[this.atPage] = "actual";
     },
@@ -61,7 +69,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 nav {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
@@ -114,6 +121,40 @@ nav {
     }
     .right {
         height: 100%;
+    }
+}
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    nav {
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr;
+
+        width: 100%;
+
+        .left {
+            #logo {
+                margin: 1.5vw 3vw 1.5vw 3vw;
+                width: 6vw;
+            }
+        }
+        .center {
+            font-size: 1.8vw;
+
+            ul {
+                li {
+                    align-items: flex-end;
+                }
+            }
+        }
+        // .right {
+        //     height: 100%;
+        // }
     }
 }
 </style>

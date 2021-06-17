@@ -1,19 +1,22 @@
 <template>
     <header v-if="atPage == 'admin' || atPage == 'account'">
-
         <ul v-if="atPage == 'admin' && adm > 2">
-            <li v-for="(infos, name) in adminOptions[adm]" :key="name" :id="infos[1] + '_subpage'">
-                <inertia-link :href="infos[0]" >{{
-                    name
-                }}</inertia-link>
+            <li
+                v-for="(infos, name) in adminOptions[adm]"
+                :key="name"
+                :id="infos[1] + '_subpage'"
+            >
+                <inertia-link :href="infos[0]">{{ name }}</inertia-link>
             </li>
         </ul>
 
         <ul v-if="atPage == 'account'">
-            <li v-for="(infos, name) in publicOptions"     :key="name" :id="infos[1] + '_subpage'">
-                <inertia-link :href="infos[0]">{{
-                    name    
-                }}</inertia-link>
+            <li
+                v-for="(infos, name) in publicOptions"
+                :key="name"
+                :id="infos[1] + '_subpage'"
+            >
+                <inertia-link :href="infos[0]">{{ name }}</inertia-link>
             </li>
         </ul>
     </header>
@@ -29,21 +32,20 @@ export default {
                 1: {},
                 2: {},
                 3: {
-                    "Criar Publicação":  [route("admin.newpub"), "pubs"],
-                    "Base de Dados":     [route("admin.database"), "database"],
-
+                    "Criar Publicação": [route("admin.newpub"), "pubs"],
+                    "Base de Dados": [route("admin.database"), "database"],
                 },
                 4: {
-                    "Base de Dados":     [route("admin.database"), "database"],
-                    "Criar Publicação":  [route("admin.newpub"), "pubs"],
-                    "Requisições":       [route("admin.requireView"), "requires"],
-                    "Alterar Páginas":   [route("admin.updatepages"), "pages"],
-                    "Criar Newsletter":  [route("admin.news"), "news"],
+                    "Base de Dados": [route("admin.database"), "database"],
+                    "Criar Publicação": [route("admin.newpub"), "pubs"],
+                    Requisições: [route("admin.requireView"), "requires"],
+                    "Alterar Páginas": [route("admin.updatepages"), "pages"],
+                    "Criar Newsletter": [route("admin.news"), "news"],
                 },
             },
             publicOptions: {
-                "Perfil":                [route("account.profile"), "profile"],
-                "Configurações":         [route('account.profile.show'), "changes"]
+                Perfil: [route("account.profile"), "profile"],
+                Configurações: [route("account.profile.show"), "changes"],
             },
         };
     },
@@ -102,6 +104,19 @@ header {
         .actual {
             @include menuSelection($yellow);
         }
+    }
+}
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    header {
+        font-size: 1.6vw;
+        height: 8vw;
     }
 }
 </style>
