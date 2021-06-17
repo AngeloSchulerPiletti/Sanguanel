@@ -49,7 +49,7 @@
                     />
                 </div>
 
-                <div id="actions_container">
+                <div class="actions_container">
                     <button class="btn2" type="button" @click.prevent="toggleRecovery">
                         <template v-if="!recovery">
                             Usar Código de Recuperação

@@ -44,11 +44,12 @@
                     </span>
                 </div>
 
-                <div id="actions_container">
+                <div class="actions_container">
                     <button class="btn2" @click.prevent="selectNewPhoto">
                         Trocar de Foto
                     </button>
-                    <button class="btn2"
+                    <button
+                        class="btn2"
                         @click.prevent="deletePhoto"
                         v-if="user.profile_photo_path"
                     >
@@ -59,23 +60,25 @@
                 <!-- <jet-input-error :message="form.errors.photo" /> -->
             </div>
 
-            <!-- Name -->
-            <div class="input name">
-                <jet-label for="name" value="Nome" />
-                <jet-input
-                    id="name"
-                    type="text"
-                    v-model="form.name"
-                    autocomplete="name"
-                />
-                <!-- <jet-input-error :message="form.errors.name" /> -->
-            </div>
+            <div class="sequential_input">
+                <!-- Name -->
+                <div class="input name">
+                    <jet-label for="name" value="Nome" />
+                    <jet-input
+                        id="name"
+                        type="text"
+                        v-model="form.name"
+                        autocomplete="name"
+                    />
+                    <!-- <jet-input-error :message="form.errors.name" /> -->
+                </div>
 
-            <!-- Email -->
-            <div class="input email">
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" v-model="form.email" />
-                <!-- <jet-input-error :message="form.errors.email" /> -->
+                <!-- Email -->
+                <div class="input email">
+                    <jet-label for="email" value="Email" />
+                    <jet-input id="email" type="email" v-model="form.email" />
+                    <!-- <jet-input-error :message="form.errors.email" /> -->
+                </div>
             </div>
         </template>
 
@@ -83,11 +86,7 @@
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
                 Salvo
             </jet-action-message>
-            <button class="btn"
-                :disabled="form.processing"
-            >
-                Salvar
-            </button>
+            <button class="btn" :disabled="form.processing">Salvar</button>
         </template>
     </jet-form-section>
 </template>
@@ -172,58 +171,11 @@ export default {
             }
         },
     },
-    
 };
 </script>
 
 <style lang="scss" scoped>
-.photo {
-    margin-bottom: 4vw;
+@import "resources/css/sass/admin/Components/profile";
 
-    .pic {
-        width: 14vw;
-        height: 14vw;
-        border-radius: 100%;
-        border: 2px solid $black;
-    }
-    img {
-        object-fit: cover;
-    }
-    span {
-        display: block;
-    }
-    #actions_container {
-        margin-top: 2.5vw;
-        display: flex;
-        gap: 1vw;
-    }
-}
-.input{
-    display: flex;
-    flex-direction: column;
-    
-    label{
-        font-size: 1.25vw;
-    }
-    input{
-        border-radius: 0.3vw;
-        border: none;
-        outline: none;
-        box-shadow: 0 0 0 0;
-
-        font-size: 1.2vw;
-    }
-}
-.name {
-    margin-bottom: 1.5vw;
-}
-.email {
-    margin-bottom: 2.2vw;
-}
-.btn{
-    @include button1();
-}
-.btn2{
-    @include button2();
-}
+@include profileShowStyle;
 </style>

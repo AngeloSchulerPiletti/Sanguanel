@@ -11,18 +11,21 @@
         <template #content>
             <div id="introduction">
                 <p>
-                    Se necessário, você pode sair de todas as outras sessões ativas
-                de sua conta. Algumas de suas sessões recentes estão listadas
-                abaixo; no entanto, esta lista pode não ser completa. Se você
-                acha que sua conta foi comprometida, você deve atualizar sua
-                senha.
+                    Se necessário, você pode sair de todas as outras sessões
+                    ativas de sua conta. Algumas de suas sessões recentes estão
+                    listadas abaixo; no entanto, esta lista pode não ser
+                    completa. Se você acha que sua conta foi comprometida, você
+                    deve atualizar sua senha.
                 </p>
-                
             </div>
 
             <!-- Other Browser Sessions -->
             <div id="sessions_list" v-if="sessions.length > 0">
-                <div class="session_container" v-for="(session, i) in sessions" :key="i">
+                <div
+                    class="session_container"
+                    v-for="(session, i) in sessions"
+                    :key="i"
+                >
                     <div class="device_icon">
                         <svg
                             fill="none"
@@ -72,7 +75,9 @@
                             <div>
                                 {{ session.ip_address }},
 
-                                <span id="this_activity" v-if="session.is_current_device"
+                                <span
+                                    id="this_activity"
+                                    v-if="session.is_current_device"
                                     >Este dispositivo</span
                                 >
                                 <span class="last_activity" v-else
@@ -86,7 +91,9 @@
             </div>
 
             <div>
-                <button class="btn" @click="confirmLogout">Sair de outras sessões</button>
+                <button class="btn" @click="confirmLogout">
+                    Sair de outras sessões
+                </button>
 
                 <jet-action-message :on="form.recentlySuccessful">
                     Logout com suceeso
@@ -99,10 +106,9 @@
 
                 <template #content>
                     <p>
-                        Insira sua senha para confirmar que você deseja deslogar de
-                    todas as suas outras sessões ativas.
+                        Insira sua senha para confirmar que você deseja deslogar
+                        de todas as suas outras sessões ativas.
                     </p>
-                    
 
                     <div class="input">
                         <jet-input
@@ -118,20 +124,19 @@
                 </template>
 
                 <template #footer>
-                    <div id="actions_container">
+                    <div class="actions_container">
                         <button class="btn2" @click="closeModal">
-                        Cancelar
-                    </button>
+                            Cancelar
+                        </button>
 
-                    <button
-                    class="btn"
-                        @click="logoutOtherBrowserSessions"
-                        :disabled="form.processing"
-                    >
-                        Sair de outras sessões
-                    </button>
+                        <button
+                            class="btn3"
+                            @click="logoutOtherBrowserSessions"
+                            :disabled="form.processing"
+                        >
+                            Sair de outras sessões
+                        </button>
                     </div>
-                    
                 </template>
             </jet-dialog-modal>
         </template>
@@ -196,78 +201,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#introduction {
-    margin-bottom: 1.5vw;
-    padding-bottom: 1.5vw;
-    border-bottom: 2px solid $yellow;
-}
-p {
-    @include Fonte1_SS;
-    font-size: 1.2vw;
-}
+@import "resources/css/sass/admin/Components/profile";
 
-#sessions_list{
-    margin: 2vw 0 2vw 0;
-
-    display: flex;
-    flex-direction: column;
-    gap: 1.2vw;
-
-    .session_container{
-        display: flex;
-        align-items: center;
-        gap: 1vw;
-
-        .device_icon{
-            svg{
-                width: 4vw;
-                height: 4vw;
-                path{
-                    stroke: $yellow; 
-                }
-            }
-        }
-        .infos1{
-            @include Fonte2_SS;
-            font-size: 1vw;
-        }
-        .infos2{
-            @include Fonte2_SS;
-            font-size: 0.9vw;
-
-            #this_activity{
-                @include Titulo2_SS;
-                color: green;
-            }
-            .last_activity{
-                @include Fonte1_SS;
-                color: red;
-            }
-        }
-    }
-}
-
-#actions_container {
-    display: flex;
-    gap: 1vw;
-}
-.input {
-    input {
-        border-radius: 0.3vw;
-        border: 1px solid $yellow;
-        outline: none;
-        box-shadow: 0 0 0 0;
-
-        margin-top: 1vw;
-
-        font-size: 1.2vw;
-    }
-}
-
-.btn{
-    @include button1();
-}
-.btn2{
-    @include button2();
-}
+@include profileShowStyle;
 </style>

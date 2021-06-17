@@ -1,0 +1,153 @@
+@mixin profileShowStyle {
+    .btn {
+        @include button1();
+    }
+    .btn2 {
+        @include button2();
+    }
+    .btn3 {
+        @include button3();
+    }
+
+    #introduction {
+        margin-bottom: 1.5vw;
+        padding-bottom: 1.5vw;
+        border-bottom: 2px solid $yellow;
+    }
+    p {
+        @include Fonte1_SS;
+        font-size: 1.2vw;
+    }
+
+    .sequential_input{
+        display: flex;
+        flex-direction: column;
+        gap: 1.6vw;
+        margin: 2.5vw 0 2.5vw 0;
+    }
+    .input {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            border-radius: 0.3vw;
+            border: 1px solid $yellow;
+            outline: none;
+            box-shadow: 0 0 0 0;
+
+            margin-top: 0.5vw;
+
+            font-size: 1.2vw;
+        }
+        label {
+            font-size: 1.25vw;
+        }
+    }
+
+    #sessions_list {
+        margin: 2vw 0 2vw 0;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.2vw;
+
+        .session_container {
+            display: flex;
+            align-items: center;
+            gap: 1vw;
+
+            .device_icon {
+                svg {
+                    width: 4vw;
+                    height: 4vw;
+                    path {
+                        stroke: $yellow;
+                    }
+                }
+            }
+            .infos1 {
+                @include Fonte2_SS;
+                font-size: 1vw;
+            }
+            .infos2 {
+                @include Fonte2_SS;
+                font-size: 0.9vw;
+
+                #this_activity {
+                    @include Titulo2_SS;
+                    color: green;
+                }
+                .last_activity {
+                    @include Fonte1_SS;
+                    color: red;
+                }
+            }
+        }
+    }
+
+    .enabled_false {
+        border-bottom: 0;
+    }
+    .enabled_true {
+        border-bottom: 2px solid $yellow;
+    }
+    #introduction {
+        padding-bottom: 1.5vw;
+        margin-bottom: 1.5vw;
+
+        h3 {
+            @include Fonte1_S;
+            font-size: 1.4vw;
+
+            margin-bottom: 1.55vw;
+        }
+    }
+    p {
+        @include Fonte1_SS;
+        font-size: 1.2vw;
+    }
+    #code_container {
+        #qrCode {
+            &:deep(svg) {
+                height: 15vw;
+                margin: 2.5vw 0 2.5vw 0;
+
+                & path {
+                    fill: $black;
+                }
+            }
+        }
+        #codes {
+            margin: 2vw 0 1vw 0;
+            padding: 1.5vw;
+            border-radius: 0.8vw;
+            background-color: $white;
+
+            @include Fonte1_SS;
+            font-size: 1.4vw;
+        }
+    }
+
+    .actions_container {
+        display: flex;
+        gap: 1vw;
+    }
+
+    .photo {
+        margin-bottom: 2vw;
+
+        .pic {
+            width: 14vw;
+            height: 14vw;
+            border-radius: 100%;
+            border: 2px solid $black;
+            margin-bottom: 2.5vw;
+        }
+        img {
+            object-fit: cover;
+        }
+        span {
+            display: block;
+        }
+    }
+}

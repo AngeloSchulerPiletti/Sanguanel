@@ -26,7 +26,7 @@
             </template>
 
             <template #footer>
-                <div id="actions_container">
+                <div class="actions_container">
                     <button class="btn2" @click="closeModal">Cancelar</button>
 
                     <button
@@ -135,7 +135,7 @@ p {
 .btn2 {
     @include button2();
 }
-#actions_container {
+.actions_container {
     display: flex;
     gap: 1vw;
 }

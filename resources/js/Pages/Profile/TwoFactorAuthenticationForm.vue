@@ -51,11 +51,7 @@
                     </div>
 
                     <div id="codes">
-                        <div
-                            
-                            v-for="code in recoveryCodes"
-                            :key="code"
-                        >
+                        <div v-for="code in recoveryCodes" :key="code">
                             {{ code }}
                         </div>
                     </div>
@@ -63,7 +59,7 @@
             </div>
 
             <div>
-                <div id="actions_container" v-if="!twoFactorEnabled">
+                <div class="actions_container" v-if="!twoFactorEnabled">
                     <jet-confirms-password
                         @confirmed="enableTwoFactorAuthentication"
                     >
@@ -73,7 +69,7 @@
                     </jet-confirms-password>
                 </div>
 
-                <div id="actions_container" v-else>
+                <div class="actions_container" v-else>
                     <jet-confirms-password @confirmed="regenerateRecoveryCodes">
                         <button class="btn2" v-if="recoveryCodes.length > 0">
                             Alterar Códigos de Recuperação
@@ -183,60 +179,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.enabled_false {
-    border-bottom: 0;
-}
-.enabled_true {
-    border-bottom: 2px solid $yellow;
-}
-#introduction {
-    padding-bottom: 1.5vw;
-    margin-bottom: 1.5vw;
+@import "resources/css/sass/admin/Components/profile";
 
-    h3 {
-        @include Fonte1_S;
-        font-size: 1.4vw;
-
-        margin-bottom: 1.55vw;
-    }
-    
-}
-p {
-        @include Fonte1_SS;
-        font-size: 1.2vw;
-    }
-#code_container {
-    #qrCode {
-        &:deep(svg){
-            height: 15vw;
-            margin: 2.5vw 0 2.5vw 0;
-
-            & path{
-                fill: $black;
-            }
-        }
-    }
-    #codes {
-        margin: 2vw 0 1vw 0;
-        padding: 1.5vw;
-        border-radius: 0.8vw;
-        background-color: $white;
-
-        @include Fonte1_SS;
-        font-size: 1.4vw;
-    }
-}
-
-#actions_container {
-    margin-top: 2.5vw;
-    display: flex;
-    gap: 1vw;
-}
-.btn {
-    @include button1();
-}
-.btn2 {
-    @include button2();
-    @include Fonte2_SS;
-}
+@include profileShowStyle;
 </style>

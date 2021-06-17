@@ -30,11 +30,10 @@
 
                 <template #content>
                     <p>
-                       Tem certeza que deseja continuar? Uma vez deletada sua
-                    conta, não há como voltar atrás. Tudo relacionado à sua
-                    conta irá desaparecer. 
+                        Tem certeza que deseja continuar? Uma vez deletada sua
+                        conta, não há como voltar atrás. Tudo relacionado à sua
+                        conta irá desaparecer.
                     </p>
-                    
 
                     <div class="input">
                         <jet-input
@@ -50,7 +49,7 @@
                 </template>
 
                 <template #footer>
-                    <div id="actions_container">
+                    <div class="actions_container">
                         <button class="btn" @click="closeModal">
                             Cancelar
                         </button>
@@ -123,36 +122,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#introduction {
-    margin-bottom: 1.5vw;
-    padding-bottom: 1.5vw;
-    border-bottom: 2px solid $yellow;
-}
-p {
-    @include Fonte1_SS;
-    font-size: 1.2vw;
-}
-.btn {
-    @include button1();
-}
-.btn3 {
-    @include button3();
-    @include Titulo3_SS;
-}
-#actions_container {
-    display: flex;
-    gap: 1vw;
-}
-.input {
-    input {
-        border-radius: 0.3vw;
-        border: 2px solid $red;
-        outline: none;
-        box-shadow: 0 0 0 0;
+@import "resources/css/sass/admin/Components/profile";
 
-        margin-top: 1vw;
-
-        font-size: 1.2vw;
-    }
-}
+@include profileShowStyle;
 </style>

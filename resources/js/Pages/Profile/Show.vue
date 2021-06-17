@@ -5,7 +5,7 @@
 
     <app-admin atPage="account" atSubpage="changes">
         <div>
-            <div>
+            <div id="changes_container">
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
                     <update-profile-information-form :user="$page.props.user" />
                 </div>
@@ -22,15 +22,11 @@
                     <two-factor-authentication-form />
                 </div>
 
-                <logout-other-browser-sessions-form
-                    :sessions="sessions"
-                   
-                />
+                <logout-other-browser-sessions-form :sessions="sessions" />
 
                 <template
                     v-if="$page.props.jetstream.hasAccountDeletionFeatures"
                 >
-
                     <delete-user-form />
                 </template>
             </div>
@@ -52,7 +48,7 @@ export default {
     components: {
         AppAdmin,
         DeleteUserForm,
-         
+
         LogoutOtherBrowserSessionsForm,
         TwoFactorAuthenticationForm,
         UpdatePasswordForm,
@@ -60,3 +56,6 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+</style>
