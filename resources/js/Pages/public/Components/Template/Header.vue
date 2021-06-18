@@ -175,4 +175,23 @@ header {
         }
     }
 }
+@media (max-width: 700px) {
+    header {
+        padding: 2.1vw 2vw 1vw 3vw;
+
+        // @include headerStyle3();
+
+        #user_menus_container {
+            .user_menus {
+
+                a {
+                    font-size: 2.2vw;
+                }
+                legend {
+                    font-size: 2.2vw;
+                }
+            }
+        }
+    }
+}
 </style>

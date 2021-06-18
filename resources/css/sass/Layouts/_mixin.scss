@@ -2,124 +2,363 @@
     box-shadow: -3px 3px 5px $gray2;
 }
 
-
 @mixin ArticleStyle {
+    color: $black;
+    padding: 2.4vw 2.4vw 2.4vw 2.4vw;
 
-        color: $black;
-        padding: 2.4vw 2.4vw 2.4vw 2.4vw;
-    
+    & {
+        :deep(.simple_p) {
+            @include Fonte1_SS;
+            font-size: 1.3vw;
+            text-align: justify;
+
+            margin: 0.3vw 0 2vw 0;
+        }
+        :deep(.tiny_p) {
+            @include Fonte1_SS;
+            font-size: 1.1vw;
+            text-transform: uppercase;
+
+            margin: 2vw 0 2vw 0;
+        }
+        :deep(.small50) {
+            font-size: 50%;
+        }
+        :deep(.small75) {
+            font-size: 75%;
+        }
+
+        :deep(a) {
+            @include anchorA($black, $yellow);
+        }
+
+        //=========== Títulos ============//
+        :deep(h1) {
+            @include Titulo1_S;
+            font-size: 2.2vw;
+            text-transform: uppercase;
+        }
+        :deep(h2) {
+            @include Titulo2_S;
+            font-size: 1.9vw;
+            text-transform: uppercase;
+        }
+        :deep(h3) {
+            @include Titulo2_S;
+            font-size: 1.7vw;
+            text-transform: uppercase;
+        }
+        :deep(h4) {
+            @include Titulo2_S;
+            font-size: 1.7vw;
+            text-transform: capitalize;
+        }
+        :deep(h5) {
+            @include Fonte1_S;
+            font-size: 1.7vw;
+            text-transform: capitalize;
+        }
+        :deep(h6) {
+            @include Fonte2_S;
+            font-size: 1.5vw;
+            text-transform: capitalize;
+        }
+
+        :deep(.elegant_hr) {
+            outline: none;
+            border: none;
+            height: 1px;
+            background-color: $black;
+            margin: 1vw auto 1vw auto;
+        }
+
+        :deep(ul) {
+            @include Fonte2_SS;
+            font-size: 1.3vw;
+            margin: 0.3vw 0 2vw 0;
+
+            li {
+                margin: 0 0 0.5vw 1.2vw;
+                padding-left: 0.8vw;
+
+                border-left: 2px solid $yellow;
+            }
+        }
+
+        :deep(.img_container) {
+            width: fit-content;
+
+            .img_alternative {
+                @include Fonte2_SS;
+                text-transform: capitalize;
+                font-size: 1vw;
+
+                margin-top: 0.5vw;
+            }
+
+            .big {
+                width: 40vw;
+            }
+            .medium {
+                width: 28vw;
+            }
+            .small {
+                width: 16vw;
+            }
+        }
+        :deep(.center) {
+            margin: 2vw auto 2vw auto;
+            img {
+                border-bottom: 5px solid $yellow;
+            }
+        }
+        :deep(.right) {
+            margin: 2vw 0 2vw auto;
+            img {
+                border-right: 5px solid $yellow;
+            }
+        }
+        :deep(.left) {
+            margin: 2vw auto 2vw 0;
+            img {
+                border-left: 5px solid $yellow;
+            }
+        }
+    }
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+    @media (max-width: 1100px) {
+
         & {
             :deep(.simple_p) {
-                @include Fonte1_SS;
-                font-size: 1.3vw;
-                text-align: justify;
-    
-                margin: 0.3vw 0 2vw 0;
+                font-size: 1.7vw;
+                margin: 0.6vw 0 3vw 0;
             }
             :deep(.tiny_p) {
-                @include Fonte1_SS;
-                font-size: 1.1vw;
-                text-transform: uppercase;
-    
-                margin: 2vw 0 2vw 0;
+                font-size: 1.4vw;
+
+                margin: 3vw 0 3vw 0;
             }
-            :deep(.small50) {
-                font-size: 50%;
-            }
-            :deep(.small75) {
-                font-size: 75%;
-            }
-    
-            :deep(a) {
-                @include anchorA($black, $yellow);
-            }
-    
+
             //=========== Títulos ============//
             :deep(h1) {
-                @include Titulo1_S;
-                font-size: 2.2vw;
-                text-transform: uppercase;
+                font-size: 3.1vw;
             }
             :deep(h2) {
-                @include Titulo2_S;
-                font-size: 1.9vw;
-                text-transform: uppercase;
+                font-size: 2.8vw;
             }
             :deep(h3) {
-                @include Titulo2_S;
-                font-size: 1.7vw;
-                text-transform: uppercase;
+                font-size: 2.5vw;
             }
             :deep(h4) {
-                @include Titulo2_S;
-                font-size: 1.7vw;
-                text-transform: capitalize;
+                font-size: 2.3vw;
             }
             :deep(h5) {
-                @include Fonte1_S;
-                font-size: 1.7vw;
-                text-transform: capitalize;
+                font-size: 2.1vw;
             }
             :deep(h6) {
-                @include Fonte2_S;
-                font-size: 1.5vw;
-                text-transform: capitalize;
+                font-size: 2.1vw;
             }
-    
+
             :deep(.elegant_hr) {
-                outline: none;
-                border: none;
                 height: 1px;
-                background-color: $black;
                 margin: 1vw auto 1vw auto;
             }
-    
+
             :deep(ul) {
-                @include Fonte2_SS;
-                font-size: 1.3vw;
-                margin: 0.3vw 0 2vw 0;
-    
+                font-size: 1.8vw;
+                margin: 0.3vw 0 3vw 0;
+
                 li {
-                    margin: 0 0 0.5vw 1.2vw;
+                    margin: 0 0 0.8vw 1.8vw;
                     padding-left: 0.8vw;
-    
-                    border-left: 2px solid $yellow;
                 }
             }
-    
+
             :deep(.img_container) {
                 width: fit-content;
-    
+
                 .img_alternative {
-                    @include Fonte2_SS;
-                    text-transform: capitalize;
-                    font-size: 1vw;
-    
-                    margin-top: 0.5vw;
+                    font-size: 1.5vw;
+
+                    margin-top: 0.8vw;
                 }
-    
-                img {
-                    border: 2px solid $black;
-                }
+
                 .big {
                     width: 50vw;
                 }
                 .medium {
-                    width: 40vw;
+                    width: 38vw;
                 }
                 .small {
-                    width: 26vw;
+                    width: 30vw;
                 }
             }
             :deep(.center) {
-                margin: 2vw auto 2vw auto;
+                margin: 3vw auto 3vw auto;
             }
             :deep(.right) {
-                margin: 2vw 0 2vw auto;
+                margin: 3vw 0 3vw auto;
             }
             :deep(.left) {
-                margin: 2vw auto 2vw 0;
+                margin: 3vw auto 3vw 0;
             }
         }
-    
+    }
+    @media (max-width: 700px) {
+        padding: 2.8vw 2.8vw 2.8vw 2.8vw;
+
+        & {
+            :deep(.simple_p) {
+                font-size: 2.2vw;
+                margin: 0.8vw 0 3.5vw 0;
+            }
+            :deep(.tiny_p) {
+                font-size: 1.9vw;
+
+                margin: 3.5vw 0 3.5vw 0;
+            }
+
+            //=========== Títulos ============//
+            :deep(h1) {
+                font-size: 4.4vw;
+            }
+            :deep(h2) {
+                font-size: 3.9vw;
+            }
+            :deep(h3) {
+                font-size: 3.5vw;
+            }
+            :deep(h4) {
+                font-size: 3.2vw;
+            }
+            :deep(h5) {
+                font-size: 2.9vw;
+            }
+            :deep(h6) {
+                font-size: 2.5vw;
+            }
+
+            :deep(.elegant_hr) {
+                height: 1px;
+                margin: 1vw auto 1vw auto;
+            }
+
+            :deep(ul) {
+                font-size: 2.2vw;
+                margin: 0.5vw 0 3.5vw 0;
+
+                li {
+                    margin: 0 0 1vw 2.2vw;
+                    padding-left: 1vw;
+                }
+            }
+
+            :deep(.img_container) {
+
+                .img_alternative {
+                    font-size: 1.9vw;
+                    margin-top: 1vw;
+                }
+
+                .big {
+                    width: 58vw;
+                }
+                .medium {
+                    width: 45vw;
+                }
+                .small {
+                    width: 38vw;
+                }
+            }
+            :deep(.center) {
+                margin: 3.5vw auto 3.5vw auto;
+            }
+            :deep(.right) {
+                margin: 3.5vw 0 3.5vw auto;
+            }
+            :deep(.left) {
+                margin: 3.5vw auto 3.5vw 0;
+            }
+        }
+    }
+    @media (max-width: 500px) {
+        padding: 3vw 2vw 3vw 2vw;
+
+        & {
+            :deep(.simple_p) {
+                font-size: 3.2vw;
+                margin: 1vw 0 4vw 0;
+            }
+            :deep(.tiny_p) {
+                font-size: 2.8vw;
+
+                margin: 4vw 0 4vw 0;
+            }
+
+            //=========== Títulos ============//
+            :deep(h1) {
+                font-size: 5vw;
+            }
+            :deep(h2) {
+                font-size: 4.6vw;
+            }
+            :deep(h3) {
+                font-size: 4.15vw;
+            }
+            :deep(h4) {
+                font-size: 3.8vw;
+            }
+            :deep(h5) {
+                font-size: 3.6vw;
+            }
+            :deep(h6) {
+                font-size: 3.4vw;
+            }
+
+            :deep(.elegant_hr) {
+                height: 1px;
+                margin: 1vw auto 1vw auto;
+            }
+
+            :deep(ul) {
+                font-size: 3.25vw;
+                margin: 0.8vw 0 4vw 0;
+
+                li {
+                    margin: 0 0 1.5vw 3vw;
+                    padding-left: 1.5vw;
+                }
+            }
+
+            :deep(.img_container) {
+
+                .img_alternative {
+                    font-size: 2.8vw;
+                    margin-top: 1.4vw;
+                }
+
+                .big {
+                    width: 68vw;
+                }
+                .medium {
+                    width: 58vw;
+                }
+                .small {
+                    width: 46vw;
+                }
+            }
+            :deep(.center) {
+                margin: 4vw auto 4vw auto;
+            }
+            :deep(.right) {
+                margin: 4vw 0 4vw auto;
+            }
+            :deep(.left) {
+                margin: 4vw auto 4vw 0;
+            }
+        }
+    }
 }
