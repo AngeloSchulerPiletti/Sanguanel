@@ -214,8 +214,7 @@ class ArticleRequireController extends Controller
 
 
         // Uses function to format
-        $article->text = $this->ArticleRegEx($article->text);
-        
+        $article->text = $this->ArticleRegEx($request->text);
 
         /*IMAGENS DO ARTIGO */
         preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $request->text, $picture);
@@ -236,6 +235,9 @@ class ArticleRequireController extends Controller
         $url = $this->stringToURL($request->title);
         $URLexists = DB::table('articles')->where('url', $url)->get();
         $article->url = isset($URLexists[0]) ? $url.'-'.strtotime('now') : $url;
+
+        // dd($article->text);
+
 
         $article->save();
 
