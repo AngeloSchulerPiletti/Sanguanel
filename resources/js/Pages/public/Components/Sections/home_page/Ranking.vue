@@ -258,4 +258,149 @@ export default {
         }
     }
 }
+@media (max-width: 700px) {
+    #ranking {
+        flex-direction: column;
+
+        #Brazil {
+            padding: 2vw 0 2vw 0;
+        }
+        #aside_container {
+            width: auto;
+            margin-right: 0;
+            // height: 100%;
+            background-color: $black;
+            padding: 3vw 0 4vw 0;
+
+            border-top: 4px solid $yellow;
+            border-bottom: 4px solid $white;
+
+            aside {
+                margin-top: 0;
+                padding: 0;
+                background-color: transparent;
+                border-radius: 0;
+                box-shadow: 0 0 0 0;
+                text-align: center;
+
+                margin-bottom: 1.5vw;
+
+                h4 {
+                    font-size: 5vw;
+                    color: $white;
+                }
+                hr {
+                    // margin-top: 2vw;
+                    // margin-bottom: 4vw;
+                    // background-color: $white;
+                    display: none;
+                }
+
+                ul,
+                p {
+                    color: $white;
+                    font-size: 2.2vw;
+
+                    li:first-of-type {
+                        margin-top: 1.2vw;
+                    }
+                    li {
+                        color: $white;
+                        font-size: 2.2vw;
+
+                        h6 {
+                            color: $white;
+                            font-size: 3.8vw;
+                            margin-right: 0;
+
+                            sup {
+                                font-size: 2vw;
+                            }
+                        }
+                    }
+                }
+            }
+            #link {
+                margin-top: 1vw;
+                height: fit-content;
+
+                padding: 0.7vw 1.8vw 0.7vw 1.8vw;
+                border-radius: 0.8vw;
+                width: fit-content;
+                margin: auto;
+
+                @include buttonT($yellow, $white, $black, $black);
+
+                #participar {
+                    font-size: 3vw;
+                    box-shadow: 0 0 0 0;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0;
+                    border-radius: 0;
+                    background-color: transparent;
+                    color: inherit;
+                    &:hover {
+                        color: none;
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 700px){
+    #ranking {
+        #Brazil {
+            padding: 4vw 0 4vw 0;
+        }
+        #aside_container {
+            // height: 100%;
+            padding: 4.6vw 0 5.8vw 0;
+
+            border-top: 2px solid $yellow;
+            border-bottom: 2px solid $white;
+
+            aside {
+                margin-bottom: 4vw;
+
+                h4 {
+                    font-size: 6.5vw;
+                }
+
+                ul,
+                p {
+                    font-size: 3.5vw;
+
+                    li:first-of-type {
+                        margin-top: 2.5vw;
+                    }
+                    li {
+                        font-size: 3.5vw;
+
+                        h6 {
+                            font-size: 4vw;
+                            margin-right: 0;
+
+                            sup {
+                                font-size: 3vw;
+                            }
+                        }
+                    }
+                }
+            }
+            #link {
+                padding: 0.3vw 2.2vw 0.3vw 2.2vw;
+                border-radius: 0.8vw;
+
+                #participar {
+                    font-size: 4vw;
+
+                    &:hover {
+                        color: none;
+                    }
+                }
+            }
+        }
+    }
+}
 </style>

@@ -422,11 +422,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 svg {
     height: 100%;
 
-    #southAmerica{
+    #southAmerica {
         fill: $gray2;
     }
     path {
@@ -442,8 +441,6 @@ svg {
     }
 }
 
-
-
 /*+-----------------------------------------------------+
   |                RESPONSIVIDADE                       |
   +-----------------------------------------------------+*/
@@ -451,8 +448,16 @@ svg {
     //
 }
 @media (max-width: 1100px) {
-    svg{
+    svg {
         height: auto;
+    }
+}
+@media (max-width: 700px) {
+    svg {
+        max-width: 90vw;
+        #southAmerica {
+            fill: transparent;
+        }
     }
 }
 </style>
