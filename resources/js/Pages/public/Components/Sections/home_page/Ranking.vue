@@ -348,7 +348,7 @@ export default {
         }
     }
 }
-@media(max-width: 700px){
+@media(max-width: 500px){
     #ranking {
         #Brazil {
             padding: 4vw 0 4vw 0;
