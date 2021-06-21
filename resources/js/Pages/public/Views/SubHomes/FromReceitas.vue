@@ -101,4 +101,87 @@ export default {
         }
     }
 }
+
+
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1300px) {
+    //
+}
+@media (max-width: 1100px) {
+    #fromrecipes_container {
+        gap: 10vw;
+
+        #description {
+            width: 60%;
+            margin-left: 12vw;
+            padding: 4.5vw 0vw 2vw 2vw;
+
+            font-size: 1.5vw;
+        }
+        #articles_list {
+            gap: 4.5vw;
+
+            h4 {
+                @include Titulo2_S;
+                font-size: 2.2vw;
+                margin-left: 4.5vw;
+            }
+            .container {
+                // width: 70%;
+                // margin: auto;
+            }
+        }
+    }
+}
+@media (max-width: 700px) {
+    #fromrecipes_container {
+        gap: 15vw;
+
+        #description {
+            width: 60%;
+            margin-left: 14vw;
+            padding: 5vw 0vw 3.2vw 3.2vw;
+
+            font-size: 2.2vw;
+        }
+        #articles_list {
+            gap: 6.5vw;
+
+            h4 {
+                font-size: 2.8vw;
+                margin-left: 5vw;
+            }
+            .container {
+                width: 80%;
+            }
+        }
+    }
+}
+@media (max-width: 500px) {
+    #fromrecipes_container {
+        gap: 15vw;
+
+        #description {
+            width: 70%;
+            margin-left: 9.5vw;
+            padding: 9vw 0vw 4vw 4.2vw;
+
+            font-size: 2.8vw;
+        }
+        #articles_list {
+            gap: 7.2vw;
+
+            h4 {
+                font-size: 3.3vw;
+                margin: auto;
+            }
+            .container {
+                width: 84%;
+            }
+        }
+    }
+}
 </style>
