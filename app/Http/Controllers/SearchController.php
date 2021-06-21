@@ -23,7 +23,7 @@ class SearchController extends Controller
             foreach ($article->keywords as $value) {
                 $value = $converter->stringToURL($value);
                 if($keywords == $value){
-                    $corresponding[] = Article::all()->where('id', $article->id);
+                    $corresponding[] = Article::all()->where('id', $article->id)->first();
                 }
             }
         }
