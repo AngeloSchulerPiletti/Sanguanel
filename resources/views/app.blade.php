@@ -8,6 +8,8 @@
 
 
         {{-- <title>{{ config('app.name', 'Sanguanel') }}</title> --}}
+        {{-- FAVICON --}}
+        <link rel="shortcut icon" href="/images/favicon/favicon.svg" type="image/x-icon">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">

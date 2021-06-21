@@ -200,7 +200,8 @@ article {
             font-size: 1.5vw;
         }
         input,
-        select {
+        select,
+        option {
             @include Fonte2_SS;
             font-size: 1.3vw;
 
@@ -229,5 +230,98 @@ article {
             @include button1;
         }
     }
+}
+
+
+
+
+
+
+
+
+
+/*+-----------------------------------------------------+
+  |                RESPONSIVIDADE                       |
+  +-----------------------------------------------------+*/
+@media (max-width: 1100px) {
+    #research {
+    // padding: 3vw;
+
+    form {
+        gap: 4vw;
+    }
+    .container {
+        label,
+        p {
+            font-size: 1.8vw;
+        }
+        input,
+        select,
+        option {
+            font-size: 1.6vw;
+        }
+        [type="checkbox"] {
+            width: 2vw;
+            height: 2vw;
+        }
+        .checkbox_item {
+            gap: 1.6vw;
+        }
+    }
+}
+}
+@media (max-width: 700px) {
+    #research {
+    // padding: 3vw;
+
+    form {
+        gap: 4vw;
+    }
+    .container {
+        label,
+        p {
+            font-size: 2.2vw;
+        }
+        input,
+        select,
+        option {
+            font-size: 2vw;
+        }
+        [type="checkbox"] {
+            width: 2.4vw;
+            height: 2.4vw;
+        }
+        .checkbox_item {
+            gap: 1.8vw;
+        }
+    }
+}
+}
+@media (max-width: 700px) {
+    #research {
+    padding: 4vw;
+
+    form {
+        gap: 4vw;
+    }
+    .container {
+        label,input,
+        p {
+            font-size: 3.5vw;
+        }
+        
+        select,
+        option {
+            font-size: 3vw;
+        }
+        [type="checkbox"] {
+            width: 2.4vw;
+            height: 2.4vw;
+        }
+        .checkbox_item {
+            gap: 1.8vw;
+        }
+    }
+}
 }
 </style>
