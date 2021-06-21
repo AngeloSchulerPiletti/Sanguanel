@@ -45,4 +45,10 @@ export default {
         fill: $white;
     }
 }
+@media(max-width: 500px){
+    .public_arrow path{
+        fill: $black;
+}
+}
+
 </style>

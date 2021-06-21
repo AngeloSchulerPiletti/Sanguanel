@@ -6,6 +6,7 @@
             :color="colorArrow"
             data-btnstate="none"
             @click="arrowCall()"
+            :class="wichDrop + '_arrow'"
         />
     </div>
     <div id="r_drop" :class="wichDrop" data-dropstate="none">
@@ -207,6 +208,30 @@ export default {
 
         li {
             font-size: 1.8vw;
+        }
+    }
+}
+@media (max-width: 500px) {
+    .r_button {
+        [data-btnstate] {
+            width: 4.2vw;
+        }
+    }
+    .public {
+        top: calc(100% + 1vw);
+        right: 0;
+        background-color: $tinyback;
+    }
+    [data-dropstate] {
+        position: absolute;
+
+        border-radius: 0 0 0.7vw 0.7vw;
+        padding: 0.5vw 0 0.5vw 0;
+
+        width: 26vw;
+
+        li {
+            font-size: 2.8vw;
         }
     }
 }

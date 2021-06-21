@@ -32,27 +32,29 @@
         </div>
 
         <!-- Menuzinho direito -->
-        <ul id="user_menus_container">
-            <li class="user_menus" v-if="!$page.props.user">
-                <inertia-link href="/register"> Registrar </inertia-link>
-            </li>
+        <div id="menuzinho">
+            <ul id="user_menus_container">
+                <li class="user_menus" v-if="!$page.props.user">
+                    <inertia-link href="/register"> Registrar </inertia-link>
+                </li>
 
-            <li class="user_menus" v-if="!$page.props.user">
-                <inertia-link href="/login">
-                    Login
-                    <IconLock id="login_icon" />
-                </inertia-link>
-            </li>
+                <li class="user_menus" v-if="!$page.props.user">
+                    <inertia-link href="/login">
+                        Login
+                        <IconLock id="login_icon" />
+                    </inertia-link>
+                </li>
 
-            <li class="user_menus" v-if="$page.props.user">
-                <legend>
-                    Bem vindo, {{ $page.props.user.name.split(" ")[0] }}!
-                </legend>
-            </li>
-            <li class="user_menus" id="drop_list" v-if="$page.props.user">
-                <drop-menu :links="links" type="public"/>
-            </li>
-        </ul>
+                <li class="user_menus" v-if="$page.props.user">
+                    <legend>
+                        Bem vindo, {{ $page.props.user.name.split(" ")[0] }}!
+                    </legend>
+                </li>
+                <li class="user_menus" id="drop_list" v-if="$page.props.user">
+                    <drop-menu :links="links" type="public" />
+                </li>
+            </ul>
+        </div>
     </header>
 </template>
 
@@ -164,7 +166,6 @@ header {
 
         #user_menus_container {
             .user_menus {
-
                 a {
                     font-size: 1.8vw;
                 }
@@ -183,12 +184,48 @@ header {
 
         #user_menus_container {
             .user_menus {
-
                 a {
                     font-size: 2.2vw;
                 }
                 legend {
                     font-size: 2.2vw;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 500px) {
+    header {
+        // padding: 2.1vw 2vw 1vw 3vw;
+        padding: 0vw;
+
+        justify-content: none;
+        flex-direction: column;
+        align-items: flex-start;
+
+        @include headerStyle3();
+
+        #menuzinho {
+            width: 100%;
+            background-color: $tinyback;
+            color: $black;
+            padding: 2.1vw 2vw 1vw 3vw;
+
+            #user_menus_container {
+                margin-left: auto;
+                width: fit-content;
+
+                .user_menus {
+                    a {
+                                        @include Fonte1_S;
+
+                        font-size: 2.5vw;
+                    }
+                    legend {
+                                        @include Fonte1_S;
+
+                        font-size: 2.8vw;
+                    }
                 }
             }
         }
