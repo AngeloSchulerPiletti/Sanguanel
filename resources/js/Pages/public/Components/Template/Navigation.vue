@@ -64,7 +64,7 @@
             <inertia-link
                 v-if="!menuMobile"
                 id="search_link"
-                :href="route('search.show', { keywords: field })"
+                :href="route('search.show', { keywords: (field ? field : '') })"
                 @mouseover="searchShow()"
                 ><IconSearch class="menu_icon"
             /></inertia-link>
@@ -73,13 +73,13 @@
                 v-else-if="!clicked"
                 @click="searchShow()"
                 id="search_link"
-                :href="route('search.show', { keywords: field })"
+                :href="route('search.show', { keywords: (field ? field : '') })"
                 ><IconSearch class="menu_icon"
             /></div>
             <inertia-link
                 v-else-if="clicked"
                 id="search_link"
-                :href="route('search.show', { keywords: field })"
+                :href="route('search.show', { keywords: (field ? field : '') })"
                 @click="searchShow()"
                 ><IconSearch class="menu_icon"
             /></inertia-link>
@@ -123,7 +123,7 @@ export default {
         return {
             clicked: false,
             menuMobile: false,
-            field: "Busca",
+            field: null,
             colorIcon: "#FFFFFF",
             page_hover: "",
             paths: {
@@ -472,8 +472,8 @@ nav {
             margin-bottom: 10px;
 
             #search_field {
-                height: 60px;
-                font-size: 2vw;
+                height: 55px;
+                font-size: 16px;
 
                 // background-color: $white;
                 // color: $black;
@@ -515,4 +515,5 @@ nav {
         }
     }
 }
+
 </style>
