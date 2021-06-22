@@ -22,11 +22,11 @@ class CreateArticleRequiresTable extends Migration
             $table->tinyText('title');
             $table->longText('text');
             $table->longText('text_formatted');
-            $table->string('keywords')->default('');
-            $table->tinyText('path_dirPictures')->default('');
-            $table->tinyText('pictureNames')->default('');
+            $table->string('keywords');
+            $table->tinyText('path_dirPictures');
+            $table->tinyText('pictureNames');
             $table->string('url');
-            $table->string('status')->default('open');
+            $table->string('status');
         });
     }
 

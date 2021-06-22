@@ -20,8 +20,8 @@ class CreateInstitucionalPagesTable extends Migration
             $table->tinyText('description');
             $table->longText('text_formatted');
             $table->longText('text');
-            $table->tinyText('path_dirPictures')->default('');
-            $table->tinyText('pictureNames')->default('');
+            $table->tinyText('path_dirPictures');
+            $table->tinyText('pictureNames');
             $table->string('url');
         });
     }

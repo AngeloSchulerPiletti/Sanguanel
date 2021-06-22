@@ -209,22 +209,28 @@ header {
             width: 100%;
             background-color: $tinyback;
             color: $black;
-            padding: 2.1vw 2vw 1vw 3vw;
+            padding: 1.5vw 2vw 1.5vw 3vw;
 
             #user_menus_container {
                 margin-left: auto;
                 width: fit-content;
 
                 .user_menus {
-                    a {
-                                        @include Fonte1_S;
+                    margin: 0 1.5vw 0vw 1.5vw;
 
-                        font-size: 2.5vw;
+                    a {
+                        @include Titulo2_S;
+                        @include anchorT($black, $yellow);
+                        font-size: 2.6vw;
+
+                        #login_icon {
+                            display: none;
+                        }
                     }
                     legend {
-                                        @include Fonte1_S;
+                        @include Titulo2_S;
 
-                        font-size: 2.8vw;
+                        font-size: 2.9vw;
                     }
                 }
             }

@@ -88,7 +88,7 @@ class AdminController extends Controller
     {
         $database = $this->getDatabase(['users', 'articles']);
         $props = null !== $request->session()->get('status') ? ['database' => $database[0], 'status' => $request->session()->get('status')] : ['database' => $database[0]];
-        
+
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', $props);
         // return Inertia::render($this->url_adm . 'Views/CRUD/ManagerDatabase', ['database' => $database[0]]);
     }
@@ -165,7 +165,7 @@ class AdminController extends Controller
                     'email'              => 'required|email',
                     'current_team_id'    => 'integer',
                     'profile_photo_path' => 'string',
-                    'adminLevel'         => 'between:0,4',
+                    'adminLevel'         => 'required|between:0,4',
                 ]);
 
                 $user = User::findOrFail($request->id);
@@ -234,9 +234,9 @@ class AdminController extends Controller
             ]);
 
             //Image Tratament
-            $profile = $request->hasFile('profile')   ? $this->saveImg($request, 'profile',  '/images/autor/') : "";
-            $picture1 = $request->hasFile('picture1') ? $this->saveImg($request, 'picture1', '/images/autor/') : "";
-            $picture2 = $request->hasFile('picture2') ? $this->saveImg($request, 'picture2', '/images/autor/') : "";
+            $profile = $request->hasFile('profile')   ? $this->saveImg($request, 'profile',  '/images/autor/') : " ";
+            $picture1 = $request->hasFile('picture1') ? $this->saveImg($request, 'picture1', '/images/autor/') : " ";
+            $picture2 = $request->hasFile('picture2') ? $this->saveImg($request, 'picture2', '/images/autor/') : " ";
 
             //Passing All Data;
             $autor = new Author();
@@ -245,9 +245,9 @@ class AdminController extends Controller
             $autor->picture2 = $picture2;
             $autor->profile  = $profile;
             $autor->text1    = $request->text1;
-            $autor->text2    = $request->text2;
+            $autor->text2    = $request->text2 ? $request->text2 : " ";
             $autor->title1   = $request->title1;
-            $autor->title2   = $request->title2;
+            $autor->title2   = $request->title2  ? $request->title2 : " ";
 
             $autor->save();
         } else if ($request->table == "subhomes") {
@@ -308,7 +308,11 @@ class AdminController extends Controller
                     }
                 }
                 $institucional->pictureNames = $imagesNamesString;
+            } else {
+                $institucional->pictureNames = "none";
+                $institucional->path_dirPictures = "none";
             }
+
 
             $institucional->subject = $request->subject;
             $institucional->description = $request->description;
@@ -316,13 +320,24 @@ class AdminController extends Controller
 
             $formatter = new ArticleRequireController;
             $institucional->text =  $formatter->ArticleRegEx($request->text);
+
+            /*IMAGENS DO ARTIGO */
+            preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $request->text, $picture);
+            if (count($picture[0]) != count($request->images)) {
+                return Inertia::render("admin/Views/CRUD/ManagerPubs", ['errors' => [0 => 'O número de imagens do artigo não é o mesmo número de imagens em upload.']]);
+            } else if (count($picture[0]) > 0) {
+                foreach ($picture[0] as $i => $value) {
+                    $institucional->text = str_replace($value, '<div class="img_container ' . $picture[2][$i] . '"><img class="' . $picture[1][$i] . '" src="' . $imagePaths[$i] . '" alt="' . $picture[3][$i] . '" /><p class="img_alternative">' . $picture[3][$i] . '</p></div>', $institucional->text);
+                }
+            }
+
             $institucional->url = 'institucional/' . $request->subject;
 
             $institucional->save();
         } else if ($request->table == "homes") {
             $request->validate([
                 'subject' => 'required|string',
-                'description' => 'required|string|min:50',
+                'description' => 'required|string|min:50|max:200',
                 'text'   => 'required|string',
                 'images' => 'array',
                 'images.*' => 'image',
@@ -366,6 +381,9 @@ class AdminController extends Controller
                     }
                 }
                 $home->pictureNames = $imagesNamesString;
+            } else {
+                $home->pictureNames = "none";
+                $home->path_dirPictures = "none";
             }
 
             $home->subject = $request->subject;
@@ -374,6 +392,16 @@ class AdminController extends Controller
 
             $formatter = new ArticleRequireController;
             $home->text =  $formatter->ArticleRegEx($request->text);
+
+            /*IMAGENS DO ARTIGO */
+            preg_match_all("/`{([\w]+)[-]+([\w]+)}{(.*)}`/Us",                                       $request->text, $picture);
+            if (count($picture[0]) != count($request->images)) {
+                return Inertia::render("admin/Views/CRUD/ManagerPubs", ['errors' => [0 => 'O número de imagens do artigo não é o mesmo número de imagens em upload.']]);
+            } else if (count($picture[0]) > 0) {
+                foreach ($picture[0] as $i => $value) {
+                    $home->text = str_replace($value, '<div class="img_container ' . $picture[2][$i] . '"><img class="' . $picture[1][$i] . '" src="' . $imagePaths[$i] . '" alt="' . $picture[3][$i] . '" /><p class="img_alternative">' . $picture[3][$i] . '</p></div>', $home->text);
+                }
+            }
 
             $home->save();
         } else {

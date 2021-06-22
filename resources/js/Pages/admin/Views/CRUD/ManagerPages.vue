@@ -3,7 +3,7 @@
         <title>Alterar Páginas | Administrador</title>
     </inertia-head>
 
-    <app-admin :atPage="'admin'" atSubpage="pages">
+    <app-admin :atPage="'admin'" atSubpage="pages"  :message="messages">
         <!-- POP_UPs -->
         <instructions
             @closeMe="setInstruction"
@@ -37,20 +37,27 @@ export default {
     data() {
         return {
             instructions: [undefined, undefined],
-            DBdata: {},
+            DBdata: [],
+            messages: {},
         };
     },
     created() {
-        //
+        this.Refresh();
+    },
+    updated(){
+        this.Refresh();
     },
     methods: {
+        Refresh: function () {
+            if (this.status) {
+                this.messages = this.status;
+            }
+        },
         setInstruction: function (wich) {
-            console.log(wich);
             this.instructions = wich;
         },
         changePopUp: function (page, content) {
             if (this.$page.props.user.adminLevel > 3) {
-                console.log('turning into '+page);
                 this.instructions[1] = page;
                 this.instructions[0] = "pageschange";
                 this.DBdata = content;
@@ -59,7 +66,8 @@ export default {
         
     },
     props: {
-        pages: Array,
+        pages: Object,
+        status: Object,
     },
     components: {
         AppAdmin,
