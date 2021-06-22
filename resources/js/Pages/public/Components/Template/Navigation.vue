@@ -242,7 +242,8 @@ nav {
     transform-style: preserve-3d;
 
     width: $menuWidth;
-    height: 100vh;
+    // height: 100vh;
+    min-height: -webkit-fill-available;
 
     background-color: $black;
     // @include Titulo1_S();
@@ -515,7 +516,6 @@ nav {
         }
     }
 }
-
 
 @media (max-width: 500px) {
     nav {
