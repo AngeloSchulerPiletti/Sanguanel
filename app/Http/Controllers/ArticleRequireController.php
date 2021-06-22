@@ -165,6 +165,7 @@ class ArticleRequireController extends Controller
             $article = new ArticleRequire;
             $status = [0 => "Artigo criado, mas aguarda aprovação de um administrador!"];
             $article->text_formatted = $request->text;
+            $article->status = "open";
         }
 
         $article->author = $request->author;
