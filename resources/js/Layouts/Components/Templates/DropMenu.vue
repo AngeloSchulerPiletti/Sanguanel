@@ -26,7 +26,8 @@
                 v-if="
                     $page.props.user &&
                     $page.props.user.adminLevel > 2 &&
-                    wichDrop == 'public'
+                    wichDrop == 'public' &&
+                    !menuMobile
                 "
             >
                 <inertia-link class="drop_links" href="/admin"
@@ -54,6 +55,7 @@ export default {
         return {
             colorArrow: "$black",
             wichDrop: "admin",
+            menuMobile: false,
         };
     },
     props: {
@@ -89,6 +91,11 @@ export default {
         if (this.type == "public") {
             this.wichDrop = this.type;
             this.colorArrow = "$white";
+        }
+
+        var screen = window.innerWidth;
+        if (screen <= 700) {
+            this.menuMobile = true;
         }
     },
     components: {
@@ -228,10 +235,10 @@ export default {
         border-radius: 0 0 0.7vw 0.7vw;
         padding: 0.5vw 0 0.5vw 0;
 
-        width: 26vw;
+        width: 30vw;
 
         li {
-            font-size: 2.8vw;
+            font-size: 3.3vw;
         }
     }
 }

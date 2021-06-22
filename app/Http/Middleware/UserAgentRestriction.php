@@ -22,7 +22,7 @@ class UserAgentRestriction
             abort(403);
         }
         else if($agent->isMobile()){
-            return redirect(route('home'))->with('status', [0 => 'Você não pode acessar a área de admin via mobile...']);
+            return redirect(route('home'))->with('status', [0 => 'Você não pode acessar esta área via mobile...']);
         }
         return $next($request);
     }

@@ -150,7 +150,7 @@ export default {
                 institucional: {
                     Início: route("institucional.", { section: ""}),
                     Exposição: route("institucional.", {
-                        section: "exposição",
+                        section: "exposicao",
                     }),
                     Política: route("institucional.", {
                         section: "politica",
@@ -516,4 +516,68 @@ nav {
     }
 }
 
+
+@media (max-width: 500px) {
+    nav {
+        #menu_container {
+            #Logo {
+                width: 48px;
+                margin-top: 12px;
+                margin-bottom: 16px;
+            }
+            hr {
+                margin-bottom: 20px;
+            }
+        }
+        .menu_icon {
+            width: 35px;
+            margin-bottom: 14px;
+        }
+        form {
+            margin-bottom: 10px;
+
+            #search_field {
+                height: 55px;
+                font-size: 16px;
+
+                // background-color: $white;
+                // color: $black;
+                // border: 1px solid $gray2;
+            }
+        }
+        #nav_btn_container {
+            display: block;
+
+            background-color: $black;
+            padding: 1.5vw 0.5vw 1.5vw 0.5vw;
+            border-radius: 0 1vw 1vw 0;
+            border-left: 2px solid $white;
+
+            position: absolute;
+            top: 60%;
+            right: 0px;
+            transform: translateX(100%);
+
+            #pull_nav_btn {
+                width: 7.2vw;
+                height: 7.8vw;
+
+                [data-btnstate] {
+                    transition-duration: 200ms;
+                    transition-property: transform;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                [data-btnstate="open"] {
+                    transform: scaleX(-1);
+                }
+                [data-btnstate="close"] {
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+}
 </style>

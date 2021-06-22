@@ -74,6 +74,7 @@ export default {
             links: {
                 Conta: route("account.profile"),
             },
+            
         };
     },
     props: {
@@ -98,6 +99,13 @@ export default {
             this.header.style = this.header_content.style;
             this.header.title = this.header_content.title;
         } else {
+            //
+        }
+
+        var screen = window.innerWidth;
+        if (screen <= 700) {
+            this.menuMobile = true;
+            this.links = {};
         }
     },
 };

@@ -57,7 +57,7 @@ Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsle
 
 
 
-Route::name('account.')->middleware('auth:sanctum', 'verified')->group(function () {
+Route::name('account.')->middleware('auth:sanctum', 'verified', 'ua.restriction')->group(function () {
 
     Route::group(['prefix' => 'conta'], function () {
         Route::get('/', [AccountController::class, 'index'])->name('');
