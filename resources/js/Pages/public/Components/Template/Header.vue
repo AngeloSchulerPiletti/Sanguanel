@@ -211,12 +211,14 @@ header {
         flex-direction: column;
         align-items: flex-start;
 
+        border-bottom: 3px solid $yellow;
+
         @include headerStyle3();
 
         #menuzinho {
             width: 100%;
-            background-color: $tinyback;
-            color: $black;
+            background-color: $black;
+            color: $white;
             padding: 1.5vw 2vw 1.5vw 3vw;
 
             #user_menus_container {
@@ -225,10 +227,11 @@ header {
 
                 .user_menus {
                     margin: 0 1.5vw 0vw 1.5vw;
+                    
 
                     a {
                         @include Titulo2_S;
-                        @include anchorT($black, $yellow);
+                        @include anchorT($white, $yellow);
                         font-size: 2.6vw;
 
                         #login_icon {

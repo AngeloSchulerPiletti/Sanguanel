@@ -228,6 +228,7 @@ export default {
         top: calc(100% + 1vw);
         right: 0;
         background-color: $tinyback;
+        color: $black;
     }
     [data-dropstate] {
         position: absolute;

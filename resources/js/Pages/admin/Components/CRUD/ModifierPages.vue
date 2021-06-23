@@ -313,9 +313,9 @@ export default {
         };
     },
     methods: {
-        logIt: function (event) {
-            console.log(event.target.files);
-        },
+        // logIt: function (event) {
+        //     //
+        // },
         onlySubhomes: function () {
             var actual = this.forms.subhomes.subject;
             this.data.forEach((el) => {
@@ -364,31 +364,31 @@ export default {
     },
     created() {
         var db = this.data;
-        console.log(db[0]);
+        // console.log(db);
         if (this.wich == "author") {
-            this.forms.author.id = db[0].id;
-            // this.forms.author.profile = db[0].profile;
-            this.forms.author.bio = db[0].bio;
-            this.forms.author.title1 = db[0].title1;
-            this.forms.author.text1 = db[0].text1;
-            // this.forms.author.picture1 = db[0].picture1;
-            this.forms.author.title2 = db[0].title2;
-            this.forms.author.text2 = db[0].text2;
-            // this.forms.author.picture2 = db[0].picture2;
+            this.forms.author.id = db.id;
+            // this.forms.author.profile = db.profile;
+            this.forms.author.bio = db.bio;
+            this.forms.author.title1 = db.title1;
+            this.forms.author.text1 = db.text1;
+            // this.forms.author.picture1 = db.picture1;
+            this.forms.author.title2 = db.title2;
+            this.forms.author.text2 = db.text2;
+            // this.forms.author.picture2 = db.picture2;
         } else if (this.wich == "subhomes") {
-            this.forms.subhomes.id = db[0].id;
-            this.forms.subhomes.description = db[0].description;
-            this.forms.subhomes.subject = db[0].subject;
+            this.forms.subhomes.id = db.id;
+            this.forms.subhomes.description = db.description;
+            this.forms.subhomes.subject = db.subject;
         } else if (this.wich == "institucional") {
-            this.forms.institucional.id = db[0].id;
-            this.forms.institucional.subject = db[0].subject;
-            this.forms.institucional.text = db[0].text;
-            this.forms.institucional.description = db[0].description;
+            this.forms.institucional.id = db.id;
+            this.forms.institucional.subject = db.subject;
+            this.forms.institucional.text = db.text;
+            this.forms.institucional.description = db.description;
         } else if (this.wich == "homes") {
-            // this.forms.homes.id = db[0].id;
-            // this.forms.homes.subject = db[0].subject;
-            // this.forms.homes.text = db[0].text;
-            // this.forms.homes.description = db[0].description;
+            // this.forms.homes.id = db.id;
+            // this.forms.homes.subject = db.subject;
+            // this.forms.homes.text = db.text;
+            // this.forms.homes.description = db.description;
         }
     },
     props: {

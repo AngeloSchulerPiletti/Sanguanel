@@ -126,4 +126,30 @@ nav {
         // }
     }
 }
+@media (max-width: 700px) {
+    nav {
+        .left {
+            #logo {
+                // margin: 1.5vw 3vw 1.5vw 3vw;
+                width: 8vw;
+            }
+        }
+        .center {
+            font-size: 2.4vw;
+        }
+    }
+}
+@media (max-width: 500px) {
+    nav {
+        .left {
+            #logo {
+                margin: 2vw 4vw 2vw 4vw;
+                width: 11vw;
+            }
+        }
+        .center {
+            font-size: 3vw;
+        }
+    }
+}
 </style>

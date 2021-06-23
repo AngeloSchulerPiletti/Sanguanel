@@ -185,7 +185,7 @@ export default {
             }
         },
         showSubPageList: function (x) {
-            console.log(x);
+            // console.log(x);
             this.page_hover = x;
             var el = document.getElementById("sub_dirs");
             el.style.display = "block";
@@ -475,10 +475,7 @@ nav {
             #search_field {
                 height: 55px;
                 font-size: 16px;
-
-                // background-color: $white;
-                // color: $black;
-                // border: 1px solid $gray2;
+                width: 60vw;
             }
         }
         #nav_btn_container {
@@ -539,10 +536,6 @@ nav {
             #search_field {
                 height: 55px;
                 font-size: 16px;
-
-                // background-color: $white;
-                // color: $black;
-                // border: 1px solid $gray2;
             }
         }
         #nav_btn_container {

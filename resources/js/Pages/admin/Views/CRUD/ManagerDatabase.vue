@@ -119,7 +119,7 @@ export default {
             }
         },
         Refresh: function () {
-            console.log(this.$page.props);
+            // console.log(this.$page.props);
             if (this.status) {
                 this.messages = this.status;
             }

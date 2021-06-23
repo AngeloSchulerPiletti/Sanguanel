@@ -47,7 +47,7 @@ export default {
 }
 @media(max-width: 500px){
     .public_arrow path{
-        fill: $black;
+        fill: $white;
 }
 }
 

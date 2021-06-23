@@ -8,11 +8,7 @@
         <main id="fromrecipes_container">
             <section id="description">
                 <p>
-                    {{ database.description }}Mussum Ipsum, cacilds vidis litro
-                    abertis. Interagi no mé, cursus quis, vehicula ac nisi.
-                    Cevadis im ampola pa arma uma pindureta. Per aumento de
-                    cachacis, eu reclamis. Leite de capivaris, leite de mula
-                    manquis sem cabeça.
+                    {{ database.description }}
                 </p>
             </section>
             <section id="articles_list">

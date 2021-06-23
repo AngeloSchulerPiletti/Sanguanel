@@ -25,24 +25,37 @@ class AdminController extends Controller
 {
     protected $url_adm = 'admin/';
 
-    protected function getDatabase($requires)
+    protected function getDatabase($requires, $order = false)
     {
-        $database = [
-            //Data
-            'users' => User::all(),
-            'articles' => Article::all(),
-            'team' => Team::all(),
-            'newsletter' => Newsletter::all(),
+        if ($order == 'last') {
+            $database = [
+                // //Data
+                // 'users' => User::all(),
+                // 'articles' => Article::all(),
+                // 'team' => Team::all(),
+                // 'newsletter' => Newsletter::all(),
 
-            //Pages
-            'author'            => Author::all(),
-            'institucional'     => InstitucionalPage::all(),
-            'subhomes'          => SubhomesContent::all(),
-            'homes'             => Homepage::all(),
-            //'articleshome'      => '', //Inalterável, por enquanto
-            //'recipeshome'       => '', //Inalterável, por enquanto
-            //'institucionalhome' => '', //Inalterável, por enquanto
-        ];
+                //Pages
+                'author'            => Author::all()->last(),
+                'institucional'     => InstitucionalPage::all()->last(),
+                'subhomes'          => SubhomesContent::all()->last(),
+                'homes'             => Homepage::all()->last(),
+            ];
+        } else {
+            $database = [
+                //Data
+                'users' => User::all(),
+                'articles' => Article::all(),
+                'team' => Team::all(),
+                'newsletter' => Newsletter::all(),
+
+                //Pages
+                'author'            => Author::all(),
+                'institucional'     => InstitucionalPage::all(),
+                'subhomes'          => SubhomesContent::all(),
+                'homes'             => Homepage::all(),
+            ];
+        }
 
         $return = [];
 
@@ -53,8 +66,9 @@ class AdminController extends Controller
                 }
             }
         }
-
+// dd($requires, $database);
         return [$return];
+        
     }
 
     protected function saveImg($req, $requestFile, $path)
@@ -101,9 +115,9 @@ class AdminController extends Controller
     }
     public function pages(Request $request)
     {
-        $pages = $this->getDatabase(['institucional', 'author', 'subhomes', 'homes',]);
+        $pages = $this->getDatabase(['institucional', 'author', 'subhomes', 'homes',], 'last');
         $props = null !== $request->session()->get('status') ? ['pages' => $pages[0], 'status' => $request->session()->get('status')] : ['pages' => $pages[0]];
-
+        // dd($props, $pages[0]);
         return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages', $props);
         // return Inertia::render($this->url_adm . 'Views/CRUD/ManagerPages', ['pages' => $pages[0]]);
     }
@@ -223,7 +237,7 @@ class AdminController extends Controller
         if ($request->table == "author") {
             $request->validate([
                 "id" => 'required|integer',
-                "bio" => 'required|string|min:20|max:400',
+                "bio" => 'required|string|min:20|max:580',
                 "picture1" => 'image|nullable',
                 "picture2" => 'image|nullable',
                 "profile" => 'required|image',

@@ -43,7 +43,7 @@ export default {
         };
     },
     created() {
-        console.log(this.$page.props);
+        // console.log(this.$page.props);
         if (this.database != []) {
             this.articles_list = this.database;
         } else {

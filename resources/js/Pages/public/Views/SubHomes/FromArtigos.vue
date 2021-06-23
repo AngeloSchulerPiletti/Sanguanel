@@ -60,7 +60,7 @@ export default {
         ArticlesLister,
     },
     created() {
-        console.log(this.database);
+        // console.log(this.database);
         var assunto = this.subject,
             content = this.acceptSubjects;
 
@@ -91,8 +91,6 @@ export default {
         @include Fonte2_S;
         font-size: 1.2vw;
         text-align: justify;
-
-        word-break: break-all;
     }
     #articles_list {
         display: flex;
