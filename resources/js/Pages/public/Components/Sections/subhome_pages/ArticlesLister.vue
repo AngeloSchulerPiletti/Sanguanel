@@ -206,8 +206,6 @@ export default {
                     cursor: auto;
                 }
             }
-            #next {
-            }
         }
     }
 }
@@ -259,9 +257,6 @@ export default {
                     span {
                         font-size: 2.2vw;
                     }
-                    #actual_list {
-                        //
-                    }
                 }
             }
         }
@@ -308,9 +303,6 @@ export default {
                     span {
                         font-size: 2.8vw;
                     }
-                    #actual_list {
-                        //
-                    }
                 }
             }
         }
@@ -352,9 +344,6 @@ export default {
 
                     span {
                         font-size: 3.3vw;
-                    }
-                    #actual_list {
-                        //
                     }
                 }
             }

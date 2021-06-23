@@ -125,10 +125,6 @@ export default {
                 font-size: 2.2vw;
                 margin-left: 4.5vw;
             }
-            .container {
-                // width: 70%;
-                // margin: auto;
-            }
         }
     }
 }
