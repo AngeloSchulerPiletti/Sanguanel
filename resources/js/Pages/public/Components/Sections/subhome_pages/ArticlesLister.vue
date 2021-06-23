@@ -156,7 +156,7 @@ export default {
                 @include Fonte1_SS;
                 font-size: 1.3vw;
                 text-align: justify;
-                height: 7vw;
+                height: fit-content;
 
                 overflow: hidden;
             }
@@ -236,7 +236,7 @@ export default {
                     margin-top: 1.3vw;
 
                     font-size: 1.5vw;
-                    height: 7.2vw;
+                    
                 }
             }
         }
@@ -282,7 +282,6 @@ export default {
                     margin-top: 1.5vw;
 
                     font-size: 1.9vw;
-                    height: 8.7vw;
                 }
             }
         }
@@ -324,7 +323,6 @@ export default {
                     margin-top: 2vw;
 
                     font-size: 3.2vw;
-                    height: 38vw;
                 }
             }
         }

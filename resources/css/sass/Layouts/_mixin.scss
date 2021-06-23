@@ -361,4 +361,81 @@
             }
         }
     }
+
+    @media (max-width: 400px) {
+        padding: 4vw 6.5vw 8vw 6.5vw;
+
+        & {
+            :deep(.simple_p) {
+                font-size: 3.9vw;
+            }
+            :deep(.tiny_p) {
+                font-size: 3.3vw;
+
+                margin: 5vw 0 5vw 0;
+            }
+
+            //=========== Títulos ============//
+            :deep(h1) {
+                font-size: 6.5vw;
+            }
+            :deep(h2) {
+                font-size: 5.6vw;
+            }
+            :deep(h3) {
+                font-size: 5.2vw;
+            }
+            :deep(h4) {
+                font-size: 4.6vw;
+            }
+            :deep(h5) {
+                font-size: 4.2vw;
+            }
+            :deep(h6) {
+                font-size: 4vw;
+            }
+
+            :deep(.elegant_hr) {
+                height: 1px;
+                margin: 1vw auto 1vw auto;
+            }
+
+            :deep(ul) {
+                font-size: 4.05vw;
+                margin: 1.15vw 0 5vw 0;
+
+                li {
+                    margin: 0 0 2vw 4vw;
+                    padding-left: 1.9vw;
+                }
+            }
+
+            :deep(.img_container) {
+
+                .img_alternative {
+                    font-size: 3.22vw;
+                    margin-top: 1.8vw;
+                }
+
+                .big {
+                    width: 70vw;
+                }
+                .medium {
+                    width: 60vw;
+                }
+                .small {
+                    width: 48vw;
+                }
+            }
+            :deep(.center) {
+                margin: 5vw auto 5vw auto;
+            }
+            :deep(.right) {
+                margin: 5vw 0 5vw auto;
+            }
+            :deep(.left) {
+                margin: 5vw auto 5vw 0;
+            }
+        }
+    }
 }

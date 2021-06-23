@@ -96,6 +96,7 @@ export default {
         display: flex;
         flex-direction: column;
         gap: 3vw;
+        margin-bottom: 4vw;
 
         h4 {
             @include Titulo2_S;
@@ -128,6 +129,7 @@ export default {
         }
         #articles_list {
             gap: 4.5vw;
+             margin-bottom: 6vw;
 
             h4 {
                 @include Titulo2_S;
@@ -150,6 +152,7 @@ export default {
         }
         #articles_list {
             gap: 6.5vw;
+             margin-bottom: 10vw;
 
             h4 {
                 font-size: 2.8vw;
@@ -174,6 +177,7 @@ export default {
         }
         #articles_list {
             gap: 7.2vw;
+            margin-bottom: 15vw;
 
             h4 {
                 font-size: 3.8vw;

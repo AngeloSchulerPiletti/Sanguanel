@@ -408,8 +408,8 @@ export default {
         }
 
         #sec_1 {
-            padding-top: 9vw;
-            margin-bottom: 15vw;
+            padding-top: 10vw;
+            margin-bottom: 16vw;
 
             .top {
                 display: flex;
@@ -417,19 +417,19 @@ export default {
                 align-items: center;
 
                 #profile {
-                    width: 35vw;
-                    height: 35vw;
-                    margin-bottom: 6vw;
+                    width: 36vw;
+                    height: 36vw;
+                    margin-bottom: 8vw;
                 }
                 #bio {
-                    font-size: 2.35vw;
+                    font-size: 3.4vw;
                     margin-left: 0;
                     text-align: center;
                     width: 90%;
                 }
             }
             .bottom {
-                margin-top: 6vw;
+                margin-top: 8vw;
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
@@ -438,11 +438,11 @@ export default {
                     &:first-child {
                         margin-right: 0;
                     }
-                    font-size: 3vw;
+                    font-size: 3.6vw;
 
                     .icon {
-                        width: 5vw;
-                        height: 5vw;
+                        width: 6.4vw;
+                        height: 6.4vw;
                         margin-right: 1.8vw;
                     }
                 }
@@ -454,7 +454,7 @@ export default {
             padding: 8vw;
 
             h4 {
-                font-size: 4.2vw;
+                font-size: 5vw;
                 margin-bottom: 4vw;
             }
             div {
@@ -464,11 +464,11 @@ export default {
                 gap: 7vw;
 
                 p {
-                    font-size: 2.4vw;
+                    font-size: 3.4vw;
                 }
                 .img_left,
                 .img_right {
-                    width: 50vw;
+                    width: 60vw;
                     margin: 0;
                     background-color: $yellow;
                 }
@@ -502,6 +502,79 @@ export default {
 
                 padding: 1.7vw 2.8vw 1.7vw 2.8vw;
                 border-radius: 0.95vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    #author_container {
+        // padding-bottom: 10vw;
+
+        section {
+            padding: 3vw;
+        }
+
+        #sec_1 {
+            .top {
+                #profile {
+                    width: 44vw;
+                    height: 44vw;
+                }
+                #bio {
+                    font-size: 3.8vw;
+                    width: 84%;
+                }
+            }
+            .bottom {
+                margin-top: 9vw;
+
+                .iconlinks_container {
+                    font-size: 4vw;
+
+                    .icon {
+                        width: 6.8vw;
+                        height: 6.8vw;
+                        margin-right: 2.1vw;
+                    }
+                }
+            }
+        }
+
+        .paragraph {
+            margin: 9vw 0 0 0;
+            padding: 6vw;
+
+            h4 {
+                font-size: 6.5vw;
+                margin-bottom: 3.6vw;
+            }
+            div {
+                gap: 8.5vw;
+
+                p {
+                    font-size: 3.9vw;
+                }
+            }
+        }
+
+        #sec_2 {
+            margin-bottom: 10vw;
+        }
+
+        #sec_4 {
+            margin-top: 10vw;
+            h4 {
+                font-size: 5vw;
+            }
+            h3 {
+                font-size: 3.9vw;
+
+                margin-bottom: 6.5vw;
+            }
+            a {
+                font-size: 4vw;
+                border-radius: 1vw;
             }
         }
     }
