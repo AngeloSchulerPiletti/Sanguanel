@@ -66,7 +66,7 @@ export default {
     flex-direction: column;
     gap: 10vw;
 
-    background-color: $black;
+    background-color: $black2;
     color: $white;
 
     min-height: 100vh;

@@ -183,7 +183,7 @@ export default {
 
                 padding: 8px;
                 border-radius: 3px;
-                background-color: $black;
+                background-color: $black2;
                 color: $white;
 
                 transition-property: box-shadow, color;

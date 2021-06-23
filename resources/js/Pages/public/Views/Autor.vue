@@ -195,7 +195,7 @@ export default {
     }
 
     #sec_2 {
-        background-color: $black;
+        background-color: $black2;
         color: $white;
     }
 

@@ -78,7 +78,7 @@ export default {
     display: none;
 }
 #newsletter {
-    background-color: $black;
+    background-color: $black2;
     color: $white;
 
     padding: 2.2vw 4vw 2vw 4vw;

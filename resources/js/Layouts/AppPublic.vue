@@ -122,4 +122,13 @@ export default {
         }
     }
 }
+@media (max-width: 500px) {
+    #_website_ {
+        #_website_content_ {
+             main{
+                 border: 0;
+             }
+        }
+    }
+}
 </style>

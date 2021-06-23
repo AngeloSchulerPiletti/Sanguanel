@@ -68,7 +68,7 @@ export default {
     min-height: 100vh;
     padding-top: 4vw;
 
-    background-color: $black;
+    background-color: $black2;
     color: $white;
 
     #articles_list {
