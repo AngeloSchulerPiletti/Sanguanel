@@ -21,7 +21,7 @@ class CreateArticlesTable extends Migration
             $table->mediumText('description');
             $table->tinyText('title');
             $table->longText('text');
-            $table->string('keywords');
+            $table->mediumText('keywords');
             $table->tinyText('path_dirPictures');
             $table->string('pictureNames');
             $table->string('url');

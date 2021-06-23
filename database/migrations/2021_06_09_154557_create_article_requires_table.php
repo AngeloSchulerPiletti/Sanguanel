@@ -22,7 +22,7 @@ class CreateArticleRequiresTable extends Migration
             $table->tinyText('title');
             $table->longText('text');
             $table->longText('text_formatted');
-            $table->string('keywords');
+            $table->mediumText('keywords');
             $table->tinyText('path_dirPictures');
             $table->tinyText('pictureNames');
             $table->string('url');
