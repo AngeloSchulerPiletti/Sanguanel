@@ -238,6 +238,7 @@ nav {
     flex-direction: column;
     position: fixed;
     z-index: 1000000;
+    transform: translateZ(100vw);
 
     transform-style: preserve-3d;
 

@@ -232,11 +232,6 @@ export default {
   +-----------------------------------------------------+*/
 @media (max-width: 1100px) {
     #author_container {
-        // padding-bottom: 10vw;
-
-        section {
-            // padding: 4vw;
-        }
 
         #sec_1 {
             margin-bottom: 2vw;
@@ -292,9 +287,6 @@ export default {
                     margin-left: 3vw;
                 }
             }
-        }
-
-        #sec_2 {
         }
 
         #sec_4 {
