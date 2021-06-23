@@ -100,7 +100,7 @@ Route::name('researches.')->middleware('auth:sanctum')->group(function () {
 });
 
 
-
+Route::get('/pesquisar',                        [SearchController::class, 'empty'])->name('search.empty');
 Route::get('/pesquisar/{keywords}',             [SearchController::class, 'index'])->name('search.show');
 
 

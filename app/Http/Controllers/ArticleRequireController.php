@@ -152,7 +152,7 @@ class ArticleRequireController extends Controller
             'title'  => 'required|string|min:4|max:50',
             'subject' => 'required|string',
             'keywords' => 'required|string',
-            'description' => 'required|string|min:20|max:230',
+            'description' => 'required|string|min:20|max:300',
             'text'   => 'required|string',
             'images' => 'array',
             'images.*' => 'image',

@@ -165,13 +165,13 @@ export default {
             margin-left: 9.5vw;
             padding: 9vw 0vw 4vw 4.2vw;
 
-            font-size: 2.8vw;
+            font-size: 3.2vw;
         }
         #articles_list {
             gap: 7.2vw;
 
             h4 {
-                font-size: 3.3vw;
+                font-size: 3.8vw;
                 margin: auto;
             }
             .container {

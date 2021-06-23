@@ -326,13 +326,13 @@ export default {
                 padding: 3.25vw;
 
                 .card_title {
-                    font-size: 3.8vw;
+                    font-size: 4.5vw;
                 }
                 .card_paragraph {
                     margin-top: 2vw;
 
-                    font-size: 2.8vw;
-                    height: 20vw;
+                    font-size: 3.2vw;
+                    height: 38vw;
                 }
             }
         }

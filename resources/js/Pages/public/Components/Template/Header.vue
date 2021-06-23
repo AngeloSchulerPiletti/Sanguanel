@@ -232,7 +232,7 @@ header {
                     a {
                         @include Titulo2_S;
                         @include anchorT($white, $yellow);
-                        font-size: 2.6vw;
+                        font-size: 3.1vw;
 
                         #login_icon {
                             display: none;
@@ -241,7 +241,7 @@ header {
                     legend {
                         @include Titulo2_S;
 
-                        font-size: 2.9vw;
+                        font-size: 3.1vw;
                     }
                 }
             }

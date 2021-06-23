@@ -183,6 +183,7 @@ export default {
                 btn.dataset.btnstate = "close";
                 menu.dataset.state = "hide";
                 this.hidePageList();
+                this.searchHide();
             }
         },
         showSubPageList: function (x) {

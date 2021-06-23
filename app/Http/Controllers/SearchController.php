@@ -30,4 +30,8 @@ class SearchController extends Controller
         
         return Inertia::render('public/Views/Searches', ['database' => $corresponding]);
     }
+
+    public function empty(){
+        return Inertia::render('public/Views/Searches', ['database' => false]);
+    }
 }
