@@ -182,6 +182,7 @@ export default {
                 this.$emit("toBlock", "no");
                 btn.dataset.btnstate = "close";
                 menu.dataset.state = "hide";
+                this.hidePageList();
             }
         },
         showSubPageList: function (x) {
@@ -238,16 +239,11 @@ nav {
     flex-direction: column;
     position: fixed;
     z-index: 1000000;
-    transform: translateZ(100vw);
-
-    transform-style: preserve-3d;
 
     width: $menuWidth;
-    // height: 100vh;
     min-height: -webkit-fill-available;
 
     background-color: $black;
-    // @include Titulo1_S();
 
     #menu_container {
         display: flex;

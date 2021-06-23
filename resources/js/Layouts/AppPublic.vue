@@ -7,7 +7,6 @@
     </inertia-head>
 
     <div id="_website_">
-        <div id="blocker" v-if="toBlock == 'yes'" @click="closeMenus"></div>
         <navigation
             id="navigation_menu"
             @toBlock="toBlockChange"
@@ -17,7 +16,10 @@
         <!-- <share-button v-if="$page.url != '/'"/> -->
 
         <section id="_website_content_">
-            <Header :header_content="header_content"/>
+            <div id="blocker" v-if="toBlock == 'yes'" @click="closeMenus"></div>
+            <div id="header">
+            <Header :header_content="header_content" />
+            </div>
             <main>
                 <slot></slot>
             </main>
@@ -43,9 +45,7 @@ export default {
         Messages,
         // ShareButton,
     },
-    mounted() {
-        
-    },
+    mounted() {},
     updated() {},
     methods: {
         toBlockChange(arg) {
@@ -54,7 +54,6 @@ export default {
         closeMenus() {
             this.$refs.navigation.menuCall();
             this.$refs.navigation.searchHide();
-
         },
     },
     props: {
@@ -67,25 +66,32 @@ export default {
 #_website_ {
     display: flex;
 
-    #blocker {
-        display: none;
-    }
     #navigation_menu {
         flex-grow: 0;
         flex-shrink: 0;
+        transform-style: preserve-3d;
     }
     #_website_content_ {
+        transform-style: preserve-3d;
         flex-grow: 1;
         flex-shrink: 1;
 
         margin-left: $menuWidth;
+        transform: translateZ(-100vw);
 
-        transform-style: preserve-3d;
+        #blocker {
+            display: none;
+            transform: translateZ(-1vw);
+        }
+
+        #header{
+            transform: translateZ(-10vw);
+        }
 
         main {
             border: 3px solid $white;
             z-index: 1;
-            transform: translateZ(-10vw);
+            transform: translateZ(-100vw);
         }
     }
 }
@@ -105,7 +111,9 @@ export default {
 }
 @media (max-width: 700px) {
     #_website_ {
-        #blocker {
+        
+        #_website_content_ {
+            #blocker {
             background-color: $black;
             opacity: 0.6;
             z-index: 1000;
@@ -117,7 +125,6 @@ export default {
             bottom: 0;
             top: 0;
         }
-        #_website_content_ {
             margin-left: 0;
         }
     }
@@ -125,9 +132,9 @@ export default {
 @media (max-width: 500px) {
     #_website_ {
         #_website_content_ {
-             main{
-                 border: 0;
-             }
+            main {
+                border: 0;
+            }
         }
     }
 }
