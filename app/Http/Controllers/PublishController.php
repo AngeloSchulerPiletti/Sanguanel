@@ -102,7 +102,7 @@ class PublishController extends Controller
     public function institucional($section = null)
     {
         if ($section != null) {
-            $pages = InstitucionalPage::where('subject', 'institucional/'.$section)->first();
+            $pages = InstitucionalPage::all()->where('subject', 'institucional/'.$section)->last();
             if (!$pages) {
                 abort(404);
             }

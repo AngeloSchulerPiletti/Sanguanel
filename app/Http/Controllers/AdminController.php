@@ -328,7 +328,7 @@ class AdminController extends Controller
             }
 
 
-            $institucional->subject = $request->subject;
+            $institucional->subject = 'institucional'.$request->subject;
             $institucional->description = $request->description;
             $institucional->text_formatted = $request->text;
 
