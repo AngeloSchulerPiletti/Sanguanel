@@ -468,7 +468,7 @@ export default {
                 }
                 .img_left,
                 .img_right {
-                    width: 60vw;
+                    width: 100%;
                     margin: 0;
                     background-color: $yellow;
                 }

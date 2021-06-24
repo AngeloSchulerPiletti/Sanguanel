@@ -79,6 +79,8 @@ export default {
         margin-left: $menuWidth;
         transform: translateZ(-100vw);
 
+        min-height: 100vh;
+
         #blocker {
             display: none;
             transform: translateZ(-1vw);

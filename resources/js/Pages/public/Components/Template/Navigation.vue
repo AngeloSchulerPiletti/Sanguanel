@@ -485,9 +485,9 @@ nav {
             border-left: 2px solid $white;
 
             position: absolute;
-            top: 60%;
+            top: 40%;
             right: 0px;
-            transform: translateX(100%);
+            transform: translateX(100%) translateZ(-0.9vw);
 
             #pull_nav_btn {
                 width: 5.5vw;
@@ -537,17 +537,8 @@ nav {
             }
         }
         #nav_btn_container {
-            display: block;
-
-            background-color: $black;
             padding: 1.5vw 0.5vw 1.5vw 0.5vw;
-            border-radius: 0 1vw 1vw 0;
-            border-left: 2px solid $white;
-
-            position: absolute;
-            top: 60%;
-            right: 0px;
-            transform: translateX(100%);
+            top: 30%;
 
             #pull_nav_btn {
                 width: 7.2vw;
