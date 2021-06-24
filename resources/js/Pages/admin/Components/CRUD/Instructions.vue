@@ -58,7 +58,7 @@ export default {
     },
     props: {
         data: Array,
-        DBdata: Array,
+        DBdata: Object,
     },
     methods: {
         closeMe: function (event, wich = null) {

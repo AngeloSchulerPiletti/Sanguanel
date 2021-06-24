@@ -313,36 +313,33 @@ export default {
         };
     },
     methods: {
-        // logIt: function (event) {
-        //     //
-        // },
         onlySubhomes: function () {
-            var actual = this.forms.subhomes.subject;
-            this.data.forEach((el) => {
-                if (el.subject == actual) {
-                    this.forms.subhomes.description = el.description;
-                    this.forms.subhomes.id = el.id;
-                }
-            });
+            // var actual = this.forms.subhomes.subject;
+            // console.log("onlySubHomes");
+            // console.log(this.data.subject, actual);
+            // if(this.data.subject == actual){
+            //     this.forms.subhomes.description = this.data.description;
+            //     this.forms.subhomes.id = this.data.id;
+            // }
         },
         onlyInstitucional: function () {
-            var actual = this.forms.institucional.subject;
-            this.data.forEach((el) => {
-                if (el.subject == actual) {
-                    this.forms.institucional.text = el.text;
-                    this.forms.institucional.id = el.id;
-                }
-            });
+            // var actual = this.forms.institucional.subject;
+            // this.data.forEach((el) => {
+            //     if (el.subject == actual) {
+            //         this.forms.institucional.text = el.text_formatted;
+            //         this.forms.institucional.id = el.id;
+            //     }
+            // });
         },
         onlyHomes: function () {
-            var actual = this.forms.homes.subject;
-            this.data.forEach((el) => {
-                if (el.subject == actual) {
-                    this.forms.homes.text = el.text;
-                    this.forms.homes.description = el.description;
-                    this.forms.homes.id = el.id;
-                }
-            });
+            // var actual = this.forms.homes.subject;
+            // this.data.forEach((el) => {
+            //     if (el.subject == actual) {
+            //         this.forms.homes.text = el.text_formatted;
+            //         this.forms.homes.description = el.description;
+            //         this.forms.homes.id = el.id;
+            //     }
+            // });
         },
         Imgs: function (action) {
             if (action == 1) {
@@ -376,23 +373,23 @@ export default {
             this.forms.author.text2 = db.text2;
             // this.forms.author.picture2 = db.picture2;
         } else if (this.wich == "subhomes") {
-            this.forms.subhomes.id = db.id;
-            this.forms.subhomes.description = db.description;
-            this.forms.subhomes.subject = db.subject;
+            // this.forms.subhomes.id = db.id;
+            // this.forms.subhomes.description = db.description;
+            // this.forms.subhomes.subject = db.subject;
         } else if (this.wich == "institucional") {
-            this.forms.institucional.id = db.id;
-            this.forms.institucional.subject = db.subject;
-            this.forms.institucional.text = db.text;
-            this.forms.institucional.description = db.description;
+            // this.forms.institucional.id = db.id;
+            // this.forms.institucional.subject = db.subject;
+            // this.forms.institucional.text = db.text_formatted;
+            // this.forms.institucional.description = db.description;
         } else if (this.wich == "homes") {
             // this.forms.homes.id = db.id;
             // this.forms.homes.subject = db.subject;
-            // this.forms.homes.text = db.text;
+            // this.forms.homes.text = db.text_formatted;
             // this.forms.homes.description = db.description;
         }
     },
     props: {
-        data: Array,
+        data: Object,
         wich: String,
     },
     components: {
