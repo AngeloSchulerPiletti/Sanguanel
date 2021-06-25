@@ -75,6 +75,7 @@ export default {
         display: flex;
         flex-direction: column;
         gap: 3vw;
+        margin-bottom: 4vw;
 
         h4 {
             @include Titulo2_S;
@@ -112,10 +113,6 @@ export default {
                 @include Titulo2_S;
                 font-size: 2.2vw;
                 margin-left: 4.5vw;
-            }
-            .container {
-                // width: 70%;
-                // margin: auto;
             }
             #notfound {
                 h2 {
@@ -166,10 +163,6 @@ export default {
             }
             .container {
                 width: 84%;
-            }
-
-            #notfound {
-                //
             }
         }
     }

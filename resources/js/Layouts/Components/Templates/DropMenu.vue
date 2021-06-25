@@ -155,6 +155,9 @@ export default {
         display: flex;
         flex-direction: column;
 
+        form, button{
+            width: 100%;
+        }
         .drop_links {
             padding: 0.6vw 1.2vw 0.6vw 1.2vw;
 
