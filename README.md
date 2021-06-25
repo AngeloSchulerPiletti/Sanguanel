@@ -24,7 +24,8 @@ The relevance of each level is:<br/>
 2. **Level 3:** They can see the articles and users database, and require the publishing of an article;
 3. **Level 4:** The admin master. Can change any data at DB, any page, and publish any articles;
 
-Here you can see some pages of these admin functions:
-<img src="/readme_src/imgs/desktop_adminhome.png"/>
+Here you can see some pages of these admin functions:<br/>
+<img style="width:80%;" src="/readme_src/imgs/desktop_adminhome.png"/>
+<img src="/readme_src/imgs/desktop_adminhome4.png"/>
 <img src="/readme_src/imgs/desktop_adminalterar.png"/>
 
