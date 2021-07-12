@@ -1,0 +1,144 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    <!-- HOMES -->
+    <url>
+        <loc>https://sanguanel.com/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/artigos</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/receitas</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/institucional</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/autor</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+
+    <!-- SUBHOMES -->
+    <!-- Artigos  -->
+    <url>
+        <loc>https://sanguanel.com/artigos/historia</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/artigos/producao</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/artigos/curiosidades</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- Receitas  -->
+    <url>
+        <loc>https://sanguanel.com/receitas/comidas</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/receitas/drinks</loc>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- Institucional -->
+    <url>
+        <loc>https://sanguanel.com/institucional/exposicao</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/institucional/politica</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+
+
+    <!-- PAGES -->
+    <!-- Artigos  -->
+    <!-- Historia  -->
+    <url>
+        <loc>https://sanguanel.com/artigos/historia/o-que-e-hidromel</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/artigos/historia/hidromel-da-rainha-elizabeth</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/artigos/historia/a-lenda-do-sanguanel</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- Producao  -->
+    <url>
+        <loc>https://sanguanel.com/artigos/producao/azeite-de-oliva-ao-inves-da-oxigenacao-do-mosto</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/artigos/producao/como-o-hidromel-e-produzido</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- Curiosidades  -->
+    <url>
+        <loc>https://sanguanel.com/artigos/curiosidades/a-origem-da-lua-de-mel</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/artigos/curiosidades/hidromel-de-abelha-sem-ferrao</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/artigos/curiosidades/abelha-jatai</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+
+    <!-- Receitas -->
+    <!-- Comidas  -->
+    <!-- <url>
+        <loc>https://sanguanel.com/artigos/curiosidades/abelha-jatai</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url> -->
+    <!-- Drinks -->
+    <url>
+        <loc>https://sanguanel.com/receitas/drinks/drink-goitaca</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/receitas/drinks/drink-ginger-mead</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sanguanel.com/receitas/drinks/caipirinha-de-hidromel</loc>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+
+</urlset>
